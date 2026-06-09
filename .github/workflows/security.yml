@@ -1,0 +1,130 @@
+name: security
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main]
+  schedule:
+    # Weekly full scan — catches newly published CVEs against pinned deps.
+    # Monday 06:00 UTC.
+    - cron: '0 6 * * 1'
+
+# SECURITY NOTE — ACTION PINNING
+# ===============================
+# Every third-party action below uses a version tag. Before this workflow runs
+# in production, replace each `@<tag>` with `@<40-char-commit-sha>` and keep
+# the version as a trailing comment.
+#
+# Reason: aquasecurity/trivy-action supply-chain compromise of 2026-03-19 —
+# attackers force-pushed malicious code to 75 of 76 version tags. Pipelines
+# pinned to tags executed the malicious payload; pipelines pinned to SHAs
+# were unaffected.
+#
+# Pinned-SHA example:
+#   uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+#
+# Renovate or Dependabot can keep SHAs updated. If using Dependabot, ensure
+# its config requires SHA-only references (`versioning-strategy: lockfile-only`).
+# ===============================
+
+permissions:
+  contents: read
+  security-events: write
+  pull-requests: read
+
+jobs:
+  gitleaks:
+    name: secrets — gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4  # TODO: pin to SHA
+        with:
+          fetch-depth: 0  # full history so gitleaks can scan all commits in PR
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2  # TODO: pin to SHA
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  semgrep:
+    name: sast — semgrep
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4  # TODO: pin to SHA
+      - name: Run Semgrep
+        uses: semgrep/semgrep-action@v1  # TODO: pin to SHA
+        with:
+          config: >-
+            p/security-audit
+            p/secrets
+            p/owasp-top-ten
+
+  trivy:
+    name: sca — trivy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4  # TODO: pin to SHA
+      - name: Trivy filesystem scan
+        # CRITICAL — pin this action to a SHA before running in production.
+        # This action was the subject of the March 2026 supply chain compromise.
+        uses: aquasecurity/trivy-action@0.28.0  # TODO: pin to SHA (CRITICAL)
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          severity: 'CRITICAL,HIGH'
+          exit-code: '1'
+          ignore-unfixed: true
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      - name: Upload Trivy results to GitHub Security tab
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3  # TODO: pin to SHA
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  # TypeScript overlay checks — add these to branch protection required checks
+  # once the TypeScript overlay is in use for this repo.
+  # Job name: "ts — lint" and "ts — test"
+  ts-lint:
+    name: ts — lint
+    runs-on: ubuntu-latest
+    # Only run if a biome.json exists — skips non-TS repos gracefully.
+    steps:
+      - uses: actions/checkout@v4  # TODO: pin to SHA
+      - name: Check for biome.json
+        id: check_biome
+        run: test -f biome.json && echo "exists=true" >> "$GITHUB_OUTPUT" || echo "exists=false" >> "$GITHUB_OUTPUT"
+      - name: Set up Node
+        if: steps.check_biome.outputs.exists == 'true'
+        uses: actions/setup-node@v4  # TODO: pin to SHA
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        if: steps.check_biome.outputs.exists == 'true'
+        run: npm ci
+      - name: Run Biome CI
+        if: steps.check_biome.outputs.exists == 'true'
+        run: npx biome ci .
+      - name: TypeScript type check
+        if: steps.check_biome.outputs.exists == 'true'
+        run: npx tsc --noEmit
+
+  ts-test:
+    name: ts — test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4  # TODO: pin to SHA
+      - name: Check for vitest.config.ts
+        id: check_vitest
+        run: test -f vitest.config.ts && echo "exists=true" >> "$GITHUB_OUTPUT" || echo "exists=false" >> "$GITHUB_OUTPUT"
+      - name: Set up Node
+        if: steps.check_vitest.outputs.exists == 'true'
+        uses: actions/setup-node@v4  # TODO: pin to SHA
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        if: steps.check_vitest.outputs.exists == 'true'
+        run: npm ci
+      - name: Run tests
+        if: steps.check_vitest.outputs.exists == 'true'
+        run: npx vitest run

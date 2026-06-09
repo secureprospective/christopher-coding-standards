@@ -1,0 +1,37 @@
+# .gitleaks.toml
+# Gitleaks configuration for christopher-coding-standards
+# Reference: https://github.com/gitleaks/gitleaks
+
+# Extend Gitleaks default rules. Default rules cover ~150 secret types including
+# AWS keys, GitHub tokens, Slack tokens, generic high-entropy strings, etc.
+[extend]
+useDefault = true
+
+# Project-specific allowlist — keep this minimal. Every allowlist entry is a
+# potential false-negative path. Use sparingly.
+[allowlist]
+description = "Project allowlist for known false positives"
+
+# Files where examples or placeholders are expected and reviewed.
+paths = [
+    '''(.*?)(\.gitleaks\.toml)$''',
+    '''(.*?)(\.env\.example)$''',
+    '''(.*?)(README\.md)$''',
+    '''docs/.*\.md$''',
+]
+
+# Example regexes for known-safe placeholder patterns. Uncomment as needed.
+# regexes = [
+#     '''AKIAIOSFODNN7EXAMPLE''',                  # AWS docs example key
+#     '''xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx''',  # UUID placeholder
+# ]
+
+# Project-specific custom rules go below. Example:
+#
+# [[rules]]
+# id = "internal-api-key"
+# description = "Internal API key pattern used by services in this repo"
+# regex = '''(?i)internal[_-]?api[_-]?key['"]?\s*[:=]\s*['"]?[a-zA-Z0-9]{32,}['"]?'''
+# tags = ["key", "internal"]
+# # Keywords are required to fire the rule — case-insensitive substring match.
+# keywords = ["internal_api_key", "internalApiKey", "INTERNAL_API_KEY"]

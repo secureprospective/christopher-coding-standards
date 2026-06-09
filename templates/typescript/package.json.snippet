@@ -1,0 +1,26 @@
+{
+  "type": "module",
+
+  "scripts": {
+    "lint": "biome ci .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "mutation-test": "stryker run",
+    "mutation-test:full": "stryker run --incremental false"
+  },
+
+  "devDependencies": {
+    "@biomejs/biome": "2.4.15",
+    "@stryker-mutator/core": "^9.1.1",
+    "@stryker-mutator/typescript-checker": "^9.1.1",
+    "@stryker-mutator/vitest-runner": "^9.1.1",
+    "@vitest/coverage-v8": "^3.0.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.0.0",
+    "zod": "^4.0.0"
+  }
+}
