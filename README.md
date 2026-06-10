@@ -9,7 +9,7 @@ something a human — or a different LLM, in a different session — can pick up
 cold and trust.**
 
 [![Security](https://github.com/secureprospective/christopher-coding-standards/actions/workflows/security.yml/badge.svg)](https://github.com/secureprospective/christopher-coding-standards/actions/workflows/security.yml)
-![Phase](https://img.shields.io/badge/phase-1C%20complete%20%7C%201D%20next-blue)
+![Phase](https://img.shields.io/badge/phase-1D%20complete%20%7C%20Phase%202%20next-blue)
 ![Model Agnostic](https://img.shields.io/badge/models-Claude%20%7C%20Gemini%20%7C%20local-9cf)
 ![Zero Trust](https://img.shields.io/badge/AI%20output-zero%20trust-critical)
 ![License](https://img.shields.io/badge/license-UNLICENSED-lightgrey)
@@ -108,6 +108,7 @@ Full role split, escalation, and task routing: `docs/multi-agent-roles.md`.
 | **Cross-pollination workflow** | Structured, logged second-opinion audits between agents — `docs/cross-pollination-log.md` |
 | **Task-routing index** | `docs/INDEX.md` — load only what your task needs, not the whole repo |
 | **Skills** | `adopt-coding-standards` (one command to onboard a new repo), `github-pr` (read-side GitHub API helper for environments without `gh`) |
+| **Language overlays** | `templates/typescript/` (Phase 1C: Biome, Zod, Stryker, Vitest), `templates/astro/` (Phase 1D: Prettier + `prettier-plugin-astro`, `astro check`) |
 
 ## Design principles
 
@@ -165,7 +166,8 @@ for why.
 - ✅ Phase 1B — language-agnostic templates
 - ✅ Phase 1C — TypeScript overlay (`/templates/typescript/`)
 - ✅ Multi-agent governance — role allocation, cross-pollination workflow, task-routing index
-- ⏳ Phase 1D — Astro overlay (split from 1C — `.astro` files require separate Biome + Prettier config); also the pilot for the cross-pollination workflow
+- ✅ Phase 1D — Astro overlay (`/templates/astro/`, split from 1C — `.astro` files require separate Prettier config + `astro check`)
+- ⏳ Cross-pollination pilot — one real scoped Antigravity audit round on the 1D overlay, logged in `docs/cross-pollination-log.md`
 - ⏳ Phase 2 — Python, Go, Bash overlays
 - ⏳ Phase 3 — local-model selection guidance, dual-model architecture doc
 

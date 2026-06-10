@@ -2,7 +2,7 @@
 
 Part of `christopher-coding-standards`. Applies to any TypeScript project (Node, React, Astro, etc.).
 
-**Note for Astro projects:** Use a separate Astro overlay (Phase 1D, not yet built). This overlay handles `.ts` and `.tsx` files; Astro's `.astro` template files require `prettier-plugin-astro` and a different Biome configuration.
+**Note for Astro projects:** Use this overlay for `.ts`/`.tsx` files, then add the [Astro overlay](../astro/README.md) (Phase 1D) for `.astro` template files — it requires `prettier-plugin-astro` and a different Biome configuration, and replaces this overlay's `tsconfig.json`.
 
 ---
 
@@ -157,6 +157,6 @@ make mutation-test-full     # full scan — use for weekly audit
 - ✅ Phase 1A — repo skeleton
 - ✅ Phase 1B — language-agnostic templates
 - ✅ Phase 1C — TypeScript overlay (this directory)
+- ✅ Phase 1D — Astro overlay (`templates/astro/`, split from 1C due to .astro formatting complexity)
 - ⏳ Phase 2 — Python, Go, Bash overlays
-- ⏳ Phase 1D — Astro overlay (split from 1C due to .astro formatting complexity)
 - ⏳ Phase 3 — local-model selection guidance, dual-model architecture doc

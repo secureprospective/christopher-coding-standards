@@ -1,0 +1,13 @@
+# Astro overlay — merge this hook into your existing .pre-commit-config.yaml
+# (templates/typescript/.pre-commit-config.yaml). Formats/checks .astro files
+# only; Biome continues to handle .ts/.tsx/.js — see README for the one-line
+# addition to biome.json's files.ignore.
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: "v3.4.2"  # TODO: pin to SHA — see note in templates/typescript/.pre-commit-config.yaml
+    hooks:
+      - id: prettier
+        files: \.astro$
+        additional_dependencies:
+          - prettier@3.4.2
+          - prettier-plugin-astro@0.14.1
