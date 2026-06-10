@@ -12,7 +12,7 @@ cold and trust.**
 ![Phase](https://img.shields.io/badge/phase-1D%20complete%20%7C%20Phase%202%20next-blue)
 ![Model Agnostic](https://img.shields.io/badge/models-Claude%20%7C%20Gemini%20%7C%20local-9cf)
 ![Zero Trust](https://img.shields.io/badge/AI%20output-zero%20trust-critical)
-![License](https://img.shields.io/badge/license-UNLICENSED-lightgrey)
+![License](https://img.shields.io/badge/license-MPL--2.0-blue)
 
 **Starting a session here? → Read [`docs/INDEX.md`](docs/INDEX.md) first.**
 It routes you to only the files your task needs, instead of this whole repo.
@@ -173,7 +173,11 @@ for why.
 
 ## License
 
-UNLICENSED (placeholder — choose MIT or Apache-2.0 before public release).
+[MPL-2.0](LICENSE) — Mozilla Public License 2.0. Permissive enough to drop
+these templates into any project (including proprietary ones), with a
+file-level copyleft: if you modify one of these files and redistribute it,
+those changes stay open under MPL-2.0 too. The goal is for improvements to
+flow back into the standard, not to restrict who can use it.
 
 ## Sources
 
