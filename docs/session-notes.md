@@ -132,3 +132,22 @@ substantive work this session.
 - [x] Actioned: `docs/session-notes.md` created (PR #3).
 - [x] Actioned: `templates/astro/` (Phase 1D) merged (PR #4); `astro —
   check` CI job added.
+
+## 2026-06-10 — PR #6 (MPL-2.0 license)
+
+**Agents involved:** Claude (Builder) only.
+
+**What worked:**
+- Fetching the license text from `mozilla.org/media/MPL/2.0/index.txt`
+  (plain-text source) rather than scraping the HTML page or relying on
+  memory gave an exact, verifiable copy in one step.
+- Closing a long-open `CLAUDE.md` item (License) was a small, fast,
+  low-risk PR — good shape for a quick end-of-session task.
+
+**What didn't:**
+- Nothing notable — straightforward doc/license addition, all CI checks
+  passed first try.
+
+**Standard impact:**
+- [x] Actioned: `LICENSE` (MPL-2.0) added, README badge/section updated,
+  "License" open item removed from `CLAUDE.md` (PR #6).
