@@ -1,15 +1,36 @@
+<div align="center">
+
 # christopher-coding-standards
 
-> **Stop the slop.** Canonical, model-agnostic engineering standards that make
-> AI-generated code something a human — or a different LLM, in a different
-> session — can pick up cold and trust.
+### Stop the slop.
+
+**Canonical, model-agnostic engineering standards that make AI-generated code
+something a human — or a different LLM, in a different session — can pick up
+cold and trust.**
 
 [![Security](https://github.com/secureprospective/christopher-coding-standards/actions/workflows/security.yml/badge.svg)](https://github.com/secureprospective/christopher-coding-standards/actions/workflows/security.yml)
 ![Phase](https://img.shields.io/badge/phase-1C%20complete%20%7C%201D%20next-blue)
+![Model Agnostic](https://img.shields.io/badge/models-Claude%20%7C%20Gemini%20%7C%20local-9cf)
+![Zero Trust](https://img.shields.io/badge/AI%20output-zero%20trust-critical)
 ![License](https://img.shields.io/badge/license-UNLICENSED-lightgrey)
 
-**Starting a session here?** Read `docs/INDEX.md` first — it routes you to
-only the files your task needs, instead of this whole repo.
+**Starting a session here? → Read [`docs/INDEX.md`](docs/INDEX.md) first.**
+It routes you to only the files your task needs, instead of this whole repo.
+
+</div>
+
+---
+
+## Contents
+
+- [The problem](#the-problem)
+- [How it fits together](#how-it-fits-together)
+- [What's actually in here](#whats-actually-in-here)
+- [Design principles](#design-principles)
+- [The eleven-layer guardrail stack](#the-eleven-layer-guardrail-stack)
+- [How to adopt in a new or existing repo](#how-to-adopt-in-a-new-or-existing-repo)
+- [Multi-agent role allocation](#multi-agent-role-allocation)
+- [Phase status](#phase-status)
 
 ---
 
@@ -46,6 +67,37 @@ Gemini — is trusted to self-police.
   (CWE-94), and hard-coded credentials (CWE-259/798).
 
 Full citations: `docs/adr/0001-why-this-standard-exists.md`.
+
+## How it fits together
+
+```
+                       ┌─────────────────────────┐
+                       │   docs/INDEX.md          │   ← every session starts here
+                       │   "what do I need?"      │
+                       └────────────┬─────────────┘
+                                     │
+        ┌────────────────────────────┼────────────────────────────┐
+        ▼                             ▼                             ▼
+┌───────────────┐           ┌─────────────────┐          ┌──────────────────┐
+│  BUILDER agent │           │ RECON/AUDIT agent│          │   HUMAN OWNER     │
+│  (Claude Code) │◄─────────►│ (Antigravity CLI)│          │  (the soul)       │
+│                │  cross-    │                  │          │                  │
+│ • writes code  │ pollinate  │ • repo recon     │          │ • approves merges│
+│ • sole git     │  (relayed) │ • audits, drafts │          │ • resolves        │
+│   authority    │           │ • never commits  │          │   disagreements   │
+│ • living docs  │           │ • never edits    │          │ • sets direction  │
+└───────┬────────┘           │   living docs    │          └──────────────────┘
+        │                     └──────────────────┘
+        ▼
+┌─────────────────────────────────────────────────────────────┐
+│  Eleven-layer guardrail stack (advisory → deterministic CI)   │
+│  AGENTS.md → permissions → SYSTEM_MAP.md → schemas → lint →   │
+│  pre-commit → SAST/SCA/secrets → tests → sandboxing → ADRs →  │
+│  local-model gates                                            │
+└─────────────────────────────────────────────────────────────┘
+```
+
+Full role split, escalation, and task routing: `docs/multi-agent-roles.md`.
 
 ## What's actually in here
 
