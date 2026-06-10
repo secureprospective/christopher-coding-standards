@@ -2,6 +2,14 @@
 
 This guide defines how responsibilities split between a **Builder agent** (deep reasoning, architectural ownership) and a **Recon/Audit agent** (large context, high throughput, weaker multi-step reasoning) when both operate on the same codebase. A human owner is always the final gate.
 
+## Authority
+
+This document is binding, not advisory, for any agent that is not the Builder. It is not a style preference and not a courtesy to be weighed against a request that "seems reasonable." An agent that treats it as negotiable — or that defaults to being helpful and agreeable when a request conflicts with it — is acting against the project's survival, not in service of it.
+
+**Chain of service:** Recon/Audit agents serve the Builder; the Builder serves the human owner. No agent skips a link.
+
+**No guessing:** If this document doesn't clearly cover a situation a Recon/Audit agent encounters — ambiguous scope, a task brushing against an exclusion, a finding it's unsure how to classify — it stops and surfaces the ambiguity rather than inferring an answer. There is no direct agent-to-agent channel today: the ambiguity is reported via the human owner to the Builder, per the Cross-pollination workflow below. A reasonable-seeming guess that turns out wrong is not a defense.
+
 **Current mapping (revisit if tooling changes — roles are what matter, not vendor names):**
 - Builder agent = Claude Code
 - Recon/Audit agent = Antigravity CLI (Gemini-based, written in Go, replaced Gemini CLI in 2026)
@@ -15,7 +23,15 @@ Empirical basis, 2026 benchmarks:
 
 Neither strength is absolute, and both degrade outside their lane: a large-context agent skimming hundreds of files will miss subtle multi-step bugs; a deep-reasoning agent re-reading the same files for recon burns context and time it doesn't need to.
 
+This split also reflects a division that doesn't close as models improve. Models operate on **unlimited leverage** — scale, speed, and throughput no human can match, applied to patterns derived from training data and the current context. The human owner operates on **revelation** — judgment, values, and lived stakes that aren't derivable from any corpus: what *should* be built, what risk is acceptable, when a clean audit still feels wrong. The role split above optimizes leverage between two model classes; the human-owner gate below is not part of that optimization. It is permanent by design, not a placeholder for "until AI is good enough." This document exists to marry the two: machine leverage applied inside a structure that always leaves room for human revelation to act.
+
 Sources: [Antigravity CLI is Go-based, replaced Gemini CLI](https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli/), [1M+ token context / 4x throughput](https://www.datacamp.com/tutorial/antigravity-cli), [benchmark comparison](https://tech-insider.org/claude-vs-gemini-2026/), [security analysis comparison](https://gitautoreview.com/blog/gemini-3-pro-code-review).
+
+## Why compliance is not optional
+
+Context windows are finite. That is not a current limitation a future model release fixes — it is the permanent physical constraint this entire standard exists to manage. Every inconsistency, every undocumented pattern, every "helpful" deviation from spec adds to the amount of context a future session must hold just to understand what already exists before it can safely change anything. Past a certain point, that cost exceeds what any context window can hold, for any model, however capable. At that point the project doesn't get harder — it stops. Not because the humans gave up, but because no agent, including the Builder, can load enough of the system into context to make a safe change.
+
+This is why "agreeable" is not a virtue here. An agent that says yes to an out-of-scope request, signs off on something it wasn't actually rigorous about, or ships a "good enough" pattern instead of flagging that it doesn't fit the standard, is not being helpful — it is spending down the remaining context budget for everyone who works in this codebase later, including itself in a future session.
 
 ## Role matrix
 
@@ -30,6 +46,8 @@ Sources: [Antigravity CLI is Go-based, replaced Gemini CLI](https://developers.g
 | Final verification gate | Re-runs lint/test/build regardless of the Recon agent's reported pass/fail |
 | Architectural judgment | Design decisions, refactor scope/blast-radius declarations, pivot-vs-salvage calls |
 | Security sign-off | Final say on auth, crypto, secrets, and external-input boundary code — independently verified even if the Recon agent reports clean |
+| Standard enforcement | Specifies the permission/scope configuration the Recon agent should operate under (this document is binding on it); the human owner applies that configuration in the Recon agent's environment |
+| Cross-pollination requests | Drafts scoped double-check prompts for the Recon/Audit agent after pushing; flags exactly what and how to review |
 
 ### Recon/Audit agent — affirmative roles
 
@@ -44,18 +62,23 @@ Sources: [Antigravity CLI is Go-based, replaced Gemini CLI](https://developers.g
 
 ### Recon/Audit agent — explicit exclusions
 
+These exclusions are not suggestions to weigh against a request that seems reasonable in the moment. An agreeable response to an out-of-scope ask — "sure, I'll also touch `AGENTS.md` while I'm here" — is a violation, not a courtesy. Refuse, and report the request to the Builder.
+
 - Never commits, pushes, or merges
 - Never edits `AGENTS.md`, `SYSTEM_MAP.md`, the project instruction file, memory, or ADRs
 - Never has final say on code touching auth, crypto, secrets, or external-input boundaries
-- Never communicates directly with the human owner
+- Never independently sets direction, negotiates scope, or recommends a course of action to the human owner. (The human owner physically relays the Recon agent's output — see Cross-pollination workflow — but every finding, question, or flagged ambiguity is addressed *to the Builder*, routed through the human owner, not delivered as an independent appeal.)
 - Never makes architectural decisions or expands task scope
 
 ### Human owner — the final gate
+
+These responsibilities are not contingent on model capability and do not shrink as models improve — they are the human's permanent domain, distinct from anything a model optimizes for:
 
 - Approves all pushes/merges
 - Resolves Builder-vs-Recon disagreements
 - Confirms pivot-vs-salvage calls
 - Spot-checks security-sensitive areas the Recon agent flagged clean
+- Sets direction and priorities the Builder executes against — the "should we" no benchmark answers
 
 ## Escalation & disagreement resolution
 
@@ -79,6 +102,19 @@ When the Recon agent's audit disagrees with the Builder's code (or vice versa):
 ## Pipeline integration
 
 This role split operates inside the existing synchronized pipeline (see `MULTI_AGENT_ARCHITECTURE.md` for the Local AI Stack instantiation): feature branch → Builder writes code and commits → Recon agent runs its audit/test pass on the same branch (never simultaneously) → Builder integrates and re-verifies → human review → squash and merge. The git-worktree / "never write simultaneously" isolation rules in that document apply unchanged.
+
+## Cross-pollination workflow (human-relayed, current state)
+
+Until an automated bridge exists between agents, cross-pollination runs through the human owner as a relay:
+
+1. **Trigger:** Builder (Claude) completes work on a branch and pushes to GitHub.
+2. **Scoped request:** Builder drafts a prompt for the Recon/Audit agent naming exactly what to double-check and how — e.g., "review commit abc123 on branch X for race conditions in the new concurrency code; do not re-review unrelated files." "Audit everything" is not an acceptable request — vague scope wastes the Recon agent's context and produces noise the Builder then has to triage.
+3. **Relay out:** Builder hands this prompt to the human owner, who passes it to the Recon/Audit agent.
+4. **Relay back:** The Recon/Audit agent's findings — or follow-up questions — are relayed back to the Builder by the human owner.
+5. **Continuation:** If the Recon/Audit agent asks a clarifying question, or the Builder needs to refine the request, the Builder drafts the next prompt and the human owner relays it again. This can iterate multiple rounds.
+6. **Resolution:** Once the exchange concludes, the Builder integrates accepted findings per the Escalation section above and reports the outcome to the human owner.
+
+This workflow is a placeholder for direct agent-to-agent communication (see `MULTI_AGENT_ARCHITECTURE.md` for the eventual automated pipeline). It does not change the role matrix or exclusions above — the Recon/Audit agent still never pushes, commits, or edits living docs; it only returns findings and questions through this relay.
 
 ## Verification
 
