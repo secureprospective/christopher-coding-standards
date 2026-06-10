@@ -65,9 +65,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4  # TODO: pin to SHA
       - name: Trivy filesystem scan
-        # CRITICAL — pin this action to a SHA before running in production.
-        # This action was the subject of the March 2026 supply chain compromise.
-        uses: aquasecurity/trivy-action@0.28.0  # TODO: pin to SHA (CRITICAL)
+        uses: aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25  # v0.36.0
         with:
           scan-type: 'fs'
           scan-ref: '.'
