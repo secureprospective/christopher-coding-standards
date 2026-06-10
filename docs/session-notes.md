@@ -98,3 +98,37 @@ substantive work this session.
 - [x] Actioned: `docs/INDEX.md` created with a routing table (PR #2).
 - [x] Actioned: `skills/adopt-coding-standards/` and `skills/github-pr/`
   created (PR #2).
+
+## 2026-06-10 — PR #3 + PR #4 (session-notes log, Astro overlay / Phase 1D)
+
+**Agents involved:** Claude (Builder) only.
+
+**What worked:**
+- Checking TFM's actual Astro setup and Astro's official tsconfig presets
+  before drafting the overlay grounded it in what a live project needs,
+  rather than guessing versions/structure.
+- Mirroring Phase 1C's exact file shape (README structure, the
+  package.json.snippet/Makefile/.pre-commit-config.yaml.snippet split) made
+  Phase 1D fast to draft and easy to cross-reference.
+- The `astro — check` CI job's conditional no-op pattern (mirroring
+  `ts-lint`/`ts-test`) passed first try, confirmed on this repo (which has
+  no `astro.config.*`).
+
+**What didn't:**
+- No `pyyaml`/`js-yaml` available locally to fully parse-validate
+  `security.yml` — fell back to a tab-character check plus structural
+  comparison against existing jobs. Low risk for a doc/template-only repo,
+  but worth a real parse check if a future overlay needs more complex YAML
+  (e.g. matrix builds).
+- A throwaway JSONC-comment-stripping regex (`//.*`) ate the `https://`
+  inside a URL inside a comment-stripped string, producing a false
+  validation failure — cost a few minutes of confusion before realizing the
+  file itself was fine. Lesson: anchor comment-stripping regexes to
+  line-start (`^\s*//`), not bare `//`.
+
+**Standard impact:**
+- [ ] Open: Phase 2 — consider whether the dev environment should have
+  `pyyaml`/`js-yaml` available for real YAML validation.
+- [x] Actioned: `docs/session-notes.md` created (PR #3).
+- [x] Actioned: `templates/astro/` (Phase 1D) merged (PR #4); `astro —
+  check` CI job added.
