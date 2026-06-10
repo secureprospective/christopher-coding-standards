@@ -1,19 +1,61 @@
 # christopher-coding-standards
 
-Canonical engineering standards for AI-assisted code generation across multiple models (Claude Code, frontier models, local LLMs).
+> **Stop the slop.** Canonical, model-agnostic engineering standards that make
+> AI-generated code something a human — or a different LLM, in a different
+> session — can pick up cold and trust.
 
-**Starting a session here?** See `docs/INDEX.md` first — it routes you to only the files your task needs, instead of this whole repo.
+[![Security](https://github.com/secureprospective/christopher-coding-standards/actions/workflows/security.yml/badge.svg)](https://github.com/secureprospective/christopher-coding-standards/actions/workflows/security.yml)
+![Phase](https://img.shields.io/badge/phase-1C%20complete%20%7C%201D%20next-blue)
+![License](https://img.shields.io/badge/license-UNLICENSED-lightgrey)
 
-## Why this exists
+**Starting a session here?** Read `docs/INDEX.md` first — it routes you to
+only the files your task needs, instead of this whole repo.
 
-Empirical baseline, sourced research, 2025–2026:
+---
 
-- **Veracode 2025 GenAI Code Security Report** (100+ LLMs across Java, JavaScript, Python, C#): AI-generated code contains **2.74x more vulnerabilities** than human-written code. 45% of samples carry OWASP Top 10 issues.
-- **AppSec Santa, 2026**: **1 in 4** AI-generated code samples contain a confirmed OWASP vulnerability.
-- **Apiiro, Fortune 50 analysis**: CVSS 7.0+ vulnerabilities appear **2.5x more often** in AI-generated code.
-- **GitHub-scale CWE study**: top dangerous CWEs in AI-generated code are SQL Injection (CWE-89), OS Command Injection (CWE-78), Code Injection (CWE-94), hard-coded credentials (CWE-259/798).
+## The problem
 
-This standard assumes every AI output is unverified third-party code until it passes the layered gates below. No model — frontier or local — is trusted to self-police.
+LLMs write fine code *inside* a single context window. They fall apart
+*across* sessions and *across* agents — a new session, or a different model
+picking up another's work, with nothing forcing it to stay coherent. The
+result is **AI slop**: inconsistent patterns, duplicated logic, code that only
+made sense to the model that wrote it, in the hour it wrote it.
+
+Every AI output here is treated as **unverified third-party code** until it
+passes the layered gates below. No model — frontier or local, Claude or
+Gemini — is trusted to self-police.
+
+> Models bring **unlimited leverage** — scale, speed, throughput no human can
+> match. Humans bring **revelation** — judgment, values, and the "should we"
+> that no benchmark answers. This repo exists to marry the two: machine
+> leverage applied inside a structure that always leaves room for human
+> revelation to act.
+
+### The numbers
+
+- **Veracode 2025 GenAI Code Security Report** (100+ LLMs across Java,
+  JavaScript, Python, C#): AI-generated code contains **2.74x more
+  vulnerabilities** than human-written code. 45% of samples carry an OWASP Top
+  10 issue.
+- **AppSec Santa, 2026**: **1 in 4** AI-generated code samples contain a
+  confirmed OWASP vulnerability.
+- **Apiiro, Fortune 50 analysis**: CVSS 7.0+ vulnerabilities appear **2.5x more
+  often** in AI-generated code.
+- **GitHub-scale CWE study**: the top dangerous CWEs in AI-generated code are
+  SQL Injection (CWE-89), OS Command Injection (CWE-78), Code Injection
+  (CWE-94), and hard-coded credentials (CWE-259/798).
+
+Full citations: `docs/adr/0001-why-this-standard-exists.md`.
+
+## What's actually in here
+
+| | |
+|---|---|
+| **Eleven-layer guardrail stack** | From advisory `AGENTS.md` instructions down to CI-enforced SAST/SCA/secrets scanning — table below |
+| **Multi-agent governance** | A binding role split between a Builder agent (deep reasoning, sole git authority) and Recon/Audit agents (large context, throughput) — `docs/multi-agent-roles.md` |
+| **Cross-pollination workflow** | Structured, logged second-opinion audits between agents — `docs/cross-pollination-log.md` |
+| **Task-routing index** | `docs/INDEX.md` — load only what your task needs, not the whole repo |
+| **Skills** | `adopt-coding-standards` (one command to onboard a new repo), `github-pr` (read-side GitHub API helper for environments without `gh`) |
 
 ## Design principles
 
@@ -21,7 +63,7 @@ This standard assumes every AI output is unverified third-party code until it pa
 2. **Deterministic where possible.** Hooks and CI gates over prose instructions.
 3. **Free-tooling-first.** Works without paid SaaS.
 4. **Canonical.** This repo is the single source of truth. Other repos copy from here.
-5. **Replicable.** TFM Vanguards can adopt the same standard with the same tooling on their own hardware.
+5. **Replicable.** Same standard, same tooling, on any hardware.
 
 ## The eleven-layer guardrail stack
 
@@ -56,14 +98,22 @@ following:
 
 ## Multi-agent role allocation
 
-When more than one AI agent works the same codebase — e.g., a deep-reasoning "Builder" agent (Claude Code) alongside a large-context "Recon/Audit" agent (Antigravity CLI) — see `docs/multi-agent-roles.md` for the role split, escalation procedure, and task-routing guidance. The Builder agent retains exclusive git authority and living-document ownership; a human owner remains the final gate on all pushes and merges.
+When more than one AI agent works the same codebase — e.g., a deep-reasoning
+"Builder" agent (Claude Code) alongside a large-context "Recon/Audit" agent
+(Antigravity CLI) — see `docs/multi-agent-roles.md` for the role split,
+authority chain, escalation procedure, and task-routing guidance. The Builder
+agent retains exclusive git authority and living-document ownership; a human
+owner remains the final gate on all pushes and merges. This document is
+**binding, not advisory** — see its "Why compliance is not optional" section
+for why.
 
 ## Phase status
 
 - ✅ Phase 1A — repo skeleton
 - ✅ Phase 1B — language-agnostic templates
 - ✅ Phase 1C — TypeScript overlay (`/templates/typescript/`)
-- ⏳ Phase 1D — Astro overlay (split from 1C — `.astro` files require separate Biome + Prettier config)
+- ✅ Multi-agent governance — role allocation, cross-pollination workflow, task-routing index
+- ⏳ Phase 1D — Astro overlay (split from 1C — `.astro` files require separate Biome + Prettier config); also the pilot for the cross-pollination workflow
 - ⏳ Phase 2 — Python, Go, Bash overlays
 - ⏳ Phase 3 — local-model selection guidance, dual-model architecture doc
 
