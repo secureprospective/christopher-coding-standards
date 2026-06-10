@@ -115,6 +115,8 @@ Until an automated bridge exists between agents, cross-pollination runs through 
 5. **Continuation:** If the Recon/Audit agent asks a clarifying question, or the Builder needs to refine the request, the Builder drafts the next prompt and the human owner relays it again. This can iterate multiple rounds.
 6. **Resolution:** Once the exchange concludes, the Builder integrates accepted findings per the Escalation section above, reports the outcome to the human owner, and appends a short entry to `docs/cross-pollination-log.md` (what was asked, what came back, how it was resolved). This log is the audit trail showing whether this workflow is actually being followed.
 
+At session close, if the Recon/Audit agent did substantive work, this same relay is the channel for asking it what worked and didn't from its side — see `docs/session-notes.md`, which is the broader process retrospective (distinct from the audit trail above).
+
 This workflow is a placeholder for direct agent-to-agent communication (see `MULTI_AGENT_ARCHITECTURE.md` for the eventual automated pipeline). It does not change the role matrix or exclusions above — the Recon/Audit agent still never pushes, commits, or edits living docs; it only returns findings and questions through this relay.
 
 ## Verification
