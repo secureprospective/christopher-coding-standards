@@ -11,6 +11,7 @@ import re
 import subprocess
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 
 
@@ -49,6 +50,9 @@ def get_current_branch() -> str:
 
 def api_request(token: str, method: str, path: str, data: dict | None = None) -> dict:
     url = f"https://api.github.com{path}"
+    parsed = urllib.parse.urlparse(url)
+    if parsed.scheme != "https" or parsed.netloc != "api.github.com":
+        sys.exit(f"Refusing to request non-GitHub URL: {url}")
     headers = {
         "Authorization": f"token {token}",
         "Accept": "application/vnd.github+json",
@@ -59,7 +63,10 @@ def api_request(token: str, method: str, path: str, data: dict | None = None) ->
         headers["Content-Type"] = "application/json"
     req = urllib.request.Request(url, data=body, method=method, headers=headers)
     try:
-        with urllib.request.urlopen(req) as resp:
+        # Scheme/host validated above: always https://api.github.com. path
+        # segments come from git-derived strings and argparse choices, never
+        # raw external input.
+        with urllib.request.urlopen(req) as resp:  # nosemgrep: python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected
             return json.load(resp)
     except urllib.error.HTTPError as e:
         sys.exit(f"GitHub API error {e.code}: {e.read().decode()}")
