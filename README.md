@@ -46,6 +46,11 @@ This standard assumes every AI output is unverified third-party code until it pa
 5. Copy `.github/workflows/security.yml` to repo `.github/workflows/`.
 6. Enable branch protection per `docs/branch-protection.md`.
 7. For TypeScript projects: copy the TypeScript overlay from `/templates/typescript/`. See `templates/typescript/README.md` for the adoption walkthrough.
+8. If more than one AI agent works this codebase, copy `docs/multi-agent-roles.md` and `docs/cross-pollination-log.md` (reset to just its format section).
+
+## Multi-agent role allocation
+
+When more than one AI agent works the same codebase — e.g., a deep-reasoning "Builder" agent (Claude Code) alongside a large-context "Recon/Audit" agent (Antigravity CLI) — see `docs/multi-agent-roles.md` for the role split, escalation procedure, and task-routing guidance. The Builder agent retains exclusive git authority and living-document ownership; a human owner remains the final gate on all pushes and merges.
 
 ## Phase status
 
