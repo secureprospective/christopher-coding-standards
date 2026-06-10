@@ -17,6 +17,8 @@ guessing what's relevant.
 | CI / security gate questions | `.github/workflows/security.yml`, `.gitleaks.toml`, `docs/branch-protection.md` | - |
 | Opening a PR / checking CI status / reading branch protection (`gh` unavailable) | `skills/github-pr/SKILL.md` | - |
 | "Why does this standard exist" (justification for a stakeholder) | `docs/adr/0001-why-this-standard-exists.md` | - |
+| Closing a session in this repo | (write step, not read) append an entry to `docs/session-notes.md` | - |
+| Periodic standards review ("what should change based on past sessions?") | `docs/session-notes.md` | Everything else unless reviewing |
 
 ## Maintenance rule
 
