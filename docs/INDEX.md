@@ -15,6 +15,7 @@ guessing what's relevant.
 | Any multi-agent / cross-pollination request | `docs/multi-agent-roles.md` (binding) | Everything else unless the scoped request names it |
 | Recon/Audit agent (Antigravity) — any task | `docs/multi-agent-roles.md` only, plus the specific subtree named in the scoped request | `CLAUDE.md`, memory, ADRs, living docs |
 | CI / security gate questions | `.github/workflows/security.yml`, `.gitleaks.toml`, `docs/branch-protection.md` | - |
+| Opening a PR / checking CI status / reading branch protection (`gh` unavailable) | `skills/github-pr/SKILL.md` | - |
 | "Why does this standard exist" (justification for a stakeholder) | `docs/adr/0001-why-this-standard-exists.md` | - |
 
 ## Maintenance rule
