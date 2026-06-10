@@ -19,7 +19,7 @@ This document is binding, not advisory, for any agent that is not the Builder. I
 Empirical basis, 2026 benchmarks:
 
 - Builder-class models lead on multi-step reasoning (Terminal-Bench 2.0: 65.4% vs 54.2%), SWE-bench Verified (82.1% vs 63.8–76.2%), and security analysis (Claude Opus wins 38 of 40 blind-ranked cybersecurity investigations).
-- Recon-class agents lead on raw context window (1M–2M tokens vs Claude's smaller window) and throughput (~4x), making them effective at whole-monorepo reconnaissance without hallucinating file paths.
+- Recon-class agents have ~4x throughput, and their underlying models support very large (1M–2M token) context caching. In practice, the Antigravity CLI harness enforces its own auto-compaction ceiling around 135k tokens — per Antigravity's own self-reported compatibility notes — comparable to or smaller than Claude's working context. The practical recon advantage is therefore **throughput on a narrow, well-specified scope**, not unbounded whole-repo awareness; tasks spanning large repos need to be chunked into multiple scoped requests (see Cross-pollination workflow).
 
 Neither strength is absolute, and both degrade outside their lane: a large-context agent skimming hundreds of files will miss subtle multi-step bugs; a deep-reasoning agent re-reading the same files for recon burns context and time it doesn't need to.
 
@@ -42,10 +42,10 @@ This is why "agreeable" is not a virtue here. An agent that says yes to an out-o
 | Code ownership | Builds and maintains all code |
 | Git authority | Sole agent that creates branches, commits, and proposes pushes/merges |
 | Living-doc ownership | `AGENTS.md`, `SYSTEM_MAP.md`, ADRs, project instruction file (e.g. `CLAUDE.md`), memory |
-| Human interface | Single point of contact; synthesizes Recon agent output before presenting |
+| Human interface | Single point of contact; translates Recon agent output into the project's existing voice/format (ADR, commit message, doc section) before presenting — nothing should read like it was bolted on by a different writer |
 | Final verification gate | Re-runs lint/test/build regardless of the Recon agent's reported pass/fail |
 | Architectural judgment | Design decisions, refactor scope/blast-radius declarations, pivot-vs-salvage calls |
-| Security sign-off | Final say on auth, crypto, secrets, and external-input boundary code — independently verified even if the Recon agent reports clean |
+| Security sign-off | Final say on auth, crypto, secrets, and external-input boundary code — independently verified using the same checklist every time, regardless of what the Recon agent reports. Consistency, not ad hoc judgment, is the safeguard |
 | Standard enforcement | Specifies the permission/scope configuration the Recon agent should operate under (this document is binding on it); the human owner applies that configuration in the Recon agent's environment |
 | Cross-pollination requests | Drafts scoped double-check prompts for the Recon/Audit agent after pushing; flags exactly what and how to review |
 
@@ -59,6 +59,7 @@ This is why "agreeable" is not a virtue here. An agent that says yes to an out-o
 | Fast lint/format passes at scale | Mechanical, no deep reasoning required |
 | Documentation drafts from existing code | Multimodal/doc-understanding strength; Builder reviews before merge |
 | First-pass triage on large diffs | Surfaces areas of interest for the Builder to focus reasoning on |
+| `SYSTEM_MAP.md` drift check ("does the repo still match what this map claims?"), scoped to a subtree per request | Holds significantly more than a single targeted lookup within its ~135k-token operating window; turns throughput into direct service of the anti-drift layer without requiring whole-repo context |
 
 ### Recon/Audit agent — explicit exclusions
 
@@ -92,7 +93,7 @@ When the Recon agent's audit disagrees with the Builder's code (or vice versa):
 
 | Task | Routed to | Notes |
 |---|---|---|
-| Find every caller of `formatCurrency` across a 400-file monorepo before a rename | Recon agent (recon), then Builder (executes) | Plays to context-window strength |
+| Find every caller of `formatCurrency` across a 400-file monorepo before a rename | Recon agent (recon, chunked into multiple scoped requests if the repo exceeds its ~135k-token window), then Builder (executes) | Plays to throughput; large repos need chunked requests, not one pass |
 | Write auth middleware, token handling, or anything touching secrets | Builder only | No Recon agent involvement at any stage |
 | Generate unit tests for already-specified utility functions | Recon agent (drafts), Builder (reviews/integrates) | Well-specified, mechanical, parallelizable |
 | Audit a PR for OWASP issues | Builder (authoritative) + Recon agent (supplementary parallel pass) | Recon findings are input, not a gate |
@@ -108,11 +109,11 @@ This role split operates inside the existing synchronized pipeline (see `MULTI_A
 Until an automated bridge exists between agents, cross-pollination runs through the human owner as a relay:
 
 1. **Trigger:** Builder (Claude) completes work on a branch and pushes to GitHub.
-2. **Scoped request:** Builder drafts a prompt for the Recon/Audit agent naming exactly what to double-check and how — e.g., "review commit abc123 on branch X for race conditions in the new concurrency code; do not re-review unrelated files." "Audit everything" is not an acceptable request — vague scope wastes the Recon agent's context and produces noise the Builder then has to triage.
+2. **Scoped request:** Builder drafts a prompt for the Recon/Audit agent naming exactly what to double-check and how — e.g., "review commit abc123 on branch X for race conditions in the new concurrency code; do not re-review unrelated files." "Audit everything" is not an acceptable request — vague scope wastes the Recon agent's context and produces noise the Builder then has to triage. Two further constraints on the request itself: it must be **self-contained** — assume the Recon agent has no memory of anything before this prompt, since the Antigravity harness hard-compacts around 135k tokens and can truncate its history mid-session — and phrased as **closed-ended where possible** ("does file X contain pattern Y: yes/no/where", not "review this for issues"), since closed questions leave less room for over-helpful scope creep and are easier for the Builder to verify.
 3. **Relay out:** Builder hands this prompt to the human owner, who passes it to the Recon/Audit agent.
 4. **Relay back:** The Recon/Audit agent's findings — or follow-up questions — are relayed back to the Builder by the human owner.
 5. **Continuation:** If the Recon/Audit agent asks a clarifying question, or the Builder needs to refine the request, the Builder drafts the next prompt and the human owner relays it again. This can iterate multiple rounds.
-6. **Resolution:** Once the exchange concludes, the Builder integrates accepted findings per the Escalation section above and reports the outcome to the human owner.
+6. **Resolution:** Once the exchange concludes, the Builder integrates accepted findings per the Escalation section above, reports the outcome to the human owner, and appends a short entry to `docs/cross-pollination-log.md` (what was asked, what came back, how it was resolved). This log is the audit trail showing whether this workflow is actually being followed.
 
 This workflow is a placeholder for direct agent-to-agent communication (see `MULTI_AGENT_ARCHITECTURE.md` for the eventual automated pipeline). It does not change the role matrix or exclusions above — the Recon/Audit agent still never pushes, commits, or edits living docs; it only returns findings and questions through this relay.
 
