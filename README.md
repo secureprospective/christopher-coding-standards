@@ -2,6 +2,8 @@
 
 Canonical engineering standards for AI-assisted code generation across multiple models (Claude Code, frontier models, local LLMs).
 
+**Starting a session here?** See `docs/INDEX.md` first — it routes you to only the files your task needs, instead of this whole repo.
+
 ## Why this exists
 
 Empirical baseline, sourced research, 2025–2026:
@@ -38,6 +40,10 @@ This standard assumes every AI output is unverified third-party code until it pa
 | 11 | Local model selection | Phase 2 (quantization floor, dual-model architecture) |
 
 ## How to adopt in a new or existing repo
+
+Run the `adopt-coding-standards` skill (`skills/adopt-coding-standards/SKILL.md`)
+from a Claude Code session in the target repo — it walks through all of the
+following:
 
 1. Copy `AGENTS.md` to repo root. Customize the per-project section (project name, languages, public exposure, stack-specific commands).
 2. Copy `.claude/settings.json` to repo `.claude/` directory.
