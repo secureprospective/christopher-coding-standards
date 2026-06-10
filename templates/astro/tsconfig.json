@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+
+  // astro/tsconfigs/strictest already includes everything
+  // templates/typescript/tsconfig.json adds by hand for Node/library projects
+  // (noUncheckedIndexedAccess, exactOptionalPropertyTypes, noImplicitOverride,
+  // noUnusedLocals/Parameters, noFallthroughCasesInSwitch) plus Astro-specific
+  // base options (lib, types, moduleDetection, noEmit). Extending it directly
+  // avoids re-declaring all of that — see README "Which tsconfig do I use?".
+  "extends": "astro/tsconfigs/strictest",
+
+  "compilerOptions": {
+    // Required for standalone .tsx React components (@astrojs/react).
+    // .astro files are compiled by the Astro compiler and are unaffected by
+    // this setting — confirm with `astro check` after adoption.
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  },
+
+  "include": ["src/**/*"],
+  "exclude": ["dist", "node_modules"]
+}

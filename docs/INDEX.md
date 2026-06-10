@@ -12,6 +12,7 @@ guessing what's relevant.
 | Starting a Builder (Claude) session on this repo | `CLAUDE.md` (local), `SYSTEM_MAP.md` | Everything else until a task is named |
 | Adopting this standard in a new/existing repo | `skills/adopt-coding-standards/SKILL.md` (run it — it covers the rest) | `templates/`, ADRs, `HANDOFF-*` docs |
 | Adding a new language overlay (Phase 2+) | `templates/typescript/` as the pattern + its README, `AGENTS.md` layer table | `HANDOFF-phase-1c.md` (historical only) |
+| Adopting Astro support in a project already on the TypeScript overlay | `templates/astro/README.md` | `templates/typescript/README.md` (already done) |
 | Any multi-agent / cross-pollination request | `docs/multi-agent-roles.md` (binding) | Everything else unless the scoped request names it |
 | Recon/Audit agent (Antigravity) — any task | `docs/multi-agent-roles.md` only, plus the specific subtree named in the scoped request | `CLAUDE.md`, memory, ADRs, living docs |
 | CI / security gate questions | `.github/workflows/security.yml`, `.gitleaks.toml`, `docs/branch-protection.md` | - |

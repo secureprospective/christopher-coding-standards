@@ -1,0 +1,14 @@
+# Astro overlay targets — merge into your existing Makefile
+# (templates/typescript/Makefile). All targets map to package.json scripts
+# added by package.json.snippet.
+
+.PHONY: format-astro lint-astro typecheck-astro
+
+format-astro:
+	pnpm format:astro
+
+lint-astro:
+	pnpm lint:astro
+
+typecheck-astro:
+	pnpm typecheck:astro

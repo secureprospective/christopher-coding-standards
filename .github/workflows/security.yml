@@ -126,3 +126,35 @@ jobs:
       - name: Run tests
         if: steps.check_vitest.outputs.exists == 'true'
         run: npx vitest run
+
+  # Astro overlay check — add this to branch protection required checks once
+  # the Astro overlay (templates/astro/) is in use for this repo.
+  # Job name: "astro — check"
+  astro-check:
+    name: astro — check
+    runs-on: ubuntu-latest
+    # Only run if an astro.config.* exists — skips non-Astro repos gracefully.
+    steps:
+      - uses: actions/checkout@v4  # TODO: pin to SHA
+      - name: Check for astro.config.*
+        id: check_astro
+        run: |
+          if ls astro.config.* >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Set up Node
+        if: steps.check_astro.outputs.exists == 'true'
+        uses: actions/setup-node@v4  # TODO: pin to SHA
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        if: steps.check_astro.outputs.exists == 'true'
+        run: npm ci
+      - name: Astro type check
+        if: steps.check_astro.outputs.exists == 'true'
+        run: npx astro check
+      - name: Prettier check (.astro files)
+        if: steps.check_astro.outputs.exists == 'true'
+        run: npx prettier --check "**/*.astro"
