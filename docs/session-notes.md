@@ -207,3 +207,46 @@ substantive work this session.
 - [ ] Open: a Claude-side "fetch-delegation discipline" (Haiku fetchers; when
   to delegate vs. read inline) — drafted in concept, parked until a real build
   session creates the context pressure it relieves.
+
+## 2026-06-13 — Showpiece README (#9) + the Agent Codex (#10) + agy capability probe
+
+**Agents involved:** Claude (Builder) + Antigravity (Recon — deep web research for the Codex)
+
+**What worked:**
+- The GitHub **API merge flow** under branch protection (no `gh`): open PR → poll
+  `commits/{sha}/check-runs` until none pending → `PUT /pulls/N/merge` (squash).
+  Reliable across three PRs; token read from `~/.git-credentials` without echoing.
+- Gating the **public README** on the owner's taste (CI green → present → merge on
+  his nod) was the right call for creative/front-facing copy, vs. auto-merging.
+- Dispatching agy a **deep-research task that writes a file artifact** played
+  exactly to its strength — ~30 sourced items returned, dense and usable. The
+  right shape for agy: heavy task + file output + generous `timeout`.
+- **Triaging agy's research citations** (M13 applied to web recon, not just code):
+  verified the canon against first-hand knowledge, flagged one shaky attribution
+  `[unverified]` rather than launder it. Caught exactly the failure mode the
+  Codex itself warns about.
+
+**What didn't:**
+- agy **cannot return a quick answer.** A 4-line capability-introspection probe
+  produced zero output twice (10-min hang on the default model; 150s `timeout` on
+  Flash-Low). Root cause likely: asked to "list tools," it tried to *use* tools to
+  introspect, and spiralled. Confirms agy is heavy-task-only — costed ~12 min
+  before the rip cord. (Mitigation now doctrine: wrap every `agy -p` in a
+  `timeout`; ask for a file artifact; never expect fast stdout.)
+
+**Cross-agent perspective:**
+- Antigravity's research output *was* its contribution this round; it's folded
+  into `docs/agent-codex.md` §F and credited there. No separate retrospective
+  relay — same quick-answer limitation as above.
+
+**Standard impact:**
+- [x] Actioned: README showpiece (PR #9) — "forbid don't warn", "proof the gates
+  bite", measured multi-agent loop.
+- [x] Actioned: **`docs/agent-codex.md`** (PR #10) — agent-facing build doctrine,
+  17 motifs + slop catalog + canon→motif map + triaged field intelligence; routed
+  in `docs/INDEX.md`; adopted into TheWarRoom so agy's clone gets it on pull.
+- [ ] Open (Codex-flagged adoptions for a future overlay/standards pass):
+  dependency-existence/**slopsquatting** check; a **`dupl`** duplication gate;
+  **license scanning** in CI; **SBOM + signed provenance** for shipped binaries.
+- [ ] Open: fold "agy is heavy-task-only, wrap in `timeout`, expect a file not
+  stdout" into `docs/multi-agent-roles.md` (re-confirmed this session).
