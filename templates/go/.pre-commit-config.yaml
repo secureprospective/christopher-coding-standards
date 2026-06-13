@@ -16,3 +16,19 @@ repos:
     rev: 83d9cd684c87d95d656c1458ef04895a7f1cbd8e  # v8.30.1
     hooks:
       - id: gitleaks
+
+  # ifaceguard: custom go/analysis vettool — blocks empty-interface
+  # (interface{}/any) escapes in exported signatures (the gap no golangci-lint
+  # linter covers — Fable Friction #10). It is local (not a pinned remote repo)
+  # because the analyzer source lives in this repo under tools/ifaceguard; its
+  # OWN supply chain is pinned in tools/ifaceguard/go.mod + go.sum. The hook
+  # delegates to `make ifaceguard`, which builds the vettool and runs
+  # `go vet -vettool`.
+  - repo: local
+    hooks:
+      - id: ifaceguard
+        name: ifaceguard (empty-interface escapes in exported signatures)
+        entry: make ifaceguard
+        language: system
+        types: [go]
+        pass_filenames: false

@@ -2,9 +2,23 @@
 # (lint / fmt / test / test-coverage / mutation-test / build) so muscle memory
 # transfers across languages. Merge these targets into the project Makefile.
 
-.PHONY: lint fmt vet test test-coverage build mutation-test
+.PHONY: lint fmt vet test test-coverage build mutation-test ifaceguard
 
-lint:
+# ifaceguard — the custom go/analysis vettool that flags empty-interface
+# (interface{}/any) escapes in EXPORTED signatures. This is the ONE gap no
+# enabled golangci-lint linter covers (Fable Friction #10, 2026-06-13):
+# interfacebloat only checks interface *declarations*, not bare any in a
+# signature. Built from its own pinned module under tools/ifaceguard.
+IFACEGUARD_BIN := tools/ifaceguard/bin/ifaceguard
+
+$(IFACEGUARD_BIN): tools/ifaceguard/ifaceguard.go tools/ifaceguard/cmd/ifaceguard/main.go tools/ifaceguard/go.mod
+	cd tools/ifaceguard && go build -o bin/ifaceguard ./cmd/ifaceguard
+
+ifaceguard: $(IFACEGUARD_BIN)
+	go vet -vettool=$(abspath $(IFACEGUARD_BIN)) ./...
+
+# lint runs golangci-lint AND ifaceguard — both must pass for the gate to clear.
+lint: ifaceguard
 	golangci-lint run ./...
 
 fmt:

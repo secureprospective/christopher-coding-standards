@@ -16,6 +16,8 @@ adopting the standard.
 | Linter | golangci-lint v2 (`gosec`, `errcheck`, `staticcheck`, `depguard`, `gochecknoglobals`, …) | Security, correctness, and the three-layer architecture as build errors |
 | Pre-commit hooks | pre-commit + golangci-lint + gitleaks | Blocks commits with lint failures or secrets |
 | Boundary validation | Hand-written `Validate() error` (`schema/example.go`) | No struct-tag reflection; compile-time-safe parsing of MFL JSON |
+| Domain ID safety | Struct-wrapped `PlayerID` (`playerid/example.go`) | AD-06: the bypass `playerid.PlayerID("99")` fails to **compile** — validation/normalization can't be skipped |
+| Empty-interface guard | `ifaceguard` vettool (`tools/ifaceguard/`) | `interface{}`/`any` in exported signatures — the boundary-typing gap **no golangci-lint linter covers** |
 | Test discipline | `go test -race` + coverage threshold | Concurrency bugs caught at commit time, not in production |
 | Mutation testing | `gremlins` (scoped to `internal/engine/...`) | Proves tests assert, not just execute |
 
@@ -46,10 +48,16 @@ disable checksum verification.
 ```
 .golangci.yml
 .pre-commit-config.yaml
-schema/example.go   →  internal/schema/ (or your boundary-validation package)
+schema/example.go     →  internal/schema/   (boundary-validation pattern)
+playerid/example.go   →  internal/playerid/playerid.go   (AD-06 struct-wrap; see below)
+tools/ifaceguard/     →  tools/ifaceguard/   (custom analyzer — keep it a SEPARATE Go module)
 ```
 
-Merge `Makefile.snippet`'s targets into your project Makefile.
+Merge `Makefile.snippet`'s targets into your project Makefile. The `lint`
+target now depends on `ifaceguard`, which builds the vettool from
+`tools/ifaceguard/` on first run (`go build` into `tools/ifaceguard/bin/`,
+gitignored) and runs it via `go vet -vettool`. No manual build step — `make
+lint` and the pre-commit hook handle it.
 
 ### 3. Confirm the module path in `.golangci.yml`
 
@@ -82,9 +90,15 @@ trivy-action lesson (AGENTS.md hard rule).
 
 ## Verification test — deliberate violations
 
-Run this after adoption to confirm every gate fires. Create
-`internal/scratch/bad.go` (any throwaway package) with **one violation per
-gate**:
+Run this after adoption to confirm every gate fires. **Three of the gates are
+not golangci-lint linters** — depguard's siblings still are, but AD-06 is
+enforced by the *compiler* and `interface{}`/`any` by the *ifaceguard vettool* —
+so the test has three parts. (All three were re-verified green→red on
+2026-06-13, the Confidence-80 session T1 re-run — see `Fable_Friction_Log.md`.)
+
+### Part A — golangci-lint gates
+
+Create `internal/scratch/bad.go` with one violation per lint gate:
 
 ```go
 package scratch
@@ -94,48 +108,60 @@ import (
 	"fmt"
 )
 
-// 1. gochecknoglobals — package-level var.
-var cache = map[string]string{}
+var cache = map[string]string{} // gochecknoglobals — package-level var
 
-// 2. errcheck — unchecked error.
 func DoWork(db *sql.DB, userInput string) {
-	db.Exec("INSERT INTO log VALUES (1)")
-
-	// 3. gosec (G201) — SQL built by string concatenation.
-	q := fmt.Sprintf("SELECT * FROM players WHERE name = '%s'", userInput)
-	db.Query(q)
+	db.Exec("INSERT INTO log VALUES (1)")                                   // errcheck
+	q := fmt.Sprintf("SELECT * FROM players WHERE name = '%s'", userInput)  // gosec G201
+	db.Query(q)                                                             // errcheck
 }
+```
 
-// 4. depguard — cross-layer import violation (see "AD-06" note above for why
-// there is no forbidigo rule for playerid.PlayerID(...) bypass conversions;
-// that is a compile-time concern for B0, not a lint-gate item here).
+For depguard, add a file actually located under `internal/ingestion/` (it
+matches by path) that imports `internal/engine` — a cross-layer violation.
 
-// 5. gocritic / interfacebloat — interface{} escape.
+```bash
+make lint    # golangci-lint flags every case above; exits non-zero
+```
+
+### Part B — ifaceguard gate (`interface{}`/`any` escape, Friction #10)
+
+```go
+// internal/scratch/bad_iface.go
+package scratch
+
 func Anything(v interface{}) interface{} { return v }
 ```
 
-Then:
+`make lint` runs `ifaceguard` *before* golangci-lint; it must report BOTH the
+parameter and the result and exit non-zero. **golangci-lint alone stays silent
+on this case** — that silence is the entire reason ifaceguard exists
+(`interfacebloat` only checks interface *declarations*, not bare `any` in a
+signature). Confirm the escape hatch too: add `//ifaceguard:allow` to a
+function's doc comment and verify ifaceguard then passes it.
 
-```bash
-make lint        # must exit non-zero
-git add internal/scratch/bad.go
-git commit -m "test: verify G0 gates"   # pre-commit must block this
+### Part C — AD-06 bypass (compile-time, Friction #6)
+
+```go
+// internal/scratch/bad_bypass.go
+package scratch
+
+import "github.com/secureprospective/TheWarRoom/internal/playerid"
+
+var bypass = playerid.PlayerID("99")
 ```
 
-**Expected — every gate fires:**
-- `gochecknoglobals` flags `var cache`
-- `errcheck` flags the unchecked `db.Exec` / `db.Query`
-- `gosec` (G201/G202) flags the `fmt.Sprintf`-built query
-- `depguard` flags the cross-layer import violation
-- `gocritic`/`interfacebloat` flags the `interface{}` parameters and return
-- `gitleaks` would flag any hardcoded credential added alongside these
-- `make lint` exits non-zero; `git commit` is blocked by the pre-commit hook
+```bash
+go build ./...    # must FAIL: cannot convert "99" to type playerid.PlayerID
+```
 
-If any gate stays silent, **stop and fix the overlay before B0** — a silent
-gate means the build ships that class of bug undetected (companion plan T1
-pass criteria).
+This never reaches the linter — the struct-wrap makes the bypass a *compile*
+error, the strongest enforcement in the overlay: code that cannot be built
+cannot be committed.
 
-Delete `internal/scratch/` after verification.
+If any gate stays silent (or the bypass compiles), **stop and fix the overlay
+before B0** — a silent gate means the build ships that class of bug undetected
+(companion plan T1 pass criteria). Delete `internal/scratch/` after.
 
 ---
 
@@ -157,48 +183,73 @@ not a config problem.
 
 ---
 
-## Known limitation: AD-06 / RISK-003 enforcement (`playerid.PlayerID` bypass conversion)
+## Resolved: AD-06 / RISK-003 enforcement — struct-wrapped `PlayerID` (Gate 1, 2026-06-13)
 
-**Confirmed 2026-06-13 by empirical baseline test.** The companion plan
-(Section 3.3) proposed a `forbidigo` rule banning the conversion expression
-`playerid.PlayerID("0531")` everywhere outside `internal/playerid` itself, to
-stop callers bypassing the validating constructor `playerid.New()`.
+**Decision (Confidence-80 session, Gate 1): struct-wrap, compile-time
+enforcement.** Background: the companion plan (Section 3.3) originally proposed
+a `forbidigo` rule banning the conversion `playerid.PlayerID("0531")` outside
+`internal/playerid`. That does not work — `forbidigo` with `analyze-types: true`
+matches the qualified identifier wherever it appears, including as a **type
+reference** in a signature (`func f() (playerid.PlayerID, error)`), not just as
+a **conversion call**. forbidigo has no call-vs-type-position distinction, so
+any pattern narrow enough to catch the bypass also bans using the type at all
+(Friction #6). The forbidigo rule was removed.
 
-This does not work. `forbidigo` with `analyze-types: true` matches the
-qualified identifier `playerid.PlayerID` wherever it appears in the AST —
-including as a **type reference** in a function signature
-(`func ValidateRawID(raw string) (playerid.PlayerID, error)`), not just as a
-**conversion call** (`playerid.PlayerID(raw)`). forbidigo has no
-call-vs-type-position distinction. A pattern narrow enough to catch the
-bypass conversion also bans using `playerid.PlayerID` as a type anywhere
-outside its own package — which is the entire point of the type (AD-06:
-"every domain struct uses `playerid.PlayerID` ... for an ID field"). This
-rule has been **removed** from `.golangci.yml`.
+**The fix in this overlay** is `playerid/example.go`: `PlayerID` is a struct
+with an **unexported `id` field**.
 
-**This is a real enforcement gap, not just a config problem.** Options for
-B0, in order of preference:
+```go
+type PlayerID struct { id string }
+func New(raw string) (PlayerID, error) { /* validate + zero-pad to 4 digits */ }
+```
 
-1. **Struct-wrap (recommended, the plan's own "heavier alternative")** —
-   `type PlayerID struct { id string }` with an unexported field. A bare
-   `playerid.PlayerID("0531")` conversion from outside the package then fails
-   to *compile* (you cannot convert a string to a struct type), so the
-   bypass is closed at the type-checker level — no linter needed. Costs:
-   every legitimate use must go through `New()` or an accessor method
-   (`.String()`); slightly more ceremony than a string newtype.
-2. **Custom `go/analysis` checker** — a purpose-built analyzer that walks
-   `*ast.CallExpr` nodes specifically (not all expressions) and flags only
-   conversion-call sites. More precise than forbidigo but is new code to
-   write, test, and maintain — disproportionate for one rule.
-3. **Code-review item, no tooling** — accept the gap, call it out explicitly
-   in PR review checklists. Weakest option; relies on a human (or agy) catching
-   it every time.
+Because the field is unexported, `playerid.PlayerID("99")` from any other
+package **fails to compile** ("cannot convert untyped string constant to type
+playerid.PlayerID"). `New` is the only way to obtain a value, so validation and
+leading-zero normalization ("99" → "0099") can never be skipped. JSON
+round-trips through `New` (`UnmarshalJSON`), and DB persistence happens at the
+store boundary via `String()`/`New(text)` rather than `driver.Valuer`/
+`sql.Scanner` — so the package imports no `database/sql`, keeping it inside the
+three-layer law (the depguard `sql-confined-to-data-layer` rule confirmed this:
+an earlier draft that implemented `Scan`/`Value` was correctly rejected).
 
-Recommend (1) for B0 — it converts a lint-time social-contract rule into a
-compile-time guarantee, which is the standard this repo holds itself to
-elsewhere (Section 3.2's StateReader/StateWriter write-lockout idiom is the
-same move). Flag this to Christopher before B0 closes; it changes
-`internal/playerid`'s public API shape from the Section 3.1/3.3 skeleton as
-currently written.
+This converts a lint-time social contract into a compile-time guarantee — the
+standard this repo holds itself to elsewhere. Verified by Part C of the
+verification test above (the bypass fails `go build`).
+
+---
+
+## Resolved: `interface{}`/`any` escapes — the `ifaceguard` vettool (Gate 2, 2026-06-13)
+
+**Decision (Confidence-80 session, Gate 2): a small custom `go/analysis`
+vettool.** Background: T1 confirmed NO enabled golangci-lint linter catches a
+bare `interface{}`/`any` parameter or return (Friction #10) — `interfacebloat`
+only checks interface *declarations* with too many methods. A bare empty
+interface at a layer boundary turns off the type checker there, and for a
+project with hard "zero scoring leak" rules that is a silent correctness hole.
+
+**The fix** is `tools/ifaceguard/` — a self-contained analyzer module that
+flags `interface{}`/`any` (bare or nested in `*`, `[]`, `[N]`, `...`, `map`,
+`chan`) in the signatures of **exported** functions and methods only (an
+unexported helper using `any` internally is not a boundary escape). It is run
+as a vettool via `go vet -vettool`, wired into `make lint` and pre-commit.
+
+- **Escape hatch:** a deliberate, legitimate empty-interface boundary (a generic
+  marshalling helper, a `sql.Scanner.Scan(any)` implementation in the store
+  layer) is suppressed with an `//ifaceguard:allow` directive in the function's
+  doc comment. The directive is tool-specific so it can't be confused with
+  `//nolint` or `//lint:ignore`.
+- **Supply chain:** `ifaceguard` depends only on `golang.org/x/tools`, pinned by
+  explicit version in `tools/ifaceguard/go.mod` with its hash locked in
+  `go.sum` (committed). Re-pin to a new explicit version and re-commit `go.sum`
+  to bump; never a mutable ref. Because the analyzer is our own code, it carries
+  the same caution as any custom linter (Friction #8's depguard-glob lesson): a
+  bug could make it silently not fire, so its `analysistest` suite
+  (`ifaceguard_test.go` + `testdata/`) is the regression guard and must pass in
+  CI before the overlay is trusted.
+
+Verified by Part B of the verification test above (an exported `interface{}`
+signature fails `make lint`; `//ifaceguard:allow` clears it).
 
 ---
 

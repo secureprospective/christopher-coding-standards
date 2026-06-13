@@ -45,8 +45,13 @@ linters:
     - interfacebloat    # Failure mode #1: oversized interfaces (any-shaped escapes).
     - wrapcheck         # Failure mode #8: silent error drops / unwrapped errors.
     - forbidigo         # Default rule set: bans fmt.Print*/println debug statements.
-                        # NOTE: cannot enforce AD-06 (playerid.PlayerID bypass
-                        # conversion) — see README "Known limitation: AD-06".
+                        # NOTE: AD-06 (playerid.PlayerID bypass conversion) is NOT
+                        # enforced here — forbidigo cannot tell a conversion call from
+                        # a type reference (Friction #6). It is enforced at COMPILE
+                        # time instead by struct-wrapping PlayerID (unexported field;
+                        # see templates/go/playerid/example.go). interface{}/any escapes
+                        # (Friction #10) are enforced by the ifaceguard vettool
+                        # (tools/ifaceguard), run from `make lint` + pre-commit.
 
   settings:
     gocyclo:
