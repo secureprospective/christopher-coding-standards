@@ -1,0 +1,43 @@
+# Makefile snippet — Go overlay. Mirrors the TypeScript overlay's target names
+# (lint / fmt / test / test-coverage / mutation-test / build) so muscle memory
+# transfers across languages. Merge these targets into the project Makefile.
+
+.PHONY: lint fmt vet test test-coverage build mutation-test
+
+lint:
+	golangci-lint run ./...
+
+fmt:
+	gofmt -w .
+	goimports -w .
+
+vet:
+	go vet ./...
+
+# -race is non-negotiable (companion plan Section 1 / failure mode #2:
+# concurrent map access from Wails IPC goroutines). Never make this optional.
+test:
+	go test -race ./...
+
+# Threshold mirrors the TS overlay's intent: "80% line coverage with a 40%
+# mutation score means tests observe but don't assert." Line coverage alone
+# is the floor, not the goal — mutation-test below is where correctness lives.
+COVERAGE_THRESHOLD := 80
+
+test-coverage:
+	go test -race -coverprofile=coverage.out ./...
+	go tool cover -func=coverage.out
+	@total=$$(go tool cover -func=coverage.out | grep '^total:' | grep -oE '[0-9]+\.[0-9]+'); \
+	awk -v t="$$total" -v min="$(COVERAGE_THRESHOLD)" 'BEGIN { if (t+0 < min+0) { printf "coverage %.1f%% < threshold %d%%\n", t, min; exit 1 } else { printf "coverage %.1f%% >= threshold %d%%\n", t, min } }'
+
+# wails build for the desktop shell. Before Wails is wired (G0/B0-early),
+# substitute: go build ./...
+build:
+	wails build
+
+# gremlins v0.6.0, pinned (G0 viability check, 2026-06-13: repo active,
+# pushed 2026-06-12, not archived — see templates/go/README.md). Scoped to
+# internal/engine/... per the agy Go-architect recommendation (companion plan
+# Section 8B) — pure-logic packages are where mutation score has signal.
+mutation-test:
+	go run github.com/go-gremlins/gremlins/cmd/gremlins@v0.6.0 unleash ./internal/engine/...
