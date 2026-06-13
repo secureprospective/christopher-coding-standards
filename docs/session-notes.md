@@ -151,3 +151,59 @@ substantive work this session.
 **Standard impact:**
 - [x] Actioned: `LICENSE` (MPL-2.0) added, README badge/section updated,
   "License" open item removed from `CLAUDE.md` (PR #6).
+
+## 2026-06-13 — Go overlay completion: Gates 1/2 + filelen (`session/go-overlay-g0`)
+
+**Agents involved:** Claude (Builder) + Antigravity (Recon/Audit, T4 review)
+
+**What worked:**
+- Decision-gates-up-front: laying out each enforcement choice (struct-wrap vs.
+  analyzer vs. checklist) with plain-language *risk-if-unfixed* let a
+  non-Go-expert owner make the right calls fast, then engineer against locked
+  decisions instead of guessing.
+- Building the `interface{}` guard as a `go/analysis` vettool (unitchecker,
+  `go vet -vettool`) in its own pinned module with an `analysistest` suite +
+  `//ifaceguard:allow` hatch — clean `make lint`/pre-commit integration, no
+  dependency added to the consuming project's `go.mod`.
+- Struct-wrap (unexported field) turns AD-06 into a *compile* error — stronger
+  than any linter and free, since no `playerid` code existed yet.
+- Verifying every new gate with a deliberate violation *before* trusting it
+  caught two would-be silent gates (see below). Non-negotiable.
+
+**What didn't:**
+- Custom-gate authoring keeps reproducing the Friction-#8 trap — a gate that
+  *looks* right but silently no-ops. Hit twice: an early `playerid` draft
+  imported `database/sql/driver` (depguard's `sql-confined` rule correctly
+  rejected it — the rule working), and the first `filelen` used
+  `find -exec awk 'exit 1'`, which doesn't propagate exit status (printed the
+  violation, exited 0). Both caught only by running a real violation. Lesson is
+  now baked into the README's 3-part verification test.
+- agy is NOT usable for quick Q&A: two introspection attempts produced zero
+  output (10-min hang on the default model; 150s `timeout` on Flash-Low). It
+  reliably does heavy, file-producing tasks only. ~12 min spent before the rip
+  cord.
+
+**Cross-agent perspective:**
+- Antigravity (T4 re-review of `internal/mfl` via SSH-relay): **0 hallucinations**
+  this pass (vs. 1-in-8 in T3); independently re-found 2 known-valid items
+  (timer leak, missing `rps>0` guard) consistent with T3 — stable calibration;
+  flagged one context-overstated item (backoff jitter, irrelevant for a
+  single-client desktop app); correctly self-dismissed a non-issue.
+- A *live* agy retrospective relay was **not** run this close: the same session
+  established agy cannot return a quick answer (two timeouts), so a retrospective
+  prompt would risk another long hang. Its perspective is captured from the T4
+  output instead. This deviation is itself a standard-impact item.
+
+**Standard impact:**
+- [x] Actioned: Go overlay completed — `playerid` struct-wrap, `ifaceguard`
+  vettool, `filelen` gate; README converted gaps→resolved with a 3-part
+  verification test (this branch).
+- [ ] Open: `docs/multi-agent-roles.md` should state agy is a *heavy-task*
+  collaborator, not a fetch/Q&A tool — dispatch substantial tasks that write a
+  file artifact, wrap every `agy -p` in a `timeout`, never expect quick stdout.
+- [ ] Open: Layer-11 (local-model selection) + Phase-3 (dual-model) are now
+  **moot** — Christopher cut the local-AI idea (2026-06-13). Needs a wind-down
+  pass at a standards review.
+- [ ] Open: a Claude-side "fetch-delegation discipline" (Haiku fetchers; when
+  to delegate vs. read inline) — drafted in concept, parked until a real build
+  session creates the context pressure it relieves.
