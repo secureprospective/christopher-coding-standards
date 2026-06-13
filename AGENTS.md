@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This file is read by AI coding agents (Claude Code, frontier models, local LLMs) at the start of every session. It is **advisory**. Pre-commit hooks and CI checks are the **enforcement** layer. If guidance here conflicts with what a hook enforces, the hook wins — fix the violation, do not bypass.
+**Advisory guidance, not enforcement.** Pre-commit hooks and CI checks enforce the rules. If guidance here conflicts with a hook, the hook wins — fix the violation, do not bypass.
 
 ## Project profile
 
