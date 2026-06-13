@@ -17,8 +17,25 @@ $(IFACEGUARD_BIN): tools/ifaceguard/ifaceguard.go tools/ifaceguard/cmd/ifaceguar
 ifaceguard: $(IFACEGUARD_BIN)
 	go vet -vettool=$(abspath $(IFACEGUARD_BIN)) ./...
 
-# lint runs golangci-lint AND ifaceguard — both must pass for the gate to clear.
-lint: ifaceguard
+# filelen — enforces the 400-line file cap (companion plan: "a design
+# constraint, not a cleanup step"; AD-14/AD-17 pre-splits). golangci-lint's
+# funlen caps FUNCTION size, NOT file size, and no enabled linter measures file
+# length — so the cap had no automated gate (Confidence-80 plan-fidelity sweep,
+# 2026-06-13). This is that gate: a pure-shell backstop to the design-time
+# pre-split, no new dependency. Test files are exempt (table-driven tests run
+# long, mirroring the funlen test-relief).
+FILE_CAP := 400
+.PHONY: filelen
+filelen:
+	@offenders=$$(find . -name '*.go' -not -name '*_test.go' -not -path './vendor/*' -not -path './tools/*' \
+	  -exec awk 'END { if (NR > $(FILE_CAP)) printf "  %s (%d lines)\n", FILENAME, NR }' {} \;); \
+	if [ -n "$$offenders" ]; then \
+	  echo "FILE CAP ($(FILE_CAP) lines) exceeded — pre-split per the wireframe (AD-14/AD-17) BEFORE commit:"; \
+	  echo "$$offenders"; exit 1; \
+	else echo "filelen: all source files within the $(FILE_CAP)-line cap"; fi
+
+# lint runs golangci-lint, ifaceguard, AND filelen — all must pass to clear.
+lint: ifaceguard filelen
 	golangci-lint run ./...
 
 fmt:

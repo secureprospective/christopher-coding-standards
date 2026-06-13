@@ -26,7 +26,10 @@ linters:
 
     # Structure and complexity.
     - gocyclo        # Cyclomatic complexity ceiling.
-    - funlen         # Function length, supports the 250/400-line file rule.
+    - funlen         # FUNCTION length only (lines:60/statements:40). Note: this
+                     # does NOT enforce the 250/400-line FILE cap — no linter
+                     # does. The file cap is gated by the Makefile `filelen`
+                     # target (Confidence-80 sweep, 2026-06-13).
     - revive         # gofmt-plus style/naming layer.
 
     # Resource and DB hygiene.
