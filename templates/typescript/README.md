@@ -4,6 +4,8 @@ Part of `christopher-coding-standards`. Applies to any TypeScript project (Node,
 
 **Note for Astro projects:** Use this overlay for `.ts`/`.tsx` files, then add the [Astro overlay](../astro/README.md) (Phase 1D) for `.astro` template files — it requires `prettier-plugin-astro` and a different Biome configuration, and replaces this overlay's `tsconfig.json`.
 
+**Note for Cloudflare Workers projects:** Adopt this overlay first, then add the [Cloudflare Workers overlay](../cloudflare-workers/README.md) — it keeps this overlay's Biome/pre-commit/Gitleaks unchanged but replaces the `tsconfig.json` and `vitest.config.ts` (tests run inside the workerd runtime) and adds the Wrangler toolchain and typed bindings.
+
 ---
 
 ## What this overlay adds
@@ -158,5 +160,7 @@ make mutation-test-full     # full scan — use for weekly audit
 - ✅ Phase 1B — language-agnostic templates
 - ✅ Phase 1C — TypeScript overlay (this directory)
 - ✅ Phase 1D — Astro overlay (`templates/astro/`, split from 1C due to .astro formatting complexity)
-- ⏳ Phase 2 — Python, Go, Bash overlays
+- ✅ Cloudflare Workers overlay (`templates/cloudflare-workers/`) — extends this overlay for workerd-deployed projects
+- ✅ Go overlay (`templates/go/`)
+- ⏳ Phase 2 (cont.) — Python, Bash overlays
 - ⏳ Phase 3 — local-model selection guidance, dual-model architecture doc

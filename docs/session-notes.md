@@ -250,3 +250,46 @@ substantive work this session.
   **license scanning** in CI; **SBOM + signed provenance** for shipped binaries.
 - [ ] Open: fold "agy is heavy-task-only, wrap in `timeout`, expect a file not
   stdout" into `docs/multi-agent-roles.md` (re-confirmed this session).
+
+## 2026-06-15 — Cloudflare Workers overlay (extends the TS overlay)
+
+**Agents involved:** Claude (Builder), solo. No Recon/Audit round — agy is benched for the social-media-automation track that drives this work (and by the 2026-06-13 local-AI pivot).
+
+**What worked:**
+- **Verifying a stale premise before building.** The task arrived as "author the TS
+  overlay" (carried in a project memory). One disk check showed the TS overlay
+  already existed and was strong — so the session produced the *actually-missing*
+  piece (the Workers extension), not a duplicate. Lesson: when a memory asserts a
+  gap, confirm the gap on disk before filling it.
+- **Treating my own Cloudflare knowledge as untrusted, then checking it.** Three
+  shapes I "remembered" were wrong/stale: the vitest pool uses the `cloudflareTest()`
+  plugin (not `defineWorkersConfig`/`poolOptions.workers`, now deprecated), requires
+  Vitest 4.1+, and `env` now imports from `cloudflare:workers` (not `cloudflare:test`).
+  All pinned against live June-2026 docs before a line was written. For a canonical
+  template others copy, model-memory is third-party code too — verify it.
+- **Reusing the base overlay instead of duplicating it.** The Workers overlay keeps
+  the TS overlay's Biome/pre-commit/Gitleaks untouched and only replaces what
+  workerd actually forces (tsconfig, vitest, toolchain). Mirrors the Astro overlay's
+  relationship — kept the diff small and the layering legible.
+
+**What didn't / honest limits:**
+- **Stryker can't drive the workerd pool.** Rather than paper over it, the README
+  documents the split: mutation-test pure logic via the base config; use the Workers
+  pool for binding-dependent integration tests. A gate that can't run shouldn't be
+  implied to run.
+- **No deliberate-violation test shipped** (unlike the Go overlay). The Workers gates
+  are config/type-level and need a real Worker entrypoint to fire, so verification is
+  a README procedure, matching the TS/Astro overlays. Honest, but weaker than Go's
+  "proven by a failing build" bar.
+
+**Standard impact:**
+- [x] Actioned: `templates/cloudflare-workers/` — Wrangler config, workerd Vitest
+  pool, `wrangler types` bindings, npm toolchain; codifies bindings-as-capability-
+  grants + secrets-never-in-`vars`. Routed in `docs/INDEX.md`; README/CLAUDE.md/TS-
+  README cross-references added.
+- [ ] Open: consider a real deliberate-violation harness for the Workers overlay
+  (a minimal Worker that proves the typed-`Env` and secret-discipline gates fail) to
+  reach the Go overlay's "proven, not asserted" bar.
+- [ ] Open: a generic "verify SDK/runtime API shapes against live docs before writing
+  a canonical template" line belongs in `AGENTS.md` — this session is the second time
+  stale model-memory of a fast-moving API would have shipped wrong config.

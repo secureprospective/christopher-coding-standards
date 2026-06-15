@@ -1,0 +1,90 @@
+{
+  // Cloudflare Workers configuration — annotated template.
+  // Part of christopher-coding-standards. Layers on the TypeScript overlay.
+  //
+  // SECURITY MODEL: bindings ARE capability grants. A Worker can only reach a
+  // resource that is bound here. Declare ONLY the bindings this Worker needs —
+  // least privilege is the default posture, enforced by configuration, not by
+  // runtime vigilance. Adding a binding widens the Worker's blast radius; treat
+  // every addition as a security decision worth an ADR.
+
+  "$schema": "./node_modules/wrangler/config-schema.json",
+
+  "name": "REPLACE-with-worker-name",
+  "main": "src/index.ts",
+
+  // Pin to your adoption date and bump deliberately. A floating/old date silently
+  // changes runtime behavior. compatibility_flags stay explicit for the same reason.
+  "compatibility_date": "2026-06-01",
+  // Enable nodejs_compat ONLY if a dependency requires Node built-ins. Unused compat
+  // surface is unused attack surface. With a recent compatibility_date this provides
+  // the v2 behavior. Leave commented unless needed.
+  // "compatibility_flags": ["nodejs_compat"],
+
+  // Observability = the audit trail. Keep enabled; logs are how you reconstruct
+  // what a Worker did after the fact. Lower head_sampling_rate for high-volume Workers.
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1.0
+  },
+
+  // ---------------------------------------------------------------------------
+  // SECRETS: never put credentials, tokens, or keys in "vars" below.
+  // "vars" is PLAINTEXT, committed configuration. Secrets go through:
+  //   wrangler secret put <NAME>           (per-environment, encrypted at rest)
+  //   or a Secrets Store binding.
+  // Gitleaks (pre-commit, from the TS overlay) catches secrets in source, but it
+  // will NOT reliably catch a low-entropy value pasted into "vars" — so this is a
+  // hard review rule, not just a scanner concern.
+  // ---------------------------------------------------------------------------
+  // "vars": {
+  //   "PUBLIC_NON_SECRET_CONFIG": "value"
+  // },
+
+  // ---------------------------------------------------------------------------
+  // BINDINGS — uncomment and fill in only what this Worker actually uses.
+  // Run `npm run cf-typegen` after any change here so worker-configuration.d.ts
+  // (the typed Env) stays in lockstep with this file.
+  // ---------------------------------------------------------------------------
+
+  // D1 — relational store. Good for review queues, audit logs, durable records.
+  // "d1_databases": [
+  //   {
+  //     "binding": "DB",
+  //     "database_name": "REPLACE-db-name",
+  //     "database_id": "REPLACE-db-id"
+  //   }
+  // ],
+
+  // KV — eventually-consistent key/value. Tokens (paired with encryption), flags, caches.
+  // "kv_namespaces": [
+  //   {
+  //     "binding": "KV",
+  //     "id": "REPLACE-namespace-id"
+  //   }
+  // ],
+
+  // Queues — async work with backpressure. A consumer is a natural server-side gate:
+  // work is enqueued, then processed under rate limits the caller cannot bypass.
+  // Always set a dead_letter_queue + max_retries so failures surface instead of vanishing.
+  // "queues": {
+  //   "producers": [
+  //     { "binding": "WORK_QUEUE", "queue": "REPLACE-queue-name", "delivery_delay": 0 }
+  //   ],
+  //   "consumers": [
+  //     {
+  //       "queue": "REPLACE-queue-name",
+  //       "max_batch_size": 10,
+  //       "max_batch_timeout": 30,
+  //       "max_retries": 5,
+  //       "dead_letter_queue": "REPLACE-queue-name-dlq"
+  //     }
+  //   ]
+  // },
+
+  // Cron Triggers — scheduled invocation. Rate-limited, recurring server-side work.
+  // Standard 5-field cron syntax (UTC).
+  // "triggers": {
+  //   "crons": ["0 * * * *"]
+  // }
+}
