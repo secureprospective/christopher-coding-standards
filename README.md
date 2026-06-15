@@ -185,7 +185,7 @@ Full role split, escalation, and task routing: [`docs/multi-agent-roles.md`](doc
 | **Cross-pollination + triage** | Structured, logged second-opinion audits between agents, with a triage protocol because confident findings still need source-checking — `docs/cross-pollination-log.md` |
 | **Task-routing index** | `docs/INDEX.md` — load only what your task needs, not the whole repo |
 | **Skills** | `adopt-coding-standards` (one command to onboard a new repo), `github-pr` (read-side GitHub API helper for environments without `gh`) |
-| **Language overlays** | `templates/typescript/` (Biome, Zod, Stryker, Vitest) · `templates/astro/` (Prettier + `prettier-plugin-astro`, `astro check`) · `templates/go/` (golangci-lint v2, struct-wrap idiom, `ifaceguard`, `filelen`, pinned pre-commit) |
+| **Language overlays** | `templates/typescript/` (Biome, Zod, Stryker, Vitest) · `templates/astro/` (Prettier + `prettier-plugin-astro`, `astro check`) · `templates/cloudflare-workers/` (Wrangler, workerd Vitest pool, typed bindings, secrets-not-in-vars rule) · `templates/go/` (golangci-lint v2, struct-wrap idiom, `ifaceguard`, `filelen`, pinned pre-commit) |
 
 ## Design principles
 
@@ -224,7 +224,7 @@ following:
 4. Copy `.gitleaks.toml` to repo root.
 5. Copy `.github/workflows/security.yml` to repo `.github/workflows/`.
 6. Enable branch protection per `docs/branch-protection.md`.
-7. Copy the overlay for your stack from `templates/` (`typescript/`, `astro/`, or `go/`) and follow its `README.md`. Then **run its deliberate-violation test** — confirm every gate fails before you trust it.
+7. Copy the overlay for your stack from `templates/` (`typescript/`, `astro/`, `cloudflare-workers/`, or `go/`) and follow its `README.md`. Then **run its deliberate-violation test** — confirm every gate fails before you trust it.
 8. If more than one AI agent works this codebase, copy `docs/multi-agent-roles.md` and `docs/cross-pollination-log.md` (reset to just its format section).
 
 ## Phase status
@@ -232,6 +232,7 @@ following:
 - ✅ Phase 1A–1B — repo skeleton + language-agnostic templates
 - ✅ Phase 1C — TypeScript overlay (`templates/typescript/`)
 - ✅ Phase 1D — Astro overlay (`templates/astro/`)
+- ✅ Cloudflare Workers overlay (`templates/cloudflare-workers/`) — extends the TS overlay: Wrangler config, workerd Vitest pool, `wrangler types` bindings, bindings-as-capability-grants + secrets-never-in-`vars` discipline
 - ✅ Multi-agent governance — role allocation, cross-pollination + triage protocol, task-routing index
 - ✅ **Go overlay** (`templates/go/`) — golangci-lint v2, the struct-wrap compile-time idiom, the custom `ifaceguard` vettool, the `filelen` gate, SHA-pinned pre-commit; **proven by deliberate-violation tests**
 - ⏳ Phase 2 (cont.) — Python and Bash overlays

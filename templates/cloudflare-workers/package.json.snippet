@@ -1,0 +1,26 @@
+{
+  "//": "Cloudflare Workers overlay snippet. MERGE these into your package.json on top of the base TypeScript overlay snippet — do not overwrite existing keys.",
+
+  "type": "module",
+
+  "scripts": {
+    "//dev": "Local dev server in workerd.",
+    "dev": "wrangler dev",
+    "//deploy": "Publish to Cloudflare. Gate behind CI in a real project.",
+    "deploy": "wrangler deploy",
+    "//cf-typegen": "Regenerate worker-configuration.d.ts (typed Env) from wrangler.jsonc. Run after editing bindings.",
+    "cf-typegen": "wrangler types",
+    "//typecheck": "Typegen FIRST so Env types are current, then tsc. Overrides the base overlay's typecheck script.",
+    "typecheck": "wrangler types && tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+
+  "devDependencies": {
+    "//note-vitest": "Workers pool requires Vitest 4.1+. This OVERRIDES the base TS overlay's vitest ^3 — bump vitest AND @vitest/coverage-v8 together. Verify your Stryker vitest-runner version supports Vitest 4 before relying on mutation testing.",
+    "@cloudflare/vitest-pool-workers": "^0.13.0",
+    "wrangler": "^4.0.0",
+    "vitest": "^4.1.0",
+    "@vitest/coverage-v8": "^4.1.0"
+  }
+}
