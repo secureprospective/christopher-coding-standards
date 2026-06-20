@@ -12,7 +12,8 @@ This document is binding, not advisory, for any agent that is not the Builder. I
 
 **Current mapping (revisit if tooling changes — roles are what matter, not vendor names):**
 - Builder agent = Claude Code
-- Recon/Audit agent = Antigravity CLI (Gemini-based, written in Go, replaced Gemini CLI in 2026)
+- Recon/Audit agent (scoped code recon) = Antigravity CLI (Gemini-based, written in Go, replaced Gemini CLI in 2026)
+- Recon/Audit agent (large-context audit + front-end QA) = GLM (Z.ai Coding Plan via OpenCode on a worker node) — a *second* recon-class agent specialized for breadth; see `docs/glm-auditor-discipline.md`. Same class, same exclusions: it never commits, merges, or edits living docs.
 
 ## Why this split exists
 
