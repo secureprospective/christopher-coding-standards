@@ -247,6 +247,27 @@ and judgment. We have none of those by default across sessions. So we add:
   verbatim. Scan generated code for license violations in CI; record provenance
   for anything pulled in. [agy recon — §F]
 
+### M18 — Whole-repo audits are the second vantage at scale
+M13 is the second vantage on a *diff*; M18 is the second vantage on the *whole
+tree*. A large-context auditor (1M-token class) holds an entire repo and hunts
+cross-cutting rot no diff-level review catches — duplicated logic, drifted
+patterns, dead boundaries, slop that no single PR introduced. But scale
+multiplies **hallucination**, not just coverage: a confident finding across 500
+files is still triaged `file:line` against source before it is acted on (M13),
+and the auditor **never writes** — it returns leads; the Builder fixes.
+- **Apply:** dispatch a large-context audit (de-slop / efficiency / drift) scoped
+  to a clear, closed question; triage every finding against source (M13); the
+  auditor never commits or edits living docs (`multi-agent-roles.md`). Front-end
+  QA is the same shape on a *running UI* — **structural (DOM/a11y) +
+  deterministic visual-regression**, never a text model trusted to "see" a
+  screenshot. Full doctrine: `docs/glm-auditor-discipline.md`.
+- **▸ receipt:** 2026-06-20, a GLM large-context recon returned a tidy table of
+  repos/URLs at uniform HIGH confidence; triage found most fabricated — invented
+  repo owners and a pricing claim that *contradicted a live API test we'd just
+  run*. The verified residue (deterministic visual-regression tooling) was the
+  real value. Uniform confidence across a long list is itself the tell. Scale
+  changed the volume of leads, not the duty to triage each.
+
 ---
 
 ## §3 — Stack idioms (Go · Wails · SQLite) — the concrete moves
@@ -286,6 +307,8 @@ and judgment. We have none of those by default across sessions. So we add:
 | "I'll add tests later" | the assert never comes; coverage theater | behavior tests now (M10) |
 | copying a pattern before its first instance is reviewed | clones a latent flaw N times | First-Instance Template Review (M17) |
 | acting on a review finding without reading the cited line | propagates a hallucination as a "fix" | triage against source (M13) |
+| trusting a text model to "see" a screenshot | it can't — you get confident fiction about pixels | structural DOM/a11y + deterministic pixel-diff (M18) |
+| taking a large-context audit's list as fixes (esp. uniform HIGH confidence) | scale multiplies hallucination, not reliability | triage each lead against source (M13, M18) |
 
 ---
 
