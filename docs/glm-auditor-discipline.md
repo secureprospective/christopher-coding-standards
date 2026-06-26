@@ -1,8 +1,10 @@
 # GLM large-context auditor & front-end QA discipline
 
-**Layer 10.5** — sits between *Refactoring discipline* (10) and *Local model selection* (11) in the eleven-layer stack. This is the doctrine for a **third agent**: a large-context model (GLM-class, ~1M-token window) that runs whole-repo audits, de-slop / efficiency passes, a troubleshooting review-gate, and automated front-end QA.
+**Layer 10.5** — sits between *Refactoring discipline* (10) and *Local model selection* (11) in the eleven-layer stack. This is the doctrine for the **Recon/Audit agent**: a large-context model (GLM-class, ~1M-token window) that runs the code-review gate, whole-repo audits, de-slop / efficiency passes, troubleshooting review, and automated front-end QA.
 
-It does not replace anything. It extends the second-vantage pattern (`agent-codex.md` §M13, now §M18) to *whole-tree scale* and to *running UIs*. Read `docs/multi-agent-roles.md` first — the role matrix, exclusions, and human-owner gate are binding here too.
+> **As of 2026-06-26 GLM 5.2 is the sole Recon/Audit agent** — Antigravity/agy (Gemini) is RETIRED as reviewer (blind-review false-positive rate too high). Where this doc still reads "a *second*/third agent alongside agy," read GLM as *the* recon-class agent; agy references are historical.
+
+It extends the second-vantage pattern (`agent-codex.md` §M13, now §M18) to *whole-tree scale* and to *running UIs*. Read `docs/multi-agent-roles.md` first — the role matrix, exclusions, and human-owner gate are binding here too.
 
 ## The agent and its one hard constraint
 
@@ -21,7 +23,7 @@ It does not replace anything. It extends the second-vantage pattern (`agent-code
 | Situation | Send to |
 |---|---|
 | Multi-step reasoning, security boundary, architecture, the fix itself | **Builder** (Claude) — never delegated |
-| Narrow, well-specified recon on a code subtree | **agy** (Antigravity) — throughput on scoped recon |
+| Narrow, well-specified recon on a code subtree | **GLM** (OpenCode/bird) — throughput on scoped recon |
 | Whole-repo de-slop / efficiency / drift audit (breadth > depth) | **GLM** large-context auditor |
 | Front-end QA of a running UI (structural + visual regression) | **GLM** + the QA harness |
 

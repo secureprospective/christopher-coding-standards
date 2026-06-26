@@ -1,6 +1,8 @@
 # The Agent Codex
 
-**A build doctrine for the two agents who write the code: Claude Code (Builder, CT105) and agy / Antigravity (Recon/Audit, CT104).**
+**A build doctrine for the two agents who write the code: Claude Code (Builder, CT105) and the Recon/Audit reviewer — GLM 5.2 (Z.ai Coding Plan via OpenCode on "bird") as of 2026-06-26.**
+
+> Reviewer history: agy / Antigravity (Gemini-based, CT104) was the Recon/Audit agent through the B2b-Fetch arc and is RETIRED as reviewer 2026-06-26 (blind-review false-positive rate too high). §F below is agy's already-triaged historical web recon, kept as-is. The build doctrine (motifs §M1–§M18, slop catalog) is model-agnostic and unchanged.
 
 > This document is **not** for a human. It is the shared brain of the build —
 > written by the agents, for the agents, to be loaded before writing or
