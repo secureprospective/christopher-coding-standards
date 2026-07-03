@@ -10,6 +10,7 @@ guessing what's relevant.
 | If your task is... | Read | Skip |
 |---|---|---|
 | **Writing or reviewing actual code** (any Builder *or* Recon build/review session) | `docs/agent-codex.md` — the build doctrine: 18 indexable motifs, slop catalog, security baseline, the canon mapped to each motif | Everything else until a task is named |
+| **Writing code on a small local model** (Ornith/Gemma/qwen; Hermes' local fallback) whose context can't hold the full Codex | `docs/agent-codex-lite.md` — the 18 motif laws + slop headlines, compressed not cut | The full `agent-codex.md` unless the task sets a template others clone |
 | Starting a Builder (Claude) session on this repo | `CLAUDE.md` (local), `SYSTEM_MAP.md` | Everything else until a task is named |
 | Adopting this standard in a new/existing repo | `skills/adopt-coding-standards/SKILL.md` (run it — it covers the rest) | `templates/`, ADRs, `HANDOFF-*` docs |
 | Adding a new language overlay (Phase 2+) | `templates/typescript/` as the pattern + its README, `AGENTS.md` layer table | `HANDOFF-phase-1c.md` (historical only) |
