@@ -293,3 +293,22 @@ substantive work this session.
 - [ ] Open: a generic "verify SDK/runtime API shapes against live docs before writing
   a canonical template" line belongs in `AGENTS.md` — this session is the second time
   stale model-memory of a fast-moving API would have shipped wrong config.
+
+---
+
+## 2026-06-20 — GLM large-context auditor + front-end QA doctrine (Layer 10.5)
+
+**Agents involved:** Claude (Builder), solo authoring. The session's *subject* was standing up GLM (Z.ai Coding Plan via OpenCode on the "bird" worker node) as a third agent; this entry covers the doctrine layered back into the standard.
+
+**What worked:**
+- **A live test killed a planning assumption before it shipped.** The plan assumed "GLM sees the front end and QAs it visually." First real run proved GLM-5.2 is **text-only** — it captured a screenshot and openly said it couldn't view it, then did excellent *structural* QA (contrast math, ARIA gaps, a step→chart binding bug) off the DOM instead. The doctrine now reflects reality: two-lane QA (structural + deterministic pixel-diff), never "the model sees the page."
+- **Triaging a recon agent's output as leads, not findings.** A GLM web-recon returned a tidy table at uniform HIGH confidence; triage found most of it fabricated — invented repo owners, and a pricing claim that contradicted a live API test from minutes earlier. The one verified gem (deterministic visual-regression: `toHaveScreenshot`/pixelmatch) became the actual design. Logged as the M18 receipt.
+
+**What didn't / honest limits:**
+- **Semantic visual QA is deferred, not solved.** "Does it look good / on-brand" needs a real vision model; the Lite plan denies Z.ai vision models. Documented as an explicit deferral with a revisit condition, not papered over.
+- **No deliberate-violation gate for the doctrine itself** — it's process doctrine (M18 + dispatch/triage rules), enforced by the existing human-owner merge gate and `cross-pollination-log.md`, not a CI check.
+
+**Standard impact:**
+- [x] Actioned: `docs/glm-auditor-discipline.md` (Layer 10.5); `agent-codex.md` §M18 + two slop-catalog rows; `multi-agent-roles.md` mapping (GLM as second recon-class agent, same exclusions); routed in `docs/INDEX.md`; `CLAUDE.md` layer table + key files + motif count (17→18).
+- [ ] Open: **agy reliability is a tracked problem** — its fabrication rate this session (and prior) warrants a dedicated session to build a focus/triage process around it. How much is prompt-side vs model-side is part of that diagnosis.
+- [ ] Open: first real GLM whole-repo de-slop audit + cross-pollination-log entry, to move the doctrine from authored to proven.
