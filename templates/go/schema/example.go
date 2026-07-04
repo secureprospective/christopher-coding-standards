@@ -10,6 +10,19 @@
 // RULE: never pass a raw external value (a string from JSON, a CSV cell)
 // into business logic. Decode it into a Raw* struct, call Validate(), and
 // only then convert into a domain type.
+//
+// UNKNOWN-FIELD POLICY — strict for input you control, lenient for input you don't:
+//   - EXTERNAL, 3rd-party input (an API/feed you do NOT own): TOLERATE unknown
+//     fields. Do NOT call dec.DisallowUnknownFields(). Such providers add fields
+//     without versioning; rejecting them turns a benign upstream addition into an
+//     outage. Postel's law: be liberal in what you accept. Correctness comes from
+//     Validate() asserting the fields you depend on — not from forbidding fields
+//     you ignore.
+//   - INTERNAL, trusted input (your own client/frontend, your own services): be
+//     STRICT — call dec.DisallowUnknownFields(). There an unknown field is a bug on
+//     your side and should fail loudly (the Go equivalent of Zod's .strict()).
+//
+// RawPlayerRecord below models a 3rd-party API (external), so it is lenient.
 package schema
 
 import (
@@ -31,12 +44,13 @@ type RawPlayerRecord struct {
 	Salary   string `json:"salary"`
 }
 
-// DecodePlayerRecord reads exactly one JSON object and rejects unknown
-// fields. DisallowUnknownFields is the Go equivalent of Zod's .strict() —
-// extra fields from an API change fail loudly instead of passing silently.
+// DecodePlayerRecord reads exactly one JSON object from a 3rd-party API. It
+// deliberately does NOT call dec.DisallowUnknownFields(): the provider is external
+// and adds fields without versioning, so unknown fields are tolerated and ignored
+// (see the package "unknown-field policy"). Correctness is guaranteed by Validate()
+// below. For INTERNAL trusted input, add dec.DisallowUnknownFields() here instead.
 func DecodePlayerRecord(r io.Reader) (RawPlayerRecord, error) {
 	dec := json.NewDecoder(r)
-	dec.DisallowUnknownFields()
 
 	var rec RawPlayerRecord
 	if err := dec.Decode(&rec); err != nil {
