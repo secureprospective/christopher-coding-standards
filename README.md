@@ -210,7 +210,7 @@ Full role split, escalation, and task routing: [`docs/multi-agent-roles.md`](doc
 | 8 | Test discipline | branch protection + language overlays |
 | 9 | Execution sandboxing | OS-level (operator concern, documented separately) |
 | 10 | Refactoring discipline | `AGENTS.md` + ADR pattern |
-| 11 | Local model selection | quantization floor, dual-model architecture (Phase 3) |
+| 11 | Local model selection | [`docs/local-model-guidance.md`](docs/local-model-guidance.md) — portable selection checklist, dual-model architecture, dated fleet snapshot |
 
 ## How to adopt in a new or existing repo
 
@@ -235,8 +235,9 @@ following:
 - ✅ Cloudflare Workers overlay (`templates/cloudflare-workers/`) — extends the TS overlay: Wrangler config, workerd Vitest pool, `wrangler types` bindings, bindings-as-capability-grants + secrets-never-in-`vars` discipline
 - ✅ Multi-agent governance — role allocation, cross-pollination + triage protocol, task-routing index
 - ✅ **Go overlay** (`templates/go/`) — golangci-lint v2, the struct-wrap compile-time idiom, the custom `ifaceguard` vettool, the `filelen` gate, SHA-pinned pre-commit; **proven by deliberate-violation tests**
-- ⏳ Phase 2 (cont.) — Python and Bash overlays
-- ⏳ Phase 3 — local-model selection guidance, dual-model architecture doc
+- ✅ **Python overlay** (`templates/python/`) — ruff (lint+format+SAST), mypy strict, pytest+pytest-cov, Pydantic v2 boundary validation, pip-audit, mutmut; proven by deliberate-violation tests
+- ✅ **Bash overlay** (`templates/bash/`) — shellcheck + shfmt + gitleaks, `lib/strict-mode.sh` boundary pattern, bats-core; proven by deliberate-violation tests. **Phase 2 complete.**
+- ✅ **Phase 3** — [local-model selection guidance](docs/local-model-guidance.md): portable checklist, dual-model architecture, dated (non-authoritative) fleet snapshot
 
 ## License
 
