@@ -7,12 +7,12 @@
       "recommended": true,
 
       "suspicious": {
-        "noExplicitAny": "error"
+        "noExplicitAny": "error",
+        "noConsole": "warn"
       },
 
       "style": {
-        "noNonNullAssertion": "error",
-        "noConsole": "warn"
+        "noNonNullAssertion": "error"
       }
     }
   },
@@ -40,14 +40,15 @@
   },
 
   "files": {
-    "ignore": [
-      "node_modules",
-      "dist",
-      "build",
-      ".next",
-      "coverage",
-      ".stryker-tmp",
-      "reports"
+    "includes": [
+      "**",
+      "!node_modules",
+      "!dist",
+      "!build",
+      "!.next",
+      "!coverage",
+      "!.stryker-tmp",
+      "!reports"
     ]
   }
 }
