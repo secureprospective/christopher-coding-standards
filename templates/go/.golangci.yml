@@ -10,6 +10,11 @@ version: "2"
 
 run:
   timeout: 5m
+  # RAM-constrained boxes (e.g. a 2 GiB LXC) can OOM golangci-lint at default
+  # concurrency once staticcheck/exhaustive are both on. Safe on bigger
+  # hardware too (just leaves parallelism on the table) — remove if you have
+  # RAM to spare and want faster runs.
+  concurrency: 1
 
 linters:
   # Start from nothing; enable exactly the must-have set (Section 1 + 2 of the
@@ -56,6 +61,14 @@ linters:
                         # (Friction #10) are enforced by the ifaceguard vettool
                         # (tools/ifaceguard), run from `make lint` + pre-commit.
 
+    # Domain-safety + bypass-prevention.
+    - nolintlint        # //nolint must be specific + explained — closes the
+                        #   bypass loophole on every depguard rule below.
+    - exhaustive        # enum switch exhaustiveness — a missing case in a
+                        #   position/state switch fails the build.
+    - nilerr            # bans `if err != nil { return nil }` — silent error
+                        #   swallow.
+
   settings:
     gocyclo:
       min-complexity: 15
@@ -64,16 +77,23 @@ linters:
       lines: 60
       statements: 40
 
-    gochecknoglobals:
-      # No exceptions. A "but this one global is fine" is exactly the failure
-      # mode this linter exists to prevent (Section 2, item 5).
-      {}
+    # gochecknoglobals and wrapcheck run on DEFAULTS — they take NO settings
+    # block. An empty `{}` is REJECTED by `golangci-lint config verify`
+    # (confirmed against a real overlay adopter — the shipped config must
+    # pass `config verify`, not just lint clean code).
+    #   gochecknoglobals: no exceptions — a "but this one global is fine" is
+    #     exactly the failure mode this linter exists to prevent.
+    #   wrapcheck: every error from an external package must be wrapped
+    #     (fmt.Errorf("...: %w", err)) before crossing a function boundary
+    #     back into our own code.
 
-    wrapcheck:
-      # Defaults are fine: every error from an external package must be
-      # wrapped (fmt.Errorf("...: %w", err)) before crossing a function
-      # boundary back into our own code.
-      {}
+    # nolintlint hardens the //nolint escape hatch: every directive must name
+    # a specific linter and carry an explanation, so a bypass of a depguard
+    # rule can't slip in silently.
+    nolintlint:
+      require-explanation: true
+      require-specific: true
+      allow-unused: false
 
     depguard:
       rules:
@@ -117,6 +137,12 @@ linters:
               desc: "engine performs no I/O"
             - pkg: database/sql
               desc: "engine performs no I/O"
+            - pkg: net/http
+              desc: "engine is pure — no network access"
+            - pkg: net
+              desc: "engine is pure — no network access"
+            - pkg: os
+              desc: "engine is pure — no filesystem/env access"
 
         # Stores never import each other (companion plan Section 8A.3 — "no
         # store package imports another store package"). Three rules, one

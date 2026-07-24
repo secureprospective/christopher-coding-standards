@@ -312,3 +312,20 @@ substantive work this session.
 - [x] Actioned: `docs/glm-auditor-discipline.md` (Layer 10.5); `agent-codex.md` §M18 + two slop-catalog rows; `multi-agent-roles.md` mapping (GLM as second recon-class agent, same exclusions); routed in `docs/INDEX.md`; `CLAUDE.md` layer table + key files + motif count (17→18).
 - [ ] Open: **agy reliability is a tracked problem** — its fabrication rate this session (and prior) warrants a dedicated session to build a focus/triage process around it. How much is prompt-side vs model-side is part of that diagnosis.
 - [ ] Open: first real GLM whole-repo de-slop audit + cross-pollination-log entry, to move the doctrine from authored to proven.
+
+---
+
+## 2026-07-24 — Backport pass: TS biome.json + Go .golangci.yml (both defects found by adopters, fixed here)
+
+**Agents involved:** Claude (Builder), solo authoring. Pure backport — both fixes were already proven correct in adopter repos (social-media-automation for TS, TheWarRoom for Go); this session ported them into canonical and verified with the real tools rather than re-deriving.
+
+**What worked:**
+- **Verify against the real tool, not just visual diff.** `npx @biomejs/biome check --config-path` and `golangci-lint config verify` both ran clean against the fixed configs before commit — the exact check whose *absence* caused both defects to ship in the first place (see the 2026-06-15/06-17 entries this repo's memory already flagged). Closing the loop meant running the check, not just trusting the adopter fix looked right.
+- **Deliberately narrowed the Go backport.** TheWarRoom's `.golangci.yml` also adds project-specific depguard paths (`internal/normalize`, `internal/output`) that only make sense for TheWarRoom's actual package tree — the canonical template's own header comment says adopters find/replace the depguard rules for their tree, so those stayed out. Only the generically-applicable fixes crossed: the two schema-invalid empty `{}` settings blocks, three new linters (`nolintlint`/`exhaustive`/`nilerr`), `run.concurrency: 1` (documented as removable on bigger hardware), and denying `net/http`/`net`/`os` in the pure-engine rule (a generic "pure means no I/O by any path" hardening, not TheWarRoom-specific).
+
+**What didn't / honest limits:**
+- **Still no automated config-verify CI job in this repo** for the shipped template configs — the fix here is manual verification at backport time, not a standing guard. Considered adding one; deferred as scope creep on a "small backport" session (Task_list.md explicitly scoped this as the small item before Python/Bash overlays). Flagged below as the natural next hardening.
+
+**Standard impact:**
+- [x] Actioned: `templates/typescript/biome.json` (`files.ignore`→`files.includes` with `!`-negation; `noConsole` moved `style`→`suspicious`); `templates/go/.golangci.yml` (empty settings blocks removed, `nolintlint`/`exhaustive`/`nilerr` added, `run.concurrency: 1`, pure-engine I/O denial extended to `net/http`/`net`/`os`). Both configs verified clean against the real tool (Biome 2.4.15 `check`, golangci-lint 2.12.2 `config verify`).
+- [ ] Open: add a CI job that runs `golangci-lint config verify` + `biome check` directly against `templates/go/.golangci.yml` and `templates/typescript/biome.json` on every PR to this repo — closes the root cause (a shipped config was never verified against its own schema) permanently instead of relying on the next adopter to catch it.
