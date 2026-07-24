@@ -1,0 +1,39 @@
+repos:
+  # shellcheck: static analysis on staged shell scripts (SAST + correctness —
+  # the .shellcheckrc in this directory curates which optional checks run).
+  # Pinned to the commit SHA for tag v0.11.0.1 — verify with:
+  #   git ls-remote https://github.com/shellcheck-py/shellcheck-py v0.11.0.1
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: 745eface02aef23e168a8afb6b5737818efbea95  # v0.11.0.1
+    hooks:
+      - id: shellcheck
+        # .bats files use bats' `@test "..." { }` syntax, not plain bash —
+        # shellcheck false-positives on bats-runtime-injected variables
+        # (BATS_TEST_DIRNAME etc). They're validated by `make test`, not here.
+        exclude: '\.bats$'
+
+  # shfmt: formats staged shell scripts. -i 2 (2-space indent), -ci (indent
+  # switch/case bodies), -sr (space after redirect operators) — must match
+  # the flags in Makefile.snippet's `fmt`/`lint` targets or the two disagree.
+  # Pinned to the commit SHA for tag v3.13.1-1 — verify with:
+  #   git ls-remote https://github.com/scop/pre-commit-shfmt v3.13.1-1
+  - repo: https://github.com/scop/pre-commit-shfmt
+    rev: 05c1426671b9237fb5e1444dd63aa5731bec0dfb  # v3.13.1-1
+    hooks:
+      - id: shfmt
+        # -w is required: this hook's default args are [--write], and a
+        # custom `args:` list REPLACES rather than merges with it (confirmed
+        # 2026-07-24 — omitting -w silently no-ops the hook: no diff, no
+        # failure, no fix, exit 0 on a misformatted file).
+        args: ["-w", "-i", "2", "-ci", "-sr"]
+        exclude: '\.bats$'
+
+  # Gitleaks: scan staged files for secrets before they enter git history.
+  # Pinned to the commit SHA for tag v8.30.1 — verify with:
+  #   git ls-remote https://github.com/gitleaks/gitleaks v8.30.1
+  # Reason: supply chain attacks target mutable tags (docs/adr/0001-why-this-standard-exists.md,
+  # the trivy-action lesson — AGENTS.md hard rule).
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: 83d9cd684c87d95d656c1458ef04895a7f1cbd8e  # v8.30.1
+    hooks:
+      - id: gitleaks

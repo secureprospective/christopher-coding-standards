@@ -1,0 +1,20 @@
+# Makefile snippet — Bash overlay. Mirrors the TS/Go/Python overlays' target
+# names (lint / fmt / test) so muscle memory transfers across languages.
+# Merge these targets into the project Makefile.
+
+.PHONY: lint fmt test
+
+# .bats files are excluded — bats' `@test "..." { }` syntax isn't plain
+# bash, so shellcheck/shfmt aren't run on them (see .pre-commit-config.yaml
+# for the same exclusion). They're validated by `make test` instead.
+SHELL_FILES := $(shell find . -name '*.sh' -not -path './node_modules/*' -not -path './.git/*')
+
+lint:
+	shellcheck $(SHELL_FILES)
+	shfmt -d -i 2 -ci -sr $(SHELL_FILES)
+
+fmt:
+	shfmt -w -i 2 -ci -sr $(SHELL_FILES)
+
+test:
+	bats tests/

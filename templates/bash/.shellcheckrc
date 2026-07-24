@@ -1,0 +1,35 @@
+# shellcheck config — Bash overlay. Mirrors the Go overlay's `linters:
+# default: none` reasoning: enable a curated set of high-value optional
+# checks rather than `enable=all`, which includes checks with a high
+# false-positive/style-noise rate a weaker model can't reason about.
+
+shell=bash
+external-sources=true
+# Resolve `# shellcheck source=relative/path` comments relative to the
+# linted FILE's own directory, not the shellcheck invocation's cwd —
+# without this, a script that computes its own dir at runtime
+# (`$(dirname "${BASH_SOURCE[0]}")`) false-positives SC1091 unless it's
+# linted from that exact directory.
+source-path=SCRIPTDIR
+
+# quote-safe-variables: flags unquoted variable expansions even where
+# word-splitting happens not to matter today — the failure mode this exists
+# for is a value that later gains a space and silently breaks.
+enable=quote-safe-variables
+
+# require-variable-braces: ${var} everywhere, not $var — prevents
+# `$varname` accidentally concatenating into a different identifier.
+enable=require-variable-braces
+
+# avoid-nullary-conditions: `[[ $x ]]` instead of the explicit
+# `[[ -n $x ]]` reads as "did $x exist as a word" not "is $x non-empty" —
+# ambiguous intent flagged, not banned outright.
+enable=avoid-nullary-conditions
+
+# check-unassigned-uppercase: catches the classic typo of assuming an
+# UPPERCASE var is an exported constant when it was never assigned.
+enable=check-unassigned-uppercase
+
+# deprecate-which: `command -v` is portable and doesn't require the `which`
+# binary to be installed; `which` is a common weaker-model default.
+enable=deprecate-which
