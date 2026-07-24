@@ -84,9 +84,14 @@ Add the three new targets into your existing `Makefile`.
 
 ### 7. Merge `.pre-commit-config.yaml.snippet`
 
-Add the Prettier hook into your existing `.pre-commit-config.yaml`. Pin the
-`rev:` and `additional_dependencies` versions to SHAs before production, same
-as the TypeScript overlay's hooks (see that overlay's README step 6).
+Add the `prettier-astro` hook into your existing `.pre-commit-config.yaml`.
+Unlike the TypeScript/Go/Python overlays' hooks, this is a **`repo: local`**
+hook, not a pinned remote repo — there's no `rev:` to pin. It runs `npx
+--no-install prettier` against your project's own `prettier` +
+`prettier-plugin-astro` (installed via step 5's `package.json.snippet`
+devDependencies), so pin those *package versions* instead, the same
+discipline as any other devDependency. See "Why a local hook, not
+mirrors-prettier" below for why the remote-hook form doesn't work here.
 
 ### 8. Enable the CI job
 
@@ -96,6 +101,32 @@ Once this overlay is adopted, add `astro — check` to the branch protection
 required-checks list alongside `ts — lint` / `ts — test`.
 
 ---
+
+## Why a local hook, not mirrors-prettier
+
+Found by the 2026-07-24 cross-pollination audit (GLM 5.2 recon + Claude
+triage — `docs/cross-pollination-log.md`), which this overlay had never had
+before: the `pre-commit/mirrors-prettier` remote hook this overlay originally
+shipped was broken two ways.
+
+1. **The pinned `rev: "v3.4.2"` doesn't exist.** `mirrors-prettier`'s newest
+   tag is `v3.1.0` — the hook fails at environment init with `pathspec
+   'v3.4.2' did not match any file(s) known to git`, before it ever runs.
+2. **Repinning to a real tag doesn't fix it.** `additional_dependencies`
+   installs `prettier` + `prettier-plugin-astro` into the hook's own
+   *isolated* node environment, not the project's `node_modules`. Prettier
+   3's plugin loader resolves `plugins: ["prettier-plugin-astro"]` via
+   standard ESM package resolution from the file being formatted — it
+   cannot see across environments, `NODE_PATH` included. Confirmed live:
+   `[error] Cannot find package 'prettier-plugin-astro'`.
+
+The fix is the `repo: local` hook now shipped: it runs `npx --no-install
+prettier --write` against the project's own installed `prettier` +
+`prettier-plugin-astro` (already devDependencies via
+`package.json.snippet`), where plugin resolution works normally. Verified
+live end-to-end through `pre-commit run` itself, not just the standalone
+CLI: `prettier (astro) ... Failed - files were modified by this hook`, with
+a real before/after diff on the malformed test file.
 
 ## What's out of scope
 
@@ -128,12 +159,18 @@ git add test.astro
 git commit -m "test: verify astro gates"
 ```
 
-**Expected:**
-- The Prettier pre-commit hook reformats (or blocks, depending on
-  `--check`/`--write` mode) the file.
-- `make typecheck-astro` (`astro check`) runs cleanly on a correctly-typed
-  file, and reports errors on a deliberately mistyped one (e.g. assigning a
-  `string` prop to a component expecting `number`).
+**Expected (confirmed live 2026-07-24 — see "Why a local hook" above):**
+- `npx prettier --write "**/*.astro"` (and the `prettier-astro` pre-commit
+  hook, same mechanism) reformats the file — `const   title="test"` →
+  `const title = "test";`, blank line inserted after frontmatter.
+- `astro check` (`make typecheck-astro`) resolves `extends:
+  astro/tsconfigs/strictest` with no changes needed to `tsconfig.json`,
+  passes clean on valid code, and correctly fails
+  (`ts2322: Type 'string' is not assignable to type 'number'`) on a
+  deliberately mistyped prop (e.g. `<Counter count="five" />` where the
+  component expects `number`). `strictest`'s rules are genuinely active,
+  not silently no-op'd — confirmed via an unrelated unused-variable catch
+  (`ts6133`, a `strictest`-only rule) in the same test pass.
 - On a PR, the `astro — check` CI job runs and reports the same.
 
 If any gate does not fire, stop and diagnose before using this overlay in
@@ -148,6 +185,7 @@ production.
 - ✅ Phase 1A — repo skeleton
 - ✅ Phase 1B — language-agnostic templates
 - ✅ Phase 1C — TypeScript overlay (`templates/typescript/`)
-- ✅ Phase 1D — Astro overlay (this directory)
-- ⏳ Phase 2 — Python, Go, Bash overlays
-- ⏳ Phase 3 — local-model selection guidance, dual-model architecture doc
+- ✅ Phase 1D — Astro overlay (this directory) — pre-commit hook fixed
+  2026-07-24 following the cross-pollination audit above
+- ✅ Phase 2 — Go, Cloudflare Workers, Python, Bash overlays all complete
+- ✅ Phase 3 — local-model selection guidance (`docs/local-model-guidance.md`)
