@@ -392,3 +392,22 @@ substantive work this session.
 - [x] Actioned: `docs/local-model-guidance.md` (new — Layer 11 doctrine), `docs/INDEX.md` routing row, `CLAUDE.md` Layer 11 table row/Phase Status/Key Files/Open Items, `README.md` Layer 11 row + phase-status catch-up (Python/Bash/Phase 3 all marked complete).
 - [ ] Open: still no CI job verifying shipped template configs against their real tools (carried forward from the backport/Python/Bash entries — now the longest-standing open item in this log).
 - [ ] Open: the deferred cross-pollination pilot (Antigravity/second-vantage audit of `templates/astro/`) is now the only unscoped item left from the original Phase 2/3 list.
+
+---
+
+## 2026-07-24 — Cross-pollination pilot: `templates/astro/` pre-commit hook (PR #24, squash `06064b1`)
+
+**Agents involved:** Claude (Builder), GLM 5.2 via OpenCode on bird (Recon/Audit — the current mapping post-Antigravity retirement).
+
+**What worked:**
+- **First real cross-pollination round under the current GLM 5.2 mapping.** The `docs/multi-agent-roles.md` workflow (self-contained scoped prompt → human relay → agent runs it → Builder triage against source → integrate) held unchanged from the Antigravity-era pilot — only the agent identity changed, exactly as the doc's own framing ("roles are what matter, not vendor names") predicted.
+- **Scoping the request around this repo's known failure class paid off immediately.** Rather than "audit templates/astro/" (an explicitly banned vague request per the workflow), the prompt asked 4 closed-ended questions targeting exactly the "config looks right but silently no-ops" pattern already caught 3 times this month (AWS-example-key allowlist, shellcheck SCRIPTDIR, shfmt `args:` replace-not-merge). It found a 4th instance on the first try.
+- **Triage against primary source caught something GLM's own session didn't finish.** GLM's run correctly identified the `rev: "v3.4.2"` tag doesn't exist but got cut off mid-diagnosis before reaching a verdict. Claude verified independently (`git ls-remote --tags` on the real repo — confirmed newest tag is `v3.1.0`), then went a layer deeper than the cut-off session reached: repinning to a real tag still doesn't fix it, because Prettier 3's ESM plugin resolution can't cross the hook's isolated `additional_dependencies` environment. This is the textbook shape of the doctrine's "second vantage is real but not an oracle" rule (Codex M13) — the agent's lead was correct as far as it went, and the Builder still had to do the deeper source-verification work to land a real fix.
+
+**What didn't / honest limits:**
+- GLM's OpenCode session ended before delivering the final closed-ended answer summary — it stopped mid-reasoning after diagnosing the mechanism but before running its own planned diagnostic. Not a wasted round (the critical finding was real and actionable), but a reminder that headless GLM 5.2 runs over SSH are not guaranteed to reach a clean stop; budget for the Builder to finish verification independently rather than assuming a complete handoff.
+- Q1–Q3 (Prettier reformatting, tsconfig extends resolution, astro check pass/fail) were accepted on the strength of GLM's specific, internally consistent evidence (real error codes like `ts6133`/`ts2322`, a correctly-reasoned Node-resolver-vs-tsc-resolver distinction for Q2) rather than independently re-run by Claude — a judgment call to spend verification effort where the stakes were highest (the pre-commit hook, the actual shipped enforcement mechanism), not evenly across all 4 questions.
+
+**Standard impact:**
+- [x] Actioned: `templates/astro/.pre-commit-config.yaml.snippet` (mirrors-prettier remote hook → `repo: local` hook), `templates/astro/README.md` (new "Why a local hook, not mirrors-prettier" section, corrected verification-test expectations, corrected stale Phase 2/3 status footer), `docs/cross-pollination-log.md` (new dated entry). Fix verified end-to-end through `pre-commit run` itself with the exact shipped snippet content, not just standalone CLI or direct binary invocation.
+- [ ] Open: this closes the last item from the original Phase 2/3 list. The one item still carried forward across four sessions now is the CI job that verifies shipped template configs against their real tools on every PR — this cross-pollination round is itself evidence of exactly why that job would pay for itself (a config sat broken, unnoticed, since 2026-06-10).
