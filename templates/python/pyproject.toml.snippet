@@ -1,0 +1,73 @@
+# pyproject.toml snippet — Python overlay. Merge these tables into your
+# project's pyproject.toml (do not overwrite an existing [project] table —
+# merge [tool.ruff]/[tool.mypy]/[tool.pytest.ini_options]/[tool.coverage.*]
+# in alongside it).
+#
+# Tool choice: ruff replaces flake8 + isort + black + (via its "S" rule
+# family) bandit in one binary — one tool, one config, no drift between a
+# formatter and a linter disagreeing (the TS overlay's Biome plays the same
+# role). mypy stays separate because ruff does not type-check.
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+# Start from a deliberately curated set, not "ALL" — ALL includes rules that
+# fight each other and rules with a high false-positive rate on typed code
+# (companion doctrine: same "avoid surprise linters a weaker model can't
+# reason about" reasoning as the Go overlay's `linters: default: none`).
+select = [
+  "E",    # pycodestyle errors
+  "F",    # pyflakes — unused imports/vars, undefined names
+  "I",    # isort — import sorting
+  "UP",   # pyupgrade — modern syntax (f-strings, | unions, etc.)
+  "B",    # flake8-bugbear — likely bugs (mutable defaults, except Exception, ...)
+  "S",    # flake8-bandit — SAST: SQL string-building, eval, weak crypto, ...
+  "C4",   # flake8-comprehensions — needless list()/dict() around comprehensions
+  "PIE",  # misc anti-patterns
+  "SIM",  # flake8-simplify — needlessly complex control flow
+  "RET",  # flake8-return — inconsistent/redundant return statements
+  "ARG",  # flake8-unused-arguments
+  "PTH",  # flake8-use-pathlib — os.path calls that should be pathlib
+]
+ignore = [
+  "S101", # assert — pytest and internal invariant checks both use bare assert
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Test files: bandit's assert/hardcoded-value rules are noise in test bodies,
+# and unused-argument covers pytest fixtures that exist for their side effects.
+"tests/**" = ["S101", "S105", "S106", "ARG001"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+# strict = true already implies these, but they are spelled out because a
+# weaker model reading this file should see the actual floor, not infer it
+# from one flag:
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+disallow_untyped_decorators = true
+warn_return_any = true
+warn_unused_ignores = true
+no_implicit_optional = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers --strict-config"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.coverage.report]
+# Mirrors the TS/Go overlays' 80% line-coverage floor — see each overlay's
+# README for the "coverage alone is the floor, not the goal" framing.
+fail_under = 80
+show_missing = true

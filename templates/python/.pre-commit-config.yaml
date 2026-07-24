@@ -1,0 +1,34 @@
+repos:
+  # ruff: lint + format staged files in one pass. Replaces flake8/isort/black
+  # and (via the "S" rule family, flake8-bandit) covers SAST too — one tool,
+  # one config (Section 1 rule set lives in pyproject.toml [tool.ruff]).
+  # Pinned to the commit SHA for tag v0.16.0 — verify with:
+  #   git ls-remote https://github.com/astral-sh/ruff-pre-commit v0.16.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: cb8c523fd4835aba42af70f4cad5568db4df0b6c  # v0.16.0
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
+  # mypy: strict type checking on staged files. Pinned to the commit SHA for
+  # tag v2.3.0 — verify with:
+  #   git ls-remote https://github.com/pre-commit/mirrors-mypy v2.3.0
+  # additional_dependencies must list any typed third-party packages your
+  # project imports (e.g. pydantic) — mypy's pre-commit hook runs in an
+  # isolated env and won't see your project's venv.
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 41e691678310dfd3833f7ab4e180ddb014310356  # v2.3.0
+    hooks:
+      - id: mypy
+        additional_dependencies: ["pydantic>=2.13"]
+
+  # Gitleaks: scan staged files for secrets before they enter git history.
+  # Pinned to the commit SHA for tag v8.30.1 — verify with:
+  #   git ls-remote https://github.com/gitleaks/gitleaks v8.30.1
+  # Reason: supply chain attacks target mutable tags (docs/adr/0001-why-this-standard-exists.md,
+  # the trivy-action lesson — AGENTS.md hard rule).
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: 83d9cd684c87d95d656c1458ef04895a7f1cbd8e  # v8.30.1
+    hooks:
+      - id: gitleaks
