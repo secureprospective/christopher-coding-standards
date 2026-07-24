@@ -372,3 +372,23 @@ substantive work this session.
 - [x] Actioned: `templates/bash/` — `.shellcheckrc` (curated 5-check set + `source-path=SCRIPTDIR`), `.pre-commit-config.yaml` (shellcheck-py v0.11.0.1, scop/pre-commit-shfmt v3.13.1-1 with the `-w` fix documented inline, gitleaks v8.30.1; `.bats` files excluded from both lint hooks), `Makefile.snippet` (lint/fmt/test), `lib/strict-mode.sh` + `scripts/example.sh` (boundary-validation pattern), `tests/example.bats` (9 passing assertions), `README.md` (adoption guide + verified deliberate-violation test, including both defects found above). `CLAUDE.md` phase status, Key Files table, header, and Open Items updated — **Phase 2 is now complete.**
 - [ ] Open (carried forward, now covers three overlays): the CI-config-verification item from the 2026-07-24 backport/Python entries — a future CI job should also run `shellcheck`/`shfmt -d` against `templates/bash/`'s own shipped files on every PR to this repo.
 - [ ] Open: Phase 3 (local-model selection guidance, dual-model architecture doc) and the deferred cross-pollination pilot (Antigravity audit of `templates/astro/`) are the two candidates for the next substantive session here.
+
+---
+
+## 2026-07-24 — Phase 3: local-model selection guidance (`docs/local-model-guidance.md`, PR #22, squash `6e50109`)
+
+**Agents involved:** Claude (Builder), solo authoring.
+
+**What worked:**
+- **Caught a stale premise before building against it.** The project's own memory (`project_christopher_coding_standards`) flagged Phase 3's original scope — a dual-model architecture doc written against the local-ai-stack project — as MOOT after that project wound down 2026-06-13, but `CLAUDE.md`/`Task_list.md` still listed it as the next open item unchanged. Rather than build the stale version, surfaced the contradiction and asked Christopher what Phase 3 should actually cover now that Beelink is a real local-model deployment.
+- **Portability constraint set by Christopher mid-session, before any writing started:** local models "will change over time" and hardware will get upgraded — so the doc had to separate durable principles (selection checklist: context window/tool-calling/quant floor/task fit, verified against primary source not folklore; dual-model architecture pattern; weight-agnostic teammate doctrine) from the current fleet (Ornith/Gemma on Beelink), which is included only as an explicitly dated, non-authoritative snapshot with a "re-run the checklist on any hardware/model change" instruction. This is the same discipline the repo already applies to code (don't hardcode what will drift) applied to a planning doc.
+- Brought README.md's phase status current in the same PR — it had drifted (still showing Python/Bash overlays as pending after both had merged) and would have misled the next session reading it cold.
+
+**What didn't / honest limits:**
+- No live "test" of this doc the way code overlays get a deliberate-violation test — it's guidance prose, not an enforceable gate, so verification here means internal consistency + cross-references to real existing artifacts (`agent-codex-lite.md`, `feedback_beelink_boot_gating`, `lesson_small_model_floor_claims_expire`) rather than a pass/fail run.
+- No GLM/bird drafting pass — consistent with the Python/Bash overlay sessions.
+
+**Standard impact:**
+- [x] Actioned: `docs/local-model-guidance.md` (new — Layer 11 doctrine), `docs/INDEX.md` routing row, `CLAUDE.md` Layer 11 table row/Phase Status/Key Files/Open Items, `README.md` Layer 11 row + phase-status catch-up (Python/Bash/Phase 3 all marked complete).
+- [ ] Open: still no CI job verifying shipped template configs against their real tools (carried forward from the backport/Python/Bash entries — now the longest-standing open item in this log).
+- [ ] Open: the deferred cross-pollination pilot (Antigravity/second-vantage audit of `templates/astro/`) is now the only unscoped item left from the original Phase 2/3 list.
