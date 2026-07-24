@@ -1,0 +1,40 @@
+# Makefile snippet — Python overlay. Mirrors the TS/Go overlays' target names
+# (lint / fmt / test / test-coverage / mutation-test) so muscle memory
+# transfers across languages. Merge these targets into the project Makefile.
+
+.PHONY: lint fmt typecheck test test-coverage sca mutation-test
+
+lint:
+	ruff check .
+	mypy src
+
+fmt:
+	ruff format .
+	ruff check --fix .
+
+typecheck:
+	mypy src
+
+# -v mirrors the Go overlay's `go test -race` intent: fail loud, not quiet.
+test:
+	pytest -v
+
+COVERAGE_THRESHOLD := 80
+
+test-coverage:
+	pytest --cov --cov-report=term-missing --cov-fail-under=$(COVERAGE_THRESHOLD)
+
+# pip-audit: SCA — checks installed dependencies against the OSV/PyPI
+# advisory databases. Companion to gitleaks (secrets) and ruff's S-rules
+# (SAST) — the three legs of Layer 7 (security scanning) for this overlay.
+sca:
+	pip-audit
+
+# mutmut: Python's equivalent of the TS overlay's Stryker / Go overlay's
+# gremlins. Scoped to src/ — pure-logic packages are where a mutation score
+# has signal (same reasoning as the Go overlay's internal/engine/... scope).
+# Not run in CI by default (slow); run before a release or when tests feel
+# too easy to pass.
+mutation-test:
+	mutmut run --paths-to-mutate=src/
+	mutmut results
