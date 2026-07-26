@@ -1,0 +1,36 @@
+# Makefile — thin wrapper for standard project commands.
+# Merge these targets into your project's Makefile (or use directly if bun-ecs
+# owns the whole repo). All targets map to package.json scripts, run via bun.
+
+.PHONY: lint lint-fix format typecheck test check-deps check-file-length check-components check-all
+
+lint:
+	bun run lint
+
+lint-fix:
+	bun run lint:fix
+
+format:
+	bun run format
+
+typecheck:
+	bun run typecheck
+
+test:
+	bun run test
+
+# RULE 5 (ECS_RULES.md): import layering + no circular imports.
+check-deps:
+	bun run check:deps
+
+# RULE 6: 300-line file cap.
+check-file-length:
+	bun run check:file-length
+
+# RULE 2: components are data, zero methods.
+check-components:
+	bun run check:components
+
+# Everything a session-close gate needs in one command.
+check-all:
+	bun run check:all

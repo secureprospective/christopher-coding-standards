@@ -411,3 +411,25 @@ substantive work this session.
 **Standard impact:**
 - [x] Actioned: `templates/astro/.pre-commit-config.yaml.snippet` (mirrors-prettier remote hook → `repo: local` hook), `templates/astro/README.md` (new "Why a local hook, not mirrors-prettier" section, corrected verification-test expectations, corrected stale Phase 2/3 status footer), `docs/cross-pollination-log.md` (new dated entry). Fix verified end-to-end through `pre-commit run` itself with the exact shipped snippet content, not just standalone CLI or direct binary invocation.
 - [ ] Open: this closes the last item from the original Phase 2/3 list. The one item still carried forward across four sessions now is the CI job that verifies shipped template configs against their real tools on every PR — this cross-pollination round is itself evidence of exactly why that job would pay for itself (a config sat broken, unnoticed, since 2026-06-10).
+
+---
+
+## 2026-07-26 — Bun + ECS overlay (`templates/bun-ecs/`)
+
+**Agents involved:** Claude (Builder), solo authoring.
+
+**What worked:**
+- **Net-new overlay outside the phase roadmap, requested by a downstream project (Shadowbane Rebuild) rather than this repo's own planning.** Read the requesting project's `ECS_RULES.md`/`SYSTEM_ORDER.md`/`BLUEPRINT.md` first instead of designing an ECS pattern generically — the overlay's enforcement rules (import layering, component purity, file-length cap) are a direct port of that project's already-locked architecture-panel decisions, not an independent invention.
+- **Installed the real toolchain again, same discipline as every prior overlay.** Bun wasn't present on this box — installed it live, then hit `dependency-cruiser@18.1.0`'s Node `^22||^24||>=26` engine floor failing under Bun's Node-20-compat surface on first install. Didn't just downgrade blindly: checked `npm view <pkg> engines` across the last three majors and pinned to `17.4.3` (floor `^20.12`) with the reasoning documented in the overlay's README, not just the pin itself.
+- **Wrote the two custom pre-commit hooks (file-length, component-purity) as small Bun scripts rather than reaching for a heavier tool.** `check-component-purity.ts` uses the real TypeScript compiler API (not regex) to catch `class` declarations, method signatures, and function-typed component fields — deliberately mirroring the Go overlay's `ifaceguard` vettool pattern (a custom AST-based check for a project-specific invariant no stock linter covers) rather than under-building it as a grep.
+- **Every gate proven live through actual `pre-commit run`, both directions, before anything was copied into the real repo.** Built the whole overlay in a scratch dir first (not directly in the repo), ran `tsc`, Biome, `dependency-cruiser` (four layering rules + circular-import detection + the broadcast-phase carveout), both custom scripts, and gitleaks against a clean example tree (all passed) and then against one deliberate violation per gate (a component with a method + a function-typed field, a 311-line file, a simulate-phase system importing `db/`, a two-file circular import, a planted AWS-shaped secret) — all five failed correctly. Diffed the scratch files against the final copied-in files before committing to confirm byte-for-byte parity between what was tested and what shipped.
+- Smoke-ran the example tree under real Bun (`bun run`) — confirmed `World.exportSnapshot()` produces plain `JSON.stringify`-able output at runtime, not just type-checks clean. This closes the same class of gap the astro pilot found (a config/pattern that looks right until actually executed).
+
+**What didn't / honest limits:**
+- No GLM/bird cross-pollination round on this overlay — built and self-verified directly, same as the Python/Bash overlay sessions. A natural pilot candidate for a future session (the layering-rule regex paths in `.dependency-cruiser.cjs` are exactly the kind of "looks right, did anyone actually break it" surface GLM has caught elsewhere).
+- The `examples/server/src/` reference tree is intentionally minimal (12 files covering one component per pattern, one simulate-phase system, one broadcast-phase system) — it is not a scaffold to build a real game server from, just enough to prove every enforcement rule fires against representative code. The requesting project's actual `rebuild/` scaffold is separate and unaffected by this PR.
+- Same standing gap as every prior overlay: this repo has no CI job that re-verifies shipped template configs against real tools on every future PR to this repo — the verification above is a point-in-time guarantee, not a regression gate.
+
+**Standard impact:**
+- [x] Actioned: `templates/bun-ecs/` (README.md, package.json.snippet, Makefile.snippet, tsconfig.json, biome.json, `.dependency-cruiser.cjs`, `.pre-commit-config.yaml`, `scripts/check-file-length.ts`, `scripts/check-component-purity.ts`, `examples/server/src/`), `docs/INDEX.md` routing row, `CLAUDE.md` header/Phase Status/Key Files.
+- [ ] Open: same CI-config-verification item as above, now spanning five overlays with pre-commit hooks instead of four.

@@ -1,0 +1,47 @@
+repos:
+  # Biome: format, organize imports, lint, apply safe fixes to staged files.
+  # Pinned to the commit SHA for tag v2.4.16 — verify with:
+  #   git ls-remote https://github.com/biomejs/pre-commit v2.4.16
+  - repo: https://github.com/biomejs/pre-commit
+    rev: 301335ecade7a6a02a8af284bb2efe3347c1ce67  # v2.4.16
+    hooks:
+      - id: biome-check
+        additional_dependencies: ["@biomejs/biome@2.4.15"]
+
+  # Gitleaks: scan staged files for secrets before they enter git history.
+  # Pinned to the commit SHA for tag v8.30.1 — verify with:
+  #   git ls-remote https://github.com/gitleaks/gitleaks v8.30.1
+  # Reason: supply chain attacks target mutable tags (docs/adr/0001-why-this-standard-exists.md,
+  # the trivy-action lesson — AGENTS.md hard rule).
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: 83d9cd684c87d95d656c1458ef04895a7f1cbd8e  # v8.30.1
+    hooks:
+      - id: gitleaks
+
+  # Local hooks: project-specific architectural invariants with no stock
+  # tool equivalent (same reasoning as Go's ifaceguard/filelen custom
+  # vettool). `language: system` runs bun directly from the project's own
+  # node_modules — no isolated hook environment to fight (see the astro
+  # overlay's mirrors-prettier lesson for why that matters).
+  - repo: local
+    hooks:
+      - id: ecs-dependency-layering
+        name: ECS import layering (RULE 5)
+        description: shared<-ecs<-components<-systems<-game-loop, no circular imports, broadcast-phase carveout
+        entry: bunx depcruise --config .dependency-cruiser.cjs --output-type err server/src
+        language: system
+        pass_filenames: false
+        files: \.tsx?$
+
+      - id: ecs-file-length
+        name: ECS file length cap (RULE 6, 300 lines)
+        entry: bun scripts/check-file-length.ts
+        language: system
+        types: [ts]
+
+      - id: ecs-component-purity
+        name: ECS components are data, zero methods (RULE 2)
+        entry: bun scripts/check-component-purity.ts
+        language: system
+        types: [ts]
+        files: ^server/src/components/
