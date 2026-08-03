@@ -1,3 +1,10 @@
 # ClaudeBox session-tracking metadata — local only, not part of the published standard.
 # See docs/adr/0001-why-this-standard-exists.md re: AGENTS.md as the vendor-neutral advisory file.
 CLAUDE.md
+
+# Generated CI working-copy artifact. verify-templates.yml's "Surface" step
+# rebuilds this dir fresh each run (mkdir overlay + cp scratch/fixtures + the
+# pyproject.toml.snippet). Never committed — a stale build here could ship
+# outdated fixture content (e.g. a pre-review planted-secret version of
+# violating.py). scratch/fixtures/ are the tracked source-of-truth, not this.
+overlay/
