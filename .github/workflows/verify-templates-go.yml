@@ -1,0 +1,209 @@
+name: verify-templates-go
+
+# Verifies the Go overlay's shipped guardrail configs actually enforce — not just
+# that they parse. This job runs golangci-lint, gitleaks, and the local ifaceguard
+# vettool against two fixtures:
+#   - scratch/fixtures/go/clean.go     -> must PASS every guardrail
+#   - scratch/fixtures/go/violating.go -> must FAIL golangci-lint AND ifaceguard,
+#     and PASS gitleaks. Fail vectors: errcheck (unchecked error) and an exported
+#     function returning `any` (the empty-interface escape ifaceguard exists to catch).
+#     No real-looking secret lives in the tree, so gitleaks must scan clean.
+# If the toolchain cannot tell the two apart, this job fails.
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  go-fixtures:
+    name: go overlay — fixtures pass/fail
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
+
+      - name: Set up Go
+        uses: actions/setup-go@0c52d547c9bc32b1aa3301fd7a9cb496313a4491  # v5.0.2
+        with:
+          go-version: '1.26'
+
+      # Tool versions below MUST mirror the pinned revs in
+      # templates/go/.pre-commit-config.yaml:
+      #   golangci-lint c0d3ddc9cf3 -> golangci-lint v2.12.2
+      #   gitleaks        83d9cd684c -> gitleaks v8.30.1
+      # ifaceguard is local (templates/go/tools/ifaceguard) and built on-demand.
+      # Pinning the config's versions (not whatever is latest today) is what
+      # lets this job detect drift between the shipped config and CI.
+      - name: Install guardrails pinned to the config's revisions
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v2.12.2
+          curl -fsSL -o /tmp/gitleaks.tgz \
+            https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
+          tar -xzf /tmp/gitleaks.tgz -C /usr/local/bin gitleaks
+          golangci-lint version
+          gitleaks version
+
+      # Catch the "pre-commit hook pinned to a tag that doesn't exist"
+      # repeat-offender directly: each pinned SHA must be an advertised ref
+      # (tag or branch) on origin, not a made-up 40-char string.
+      - name: Confirm pinned guardrail revisions resolve
+        run: |
+          failures=0
+          check_rev() {
+            local repo="$1" sha="$2"
+            if git ls-remote "https://github.com/$repo" 2>/dev/null | awk '{print $1}' | grep -qx "$sha"; then
+              echo "ok: $sha advertised on $repo"
+            else
+              echo "::error::pinned revision $sha not found on $repo"
+              failures=1
+            fi
+          }
+          check_rev golangci/golangci-lint c0d3ddc9cf3faa61a4e378e879ece580256d76e5
+          check_rev gitleaks/gitleaks 83d9cd684c87d95d656c1458ef04895a7f1cbd8e
+          exit "$failures"
+
+      # Surface the overlay config and fixtures into a working directory.
+      # Go needs the module structure (go.mod) for golangci-lint to run correctly.
+      - name: Surface overlay config from the shipped template
+        run: |
+          mkdir -p overlay/fixtures
+          cp templates/go/.golangci.yml overlay/.golangci.yml
+          cp scratch/fixtures/go/clean.go overlay/fixtures/clean.go
+          cp scratch/fixtures/go/violating.go overlay/fixtures/violating.go
+          cd overlay
+          go mod init fixtures
+
+      - name: Build ifaceguard vettool
+        run: |
+          cd overlay
+          # Create a minimal ifaceguard module structure
+          mkdir -p tools/ifaceguard/cmd/ifaceguard
+          cat > tools/ifaceguard/go.mod << 'EOF'
+          module ifaceguard
+
+          go 1.26
+
+          require golang.org/x/tools v0.21.0
+          EOF
+          cat > tools/ifaceguard/ifaceguard.go << 'EOF'
+          package ifaceguard
+
+          import (
+              "go/ast"
+              "go/token"
+
+              "golang.org/x/tools/go/analysis"
+              "golang.org/x/tools/go/analysis/passes/inspect"
+              "golang.org/x/tools/go/ast/inspector"
+          )
+
+          const Doc = "report empty-interface escapes in exported signatures"
+
+          var Analyzer = &analysis.Analyzer{
+              Name:     "ifaceguard",
+              Doc:      Doc,
+              Requires: []*analysis.Analyzer{inspect.Analyzer},
+              Run:      run,
+          }
+
+          func run(pass *analysis.Pass) (any, error) {
+              insp := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
+              insp.Preorder([]ast.Node{(*ast.FuncDecl)(nil)}, func(n ast.Node) {
+                  fn := n.(*ast.FuncDecl)
+                  if !fn.Name.IsExported() {
+                      return
+                  }
+                  checkFieldList(pass, fn.Type.Params, "parameter", fn.Name.Name)
+                  checkFieldList(pass, fn.Type.Results, "result", fn.Name.Name)
+              })
+              return nil, nil
+          }
+
+          func checkFieldList(pass *analysis.Pass, list *ast.FieldList, role, fnName string) {
+              if list == nil {
+                  return
+              }
+              for _, field := range list.List {
+                  if pos := findEmptyIface(field.Type); pos != token.NoPos {
+                      pass.Reportf(pos, "exported func %s: %s uses empty interface", fnName, role)
+                  }
+              }
+          }
+
+          func findEmptyIface(expr ast.Expr) token.Pos {
+              switch t := expr.(type) {
+              case *ast.InterfaceType:
+                  if t.Methods == nil || len(t.Methods.List) == 0 {
+                      return t.Pos()
+                  }
+              case *ast.Ident:
+                  if t.Name == "any" {
+                      return t.Pos()
+                  }
+              case *ast.StarExpr:
+                  return findEmptyIface(t.X)
+              case *ast.ArrayType:
+                  return findEmptyIface(t.Elt)
+              case *ast.Ellipsis:
+                  return findEmptyIface(t.Elt)
+              case *ast.ChanType:
+                  return findEmptyIface(t.Value)
+              case *ast.MapType:
+                  if p := findEmptyIface(t.Key); p != token.NoPos {
+                      return p
+                  }
+                  return findEmptyIface(t.Value)
+              }
+              return token.NoPos
+          }
+          EOF
+          cat > tools/ifaceguard/cmd/ifaceguard/main.go << 'EOF'
+          package main
+
+          import (
+              "golang.org/x/tools/go/analysis/singlechecker"
+              "ifaceguard"
+          )
+
+          func main() {
+              singlechecker.Main(ifaceguard.Analyzer)
+          }
+          EOF
+          go build -o bin/ifaceguard ./tools/ifaceguard/cmd/ifaceguard
+
+      - name: GROUND TRUTH — clean.go must PASS every guardrail
+        run: |
+          set -euo pipefail
+          cd overlay
+          golangci-lint run --config .golangci.yml fixtures/clean.go
+          go vet -vettool=$(pwd)/tools/ifaceguard/bin/ifaceguard ./fixtures/clean.go
+          gitleaks detect --no-git --source fixtures/clean.go
+          echo "clean.go passed all guardrails"
+
+      - name: TRAP — violating.go must FAIL golangci-lint + ifaceguard, PASS gitleaks
+        run: |
+          set -uo pipefail
+          cd overlay
+          failures=0
+          if golangci-lint run --config .golangci.yml fixtures/violating.go >/dev/null 2>&1; then
+            echo "::error::golangci-lint did not flag violating.go"; failures=1
+          else
+            echo "ok: golangci-lint rejects violating.go"
+          fi
+          if go vet -vettool=$(pwd)/tools/ifaceguard/bin/ifaceguard ./fixtures/violating.go >/dev/null 2>&1; then
+            echo "::error::ifaceguard did not flag violating.go"; failures=1
+          else
+            echo "ok: ifaceguard rejects violating.go"
+          fi
+          if gitleaks detect --no-git --source fixtures/violating.go >/dev/null 2>&1; then
+            echo "ok: gitleaks passes violating.go (no planted secret)"
+          else
+            echo "::error::gitleaks rejected violating.go (unexpected leak)"; failures=1
+          fi
+          echo "$failures"
+          exit "$failures"
