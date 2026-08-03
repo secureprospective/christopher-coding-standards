@@ -1,0 +1,117 @@
+name: verify-templates
+
+# Verifies the shipped guardrail configs *actually enforce* — not just that
+# they parse. A guardrail config can look correct and still silently do
+# nothing (this repo has burned us multiple times: a biome.json schema error,
+# a golangci-lint empty-block bug, a pre-commit hook pinned to a nonexistent
+# tag, an allowlisted example key that let a real-looking secret through).
+# This job is the automated catch for that class of bug.
+#
+# It runs the Python overlay's three guardrails (ruff, mypy, gitleaks) from
+# the shipped config against two fixtures:
+#   - scratch/fixtures/clean.py     -> must PASS every guardrail
+#   - scratch/fixtures/violating.py -> must FAIL ruff + mypy, and PASS
+#     gitleaks. Two fail vectors, each targeting a different guardrail:
+#     an SQL-injection string concat (ruff S608) and an untyped def (mypy
+#     strict). No real-looking secret lives in the tree, so gitleaks must
+#     scan the violating file clean — mirroring Christopher's call to keep
+#     only S608 + untyped-def as fail vectors.
+# If the toolchain cannot tell the two apart, this job fails.
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  python-fixtures:
+    name: python overlay — fixtures pass/fail
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065  # v5.6.0
+        with:
+          python-version: '3.12'
+
+      # Tool versions below MUST mirror the pinned revs in
+      # templates/python/.pre-commit-config.yaml:
+      #   ruff-pre-commit cb8c523fd4 -> ruff v0.16.0
+      #   mirrors-mypy    41e6916783 -> mypy v2.3.0
+      #   gitleaks        83d9cd684c -> gitleaks v8.30.1
+      # Pinning the config's versions (not whatever is latest today) is what
+      # lets this job detect drift between the shipped config and CI.
+      - name: Install guardrails pinned to the config's revisions
+        run: |
+          python -m pip install --quiet \
+            ruff==0.16.0 \
+            mypy==2.3.0
+          curl -fsSL -o /tmp/gitleaks.tgz \
+            https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
+          tar -xzf /tmp/gitleaks.tgz -C /usr/local/bin gitleaks
+          gitleaks version
+      # Catch the "pre-commit hook pinned to a tag that doesn't exist"
+      # repeat-offender directly: each pinned SHA must be an advertised ref
+      # (tag or branch) on origin, not a made-up 40-char string.
+      - name: Confirm pinned guardrail revisions resolve
+        run: |
+          failures=0
+          check_rev() {
+            local repo="$1" sha="$2"
+            if git ls-remote "https://github.com/$repo" 2>/dev/null | awk '{print $1}' | grep -qx "$sha"; then
+              echo "ok: $sha advertised on $repo"
+            else
+              echo "::error::pinned revision $sha not found on $repo"
+              failures=1
+            fi
+          }
+          check_rev astral-sh/ruff-pre-commit cb8c523fd4835aba42af70f4cad5568db4df0b6c
+          check_rev pre-commit/mirrors-mypy 41e691678310dfd3833f7ab4e180ddb014310356
+          check_rev gitleaks/gitleaks 83d9cd684c87d95d656c1458ef04895a7f1cbd8e
+          exit "$failures"
+      # ruff's S-family (SQL injection etc.) and mypy's strict mode both come
+      # from pyproject.toml.snippet — NOT from the pre-commit config. A
+      # self-contained job must surface that snippet, or neither guardrail
+      # fires with its real rules and a violation passes silently.
+      - name: Surface overlay config from the shipped snippet
+        run: |
+          mkdir -p overlay
+          cp templates/python/pyproject.toml.snippet overlay/pyproject.toml
+          cp scratch/fixtures/clean.py overlay/clean.py
+          cp scratch/fixtures/violating.py overlay/violating.py
+      - name: GROUND TRUTH — clean.py must PASS every guardrail
+        run: |
+          set -euo pipefail
+          cd overlay
+          ruff check --config pyproject.toml clean.py
+          mypy --config-file pyproject.toml clean.py
+          gitleaks detect --no-git --source clean.py
+          echo "clean.py passed all guardrails"
+      - name: TRAP — violating.py must FAIL ruff + mypy, PASS gitleaks
+        run: |
+          set -uo pipefail
+          cd overlay
+          failures=0
+          if ruff check --config pyproject.toml violating.py >/dev/null 2>&1; then
+            echo "::error::ruff did not flag violating.py"; failures=1
+          else
+            echo "ok: ruff rejects violating.py"
+          fi
+          if mypy --config-file pyproject.toml violating.py >/dev/null 2>&1; then
+            echo "::error::mypy did not flag violating.py"; failures=1
+          else
+            echo "ok: mypy rejects violating.py"
+          fi
+          if gitleaks detect --no-git --source violating.py >/dev/null 2>&1; then
+            echo "ok: gitleaks passes violating.py (no planted secret)"
+          else
+            echo "::error::gitleaks rejected violating.py (unexpected leak)"; failures=1
+          fi
+          echo "$failures"
+          exit "$failures"
