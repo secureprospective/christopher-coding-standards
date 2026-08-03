@@ -1,0 +1,118 @@
+name: verify-templates-bash
+
+# Verifies the Bash overlay's guardrail configs *actually enforce* — not just
+# that they parse. This job is the automated catch for guardrail config bugs.
+#
+# It runs the Bash overlay's three guardrails (shellcheck, shfmt, gitleaks)
+# from the shipped config against two fixtures:
+#   - scratch/fixtures/bash/clean.sh     -> must PASS every guardrail
+#   - scratch/fixtures/bash/violating.sh -> must FAIL shellcheck + shfmt,
+#     and PASS gitleaks. Two fail vectors, each targeting a different
+#     guardrail: unquoted variable expansion (shellcheck SC2086) and
+#     inconsistent indentation (shfmt). No real-looking secret lives in
+#     the tree, so gitleaks must scan the violating file clean.
+# If the toolchain cannot tell the two apart, this job fails.
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  bash-fixtures:
+    name: bash overlay — fixtures pass/fail
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4.4.0
+
+      # Tool versions below MUST mirror the pinned revs in
+      # templates/bash/.pre-commit-config.yaml:
+      #   shellcheck-py   745eface02a -> v0.11.0.1 (shellcheck-py wrapper's OWN
+      #     version — it bundles underlying shellcheck v0.11.0, a different
+      #     version number on a different repo; this is not a typo)
+      #   pre-commit-shfmt 05c1426671b -> v3.13.1-1
+      #   gitleaks        83d9cd684c8 -> v8.30.1
+      # Pinning the config's versions (not whatever is latest today) is what
+      # lets this job detect drift between the shipped config and CI.
+      - name: Install guardrails pinned to the config's revisions
+        run: |
+          curl -fsSL -o /tmp/shellcheck.tgz \
+            https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.xz
+          tar -xf /tmp/shellcheck.tgz -C /usr/local/bin --strip-components=1 shellcheck-v0.11.0/shellcheck
+          shellcheck --version
+
+          curl -fsSL -o /tmp/shfmt.tar.gz \
+            https://github.com/mvdan/sh/releases/download/v3.13.1/shfmt_v3.13.1_linux_amd64
+          install -m 755 /tmp/shfmt.tar.gz /usr/local/bin/shfmt
+          shfmt --version
+
+          curl -fsSL -o /tmp/gitleaks.tgz \
+            https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
+          tar -xzf /tmp/gitleaks.tgz -C /usr/local/bin gitleaks
+          gitleaks version
+
+      # Catch the "pre-commit hook pinned to a tag that doesn't exist"
+      # repeat-offender directly: each pinned SHA must be an advertised ref
+      # (tag or branch) on origin, not a made-up 40-char string.
+      - name: Confirm pinned guardrail revisions resolve
+        run: |
+          failures=0
+          check_rev() {
+            local repo="$1" sha="$2"
+            if git ls-remote "https://github.com/$repo" 2>/dev/null | awk '{print $1}' | grep -qx "$sha"; then
+              echo "ok: $sha advertised on $repo"
+            else
+              echo "::error::pinned revision $sha not found on $repo"
+              failures=1
+            fi
+          }
+          check_rev shellcheck-py/shellcheck-py 745eface02aef23e168a8afb6b5737818efbea95
+          check_rev scop/pre-commit-shfmt 05c1426671b9237fb5e1444dd63aa5731bec0dfb
+          check_rev gitleaks/gitleaks 83d9cd684c87d95d656c1458ef04895a7f1cbd8e
+          exit "$failures"
+
+      # Bash guardrails don't require external config snippets like Python's
+      # pyproject.toml, but we still isolate fixtures in an overlay dir for
+      # clean context isolation.
+      - name: Surface overlay config and fixtures
+        run: |
+          mkdir -p overlay/bash
+          cp scratch/fixtures/bash/clean.sh overlay/bash/
+          cp scratch/fixtures/bash/violating.sh overlay/bash/
+
+      - name: GROUND TRUTH — clean.sh must PASS every guardrail
+        run: |
+          set -euo pipefail
+          cd overlay/bash
+          shellcheck clean.sh
+          shfmt -d -i 2 -ci -sr clean.sh
+          gitleaks detect --no-git --source clean.sh
+          echo "clean.sh passed all guardrails"
+
+      - name: TRAP — violating.sh must FAIL shellcheck + shfmt, PASS gitleaks
+        run: |
+          set -uo pipefail
+          cd overlay/bash
+          failures=0
+          if shellcheck violating.sh >/dev/null 2>&1; then
+            echo "::error::shellcheck did not flag violating.sh"; failures=1
+          else
+            echo "ok: shellcheck rejects violating.sh"
+          fi
+          if shfmt -d -i 2 -ci -sr violating.sh >/dev/null 2>&1; then
+            echo "::error::shfmt did not flag violating.sh"; failures=1
+          else
+            echo "ok: shfmt rejects violating.sh"
+          fi
+          if gitleaks detect --no-git --source violating.sh >/dev/null 2>&1; then
+            echo "ok: gitleaks passes violating.sh (no planted secret)"
+          else
+            echo "::error::gitleaks rejected violating.sh (unexpected leak)"; failures=1
+          fi
+          echo "$failures"
+          exit "$failures"
