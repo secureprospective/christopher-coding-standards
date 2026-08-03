@@ -80,108 +80,18 @@ jobs:
 
       - name: Build ifaceguard vettool
         run: |
-          cd overlay
-          # Create a minimal ifaceguard module structure
-          mkdir -p tools/ifaceguard/cmd/ifaceguard
-          cat > tools/ifaceguard/go.mod << 'EOF'
-          module ifaceguard
-
-          go 1.26
-
-          require golang.org/x/tools v0.21.0
-          EOF
-          cat > tools/ifaceguard/ifaceguard.go << 'EOF'
-          package ifaceguard
-
-          import (
-              "go/ast"
-              "go/token"
-
-              "golang.org/x/tools/go/analysis"
-              "golang.org/x/tools/go/analysis/passes/inspect"
-              "golang.org/x/tools/go/ast/inspector"
-          )
-
-          const Doc = "report empty-interface escapes in exported signatures"
-
-          var Analyzer = &analysis.Analyzer{
-              Name:     "ifaceguard",
-              Doc:      Doc,
-              Requires: []*analysis.Analyzer{inspect.Analyzer},
-              Run:      run,
-          }
-
-          func run(pass *analysis.Pass) (any, error) {
-              insp := pass.ResultOf[inspect.Analyzer].(*inspector.Inspector)
-              insp.Preorder([]ast.Node{(*ast.FuncDecl)(nil)}, func(n ast.Node) {
-                  fn := n.(*ast.FuncDecl)
-                  if !fn.Name.IsExported() {
-                      return
-                  }
-                  checkFieldList(pass, fn.Type.Params, "parameter", fn.Name.Name)
-                  checkFieldList(pass, fn.Type.Results, "result", fn.Name.Name)
-              })
-              return nil, nil
-          }
-
-          func checkFieldList(pass *analysis.Pass, list *ast.FieldList, role, fnName string) {
-              if list == nil {
-                  return
-              }
-              for _, field := range list.List {
-                  if pos := findEmptyIface(field.Type); pos != token.NoPos {
-                      pass.Reportf(pos, "exported func %s: %s uses empty interface", fnName, role)
-                  }
-              }
-          }
-
-          func findEmptyIface(expr ast.Expr) token.Pos {
-              switch t := expr.(type) {
-              case *ast.InterfaceType:
-                  if t.Methods == nil || len(t.Methods.List) == 0 {
-                      return t.Pos()
-                  }
-              case *ast.Ident:
-                  if t.Name == "any" {
-                      return t.Pos()
-                  }
-              case *ast.StarExpr:
-                  return findEmptyIface(t.X)
-              case *ast.ArrayType:
-                  return findEmptyIface(t.Elt)
-              case *ast.Ellipsis:
-                  return findEmptyIface(t.Elt)
-              case *ast.ChanType:
-                  return findEmptyIface(t.Value)
-              case *ast.MapType:
-                  if p := findEmptyIface(t.Key); p != token.NoPos {
-                      return p
-                  }
-                  return findEmptyIface(t.Value)
-              }
-              return token.NoPos
-          }
-          EOF
-          cat > tools/ifaceguard/cmd/ifaceguard/main.go << 'EOF'
-          package main
-
-          import (
-              "golang.org/x/tools/go/analysis/singlechecker"
-              "ifaceguard"
-          )
-
-          func main() {
-              singlechecker.Main(ifaceguard.Analyzer)
-          }
-          EOF
-          go build -o bin/ifaceguard ./tools/ifaceguard/cmd/ifaceguard
+          mkdir -p overlay/bin
+          # Build the real ifaceguard tool from its own module directory
+          # (go.mod pins golang.org/x/tools v0.39.0, which compiles under Go 1.26)
+          cd templates/go/tools/ifaceguard
+          go build -o "$GITHUB_WORKSPACE/overlay/bin/ifaceguard" ./cmd/ifaceguard
 
       - name: GROUND TRUTH — clean.go must PASS every guardrail
         run: |
           set -euo pipefail
           cd overlay
           golangci-lint run --config .golangci.yml fixtures/clean.go
-          go vet -vettool=$(pwd)/tools/ifaceguard/bin/ifaceguard ./fixtures/clean.go
+          go vet -vettool=$(pwd)/bin/ifaceguard ./fixtures/clean.go
           gitleaks detect --no-git --source fixtures/clean.go
           echo "clean.go passed all guardrails"
 
@@ -195,7 +105,7 @@ jobs:
           else
             echo "ok: golangci-lint rejects violating.go"
           fi
-          if go vet -vettool=$(pwd)/tools/ifaceguard/bin/ifaceguard ./fixtures/violating.go >/dev/null 2>&1; then
+          if go vet -vettool=$(pwd)/bin/ifaceguard ./fixtures/violating.go >/dev/null 2>&1; then
             echo "::error::ifaceguard did not flag violating.go"; failures=1
           else
             echo "ok: ifaceguard rejects violating.go"

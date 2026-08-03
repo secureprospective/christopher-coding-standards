@@ -11,7 +11,7 @@ func BadSignature(input string) any {
 
 // ProcessData fails to check error — errcheck must flag this.
 func ProcessData(data string) string {
-	result, _ := ParseData(data) //nolint:errcheck — deliberate violation for test
+	result, _ := ParseData(data) //nolint:errcheck // deliberate violation for test
 	return result
 }
 
