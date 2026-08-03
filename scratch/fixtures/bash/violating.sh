@@ -3,14 +3,14 @@
 # Violating bash fixture — fails shellcheck + shfmt, passes gitleaks
 # Contains intentional violations but no real secrets.
 
-# shellcheck violation: unquoted variable expansion
+# violation: unquoted variable expansion (shellcheck SC2086)
 name=$1
 path=/tmp/file.txt
 
 # shfmt violation: inconsistent indentation (this line should be 2 spaces, not 4)
-    echo "Processing: ${name}"
+    echo Processing: $name
 
-# shellcheck violation: unused variable
+# violation: unused variable (shellcheck SC2034)
 unused_var="this is never used"
 
 # shfmt violation: space after redirect should be there (but we're testing other violations)
