@@ -65,6 +65,11 @@ your project's `package.json` — don't overwrite existing scripts.
 bun install
 ```
 
+> **pnpm guardrail exemption:** this overlay is exempt from the fleet-standard
+> `only-allow pnpm` guard (base TypeScript overlay) — Bun is the runtime AND package
+> manager here, not an npm-vs-pnpm project. Do not add the base `preinstall` line when
+> composing this overlay.
+
 ### 4. Lay out your source tree to match the layering rule
 
 `.dependency-cruiser.cjs` hardcodes the path prefixes `server/src/{shared,ecs,components,

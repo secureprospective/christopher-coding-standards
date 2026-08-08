@@ -57,6 +57,12 @@ The snippet ships the **pnpm guardrail** (fleet standard) in three pieces:
 pnpm install --frozen-lockfile
 ```
 
+> **pnpm guardrail exemptions:** two overlays are deliberately exempt from this guard and
+> keep npm. **bun-ecs** — Bun is the runtime AND package manager there, not an
+> npm-vs-pnpm project. **cloudflare-workers** — keeps npm per the standing OQ-7 decision
+> for its wrangler toolchain. When composing either overlay, do not add the base
+> `preinstall` line.
+
 ### 4. Activate pre-commit hooks
 
 ```bash
