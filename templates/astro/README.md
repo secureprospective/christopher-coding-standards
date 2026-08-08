@@ -75,8 +75,16 @@ Add the `scripts` and `devDependencies` blocks into your project's
 `package.json` — merge, don't overwrite. Then:
 
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
 ```
+
+The snippet ships the **pnpm guardrail** (fleet standard, same as the base
+TypeScript overlay): a `packageManager: "pnpm@10.34.3"` pin (enable corepack
+with `corepack enable`, register with `corepack use pnpm@10.34.3`) and a
+`preinstall: "npx only-allow pnpm"` guard so `npm install`/`yarn` fail loud
+instead of producing a second lockfile. CI and any agent-driven install **must**
+use `pnpm install --frozen-lockfile` — never bare `pnpm install` — so the
+committed `pnpm-lock.yaml` is never silently rewritten.
 
 ### 6. Merge `Makefile.snippet`
 
