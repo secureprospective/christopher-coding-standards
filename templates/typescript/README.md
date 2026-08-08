@@ -47,8 +47,14 @@ schemas/example.ts  →  src/schemas/example.ts  (move to your source tree)
 
 Open `package.json.snippet`. Add the `scripts` and `devDependencies` blocks into your project's `package.json`. Do not overwrite existing scripts — merge them.
 
+The snippet ships the **pnpm guardrail** (fleet standard) in three pieces:
+
+1. **`packageManager` pin** — `"packageManager": "pnpm@10.34.3"` plus a corepack pin (enable with `corepack enable`, then `corepack use pnpm@10.34.3` to register the version). This stops pnpm's major version from silently drifting between machines and CI.
+2. **`preinstall` guard** — `"preinstall": "npx only-allow pnpm"`. If anything runs `npm install` or `yarn` in this repo it fails loud with a one-line error instead of silently producing a second lockfile. npm/yarn exit non-zero; pnpm passes.
+3. **`--frozen-lockfile` discipline** — CI and any agent-driven install **must** use `pnpm install --frozen-lockfile` (never bare `pnpm install`), so the committed `pnpm-lock.yaml` is never silently rewritten. Add this to your CI and to the "Install" step of any agent workflow. If a dependency genuinely needs updating, do it deliberately with `pnpm add`/`pnpm update` and commit the lockfile change as its own PR.
+
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
 ```
 
 ### 4. Activate pre-commit hooks
