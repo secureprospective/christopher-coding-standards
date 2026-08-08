@@ -70,6 +70,11 @@ npm install
 > Toolchain is **npm + wrangler** (per the social-media-automation OQ-7 decision). The base
 > overlay's README mentions pnpm; on a Workers project use npm so it matches `wrangler`'s
 > conventions and this snippet's lockfile.
+>
+> **pnpm guardrail exemption:** this overlay is exempt from the fleet-standard
+> `only-allow pnpm` guard (base TypeScript overlay) — it keeps npm per the standing OQ-7
+> decision for its wrangler toolchain. Do not add the base `preinstall` line when
+> composing this overlay.
 
 ### 4. Fill in `wrangler.jsonc`
 
