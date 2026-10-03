@@ -51,6 +51,7 @@ disable checksum verification.
 schema/example.go     →  internal/schema/   (boundary-validation pattern)
 playerid/example.go   →  internal/playerid/playerid.go   (AD-06 struct-wrap; see below)
 tools/ifaceguard/     →  tools/ifaceguard/   (custom analyzer — keep it a SEPARATE Go module)
+bloat.sh              →  scripts/bloat.sh    (bloat ratchet; then run `scripts/bloat.sh --update` once to write .bloat-baseline)
 ```
 
 Merge `Makefile.snippet`'s targets into your project Makefile. The `lint`
