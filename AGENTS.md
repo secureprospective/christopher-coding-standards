@@ -19,7 +19,9 @@ Default behavior if the user declines or does not respond: proceed without Spec 
 
 ## Code footprint
 
-- Target file size: under 250 lines. Hard cap: 400 lines. Refactor over.
+- Split code where its job changes, never to satisfy a size. Function length and complexity are enforced; file length is only reported (past 600 lines, give the reason in the PR).
+- Comments say what the code can't, in the fewest lines. No history in code: review findings, reviewer or agent names, decision IDs and session labels go in commits and docs.
+- The second near-copy of a unit is the signal to turn it into data (one routine + a table), not to clone it again.
 - No copy-paste. Check `SYSTEM_MAP.md` for existing utilities before writing helpers.
 - Add a third-party dependency only when the alternative is more than ~15 lines of equivalent native code.
 - No commented-out code blocks. Delete or use `git` history.

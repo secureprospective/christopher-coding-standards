@@ -105,7 +105,7 @@ on purpose:
 | `playerid.PlayerID("99")` — skip validation | struct-wrap (unexported field) | **won't compile** |
 | `interface{}` / `any` in an exported signature | **`ifaceguard`** — a `go/analysis` vettool we *wrote*, because no off-the-shelf linter catches this | `go vet` fails |
 | `internal/ingestion` imports `internal/engine` (cross-layer) | `depguard` rules encoding the three-layer architecture law | **build error** |
-| a 600-line source file | `filelen` gate | `make lint` fails |
+| a comment carrying review history, a tiny split-off file, or a cloned unit | `bloat.sh` ratchet | `make lint` fails |
 | `fmt.Sprintf`-built SQL / hard-coded AWS key | `gosec` + `gitleaks` | blocked at commit |
 
 And here's the part most "standards" skip: **we test the testers.** Two gates

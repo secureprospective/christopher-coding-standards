@@ -17,25 +17,22 @@ $(IFACEGUARD_BIN): tools/ifaceguard/ifaceguard.go tools/ifaceguard/cmd/ifaceguar
 ifaceguard: $(IFACEGUARD_BIN)
 	go vet -vettool=$(abspath $(IFACEGUARD_BIN)) ./...
 
-# filelen — enforces the 400-line file cap (companion plan: "a design
-# constraint, not a cleanup step"; AD-14/AD-17 pre-splits). golangci-lint's
-# funlen caps FUNCTION size, NOT file size, and no enabled linter measures file
-# length — so the cap had no automated gate (Confidence-80 plan-fidelity sweep,
-# 2026-06-13). This is that gate: a pure-shell backstop to the design-time
-# pre-split, no new dependency. Test files are exempt (table-driven tests run
-# long, mirroring the funlen test-relief).
-FILE_CAP := 400
-.PHONY: filelen
+# filelen reports source files over 600 lines. It does not fail: split code where its job
+# changes, never to satisfy a size (Codex M11). A file over 600 lines needs its reason in the PR.
+FILE_REPORT := 600
+.PHONY: filelen bloat
 filelen:
-	@offenders=$$(find . -name '*.go' -not -name '*_test.go' -not -path './vendor/*' -not -path './tools/*' \
-	  -exec awk 'END { if (NR > $(FILE_CAP)) printf "  %s (%d lines)\n", FILENAME, NR }' {} \;); \
-	if [ -n "$$offenders" ]; then \
-	  echo "FILE CAP ($(FILE_CAP) lines) exceeded — pre-split per the wireframe (AD-14/AD-17) BEFORE commit:"; \
-	  echo "$$offenders"; exit 1; \
-	else echo "filelen: all source files within the $(FILE_CAP)-line cap"; fi
+	@find . -name '*.go' -not -name '*_test.go' -not -path './vendor/*' -not -path './tools/*' \
+	  -exec awk 'END { if (NR > $(FILE_REPORT)) printf "filelen: %s is %d lines; give the reason in the PR\n", FILENAME, NR }' {} \;
 
-# lint runs golangci-lint, ifaceguard, AND filelen — all must pass to clear.
-lint: ifaceguard filelen
+# bloat is the ratchet on comment share, review history in comments, sub-40-line files and
+# near-duplicate code (bloat.sh, copied into the project's scripts/). It fails if any measure
+# rises above .bloat-baseline; `scripts/bloat.sh --update` lowers the baseline after a cleanup.
+bloat:
+	scripts/bloat.sh
+
+# lint runs ifaceguard, filelen, bloat and golangci-lint — all must pass to clear.
+lint: ifaceguard filelen bloat
 	golangci-lint run ./...
 
 fmt:

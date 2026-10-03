@@ -172,10 +172,14 @@ mutation testing on pure logic to prove the asserts actually bite.
 A component's name states its single job; if naming it needs "and"/"or," it does
 too much. Functions and files are bounded so a reader (human or model) can hold
 the whole thing at once.
-- **Apply:** one exported job per file where it fits; function-length and
-  file-size limits enforced, not aspired to.
-- **▸ receipt:** `filelen` gate fails any source file over the cap (because
-  `funlen` caps functions, not files — and nothing else did).
+- **Apply:** split where the job changes, never to satisfy a size. Function
+  length and complexity are enforced (`funlen`, `gocyclo`), because they measure
+  how hard code is to follow. File length is only reported: past 600 lines, give
+  the reason in the PR. A sibling file created only to get under a cap is slop.
+- **▸ receipt:** a hard 400-line file cap, applied literally by agents, scattered
+  cohesive code into sibling files. In one project, 19 files cited the cap as the
+  reason they existed and 34 held under 40 lines of code. The cap became a report
+  (2026-10-03).
 
 ### M12 — Determinism & data-driven behavior; no hidden state
 Same input, same output. Behavior that depends on values lives in *data*
@@ -220,7 +224,14 @@ are reserved for the *why* a reader can't recover from the code — the
 non-obvious trade-off, the spec citation, the "do not reorder, see issue X."
 Comments that restate the code rot and lie.
 - **Apply:** rename before you comment; encode contracts in types; comment the
-  surprising, not the obvious.
+  surprising, not the obvious, in the fewest lines that carry it. One spec link
+  per unit at most. **Never** put history in code: review findings, reviewer or
+  agent names, decision IDs, session or ship labels. They belong in commits and
+  docs, where they don't rot inside the code.
+- **▸ receipt:** "cite the spec" turned into comments that carried history. In one
+  project 30% of all non-test lines were comments; 47 files named the reviewer
+  that prompted a line, and one package carried 124 decision labels. `bloat.sh`
+  now ratchets comment share and review history so they can only fall.
 
 ### M17 — AI-written code needs guardrails the human canon assumes away
 The enterprise canon was written for humans with continuous memory, accountability,
@@ -233,7 +244,9 @@ and judgment. We have none of those by default across sessions. So we add:
   slop. Templates are the unit of reuse.
 - **First-Instance Template Review** — the costliest error is a flaw in a template
   that later sessions clone. Review the *first* instance of any pattern before
-  inheritors build on it.
+  inheritors build on it. **And the second near-copy is the signal to turn the
+  pattern into data (M12)**, not to clone it again: one routine plus a table, never
+  N parallel units that differ only in constants. `dupl` in `bloat.sh` ratchets it.
 - **Anchor against context drift** — long sessions and cross-agent handoffs lose
   coherence; pin intent in committed docs (this Codex, AGENTS.md, ADRs), and
   route a session through an index so it loads only what it needs, coherently.
@@ -306,6 +319,10 @@ and the auditor **never writes** — it returns leads; the Builder fixes.
 | a hardcoded host/ID/secret | breaks on move; leaks; un-configurable | discover/config/secret store (M12, M15) |
 | a giant "util"/"helper" file | no single job; unsearchable | split by responsibility (M11) |
 | a comment restating the code | rots, lies, adds noise | rename; delete the comment (M16) |
+| history in a comment (review finding, reviewer/agent name, decision ID, session label) | rots in place; buries the code; belongs to version control | move it to the commit or the doc; keep only the why (M16) |
+| a comment wall restating a spec doc inline | two copies drift; the code drowns | one link to the spec (M16) |
+| parallel units that differ only in constants (N rubrics, N fetchers, N handlers) | every fix lands N times; the real design is a table | one routine + a data table (M12, M17) |
+| a sibling file created only to get under a size cap | scatters one job across files | merge it; split only where the job changes (M11) |
 | "I'll add tests later" | the assert never comes; coverage theater | behavior tests now (M10) |
 | copying a pattern before its first instance is reviewed | clones a latent flaw N times | First-Instance Template Review (M17) |
 | acting on a review finding without reading the cited line | propagates a hallucination as a "fix" | triage against source (M13) |
