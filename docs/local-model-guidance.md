@@ -1,3 +1,6 @@
+> **Historical guidance — not current instructions or present-day capability/authority evidence.**
+> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 core/routing cleared content review; this is not a complete-kit release, consumer rollout or fleet role reassignment. Do not load this history by default.
+
 # Local Model Guidance (Layer 11)
 
 **Purpose:** Layer 11 of the guardrail stack governs how a *local* model earns a role in the pipeline — what it's trusted to do, what it's never trusted to do, and how that assignment gets re-checked. This doc is written to survive a hardware upgrade or a model swap without a rewrite: the **principles are permanent, the current fleet is a dated example**, not the spec. Never let a specific model name calcify into the rule.

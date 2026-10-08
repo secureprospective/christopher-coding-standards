@@ -1,60 +1,27 @@
-# System Map
+# Standards kit map
 
-This file tells AI agents what already exists in this project so they do not reinvent utilities or violate directory boundaries.
+This map describes the actual kit, not example application directories. Update relevant entries when artifacts/responsibilities change; mark uncertainty rather than inventing utilities.
 
-> Hand-maintained. Update when new directories, utilities, or external services are added. **Out-of-date system maps degrade agent performance more than missing ones.** If you cannot keep a section current, mark it `STALE` and the agent will skip it.
+| Path | Responsibility |
+|---|---|
+| `AGENTS.md`, `docs/INDEX.md` | Kit-maintenance instructions and task routing. |
+| `docs/quality-contract.md` | Shared six-dimensional acceptance contract; portable to consumers. |
+| `templates/AGENTS.md`, `templates/SYSTEM_MAP.md` | Consumer instruction/map starting points, customized to actual project facts. |
+| `templates/typescript/` | Base TS configs/snippets and schema example. |
+| `templates/astro/`, `templates/cloudflare-workers/`, `templates/bun-ecs/` | Selected additive/specialized TS overlays; their READMEs define merge/runtime particulars. |
+| `templates/go/`, `templates/python/`, `templates/bash/` | Language configs, examples and command interfaces. Go includes the existing ifaceguard analyzer; Bash includes strict-mode helpers/Bats examples. |
+| `scratch/fixtures/` | Tracked deliberate clean/violating Python, Go and Bash inputs used by existing workflows. Not generated disposable output. |
+| `.github/workflows/` | Security workflow and Python/Go/Bash fixture workflows. Source configuration is not proof checks ran or reject the intended defect. |
+| `.gitleaks.toml`, `.claude/settings.json` | Existing scanner/vendor settings; exclusions/runtime semantics constrain any enforcement claim. No sandbox established by these files. |
+| `skills/` | Adoption proposal guidance and read-side GitHub helper skill. Global installation is operator-managed. |
+| `docs/adr/` | Decisions and superseding rationale. ADR-0001 retains original history; ADR-0002 describes the approved quality-first migration. |
+| `docs/review-roles.md` | Portable, authorization-scoped writer/reviewer/owner responsibilities. No fleet model mapping. |
+| `docs/planning/` | Rebuild plan, frozen candidates, source fingerprints and acceptance/research evidence. Not a default consumer prompt load. |
+| Legacy Codex/model guides, `docs/cross-pollination-log.md`, `docs/session-notes.md`, `HANDOFF-phase-1c.md` | Historical doctrine/receipts and optional historical logs. Not current model assignment, permissions or active quality policy. |
+| `HANDOFF.md` | Current project baton, progress, next gate and material blockers. |
 
----
+## Boundaries
 
-## Directory invariants
+There is no root application, ORM, database/client utility library, root package/Makefile test runner, tracker service or publisher broker. Examples under overlays are not live application services. Do not reference `internal/db`, `cmd/server` or similar template examples as existing kit code.
 
-Describe each top-level directory and what belongs there. Example format:
-
-- `/cmd` — entrypoints only. No business logic.
-- `/internal/lib` — shared utilities. Check here before writing any helper.
-- `/internal/db` — all database access. Nothing else imports the database driver.
-- `/scripts` — operational scripts. Bash only. Each runnable standalone.
-- `/docs/adr` — architectural decision records. Do not modify without proposing a new ADR.
-
-## Existing utilities
-
-List functions, classes, modules that agents should reuse instead of duplicating. Example format:
-
-- `internal/lib/format.FormatCurrency(amount int64) string` — currency formatting
-- `internal/lib/hash.SHA256(payload []byte) string` — SHA-256 hashing
-- `internal/db.WithTx(ctx, fn) error` — standard transaction wrapper with retry
-- `internal/http.WriteJSON(w, status, body)` — JSON response helper with consistent error envelope
-
-## External services
-
-List external services this project talks to. Agents should use the existing client, not write a new one. Example format:
-
-- **Postgres** (primary store) — client in `internal/db/postgres.go`
-- **Redis** (cache) — client in `internal/cache/redis.go`
-- **S3-compatible object storage** — client in `internal/storage/s3.go`
-
-## Configuration sources
-
-Where configuration comes from. Agents should not invent new config sources. Example format:
-
-- **Environment variables** — loaded in `cmd/server/main.go`. Listed in `.env.example`.
-- **Feature flags** — `internal/config/flags.go`. Add new flags there.
-
-## What does not exist (intentionally)
-
-List things agents might assume exist but do not. This prevents wasted exploration. Example format:
-
-- No ORM. Raw SQL with `sqlc`-generated query bindings.
-- No logger framework. Standard library only (`log/slog` for Go, `structlog` for Python).
-- No DI framework. Constructor injection only.
-- No singletons. All dependencies passed explicitly.
-
-## Public-facing surfaces
-
-For security review — list every entrypoint that accepts external input. Example format:
-
-- HTTP API: routes in `internal/http/router.go`, request schemas in `internal/http/schemas/`
-- gRPC: defined in `proto/`, server in `internal/grpc/`
-- CLI: `cmd/cli/main.go`
-
-Agents must validate input through the schema layer before any business logic runs.
+Consumers copy selected approved artifacts and preserve customizations; this repo does not update them automatically. Proposed tracking remains unselected/unbuilt. Existing mutable workflow refs/skipped root TS checks are known limitations, not solved by this map.

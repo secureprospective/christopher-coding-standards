@@ -1,0 +1,71 @@
+{
+  "chunk": "C1",
+  "base": "1ea1a0e4acc17e8d7ca6d8cc90161660a891919b",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "allowed_modified": [
+    "AGENTS.md",
+    "SYSTEM_MAP.md",
+    "README.md",
+    "docs/INDEX.md",
+    "skills/adopt-coding-standards/SKILL.md",
+    "docs/agent-codex.md",
+    "docs/agent-codex-lite.md",
+    "docs/multi-agent-roles.md",
+    "docs/glm-auditor-discipline.md",
+    "docs/local-model-guidance.md"
+  ],
+  "new_source_and_scope": [
+    "docs/quality-contract.md",
+    "docs/review-roles.md",
+    "docs/adr/0002-quality-first-acceptance.md",
+    "templates/AGENTS.md",
+    "templates/SYSTEM_MAP.md",
+    "docs/planning/c1-scope.md"
+  ],
+  "results": {
+    "allowed_diff_exact": true,
+    "markdown_structure_whitespace": true,
+    "local_links_checked": 65,
+    "maintainer_placeholders_absent": true,
+    "six_dimensions_present": true,
+    "legacy_bodies_byte_identical": 5,
+    "protected_C0_sources_unchanged": 87,
+    "disposable_markdown_consumer_routes_resolve": true,
+    "missing_contract_negative_probe_rejected": true,
+    "new_runtime_product_checks": false,
+    "live_consumer_updates": false,
+    "hosted_changes": false
+  },
+  "initial_check_failure": "First inspection assumed 85 protected baseline files. Actual manifest covers eight of ten changed paths; two historical guides are outside that selection. Corrected checker to derive the protected count (87); no source change/suppression to pass.",
+  "default_read_set_comparison": {
+    "previous_kit_writing_route": {
+      "paths": [
+        "AGENTS.md",
+        "docs/agent-codex.md"
+      ],
+      "bytes": 34452,
+      "words": 5368,
+      "physical_lines": 538
+    },
+    "new_kit_route_including_index": {
+      "paths": [
+        "AGENTS.md",
+        "docs/quality-contract.md",
+        "docs/INDEX.md"
+      ],
+      "bytes": 12105,
+      "words": 1465,
+      "physical_lines": 93
+    },
+    "consumer_route": {
+      "paths": [
+        "templates/AGENTS.md",
+        "docs/quality-contract.md"
+      ],
+      "bytes": 8589,
+      "words": 1100,
+      "physical_lines": 64
+    },
+    "limit": "Measured document bytes/words/lines only; not model tokens, performance or a quality quota."
+  }
+}

@@ -1,33 +1,22 @@
-# Standards Repo Index
+# Standards kit routing
 
-Read only what your task needs. This file exists so a session — Claude,
-Antigravity, or a future agent — loads a few hundred lines instead of the
-whole repo. If your task doesn't match a row, ask the human owner before
-guessing what's relevant.
+For writing/reviewing a change, read [quality-contract.md](quality-contract.md) plus the task's actual project/slice. Do not load every historical motif, research report or model profile. Root [AGENTS.md](../AGENTS.md) maintains this kit; consumers use [templates/AGENTS.md](../templates/AGENTS.md).
 
-## Routing table
+| Task | Relevant additional context |
+|---|---|
+| Find existing kit components / change ownership | [Actual kit map](../SYSTEM_MAP.md). |
+| Propose consumer adoption/update | [Adoption skill](../skills/adopt-coding-standards/SKILL.md); selected overlay README; preserve local instructions/config. No live enrollment implied. |
+| Maintain a language overlay | Only its `templates/<stack>/` files/README and affected callers/fixture/workflow. TS-dependent overlays also use the base TS merge contract. |
+| TypeScript / Astro / Workers / Bun-ECS | [TS](../templates/typescript/README.md), [Astro](../templates/astro/README.md), [Workers](../templates/cloudflare-workers/README.md), [Bun/ECS](../templates/bun-ecs/README.md), as relevant. |
+| Go / Python / Bash | [Go](../templates/go/README.md), [Python](../templates/python/README.md), [Bash](../templates/bash/README.md), as relevant. |
+| Authorized delegation / independent review | [Scoped roles](review-roles.md); exact task/candidate/check evidence. No fixed vendor/fleet mapping. |
+| Design/data-flow/debloat | Contract's design/review section and the actual project slice. Detailed method is C2 work, not a published graph service. |
+| Understand current core/migration decision | [ADR-0002](adr/0002-quality-first-acceptance.md); [ADR-0001](adr/0001-why-this-standard-exists.md) is original history, partly superseded after acceptance. |
+| CI/security behavior | Actual `.github/workflows/` and `.gitleaks.toml`; [branch-protection guide](branch-protection.md) is a procedure, not evidence of current hosted settings. |
+| Read-side GitHub inspection when needed | [GitHub helper skill](../skills/github-pr/SKILL.md). Read access is not publication authority. |
+| Continue approved rebuild / inspect evidence | [HANDOFF](../HANDOFF.md), [chunk plan](planning/rebuild-chunk-plan-2026-10-08.md), relevant candidate/result only. [C0 result](planning/c0-acceptance-result.md), [C1 scope](planning/c1-scope.md). |
+| Investigate an old doctrine/receipt | Historical Codex/full-lite/model profiles and optional session/cross-pollination logs only for that explicit question. Not active instructions or current claims. |
 
-| If your task is... | Read | Skip |
-|---|---|---|
-| **Writing or reviewing actual code** (any Builder *or* Recon build/review session) | `docs/agent-codex.md` — the build doctrine: 18 indexable motifs, slop catalog, security baseline, the canon mapped to each motif | Everything else until a task is named |
-| **Writing code on a small local model** (Ornith/Gemma/qwen; Hermes' local fallback) whose context can't hold the full Codex | `docs/agent-codex-lite.md` — the 18 motif laws + slop headlines, compressed not cut | The full `agent-codex.md` unless the task sets a template others clone |
-| **Selecting/assigning a role to a local model, or re-checking one after a hardware/model change** (Layer 11) | `docs/local-model-guidance.md` — selection checklist, dual-model pattern, dated fleet snapshot | Don't carry forward old floor/context numbers without re-running the checklist |
-| Starting a Builder (Claude) session on this repo | `CLAUDE.md` (local), `SYSTEM_MAP.md` | Everything else until a task is named |
-| Adopting this standard in a new/existing repo | `skills/adopt-coding-standards/SKILL.md` (run it — it covers the rest) | `templates/`, ADRs, `HANDOFF-*` docs |
-| Adding a new language overlay (Phase 2+) | `templates/typescript/` as the pattern + its README, `AGENTS.md` layer table | `HANDOFF-phase-1c.md` (historical only) |
-| Adopting Astro support in a project already on the TypeScript overlay | `templates/astro/README.md` | `templates/typescript/README.md` (already done) |
-| Adopting Cloudflare Workers support in a project already on the TypeScript overlay | `templates/cloudflare-workers/README.md` | `templates/typescript/README.md` (already done) |
-| Adopting a Bun-runtime ECS game/simulation server in a project already on the TypeScript overlay | `templates/bun-ecs/README.md` | `templates/typescript/README.md` (already done) |
-| Any multi-agent / cross-pollination request | `docs/multi-agent-roles.md` (binding) | Everything else unless the scoped request names it |
-| Large-context whole-repo audit / de-slop / front-end QA (GLM auditor) | `docs/glm-auditor-discipline.md` (Layer 10.5) + `docs/multi-agent-roles.md` (binding) | Everything else unless the scoped request names it |
-| Recon/Audit agent (Antigravity) — any task | `docs/multi-agent-roles.md` only, plus the specific subtree named in the scoped request | `CLAUDE.md`, memory, ADRs, living docs |
-| CI / security gate questions | `.github/workflows/security.yml`, `.gitleaks.toml`, `docs/branch-protection.md` | - |
-| Opening a PR / checking CI status / reading branch protection (`gh` unavailable) | `skills/github-pr/SKILL.md` | - |
-| "Why does this standard exist" (justification for a stakeholder) | `docs/adr/0001-why-this-standard-exists.md` | - |
-| Closing a session in this repo | (write step, not read) append an entry to `docs/session-notes.md` | - |
-| Periodic standards review ("what should change based on past sessions?") | `docs/session-notes.md` | Everything else unless reviewing |
+Add a route for new maintained responsibilities; mark stale/unknown context instead of guessing. A task not named here does not need an approval merely to inspect relevant source—ask only for a material scope/behavior/risk ambiguity.
 
-## Maintenance rule
-
-Adding a new doc, overlay, or ADR is not done until it has a row here. A doc
-with no route is dead weight every future session has to discover the hard way.
+**Status:** C1 core/routing cleared content review; [acceptance record](planning/c1-acceptance-result.md). Language overlays/fixture mechanisms/CI are unchanged pending their own chunks; existence and historical green checks are not complete compatibility/enforcement proof. No complete-kit release. Tracking remains proposed, not deployed.

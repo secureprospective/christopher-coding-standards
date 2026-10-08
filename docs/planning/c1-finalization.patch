@@ -1,0 +1,103 @@
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -25,4 +25,4 @@
+ 
+ Consumers start from [templates/AGENTS.md](templates/AGENTS.md), [templates/SYSTEM_MAP.md](templates/SYSTEM_MAP.md) and the shared contract—not these maintainer files. Follow the [adoption proposal skill](skills/adopt-coding-standards/SKILL.md); do not overwrite customized projects, install global skills, alter hosted controls or enroll consumers without the relevant authority.
+ 
+-C1 is a review candidate on the rebuild branch. Runtime overlays/CI remain legacy until their own gates clear; conflicting configured gates are assessed/migrated explicitly, never silently bypassed.
++C1 core/routing cleared content review on the rebuild branch; see the [acceptance record](docs/planning/c1-acceptance-result.md). This is not a complete-kit release. Runtime overlays/CI remain legacy until their own gates clear; conflicting configured gates are assessed/migrated explicitly, never silently bypassed.
+--- a/docs/INDEX.md
++++ b/docs/INDEX.md
+@@ -19,4 +19,4 @@
+ 
+ Add a route for new maintained responsibilities; mark stale/unknown context instead of guessing. A task not named here does not need an approval merely to inspect relevant source—ask only for a material scope/behavior/risk ambiguity.
+ 
+-**Candidate status:** C1 core/routing under independent verification. Language overlays/fixture mechanisms/CI are unchanged pending their own chunks; existence and historical green checks are not complete compatibility/enforcement proof. Tracking remains proposed, not deployed.
++**Status:** C1 core/routing cleared content review; [acceptance record](planning/c1-acceptance-result.md). Language overlays/fixture mechanisms/CI are unchanged pending their own chunks; existence and historical green checks are not complete compatibility/enforcement proof. No complete-kit release. Tracking remains proposed, not deployed.
+--- a/README.md
++++ b/README.md
+@@ -45,7 +45,7 @@
+ 
+ ## Current verification status
+ 
+-C0 documentation/scenario baseline cleared; C1 compact core/routing is an unaccepted review candidate on the rebuild branch. Runtime overlays, dependency migrations and CI repairs remain later chunks. No release, automatic updater, tracker registry or publisher is claimed.
++C0 documentation/scenario baseline and C1 core/routing cleared their independent content reviews; see [C1 acceptance](docs/planning/c1-acceptance-result.md). Runtime overlays, dependency migrations and CI repairs remain later chunks. No complete-kit release, automatic updater, tracker registry or publisher is claimed.
+ 
+ Existing required TS contexts historically succeeded while substantive steps skipped; Python/Go/Bash fixture successes do not prove every advertised gate or complete project behavior. Known inherited fixture and npm/pnpm mismatches are assigned to later gates. See [C0 baseline](docs/planning/c0-gate-baseline.md) and [current handoff](HANDOFF.md), not old phase badges, for evidence and limits.
+ 
+--- a/docs/adr/0002-quality-first-acceptance.md
++++ b/docs/adr/0002-quality-first-acceptance.md
+@@ -1,7 +1,7 @@
+ # ADR-0002 — quality-first acceptance and scoped context
+ 
+ Date: 2026-10-08. Owner: Christopher. Implementation writer: Bee.
+-Status: **C1 implementation candidate for independent verification**, based on Christopher's approved quality-first rebuild and chunk plan. Effective kit migration only after C1 acceptance; not consumer enrollment, a fleet role reassignment or new operational authority.
++Status: **Core decision/content review cleared**, implementing Christopher's approved quality-first rebuild and chunk plan; [acceptance record](../planning/c1-acceptance-result.md). Final status verification precedes the local checkpoint. This is not consumer enrollment, a fleet role reassignment, a complete-kit release or new operational authority.
+ 
+ ## Context
+ 
+@@ -20,7 +20,7 @@
+ 
+ ## Relation to ADR-0001 and legacy guidance
+ 
+-ADR-0001 remains unedited as history. Upon C1 acceptance, this decision supersedes its blanket architecture-context exclusion, mandatory Spec Kit question (tool use becomes project/operator-selected), universal hook/enforcement claims and vendor-file symlink expectation (runtime filenames/loading must be verified). Model-agnostic shared guidance, free-tooling-first distribution, narrow permissions and immutable third-party action/hook refs remain.
++ADR-0001 remains unedited as history. For the accepted core/routing slice, this decision supersedes its blanket architecture-context exclusion, mandatory Spec Kit question (tool use becomes project/operator-selected), universal hook/enforcement claims and vendor-file symlink expectation (runtime filenames/loading must be verified). Model-agnostic shared guidance, free-tooling-first distribution, narrow permissions and immutable third-party action/hook refs remain.
+ 
+ The superseding contract replaces conflicting universal prescriptions in the historical Codex/full-lite/model-role guides, including guaranteed purity/security/capability claims, always-on race/mutation/newtype requirements and fixed size/duplication/dependency heuristics. Their historical receipts/benchmarks are not current verified facts. Research cannot justify universal model-security or workflow rules from conditional studies; corrected research is retained in planning evidence, not every prompt.
+ 
+--- a/skills/adopt-coding-standards/SKILL.md
++++ b/skills/adopt-coding-standards/SKILL.md
+@@ -11,7 +11,7 @@
+ 
+ - Use the actual owner-selected standards clone/revision; no canonical machine path is assumed. Confirm source identity/revision and known acceptance status. A remote URL, version stamp or editable receipt alone is not approval or trust.
+ - Identify the actual target repo, ownership, branch/status and existing instructions/config/checks. Preserve other agents' work, local rules, package-manager/lockfile contracts and source history. Do not move repos/worktrees or read/write credential files.
+-- Read source `docs/INDEX.md`, `docs/quality-contract.md` and only selected overlay READMEs. C1/overlays on an unaccepted rebuild branch are candidates, not a ready release. Missing compatibility/enforcement proof stays unverified; do not claim full adoption from successful copying.
++- Read source `docs/INDEX.md`, `docs/quality-contract.md` and only selected overlay READMEs. Check acceptance per unit: content-reviewed core on the rebuild branch does not make unverified overlays or the complete kit a ready release. Missing compatibility/enforcement proof stays unverified; do not claim full adoption from successful copying.
+ 
+ ## Select exact artifacts, then propose the merge
+ 
+--- a/docs/agent-codex.md
++++ b/docs/agent-codex.md
+@@ -1,5 +1,5 @@
+ > **Historical guidance — not current instructions or present-day capability/authority evidence.**
+-> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 migration is a review candidate, not a consumer rollout or fleet role reassignment. Do not load this history by default.
++> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 core/routing cleared content review; this is not a complete-kit release, consumer rollout or fleet role reassignment. Do not load this history by default.
+ 
+ # The Agent Codex
+ 
+--- a/docs/agent-codex-lite.md
++++ b/docs/agent-codex-lite.md
+@@ -1,5 +1,5 @@
+ > **Historical guidance — not current instructions or present-day capability/authority evidence.**
+-> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 migration is a review candidate, not a consumer rollout or fleet role reassignment. Do not load this history by default.
++> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 core/routing cleared content review; this is not a complete-kit release, consumer rollout or fleet role reassignment. Do not load this history by default.
+ 
+ # The Agent Codex — LITE
+ 
+--- a/docs/multi-agent-roles.md
++++ b/docs/multi-agent-roles.md
+@@ -1,5 +1,5 @@
+ > **Historical guidance — not current instructions or present-day capability/authority evidence.**
+-> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 migration is a review candidate, not a consumer rollout or fleet role reassignment. Do not load this history by default.
++> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 core/routing cleared content review; this is not a complete-kit release, consumer rollout or fleet role reassignment. Do not load this history by default.
+ 
+ # Multi-agent role allocation
+ 
+--- a/docs/glm-auditor-discipline.md
++++ b/docs/glm-auditor-discipline.md
+@@ -1,5 +1,5 @@
+ > **Historical guidance — not current instructions or present-day capability/authority evidence.**
+-> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 migration is a review candidate, not a consumer rollout or fleet role reassignment. Do not load this history by default.
++> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 core/routing cleared content review; this is not a complete-kit release, consumer rollout or fleet role reassignment. Do not load this history by default.
+ 
+ # GLM large-context auditor & front-end QA discipline
+ 
+--- a/docs/local-model-guidance.md
++++ b/docs/local-model-guidance.md
+@@ -1,5 +1,5 @@
+ > **Historical guidance — not current instructions or present-day capability/authority evidence.**
+-> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 migration is a review candidate, not a consumer rollout or fleet role reassignment. Do not load this history by default.
++> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 core/routing cleared content review; this is not a complete-kit release, consumer rollout or fleet role reassignment. Do not load this history by default.
+ 
+ # Local Model Guidance (Layer 11)
+ 

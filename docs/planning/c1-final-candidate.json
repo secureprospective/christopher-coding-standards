@@ -1,0 +1,128 @@
+{
+  "chunk": "C1",
+  "stage": "Status-only finalization after CLEAR content review",
+  "base": "1ea1a0e4acc17e8d7ca6d8cc90161660a891919b",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "original_candidate_sha256": "c5273731da1a564abe85aca286da80a0a5e00735da32569c0e1bae44fbd9bf40",
+  "original_review_run": "e25f7836-28cf-4667-b2d8-5e3306bfdbfa",
+  "original_reviewed_inputs_recoverable": true,
+  "recovery": "Reverse c1-finalization.patch in a disposable document copy; use preserved c1-checks-before-finalization.json for original check output. All17 original candidate hashes verified recovered, not inferred. Never reverse into the live working tree.",
+  "initial_recovery_error": "First temporary fixture copied only tracked changed paths, omitting the new ADR included in the status patch. Recovery could not apply; corrected fixture to include all17 original candidate paths. Source/criteria unchanged.",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 3116,
+      "sha256": "259dd5e1395952c5742e50098e51aeb30c723f403d862f2692b68889a071fe91"
+    },
+    {
+      "path": "SYSTEM_MAP.md",
+      "bytes": 2942,
+      "sha256": "ec9b488d997b3f2f0978cd75e57996583952ca49c16f27a250777bd453ea4e2d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4758,
+      "sha256": "f74d89eb8f246f1c0bfdd275d2def1be378f0283fe712a64b3ed6889fe72571d"
+    },
+    {
+      "path": "docs/INDEX.md",
+      "bytes": 3074,
+      "sha256": "b332224edb6049898e99dd0e407649ee4205f209b43a8e19f8d57963c5921a5a"
+    },
+    {
+      "path": "skills/adopt-coding-standards/SKILL.md",
+      "bytes": 4573,
+      "sha256": "398faae21f3f6b79bd18c73ec77c901a3cb79ea27eeac71d7dbe7b4fa033f946"
+    },
+    {
+      "path": "docs/agent-codex.md",
+      "bytes": 29718,
+      "sha256": "40a60be76b1f8f3b6852e923b83202a779815bcf57bc4f0eb781cf39189e8220"
+    },
+    {
+      "path": "docs/agent-codex-lite.md",
+      "bytes": 6338,
+      "sha256": "77abaca7b87708c35ba43503f1a3806c82c0bc1d4283d9e8cae799b375b344ca"
+    },
+    {
+      "path": "docs/multi-agent-roles.md",
+      "bytes": 15511,
+      "sha256": "7a0fd9390a0a26c41aa8b4e87d25a6b85e99a9ecd01a03d0f4a319499da8db70"
+    },
+    {
+      "path": "docs/glm-auditor-discipline.md",
+      "bytes": 6815,
+      "sha256": "c0b0bbd7e2ed38c4118467e78a2f7adc2b9eede8fe84df0a8a3579693aa8b711"
+    },
+    {
+      "path": "docs/local-model-guidance.md",
+      "bytes": 6247,
+      "sha256": "70fc542d87c0af4fa888413dda9de4017204068d8bb523791cb540f36f4109c0"
+    },
+    {
+      "path": "docs/quality-contract.md",
+      "bytes": 5915,
+      "sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f"
+    },
+    {
+      "path": "docs/review-roles.md",
+      "bytes": 2230,
+      "sha256": "129803c502e6511b032cdaaa980ad488fefb5f3b1474d75d30149eb6fcae98e5"
+    },
+    {
+      "path": "docs/adr/0002-quality-first-acceptance.md",
+      "bytes": 4827,
+      "sha256": "50581451c4192ccecbb4fac7eae7a8d8bcd83efdc6eaf221d73806c32c78dd00"
+    },
+    {
+      "path": "templates/AGENTS.md",
+      "bytes": 2674,
+      "sha256": "c8bbb045bc89e8bf0dc90467b673e00fcc34846e793586434b06e9ca3c878fe7"
+    },
+    {
+      "path": "templates/SYSTEM_MAP.md",
+      "bytes": 1747,
+      "sha256": "54ad30fdc50804e044b6a741c21aa041883672e558c397097d69f1273111c5b4"
+    },
+    {
+      "path": "docs/planning/c1-scope.md",
+      "bytes": 2955,
+      "sha256": "2fa9e254f76f62bff4e7e884da1ad49a877477e8f4fa25ea7f14c73119c500ad"
+    },
+    {
+      "path": "docs/planning/c1-checks.json",
+      "bytes": 2202,
+      "sha256": "e98bfc5895e12490aa2fe23de01e3e9234ec5290deb322f9c9eb586819aeac00"
+    },
+    {
+      "path": "docs/planning/c1-finalization.patch",
+      "bytes": 10958,
+      "sha256": "13a582c4ee1fec477e2a210bfaa3c58dcb860c25386d0eb6c8968178130b0a90"
+    },
+    {
+      "path": "docs/planning/c1-acceptance-result.md",
+      "bytes": 3914,
+      "sha256": "e145bc77ef80af9d88e7502887498be23c06197981e41f30c95486367d8cad5b"
+    },
+    {
+      "path": "docs/planning/evidence/c1-checks-before-finalization.json",
+      "bytes": 2202,
+      "sha256": "a4b113d527a26c2d551d732e142c97eb41ac34adea1eb4b29771fd6a16bcf329"
+    },
+    {
+      "path": "docs/planning/evidence/c1-independent-review-2026-10-08.md",
+      "bytes": 6389,
+      "sha256": "6d886207cb09fc2ec000f1e382d1f26bd394aeee8d06e605c67ea8db9254705d"
+    }
+  ],
+  "diff_sha256": "6ffe723d506c060ed68a1e06d50ef041ac22254d3dfd383cea3bcd8556dd3167",
+  "checks": {
+    "local_links": 65,
+    "legacy_bodies_byte_identical": 5,
+    "protected_source_fingerprints_unchanged": 87,
+    "consumer_doc_positive_and_missing_contract_negative": true,
+    "quality_contract_roles_consumer_templates_unchanged_since_review": true,
+    "runtime_product_execution": false
+  },
+  "finalization_review": "pending"
+}
