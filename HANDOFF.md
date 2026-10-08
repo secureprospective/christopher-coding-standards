@@ -1,21 +1,21 @@
 # HANDOFF
 
 ## Baton
-Bee · 2026-10-08 · compaction checkpoint; session continues.
+Bee · 2026-10-08 · approved rebuild underway.
 
 ## Where it stands
-Christopher approved the quality-first rebuild after compaction. Planning, source research and canonical GitHub audit are complete; no rebuilt operational standards, overlay changes or authority rollout implemented.
-Branch: `docs/standards-rebuild-checkpoint-2026-10-08` (checkpoint only; not merged).
-Read `docs/planning/RESUME.md` first, then `docs/planning/rebuild-at-a-glance-2026-10-08.md`.
+Branch `rebuild/quality-core-2026-10-08`. C0 acceptance baseline cleared:16independent exercise verdicts reconciled;95source fingerprints unchanged. Documentation/scenario review only—not executable overlay proof. No operational standards/overlays/CI/consumer changes yet.
+Read `docs/planning/c0-acceptance-result.md`, then `docs/planning/rebuild-chunk-plan-2026-10-08.md`. The result supersedes the frozen plan's C0-in-progress note. Earlier compaction state remains in `docs/planning/RESUME.md`.
 
 ## Next move
-Resume the approved rebuild with the bounded core quality/architecture-data-flow review seam. Preserve behavior/readability and minimal workflow friction. Tracking is first proposed infrastructure, not a reason to build publication machinery first.
+C1: compact canonical quality contract, coherent kit/consumer routing and explicit migration rationale. Bee writes; fresh read-only reviewer gates the candidate. Reuse C0 cases under the actual new instructions. No extra approval ritual for routine in-scope fixes.
 
 ## Blocked on
-No blocker to bounded approved core work. Hosted authority/credential separation, consumer enrollment, fleet rollout and infrastructure selection remain separate decisions; no live corridor authorized. Product tests need the designated suitable VM, not host/GUI execution.
+No current C0 blocker. Runtime chunks require a suitable available test VM; availability/ownership unverified. Tracking selection, hosted authority, credential separation, consumer enrollment and fleet rollout remain separate decisions.
 
-## Tried/rejected
-Workflow-first overconstraint, worktree-as-sandbox, green skipped jobs as verification, automatic DRY/size caps, source-version-as-approval, blind copied updates and a mandatory publisher service. Keep accepted quality objectives; do not re-litigate them.
+## Findings carried forward
+C3/C9: Go negative fixture suppresses advertised errcheck violation; prove intended diagnostics, not arbitrary failure.
+C5/C12: npm-ci workflow conflicts with pnpm-only consumer snippets; align supported installation/lockfile contract without bypassing guards.
 
-## Evidence
-`docs/planning/evidence/MANIFEST.json` preserves eight source reports/dossier/audit artifacts. `docs/planning/rebuild-considerations-2026-10-08.md` records the sequence and corrections. No running session jobs remain.
+## Rejected
+Workflow-first machinery, worktree-as-sandbox, green skipped checks as verification, blind size/DRY quotas and code-golf. No live publisher/App/broker, automatic deployment or consumer rewrite authorized.

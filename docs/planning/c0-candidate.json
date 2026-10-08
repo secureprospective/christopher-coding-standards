@@ -1,0 +1,47 @@
+{
+  "chunk": "C0",
+  "base": "69e0658dcb5ff45806eb048dcaf7207df684d9f5",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "scope": "Document-only synthetic acceptance exercises and read-only source baseline; not product/runtime verification.",
+  "checks": {
+    "authored_markdown_fences_whitespace": true,
+    "case_ids_15_and_oracle_coverage": true,
+    "referenced_artifacts_present": true,
+    "source_fingerprints_95_match_working_and_HEAD": true,
+    "tracked_operational_changes": false,
+    "new_product_runtime_checks": false,
+    "review_gate": "pending"
+  },
+  "files": [
+    {
+      "path": "docs/planning/c0-review-cases.md",
+      "bytes": 12953,
+      "sha256": "d086c353b8f2cfc9479dc581bd8a379fc27b8398d33841d1fc126a9d50551aa5"
+    },
+    {
+      "path": "docs/planning/c0-review-oracle.md",
+      "bytes": 5408,
+      "sha256": "0aa03996fb78728a6b359b36187b214d53e26c349acc7fac1a9bf53b0482a82e"
+    },
+    {
+      "path": "docs/planning/c0-gate-baseline.md",
+      "bytes": 11074,
+      "sha256": "9973a56e5dfcfdb212d33c999b9b62e3110c3804288b986b2bc2ba14dd88b465"
+    },
+    {
+      "path": "docs/planning/c0-source-fingerprints.json",
+      "bytes": 19883,
+      "sha256": "e4318babe60737711ae8de4c521097020c88cb1c6a02fd005613d00960d5910a"
+    },
+    {
+      "path": "docs/planning/rebuild-chunk-plan-2026-10-08.md",
+      "bytes": 14971,
+      "sha256": "1ceb843a55b57d0fa3a8c6c4f5a7294525c94e01c09bb501fcd8f6dfa8022edf"
+    },
+    {
+      "path": "docs/planning/evidence/chunk-plan-review-2026-10-08.md",
+      "bytes": 1615,
+      "sha256": "3289d1ab2a9d503fc02dd0c65ff8940913eff4d7210dce5ff8b61dabb1bd0cfc"
+    }
+  ]
+}
