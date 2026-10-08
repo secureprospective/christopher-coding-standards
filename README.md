@@ -29,6 +29,7 @@ Use trusted deterministic checks for actual failure modes. Independently assess 
 | Surface | Purpose |
 |---|---|
 | [Core contract](docs/quality-contract.md) | Compact acceptance rules, concrete safety/evidence constraints and review verdicts. |
+| [Architecture/data-flow/debloat method](docs/architecture-review.md) | Optional focused review of actual code responsibilities, contracts, ownership, effects and preserving simplifications. |
 | [Consumer instructions](templates/AGENTS.md), [map](templates/SYSTEM_MAP.md) | Project-customized starting points; required facts/checks are filled from the actual project. |
 | `templates/typescript/` | Base TypeScript tooling/configs. |
 | `templates/astro/`, `templates/cloudflare-workers/`, `templates/bun-ecs/` | Selected TS-related/runtime overlays. |

@@ -10,7 +10,7 @@ For writing/reviewing a change, read [quality-contract.md](quality-contract.md) 
 | TypeScript / Astro / Workers / Bun-ECS | [TS](../templates/typescript/README.md), [Astro](../templates/astro/README.md), [Workers](../templates/cloudflare-workers/README.md), [Bun/ECS](../templates/bun-ecs/README.md), as relevant. |
 | Go / Python / Bash | [Go](../templates/go/README.md), [Python](../templates/python/README.md), [Bash](../templates/bash/README.md), as relevant. |
 | Authorized delegation / independent review | [Scoped roles](review-roles.md); exact task/candidate/check evidence. No fixed vendor/fleet mapping. |
-| Design/data-flow/debloat | Contract's design/review section and the actual project slice. Detailed method is C2 work, not a published graph service. |
+| Material design/data-flow/debloat review | [Task-scoped method](architecture-review.md) plus the actual project slice. Optional deeper context, not a default full-repo load or graph service. |
 | Understand current core/migration decision | [ADR-0002](adr/0002-quality-first-acceptance.md); [ADR-0001](adr/0001-why-this-standard-exists.md) is original history, partly superseded after acceptance. |
 | CI/security behavior | Actual `.github/workflows/` and `.gitleaks.toml`; [branch-protection guide](branch-protection.md) is a procedure, not evidence of current hosted settings. |
 | Read-side GitHub inspection when needed | [GitHub helper skill](../skills/github-pr/SKILL.md). Read access is not publication authority. |

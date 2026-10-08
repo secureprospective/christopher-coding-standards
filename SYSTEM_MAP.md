@@ -6,6 +6,7 @@ This map describes the actual kit, not example application directories. Update r
 |---|---|
 | `AGENTS.md`, `docs/INDEX.md` | Kit-maintenance instructions and task routing. |
 | `docs/quality-contract.md` | Shared six-dimensional acceptance contract; portable to consumers. |
+| `docs/architecture-review.md` | Optional task-scoped component/data-flow and preserving-debloat method; no engine or automatic refactor. |
 | `templates/AGENTS.md`, `templates/SYSTEM_MAP.md` | Consumer instruction/map starting points, customized to actual project facts. |
 | `templates/typescript/` | Base TS configs/snippets and schema example. |
 | `templates/astro/`, `templates/cloudflare-workers/`, `templates/bun-ecs/` | Selected additive/specialized TS overlays; their READMEs define merge/runtime particulars. |
