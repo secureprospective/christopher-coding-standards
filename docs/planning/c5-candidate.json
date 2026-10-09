@@ -1,0 +1,222 @@
+{
+  "base": "6aec8f384bd2a91c2114234b04dc0231332f68ff",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "files": [
+    {
+      "path": "docs/planning/c5-checks.json",
+      "bytes": 4744,
+      "sha256": "54a7f9f78f78d5f0db82800aa124258c519446eadb645b68558abeeab6430561"
+    },
+    {
+      "path": "docs/planning/c5-scope.md",
+      "bytes": 3763,
+      "sha256": "54bb97de94dcf0c0d1f24a52e210f15c4b29300f316710549f9f192c4d0cc6a6"
+    },
+    {
+      "path": "docs/planning/c5-source-copy.json",
+      "bytes": 2488,
+      "sha256": "b7a7586609cbd392f00eae307cfe49b7489507913aed76825a435c7c3868ca73"
+    },
+    {
+      "path": "docs/planning/c5-source-fingerprints.json",
+      "bytes": 32181,
+      "sha256": "ad634673aacbf14860c3cabace62e1962678602b50607fd84d59f1a55d7d78ee"
+    },
+    {
+      "path": "docs/planning/c5-vm-evidence-manifest.json",
+      "bytes": 5505,
+      "sha256": "e63354063b60aae1740cf199ea45295295d79d7823346d8ac213b33d3db507c3"
+    },
+    {
+      "path": "docs/planning/evidence/c5-dependency-metadata.json",
+      "bytes": 61936,
+      "sha256": "19159f9c57b6a3271511d65105c37033c3ef3ff81a2e03b39cf7ffe1e2236fba"
+    },
+    {
+      "path": "docs/planning/evidence/c5-environment.json",
+      "bytes": 1588,
+      "sha256": "8d70f4f33e63059fd1fe6166bd17e028eee3e1014fc43543a2cd286d4e488018"
+    },
+    {
+      "path": "docs/planning/evidence/c5-format-repair-lint.log",
+      "bytes": 42,
+      "sha256": "570ef7247e589d35b6fdabb3e39f2499749784c057720679c6e8aa307b47ec49"
+    },
+    {
+      "path": "docs/planning/evidence/c5-format-repair.log",
+      "bytes": 39,
+      "sha256": "27be8d6b66e6032bb832a092dd226580593ac54fe22f55723c5274f139c1e9d0"
+    },
+    {
+      "path": "docs/planning/evidence/c5-hook-checks.json",
+      "bytes": 69915,
+      "sha256": "1bf446a5980712239dc357055f85f0bc5620ef5cff9285604b9937c2ce6a9b4f"
+    },
+    {
+      "path": "docs/planning/evidence/c5-initial-audit.json",
+      "bytes": 15955,
+      "sha256": "d417152d4ff274bb59143177c02e493bd58be798de2a259063f11ccfe039e677"
+    },
+    {
+      "path": "docs/planning/evidence/c5-initial-install.log",
+      "bytes": 2123,
+      "sha256": "f428281bfd7ae20134ac0b61d3e8787936dc78262accf7dde89d8332a16539ab"
+    },
+    {
+      "path": "docs/planning/evidence/c5-initial-lint.log",
+      "bytes": 31345,
+      "sha256": "f2ca32d405c1785559574acf2d9b6091c190cb58251949359b5cdbdd6c1353ff"
+    },
+    {
+      "path": "docs/planning/evidence/c5-lock-diagnostic-initial-mismatch.json",
+      "bytes": 103859,
+      "sha256": "b454719c1d00789093f1a5411821481fc4c68cd81e8396afeffcab64fe6a03ec"
+    },
+    {
+      "path": "docs/planning/evidence/c5-mutation-cli-initial-failure.json",
+      "bytes": 44421,
+      "sha256": "b2c62bfd983943ea50ff6c7430e8f4a44c464c110b432d2b7ee8bd1a28b4f3dc"
+    },
+    {
+      "path": "docs/planning/evidence/c5-mutation-plugin-initial-failure.json",
+      "bytes": 46401,
+      "sha256": "e465c64b17248e1d430a94e20ae36b250b5e868aa24dfff11c9d7660f540c465"
+    },
+    {
+      "path": "docs/planning/evidence/c5-npm-install-guard.json",
+      "bytes": 1462,
+      "sha256": "8b244d77e0ce91bbe81d0c7003742c8601fdc63c4f5cfcf5ebf4796fb25678a6"
+    },
+    {
+      "path": "docs/planning/evidence/c5-pnpm-lock.yaml",
+      "bytes": 80839,
+      "sha256": "f79ec86b5e2483dc0ebd1be6b9dfe3ff904adf867f7f19fecae0bf898728154a"
+    },
+    {
+      "path": "docs/planning/evidence/c5-qs-repair-audit.json",
+      "bytes": 310,
+      "sha256": "2f2787bbbe1607a3b3f37cf08eda611decffd06dda038f31bc61c2177b9b14ae"
+    },
+    {
+      "path": "docs/planning/evidence/c5-qs-repair-install.log",
+      "bytes": 531,
+      "sha256": "b6ed8cce41ddcbc32d8d851cdb7a6a23e3d687ef61c36d9388089080c3d0ad07"
+    },
+    {
+      "path": "docs/planning/evidence/c5-qs-repair-metadata.json",
+      "bytes": 39261,
+      "sha256": "5c763e86fbdf5c8e7e1608c66f51fdd670e22f39db805e920f5097adc51d0662"
+    },
+    {
+      "path": "docs/planning/evidence/c5-restored-mutation.json",
+      "bytes": 9364,
+      "sha256": "4424c09fba4820f03863426b7fb9b243113a50928d120a2b5063b50c2bc76beb"
+    },
+    {
+      "path": "docs/planning/evidence/c5-runtime-checks.json",
+      "bytes": 123454,
+      "sha256": "7f57c2bbb1d15fd50a4ec9b7e522ef2307f08c80518013e30ca690f980fb9720"
+    },
+    {
+      "path": "docs/quality-contract.md",
+      "bytes": 5915,
+      "sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f"
+    },
+    {
+      "path": "templates/typescript/.pre-commit-config.yaml",
+      "bytes": 769,
+      "sha256": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a"
+    },
+    {
+      "path": "templates/typescript/Makefile",
+      "bytes": 630,
+      "sha256": "93e641976acb9f8e60b14d6984f3c875ea8ac9a47874d6392fd4b65bf4ca5fcf"
+    },
+    {
+      "path": "templates/typescript/README.md",
+      "bytes": 7575,
+      "sha256": "253b5cf517762912e6e7079163a0975cffc22a3c13bd6e48d8f0b29b87bbb343"
+    },
+    {
+      "path": "templates/typescript/biome.json",
+      "bytes": 852,
+      "sha256": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc"
+    },
+    {
+      "path": "templates/typescript/package.json.snippet",
+      "bytes": 983,
+      "sha256": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156"
+    },
+    {
+      "path": "templates/typescript/schemas/example.test.ts",
+      "bytes": 2020,
+      "sha256": "69a5fac758f9eaa0a04fd5dcefff53729b25602376bf29251f2d6016db75b88f"
+    },
+    {
+      "path": "templates/typescript/schemas/example.ts",
+      "bytes": 1174,
+      "sha256": "7cff5ed10214767f7751e874da60be46ca8c276b99352c09c4a0abee9c44c267"
+    },
+    {
+      "path": "templates/typescript/scripts/check-package-manager.mjs",
+      "bytes": 786,
+      "sha256": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7"
+    },
+    {
+      "path": "templates/typescript/stryker.config.mjs",
+      "bytes": 1479,
+      "sha256": "6c432048ce0115c4c9bb666fc834213b9505cbda8389fdf663fa89296148ec67"
+    },
+    {
+      "path": "templates/typescript/tsconfig.json",
+      "bytes": 1684,
+      "sha256": "bbeaf612d2b1db2bfd8e404d93e3a564699b9681a8312e7f87997ea25dfe9128"
+    },
+    {
+      "path": "templates/typescript/vitest.config.ts",
+      "bytes": 942,
+      "sha256": "8ddd3f10a71b0b2232a7a7f3e5319c35beee35d3b844b7c1d133f806a4c5c2e4"
+    },
+    {
+      "path": "tools/README.md",
+      "bytes": 4007,
+      "sha256": "297543a4e1819eff601016b3f771e00634ea36722ebeab1e4406d8be4baf62c4"
+    },
+    {
+      "path": "tools/verify_fixture.py",
+      "bytes": 3407,
+      "sha256": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11"
+    }
+  ],
+  "session_helpers": [
+    {
+      "path": "/home/chris/scratch/coding-standards-c5-assemble.py",
+      "bytes": 1135,
+      "sha256": "fdc66f8086401f5436ab526498516c8b3753d0b797596a5214e529e5dd989ea7"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c5-hook-check.py",
+      "bytes": 5163,
+      "sha256": "3f2788134d3a263380b0ad9dbffe5e7750313a2cf82c53b908c805954bd68e42"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c5-integrity.py",
+      "bytes": 5878,
+      "sha256": "19b43f5f7afbb33cd40fe94079467d5875449dfb3a5917aa863f20641852abb2"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c5-vm-check.py",
+      "bytes": 8518,
+      "sha256": "c81ddd5adfd8142241561fb9e4e15e2894f2457a2c5f17de2280830721cab67f"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c5-vm-setup.py",
+      "bytes": 3850,
+      "sha256": "3f9af3b332865b2df06474eb64a2d292a8d57cb54d09cf02d599772964fa2297"
+    }
+  ],
+  "tracked_diff_sha256": "3cd4cd9a4c16f7eaef7d58e37517949abc5f7910943cd9592d1ed8b631e0ca05",
+  "protected_count": 175,
+  "unrelated_project_sha256": "86fc2d04c5c8f960b09c72a671dcd89d8126564d66868f91148a8d0c0f3b563c",
+  "boundary": "All inputs frozen during fresh review; HANDOFF progress-only but whole tracked diff frozen until parent closure. Session helpers not shipped tooling. No local C5 commit/push/publication."
+}

@@ -1,0 +1,114 @@
+{
+  "workspace": "/home/claude/coding-standards-verification/bee-c5-2026-10-08",
+  "files": [
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/dependency-metadata.json",
+      "bytes": 61936,
+      "sha256": "19159f9c57b6a3271511d65105c37033c3ef3ff81a2e03b39cf7ffe1e2236fba",
+      "local": "docs/planning/evidence/c5-dependency-metadata.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/environment.json",
+      "bytes": 1588,
+      "sha256": "8d70f4f33e63059fd1fe6166bd17e028eee3e1014fc43543a2cd286d4e488018",
+      "local": "docs/planning/evidence/c5-environment.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/format-repair-lint.log",
+      "bytes": 42,
+      "sha256": "570ef7247e589d35b6fdabb3e39f2499749784c057720679c6e8aa307b47ec49",
+      "local": "docs/planning/evidence/c5-format-repair-lint.log"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/format-repair.log",
+      "bytes": 39,
+      "sha256": "27be8d6b66e6032bb832a092dd226580593ac54fe22f55723c5274f139c1e9d0",
+      "local": "docs/planning/evidence/c5-format-repair.log"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/hook-checks.json",
+      "bytes": 69915,
+      "sha256": "1bf446a5980712239dc357055f85f0bc5620ef5cff9285604b9937c2ce6a9b4f",
+      "local": "docs/planning/evidence/c5-hook-checks.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/initial-audit.json",
+      "bytes": 15955,
+      "sha256": "d417152d4ff274bb59143177c02e493bd58be798de2a259063f11ccfe039e677",
+      "local": "docs/planning/evidence/c5-initial-audit.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/initial-install.log",
+      "bytes": 2123,
+      "sha256": "f428281bfd7ae20134ac0b61d3e8787936dc78262accf7dde89d8332a16539ab",
+      "local": "docs/planning/evidence/c5-initial-install.log"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/initial-lint.log",
+      "bytes": 31345,
+      "sha256": "f2ca32d405c1785559574acf2d9b6091c190cb58251949359b5cdbdd6c1353ff",
+      "local": "docs/planning/evidence/c5-initial-lint.log"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/lock-diagnostic-initial-mismatch.json",
+      "bytes": 103859,
+      "sha256": "b454719c1d00789093f1a5411821481fc4c68cd81e8396afeffcab64fe6a03ec",
+      "local": "docs/planning/evidence/c5-lock-diagnostic-initial-mismatch.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/mutation-cli-initial-failure.json",
+      "bytes": 44421,
+      "sha256": "b2c62bfd983943ea50ff6c7430e8f4a44c464c110b432d2b7ee8bd1a28b4f3dc",
+      "local": "docs/planning/evidence/c5-mutation-cli-initial-failure.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/mutation-plugin-initial-failure.json",
+      "bytes": 46401,
+      "sha256": "e465c64b17248e1d430a94e20ae36b250b5e868aa24dfff11c9d7660f540c465",
+      "local": "docs/planning/evidence/c5-mutation-plugin-initial-failure.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/npm-install-guard.json",
+      "bytes": 1462,
+      "sha256": "8b244d77e0ce91bbe81d0c7003742c8601fdc63c4f5cfcf5ebf4796fb25678a6",
+      "local": "docs/planning/evidence/c5-npm-install-guard.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/qs-repair-audit.json",
+      "bytes": 310,
+      "sha256": "2f2787bbbe1607a3b3f37cf08eda611decffd06dda038f31bc61c2177b9b14ae",
+      "local": "docs/planning/evidence/c5-qs-repair-audit.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/qs-repair-install.log",
+      "bytes": 531,
+      "sha256": "b6ed8cce41ddcbc32d8d851cdb7a6a23e3d687ef61c36d9388089080c3d0ad07",
+      "local": "docs/planning/evidence/c5-qs-repair-install.log"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/qs-repair-metadata.json",
+      "bytes": 39261,
+      "sha256": "5c763e86fbdf5c8e7e1608c66f51fdd670e22f39db805e920f5097adc51d0662",
+      "local": "docs/planning/evidence/c5-qs-repair-metadata.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/restored-mutation.json",
+      "bytes": 9364,
+      "sha256": "4424c09fba4820f03863426b7fb9b243113a50928d120a2b5063b50c2bc76beb",
+      "local": "docs/planning/evidence/c5-restored-mutation.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/results/runtime-checks.json",
+      "bytes": 123454,
+      "sha256": "7f57c2bbb1d15fd50a4ec9b7e522ef2307f08c80518013e30ca690f980fb9720",
+      "local": "docs/planning/evidence/c5-runtime-checks.json"
+    },
+    {
+      "remote": "/home/claude/coding-standards-verification/bee-c5-2026-10-08/project/pnpm-lock.yaml",
+      "bytes": 80839,
+      "sha256": "f79ec86b5e2483dc0ebd1be6b9dfe3ff904adf867f7f19fecae0bf898728154a",
+      "local": "docs/planning/evidence/c5-pnpm-lock.yaml"
+    }
+  ],
+  "boundary": "SSH-profile copy/hash comparisons, not authenticated independent receipts."
+}

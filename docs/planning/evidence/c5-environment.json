@@ -1,0 +1,26 @@
+{
+  "host": "claudeos",
+  "uid": 1000,
+  "workspace": "/home/claude/coding-standards-verification/bee-c5-2026-10-08",
+  "os_release": "PRETTY_NAME=\"Debian GNU/Linux 13 (trixie)\"\nNAME=\"Debian GNU/Linux\"\nVERSION_ID=\"13\"\nVERSION=\"13 (trixie)\"\nVERSION_CODENAME=trixie\nDEBIAN_VERSION_FULL=13.7\nID=debian\nHOME_URL=\"https://www.debian.org/\"\nSUPPORT_URL=\"https://www.debian.org/support\"\nBUG_REPORT_URL=\"https://bugs.debian.org/\"\n",
+  "versions": {
+    "node": "v24.21.0",
+    "npm": "11.19.0",
+    "pnpm": "10.34.3",
+    "gitleaks": "8.30.1",
+    "pre-commit": "pre-commit 4.6.2"
+  },
+  "pnpm_tarball": {
+    "url": "https://registry.npmjs.org/pnpm/-/pnpm-10.34.3.tgz",
+    "sri_verified": "sha512-8sUxsIgp175/A8kK3cJmYV+cVHdGPkvx0nXLJjzp6lfPDVWZEQ2UZJqbs/7Z8LXvzqdKcBa2FTKiTLmth4YMHQ==",
+    "sha256": "1c40544020a2e633068ed43a98eb5c0fed7d64a1c6d6f2382e43df91419dad62"
+  },
+  "scanner_reused": {
+    "api": "https://api.github.com/repos/gitleaks/gitleaks/releases/tags/v8.30.1",
+    "url": "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz",
+    "sha256_verified": "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb",
+    "binary_sha256": "88f91962aa2f93ac6ab281d553b9e125f5197bbbce38f9f2437f7299c32e5509"
+  },
+  "pre_commit_reused": "C4 task-owned venv; existing lock/report in C4 evidence",
+  "boundary": "Only new owned workspace; no sudo/system/GUI/config/global package changes. Metadata/SRI identity is not blanket safety. Reused system Node/npm version observed, not freshly authenticated binaries."
+}

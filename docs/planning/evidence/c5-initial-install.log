@@ -1,0 +1,45 @@
+Progress: resolved 1, reused 0, downloaded 0, added 0
+
+   ╭──────────────────────────────────────────╮
+   │                                          │
+   │   Update available! 10.34.3 → 12.10.1.   │
+   │   Changelog: https://pnpm.io/v/12.10.1   │
+   │     To update, run: pnpm add -g pnpm     │
+   │                                          │
+   ╰──────────────────────────────────────────╯
+
+Progress: resolved 43, reused 0, downloaded 35, added 0
+Progress: resolved 84, reused 0, downloaded 83, added 0
+Progress: resolved 85, reused 0, downloaded 83, added 0
+Progress: resolved 130, reused 0, downloaded 116, added 0
+Progress: resolved 181, reused 0, downloaded 170, added 0
+Progress: resolved 198, reused 0, downloaded 188, added 0
+Progress: resolved 199, reused 0, downloaded 192, added 0
+Progress: resolved 200, reused 0, downloaded 192, added 0
+Progress: resolved 217, reused 0, downloaded 210, added 0
+ WARN  Request took 10161ms: https://registry.npmjs.org/fast-deep-equal
+Progress: resolved 218, reused 0, downloaded 210, added 0
+Progress: resolved 252, reused 0, downloaded 220, added 0
+Packages: +221
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 253, reused 0, downloaded 220, added 220
+Progress: resolved 253, reused 0, downloaded 221, added 221, done
+
+> @ preinstall /home/claude/coding-standards-verification/bee-c5-2026-10-08/project
+> node scripts/check-package-manager.mjs
+
+
+dependencies:
++ zod 4.6.5
+
+devDependencies:
++ @biomejs/biome 2.4.15 (2.5.15 is available)
++ @stryker-mutator/core 9.6.1 (10.0.0 is available)
++ @stryker-mutator/typescript-checker 9.6.1 (10.0.0 is available)
++ @stryker-mutator/vitest-runner 9.6.1 (10.0.0 is available)
++ @types/node 24.10.1 (26.6.4 is available)
++ @vitest/coverage-v8 4.1.11 (5.0.3 is available)
++ typescript 5.9.3 (7.0.2 is available)
++ vitest 4.1.11 (5.0.3 is available)
+
+Done in 24.1s using pnpm v10.34.3

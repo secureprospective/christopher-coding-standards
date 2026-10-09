@@ -4,23 +4,26 @@
 Bee · 2026-10-08 · approved rebuild underway.
 
 ## Where it stands
-Branch `rebuild/quality-core-2026-10-08`. C0/C1/C2/C3/C4 accepted; C4 is the first runtime overlay (Bash).17Bats tests, real Make/lint/format/hook/path/setup-failure checks passed on final copied source; fresh review CLEAR. Core/consumer templates, other overlays, workflows/root security configuration and fixtures unchanged by C4. No complete-kit release or publication.
-Current evidence: `docs/planning/c4-acceptance-result.md`; earlier C0–C3 results. Frozen scope/candidate notes and `docs/planning/RESUME.md` are historical, not current progress.
+Branch `rebuild/quality-core-2026-10-08`. C0–C5 accepted locally; C5 TypeScript reference checks passed on ClaudeOS, fresh review CLEAR, parent verified all37frozen inputs/5helpers/175protected files and accepted the bounded reference. No complete-kit release/publication.
+C5 disposition: `docs/planning/c5-acceptance-result.md`; reviewer report preserved unchanged, with parent correction of its line-count arithmetic (actual326→325, not426→425). Earlier acceptance records remain authoritative for C0–C4; RESUME/frozen scope notes are historical.
 
 ## Next move
-C5: TypeScript dependency/security/test compatibility. Reverify current advisory/fixed-version facts before selecting versions. Establish actual package-manager/lockfile and dependency compatibility on a copied fixture, with intended positive/negative checks and fresh review. C6/C7/C8 depend on accepted TS.
+C6 Workers: establish actual npm manifest/lock and pool/plugin/Vitest/types/commands compatibility on copied approved-environment fixtures; fix relevant config/API/diagnostic gaps, freeze and independently review. Then C7 Astro/C8 Bun. None accepted by base TS checks.
 
 ## Test environment
-Christopher approved isolated tests on ClaudeOS, preserving computer-use setup. Profile `ssh claudeos`, user `claude`, Debian13/KVM. Owned workspace/provenance: `docs/planning/evidence/c3-vm-environment.json`, `docs/planning/evidence/c4-environment.json`. C4 selected Bash5.2.37/ShellCheck0.11.0/shfmt3.13.1/Gitleaks8.30.1/Bats1.14.0/pre-commit4.6.2; Python3.13.5. No sudo/global packages/system/GUI/config changes. Do not use old test@localhost profile or run product tests on Beelink.
+Christopher approved isolated tests on existing ClaudeOS, preserving computer-use setup; profile `ssh claudeos`, user claude. C5 selected Node24.21.0/pnpm10.34.3/Biome2.4.15/TypeScript5.9.3/Vitest+coverage4.1.11/Stryker9.6.1/Zod4.6.5; reused verified native Gitleaks8.30.1 and task-owned pre-commit4.6.2. No sudo/global packages/system/GUI/config changes or product tests on Beelink.
 
 ## Blocked / limits
-No C4 blocker. C5 tools/compatibility/commands still need establishing. Initial C4 pip/default Go caches were not confined; leave existing shared caches/initial SDK artifact untouched. Final Bash uses verified native Gitleaks system hook, not the checksum-unverified Go bootstrap. Subsequent child process caches are task-owned. Other versions/platforms, all-overlay fitness, containment and hosted enforcement remain unverified; tracking/publication/consumers/fleet decisions remain separate.
+No C5 blocker.16actual tests on the assembled reference include15schema tests and1synthetic mutation target;100% reference coverage and five-mutant score100, weak-test score0 correctly rejects. Audit observes no reported vulnerabilities after scoped qs6.16.0 repair, not universal safety. Ordinary clean fixture commit/hook checks passed; no broken commits/bypass. Other platforms/versions, full applications, hosted enforcement, live consumers and all-overlay release unverified.
+An actual dependency-free npm-install guard probe rejected but had already created package-lock.json; guard is not isolation or a no-write guarantee. Initial audit, formatting, Stryker CLI/plugin failures and lock-diagnostic harness mismatch preserved. Earlier C4 unconfined pip/Go caches retained untouched; no pristine-VM claim.
 
 ## Findings carried forward
-C9: Go negative fixture suppresses advertised errcheck violation; prove intended diagnostics, not arbitrary failure.
-C5/C12: npm-ci conflicts with pnpm-only consumer snippets; align installation/lockfile contract without bypassing guards.
-C12: legacy fixture workflows suppress diagnostics/accept arbitrary nonzero; new checker/overlay does not fix wiring by existing.
-C4 limits: ERR has Bash context suppression; only regular .sh discovery, so symlink targets require deliberate project coverage; harmless custom scanner rule proves wiring, not full default secret policy. Staged hook scanning is not whole-tree scanning.
+C9: Go negative fixture suppresses advertised errcheck violation; prove intended diagnostics.
+C5/C12: npm-ci conflicts with pnpm contract; C12 owns workflow repair, not guard deletion.
+C6: test actual Workers pool/Vitest contract with npm selection.
+C7: inherited Astro preinstall must not replace local guard with unpinned npx download; demonstrate merged platform/tool/config contract.
+C8: compose Bun manifest/lock/commands deliberately.
+C12: legacy negative workflows suppress diagnostics/accept arbitrary errors; checker/overlay alone does not repair wiring.
 
 ## Rejected
-Workflow-first machinery, worktree-as-sandbox, green skipped checks as verification, blind size/DRY quotas and code-golf. Existing ownership/publication/credential safeguards remain live; no publisher/App/broker, deployment or consumer rewrite authorized.
+Workflow-first machinery, graph/agent-stage/purity frameworks, blind size/DRY quotas, false green skips, arbitrary nonzero as intended rejection and blanket upgrades. C5 replaces unpinned npx bootstrap with a small local guard, duplicate remote Biome resolver with the project binary, broken Stryker false argument with documented force and implicit plugin discovery with explicit modules. Ownership/publication/credential constraints unchanged; no push/merge/deploy, App/broker, fleet rollout or consumer rewrite.

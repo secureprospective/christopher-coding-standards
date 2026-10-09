@@ -1,0 +1,28 @@
+{
+  "purpose": "Actual npm install on isolated dependency-free guard fixture, same declared pin/engine/preinstall and byte-identical guard. Not a full npm install of reference dependencies. No guard disabled.",
+  "manifest": {
+    "packageManager": "pnpm@10.34.3",
+    "engines": {
+      "node": ">=24.0.0"
+    },
+    "scripts": {
+      "preinstall": "node scripts/check-package-manager.mjs"
+    }
+  },
+  "argv": [
+    "npm",
+    "install"
+  ],
+  "status": 1,
+  "stdout": "\n> preinstall\n> node scripts/check-package-manager.mjs\n\n",
+  "stderr": "Use the pnpm version declared in package.json; keep pnpm-lock.yaml frozen.\nnpm error code 1\nnpm error path /home/claude/coding-standards-verification/bee-c5-2026-10-08/guard-npm-install\nnpm error command failed\nnpm error command sh -c node scripts/check-package-manager.mjs\nnpm error A complete log of this run can be found in: /home/claude/coding-standards-verification/bee-c5-2026-10-08/cache/npm/_logs/2026-10-09T04_03_01_448Z-debug-0.log\n",
+  "before": {
+    "package.json": "ae12c77987d778ef689187d858b2d31e81ee0049843de9d0ee25ba7048bc942e",
+    "scripts/check-package-manager.mjs": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7"
+  },
+  "after": {
+    "package.json": "ae12c77987d778ef689187d858b2d31e81ee0049843de9d0ee25ba7048bc942e",
+    "scripts/check-package-manager.mjs": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7"
+  },
+  "package_lock_created": true
+}

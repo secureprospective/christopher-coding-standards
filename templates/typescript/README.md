@@ -1,178 +1,55 @@
-# TypeScript Overlay — Adoption Guide
+# TypeScript — Node/ESM reference overlay
 
-Part of `christopher-coding-standards`. Applies to any TypeScript project (Node, React, Astro, etc.).
+Copy and merge into a suitable project; this is not a complete application or an automatic migration. Default reference: Node24+, pnpm10.34.3, TypeScript5, Biome2, Zod4, Vitest4.1.11 with matching V8 coverage, optional Stryker9. Actual accepted versions/evidence follow [HANDOFF](../../HANDOFF.md); metadata/pins are not universal compatibility or security proof.
 
-**Note for Astro projects:** Use this overlay for `.ts`/`.tsx` files, then add the [Astro overlay](../astro/README.md) (Phase 1D) for `.astro` template files — it requires `prettier-plugin-astro` and a different Biome configuration, and replaces this overlay's `tsconfig.json`.
+## Adoption
 
-**Note for Cloudflare Workers projects:** Adopt this overlay first, then add the [Cloudflare Workers overlay](../cloudflare-workers/README.md) — it keeps this overlay's Biome/pre-commit/Gitleaks unchanged but replaces the `tsconfig.json` and `vitest.config.ts` (tests run inside the workerd runtime) and adds the Wrangler toolchain and typed bindings.
+1. Preserve the project's scripts, constraints and ownership. Copy `biome.json`, `tsconfig.json`, `vitest.config.ts`, `.pre-commit-config.yaml` and, if useful, `stryker.config.mjs`. Merge Make targets rather than replacing an existing Makefile.
+2. Merge `package.json.snippet` into the real manifest. Copy `scripts/check-package-manager.mjs` at that exact relative path; place **both** `schemas/example.ts` and `schemas/example.test.ts` under `src/schemas/`. Zod is a runtime dependency. Choose actual source/output paths and platform libraries; strict flags remain unless a project-specific compatibility change is justified/reviewed. Typecheck includes tests. Browser tests need an explicitly installed compatible environment such as jsdom; the Node reference does not supply one.
+3. Provision the declared pnpm version without global changes by default. Corepack or an already verified project toolchain can provide it; don't blindly enable/update global shims. The local lifecycle guard checks the consumer's declared version without fetching an unpinned package. It rejects routine npm/wrong-version installs; ignored scripts/spoofed environment can bypass it, and a failed wrong-manager install may already have written files. It is not isolation, authorization or a guarantee against a second lockfile.
+4. **First adoption/dependency change:** deliberately run `pnpm install` to create/update `pnpm-lock.yaml`; inspect resolution, dependency source/integrity, advisories and lifecycle/build-script decisions, then commit the reviewed manifest/lock together. Do not use a missing lock as a reason to disable enforcement. **Normal local/agent/CI installs:**
 
----
+   ```sh
+   pnpm install --frozen-lockfile
+   ```
 
-## What this overlay adds
+   A lock captures the consumer's actual graph, not every future composition. Recheck advisories/compatibility when changing dependencies. The scoped `typed-rest-client>qs` override selects6.16.0 because Stryker's resolved caller2.3.1 pins vulnerable6.15.1 (GHSA-q8mj-m7cp-5q26, GHSA-x5fp-wj9c-mxmx, GHSA-4mjr-xmp4-gh2g); retain/review it with the lock until upstream resolution is patched. Do not suppress the audit or apply a blanket transitive override. Vitest and coverage versions must match; GHSA-82fw-gwwq-j7x9 affected the former Vitest3 line and is fixed at stable4.1.11. This reference does not expose a dev-server API; do not expose test/dev servers casually.
+5. Install pre-commit in the approved tool environment; provision and verify native Gitleaks8.30.1 and install the project dependencies first. Run `pre-commit install`, then check the actual hooks. Biome uses **the project's locked local binary** read-only, avoiding a second unpinned npm hook environment. Gitleaks uses an immutable upstream hook commit and the native scanner (no automatic Go SDK bootstrap); its binary version/integrity is still the owner's responsibility.
 
-| Layer | Tool | What it enforces |
-|---|---|---|
-| Formatter + linter | Biome 2.4 | Style, safety rules, `any` prohibition, null-assertion prohibition |
-| Pre-commit hooks | pre-commit + Biome + Gitleaks | Blocks commits with lint failures or secrets |
-| Type safety | TypeScript strict+ | `strict: true` + 3 additional flags (see tsconfig.json) |
-| Boundary validation | Zod v4 | Schema-validated external input at every entry point |
-| Testing | Vitest 3 | Fast, native ESM/TypeScript test runner |
-| Mutation testing | Stryker + vitest-runner | Proves tests actually catch bugs, not just run |
+The kit's inherited `security.yml` still uses npm-ci: it is incompatible with this pnpm contract until C12 repairs it. Installing this overlay does not make that workflow live or accepted. Do not remove the guard or claim skipped jobs passed.
 
----
+## Behavior and evidence
 
-## Adoption steps
+The example returns parsed data or null; callers reject null before effects, map errors safely and separately authorize operations. A valid `admin` role is **not** permission. Unknown-field rejection is this example's protocol decision, not a universal Zod rule. No validation-error logging is performed. Async refinements require the async parser. The test demonstrates actual exported parsers and a small caller, not an HTTP/database integration or access-control system.
 
-### 1. Install pre-commit framework
-
-```bash
-pip install pre-commit
+```sh
+make lint             # read-only style, imports and configured lint rules
+make format-check
+make typecheck        # production and test sources; no emit
+make test             # missing suite fails, not green
+make test-coverage    # explicit production include, including unimported files
 ```
 
-One-time setup. Runs on all future commits in this repo.
+Coverage thresholds are a reference floor (80lines/functions/statements,75branches), not proof of assertions. Adjust the production include/exclude patterns to the real application. TypeScript checks are not runtime validation. `skipLibCheck` trades checking dependency declarations for speed; it does not prove their soundness.
 
-### 2. Copy files into your repo root
+Verify each changed gate independently with clean input and its intended violation: e.g. Biome `noExplicitAny`, compiler TS2322, a genuinely failing assertion, coverage loss in an untested production file. Observe exact diagnostics/exit codes and unchanged declared inputs; missing tools/arbitrary errors are not intended rejections. Use the kit's [fixture checker](../../tools/README.md) where useful. Do not try to commit known-broken code to prove a hook, weaken tests, or plant real credentials. Run hooks directly on disposable staged fixtures; perform ordinary commits only on clean input.
 
-```
-biome.json
-.pre-commit-config.yaml
-tsconfig.json
-vitest.config.ts
-stryker.config.mjs
-Makefile
-schemas/example.ts  →  src/schemas/example.ts  (move to your source tree)
-```
+Gitleaks hooks scan **staged diff**, even with `pre-commit --all-files`; an explicit directory scan is a different check. A harmless custom-rule sentinel can demonstrate scanner wiring without claiming default secret-policy completeness. Pre-commit only sees its selected file types; project-specific sources/generated/symlink targets need deliberate coverage.
 
-### 3. Merge the package.json snippet
+## Optional mutation testing
 
-Open `package.json.snippet`. Add the `scripts` and `devDependencies` blocks into your project's `package.json`. Do not overwrite existing scripts — merge them.
-
-The snippet ships the **pnpm guardrail** (fleet standard) in three pieces:
-
-1. **`packageManager` pin** — `"packageManager": "pnpm@10.34.3"` plus a corepack pin (enable with `corepack enable`, then `corepack use pnpm@10.34.3` to register the version). This stops pnpm's major version from silently drifting between machines and CI.
-2. **`preinstall` guard** — `"preinstall": "npx only-allow pnpm"`. If anything runs `npm install` or `yarn` in this repo it fails loud with a one-line error instead of silently producing a second lockfile. npm/yarn exit non-zero; pnpm passes.
-3. **`--frozen-lockfile` discipline** — CI and any agent-driven install **must** use `pnpm install --frozen-lockfile` (never bare `pnpm install`), so the committed `pnpm-lock.yaml` is never silently rewritten. Add this to your CI and to the "Install" step of any agent workflow. If a dependency genuinely needs updating, do it deliberately with `pnpm add`/`pnpm update` and commit the lockfile change as its own PR.
-
-```bash
-pnpm install --frozen-lockfile
+```sh
+make mutation-test-full   # independent full baseline
+make mutation-test        # cached incremental results when compatible
 ```
 
-> **pnpm guardrail exemptions:** two overlays are deliberately exempt from this guard and
-> keep npm. **bun-ecs** — Bun is the runtime AND package manager there, not an
-> npm-vs-pnpm project. **cloudflare-workers** — keeps npm per the standing OQ-7 decision
-> for its wrangler toolchain. When composing either overlay, do not add the base
-> `preinstall` line.
+Use when risk or an assertion gap warrants it, not as a mandatory ritual. Customize `mutate`: this reference excludes tests, declarations and schemas, so the schema's tests do **not** establish a schema mutation score. Stryker's cache invalidation is not simply "changed files only"; prefer full checks after material config/test changes. Reference thresholds80high/60low/60break reject below60; tune to the project's actual guarantees, not to hide surviving bugs. Inspect survivors against intended behavior; equivalent mutations may need reasoned disposition. Concurrency1 is a conservative host budget, not a tool requirement.
 
-### 4. Activate pre-commit hooks
+## Composition
 
-```bash
-pre-commit install
-```
+- [Workers](../cloudflare-workers/README.md) replaces platform/type/test configs and currently chooses npm; C6 must demonstrate its actual pool/plugin/Vitest contract. Keep its own manager/lock contract rather than copying the pnpm lifecycle guard.
+- [Astro](../astro/README.md) adds Astro/template formatting and generated types; C7 must clear the merged contract. Its inherited preinstall snippet must not overwrite this local guard with an unpinned npx download.
+- [Bun/ECS](../bun-ecs/README.md) chooses Bun; C8 owns runtime, commands and dependency compatibility.
+- Make defaults to pnpm; `make PM=npm test` or `make PM=bun test` is only appropriate after the project's manifest/guard/lock contract has been composed accordingly. The wrapper alone does not change it.
 
-Hooks will now run on every `git commit`.
-
-### 5. Customize the placeholders
-
-**In `biome.json`:** The defaults work as-is. If your project uses single quotes or tabs, adjust `javascript.formatter.quoteStyle` and `indentStyle`.
-
-**In `tsconfig.json`:** Update `"outDir"`, `"rootDir"`, and `"lib"` for your project structure. The strictness flags should not be changed.
-
-**In `vitest.config.ts`:** Change `environment` to `"jsdom"` if your tests require browser APIs (React component tests).
-
-**In `stryker.config.mjs`:** Update the `mutate` glob if your source is not under `src/`.
-
-### 6. Pin the pre-commit hook SHAs (required before production)
-
-The `.pre-commit-config.yaml` ships with version tags. Version tags can be force-pushed — this is how the 2026 Trivy supply chain attack worked.
-
-**To generate pinned SHAs:**
-
-```bash
-# Install StepSecurity's pin-github-actions tool
-pip install pin-github-actions
-
-# For the GitHub Actions workflow (from Phase 1B)
-pin-github-actions .github/workflows/security.yml
-
-# For pre-commit hooks — get SHA manually:
-git ls-remote https://github.com/biomejs/pre-commit v2.4.16
-git ls-remote https://github.com/gitleaks/gitleaks v8.27.2
-```
-
-Replace the `rev:` values in `.pre-commit-config.yaml` with the full 40-character SHA.
-
-**To keep SHAs updated automatically:** Add `biomejs/pre-commit` and `gitleaks/gitleaks` to your Renovate or Dependabot configuration. They will open PRs when new versions release.
-
----
-
-## ESM compatibility notes
-
-This overlay is ESM-first (`"type": "module"` in package.json, `"module": "esnext"` in tsconfig).
-
-**If something breaks:**
-
-| Tool | Fix |
-|---|---|
-| `ts-node` | Switch to `tsx` (`pnpm add -D tsx`) or use `ts-node --esm` |
-| Older Jest config | Not applicable — this overlay uses Vitest |
-| `require()` in a dependency | Add `"moduleResolution": "node16"` as a fallback, or use a dynamic `import()` |
-
----
-
-## Verification test
-
-Run this after adoption to confirm all gates are live.
-
-**Step 1:** Create a test file with deliberate violations:
-
-```typescript
-// test/bad.ts
-var x: any = 1;
-eval("console.log(1)");
-const secret = "AKIAIOSFODNN7EXAMPLE";
-```
-
-**Step 2:** Try to commit it:
-
-```bash
-git add test/bad.ts
-git commit -m "test: verify gates"
-```
-
-**Expected — all four must fire:**
-- Biome flags `var` and `any` → pre-commit blocks the commit
-- Gitleaks flags the AWS key → pre-commit blocks the commit
-- `make lint` exits non-zero
-- Semgrep (CI) flags `eval()` on the PR
-
-If any gate does not fire, stop and diagnose before using this repo in production.
-
-**Step 3:** Delete the test file and proceed.
-
----
-
-## Mutation testing
-
-Run locally:
-
-```bash
-make mutation-test          # incremental — changed files only
-make mutation-test-full     # full scan — use for weekly audit
-```
-
-**Reading the report:** Open `reports/mutation/report.html` in a browser. Red mutants are surviving mutations — your tests did not catch them. Fix the tests, not the threshold.
-
-**Thresholds:** 80 high / 60 low / 60 break. A build fails below 60.
-
----
-
-## Phase status
-
-- ✅ Phase 1A — repo skeleton
-- ✅ Phase 1B — language-agnostic templates
-- ✅ Phase 1C — TypeScript overlay (this directory)
-- ✅ Phase 1D — Astro overlay (`templates/astro/`, split from 1C due to .astro formatting complexity)
-- ✅ Cloudflare Workers overlay (`templates/cloudflare-workers/`) — extends this overlay for workerd-deployed projects
-- ✅ Go overlay (`templates/go/`)
-- ⏳ Phase 2 (cont.) — Python, Bash overlays
-- ⏳ Phase 3 — local-model selection guidance, dual-model architecture doc
+Use framework-specific ESM resolution deliberately. `moduleResolution: bundler` is not proof Node can execute emitted imports; a deployed Node library may require a paired NodeNext module/resolution configuration and an actual build/runtime check. No dependent overlay, Windows/other platform, hosted enforcement or live consumer is accepted by this reference alone.

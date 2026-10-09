@@ -31,7 +31,7 @@
     "exactOptionalPropertyTypes": true,
 
     // Requires the override keyword when overriding class members.
-    // Prevents AI-generated code from silently shadowing parent methods.
+    // Makes overrides explicit to readers and the compiler.
     "noImplicitOverride": true,
 
     // --- Additional safety flags ---
@@ -50,5 +50,5 @@
   },
 
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "build", "**/*.test.ts", "**/*.spec.ts"]
+  "exclude": ["node_modules", "dist", "build"]
 }

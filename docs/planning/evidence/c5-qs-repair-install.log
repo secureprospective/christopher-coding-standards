@@ -1,0 +1,14 @@
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Progress: resolved 200, reused 192, downloaded 0, added 0
+Progress: resolved 201, reused 192, downloaded 0, added 0
+Progress: resolved 206, reused 198, downloaded 1, added 0
+Progress: resolved 207, reused 198, downloaded 1, added 0
+Packages: +1 -1
++-
+Progress: resolved 253, reused 220, downloaded 1, added 1, done
+
+> @ preinstall /home/claude/coding-standards-verification/bee-c5-2026-10-08/project
+> node scripts/check-package-manager.mjs
+
+
+Done in 11.5s using pnpm v10.34.3

@@ -1,0 +1,1802 @@
+[
+  {
+    "source": "https://api.github.com/advisories/GHSA-82fw-gwwq-j7x9",
+    "record": {
+      "ghsa_id": "GHSA-82fw-gwwq-j7x9",
+      "cve_id": "CVE-2026-84373",
+      "url": "https://api.github.com/advisories/GHSA-82fw-gwwq-j7x9",
+      "html_url": "https://github.com/advisories/GHSA-82fw-gwwq-j7x9",
+      "summary": "Vitest: Path Traversal / Arbitrary File Read via @vitest/mocker Redirect Mock",
+      "description": "## Summary\n`@vitest/mocker` registers a redirect mock's target path without validating it\nagainst the dev server's file-serving allowlist. An attacker who can reach the\ndev server's WebSocket can register a redirect mock pointing outside the project\nroot; when the mocked module is requested, the plugin's `load` hook returns\n`readFile(<attacker path>)` as the module source, disclosing local files.\n\nThis is exploitable **without authentication** only through the public\n`mockerPlugin` / standalone `interceptorPlugin` exports (used by third-party dev\nservers), which register the handler on Vite's unauthenticated HMR socket.\nVitest's own browser mode registers mocks over a **token-authenticated** RPC and\nis not remotely reachable by default (see Scope).\n\n## Affected code\n`packages/mocker/src/node/interceptorPlugin.ts`.\n\nThe `load` hook is the file-read sink:\n\n```ts\nif (mock.type === 'redirect') {\n  return readFile(mock.redirect, 'utf-8')\n}\n```\n\n`mock.redirect` is derived from client input at registration time with no\nboundary check:\n\n```ts\nif (event.type === 'redirect') {\n  const redirectUrl = new URL(event.redirect)\n  event.redirect = join(server.config.root, redirectUrl.pathname)\n}\nregistry.register(event)\n```\n\nThere is no `server.fs.allow` / `server.fs.deny` check and no assertion that the\nresolved path stays within the project root.\n\n## Registration paths and trust boundaries\n- **Public `mockerPlugin` / `interceptorPlugin` (unauthenticated).** In\n  `configureServer`, the plugin registers `server.ws.on('vitest:interceptor:register', \u2026)`\n  on Vite's HMR WebSocket. That socket performs no token, Origin, or same-origin\n  check, so any client that can reach it can register a redirect mock. This is\n  the path the \"unauthenticated\" impact applies to.\n- **Vitest browser mode (authenticated).** Mocks register over the browser RPC\n  (`registerMock`), which sits behind a per-run token (`isValidApiRequest`, a\n  random `api.token`). The interceptor's `configureServer` socket is not used for\n  registration here (in v5 it does not run at all, as the plugin is injected per\n  environment). The same missing boundary check exists on the authenticated RPC\n  path, but reaching it requires the token, so it is not a remote-unauthenticated\n  read.\n\n## Path handling\n`new URL(redirect).pathname` combined with `join(root, pathname)` does **not**\nconfine reads to the root:\n\n- Special/hierarchical schemes (`file:`, `http:`) are normalized by WHATWG URL,\n  so `..` segments are collapsed and the result stays under the root. Payloads of\n  the form `file:///../../etc/passwd` do **not** escape.\n- A non-special (opaque) scheme preserves `..` in `pathname`, so\n  `join(root, \"../../\u2026/etc/passwd\")` resolves outside the root and reads an\n  arbitrary file.\n\nEven without escaping the root, the missing `server.fs` check allows reading any\nin-root file the dev server would otherwise refuse to serve (for example an\nin-root `.env` or source that is denied by `server.fs.deny`).\n\n## Scope / preconditions\n- This is a **development-server** issue. The dev server binds to `localhost` by\n  default and is not reachable from the network unless the developer exposes it\n  (`server.host` / `0.0.0.0`, a LAN bind, or a proxy).\n- A raw (non-browser) client against a reachable server bypasses browser origin\n  and CORS protections entirely and can both register the mock and read the\n  response.\n- A browser-based drive-by against a localhost server is substantially mitigated\n  by Vite defaults: the default CORS origin allowlist is limited to `localhost`\n  origins, and `server.allowedHosts` blocks DNS-rebinding, so a cross-origin page\n  cannot read the file contents back.\n\n## Impact\nDisclosure of local files readable by the dev-server process (source, in-root\n`.env`/secrets, and, via the opaque-scheme payload, files outside the project\nroot). No integrity or availability impact.\n\n## Affected versions\nPresent since `@vitest/mocker` was introduced.\n\n- **Affected: `@vitest/mocker` >= 2.1.0** (shipped in `vitest` and\n  `@vitest/browser` >= 2.1.0), through 4.1.x and the 5.0.0 pre-releases.\n- **Fixed:** Vitest 4.1.11 and 5.0.0. Older majors (2.1.x, 3.x) are not\n  maintained and are not planned to receive the fix.\n\n## Fix\nValidate the resolved redirect target against Vite's file-serving allowlist\n(`isFileLoadingAllowed`) before registering it, at every registration site, and\nstop registering the interceptor WebSocket events in Vitest's browser mode\n(mocks there flow through the authenticated RPC).",
+      "type": "reviewed",
+      "severity": "medium",
+      "repository_advisory_url": "https://api.github.com/repos/vitest-dev/vitest/security-advisories/GHSA-82fw-gwwq-j7x9",
+      "source_code_location": "https://github.com/vitest-dev/vitest",
+      "identifiers": [
+        {
+          "value": "GHSA-82fw-gwwq-j7x9",
+          "type": "GHSA"
+        },
+        {
+          "value": "CVE-2026-84373",
+          "type": "CVE"
+        }
+      ],
+      "references": [
+        "https://github.com/vitest-dev/vitest/security/advisories/GHSA-82fw-gwwq-j7x9",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-84373",
+        "https://github.com/vitest-dev/vitest/pull/10972",
+        "https://github.com/vitest-dev/vitest/pull/10974",
+        "https://github.com/vitest-dev/vitest/commit/51edf2b072902aec6d30c90ebaafd8f121c6f9d8",
+        "https://github.com/vitest-dev/vitest/commit/8ff9b9a9efca7c6cfd5243569440de8d7a33aec4",
+        "https://github.com/vitest-dev/vitest/commit/fe5a11d3ceac5ec10d6d7d21a46d4caca132c48f",
+        "https://github.com/vitest-dev/vitest/releases/tag/v4.1.11",
+        "https://github.com/vitest-dev/vitest/releases/tag/v5.0.0-rc.2",
+        "https://github.com/advisories/GHSA-82fw-gwwq-j7x9"
+      ],
+      "published_at": "2026-09-08T20:46:45Z",
+      "updated_at": "2026-09-08T20:46:47Z",
+      "github_reviewed_at": "2026-09-08T20:46:45Z",
+      "nvd_published_at": "2026-09-01T22:17:19Z",
+      "withdrawn_at": null,
+      "vulnerabilities": [
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "@vitest/mocker"
+          },
+          "vulnerable_version_range": ">= 2.1.0, < 4.1.11",
+          "first_patched_version": "4.1.11",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "vitest"
+          },
+          "vulnerable_version_range": ">= 2.1.0, < 4.1.11",
+          "first_patched_version": "4.1.11",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "vitest"
+          },
+          "vulnerable_version_range": ">= 5.0.0-beta.1, < 5.0.0-rc.2",
+          "first_patched_version": "5.0.0-rc.2",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "@vitest/mocker"
+          },
+          "vulnerable_version_range": ">= 5.0.0-beta.1, < 5.0.0-rc.2",
+          "first_patched_version": "5.0.0-rc.2",
+          "vulnerable_functions": []
+        }
+      ],
+      "cvss_severities": {
+        "cvss_v3": {
+          "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+          "score": 5.9
+        },
+        "cvss_v4": {
+          "vector_string": null,
+          "score": 0.0
+        }
+      },
+      "cwes": [
+        {
+          "cwe_id": "CWE-22",
+          "name": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')"
+        }
+      ],
+      "credits": [
+        {
+          "user": {
+            "login": "1491342590",
+            "id": 128204523,
+            "node_id": "U_kgDOB6Q-6w",
+            "avatar_url": "https://avatars.githubusercontent.com/u/128204523?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/1491342590",
+            "html_url": "https://github.com/1491342590",
+            "followers_url": "https://api.github.com/users/1491342590/followers",
+            "following_url": "https://api.github.com/users/1491342590/following{/other_user}",
+            "gists_url": "https://api.github.com/users/1491342590/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/1491342590/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/1491342590/subscriptions",
+            "organizations_url": "https://api.github.com/users/1491342590/orgs",
+            "repos_url": "https://api.github.com/users/1491342590/repos",
+            "events_url": "https://api.github.com/users/1491342590/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/1491342590/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "type": "reporter"
+        }
+      ],
+      "comments": 3,
+      "cvss": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N",
+        "score": 5.9
+      },
+      "epss": {
+        "percentage": 0.00527,
+        "percentile": 0.42551
+      }
+    }
+  },
+  {
+    "source": "https://registry.npmjs.org/pnpm/10.34.3",
+    "record": {
+      "bin": {
+        "pnpm": "bin/pnpm.cjs",
+        "pnpx": "bin/pnpx.cjs"
+      },
+      "bugs": {
+        "url": "https://github.com/pnpm/pnpm/issues"
+      },
+      "dist": {
+        "shasum": "f20e731937c690a41d0d3cd9e01505a8d37a0546",
+        "tarball": "https://registry.npmjs.org/pnpm/-/pnpm-10.34.3.tgz",
+        "fileCount": 1068,
+        "integrity": "sha512-8sUxsIgp175/A8kK3cJmYV+cVHdGPkvx0nXLJjzp6lfPDVWZEQ2UZJqbs/7Z8LXvzqdKcBa2FTKiTLmth4YMHQ==",
+        "signatures": [
+          {
+            "sig": "MEQCIEQ0rm9Sjfz1Idy1qnZzn6heMKbsCJNmBm5sOudKJAeBAiAtRqqWMyLwRbO2mpBUv3Aa7fGN3en6+n3kfMYZfGhmaA==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 19838562
+      },
+      "jest": {
+        "preset": "@pnpm/jest-config/with-registry"
+      },
+      "main": "bin/pnpm.cjs",
+      "name": "pnpm",
+      "type": "commonjs",
+      "_from": "file:pnpm-10.34.3.tgz",
+      "unpkg": "dist/pnpm.cjs",
+      "engines": {
+        "node": ">=18.12"
+      },
+      "exports": {
+        ".": "./package.json"
+      },
+      "funding": "https://opencollective.com/pnpm",
+      "license": "MIT",
+      "scripts": {
+        "lint": "eslint \"src/**/*.ts\" \"test/**/*.ts\"",
+        "test": "pnpm run compile && pnpm run _test",
+        "_test": "jest",
+        "start": "tsc --watch",
+        "bundle": "ts-node bundle.ts",
+        "compile": "tsc --build && pnpm run lint --fix && rimraf dist bin/nodes && pnpm run bundle && shx cp -r node-gyp-bin dist/node-gyp-bin && shx cp -r node_modules/@pnpm/tabtab/lib/templates dist/templates && shx cp -r node_modules/ps-list/vendor dist/vendor && shx cp pnpmrc dist/pnpmrc",
+        "_compile": "tsc --build",
+        "pretest:e2e": "rimraf node_modules/.bin/pnpm"
+      },
+      "_npmUser": {
+        "name": "pnpmuser",
+        "email": "publish-bot@pnpm.io"
+      },
+      "homepage": "https://pnpm.io",
+      "keywords": [
+        "pnpm",
+        "pnpm10",
+        "dependencies",
+        "dependency manager",
+        "efficient",
+        "fast",
+        "hardlinks",
+        "install",
+        "installer",
+        "link",
+        "lockfile",
+        "modules",
+        "monorepo",
+        "multi-package",
+        "npm",
+        "package manager",
+        "package.json",
+        "packages",
+        "prune",
+        "rapid",
+        "remove",
+        "shrinkwrap",
+        "symlinks",
+        "uninstall",
+        "workspace"
+      ],
+      "_resolved": "/tmp/6cbc9a64db673e3175f6876067a18f60/pnpm-10.34.3.tgz",
+      "_integrity": "sha512-8sUxsIgp175/A8kK3cJmYV+cVHdGPkvx0nXLJjzp6lfPDVWZEQ2UZJqbs/7Z8LXvzqdKcBa2FTKiTLmth4YMHQ==",
+      "repository": {
+        "url": "git+https://github.com/pnpm/pnpm.git",
+        "type": "git",
+        "directory": "pnpm"
+      },
+      "_npmVersion": "10.8.2",
+      "description": "Fast, disk space efficient package manager",
+      "directories": {
+        "test": "test"
+      },
+      "maintainers": [
+        {
+          "name": "zkochan",
+          "email": "z@kochan.io"
+        },
+        {
+          "name": "pnpmuser",
+          "email": "publish-bot@pnpm.io"
+        }
+      ],
+      "_nodeVersion": "20.20.2",
+      "preferGlobal": true,
+      "publishConfig": {
+        "tag": "next-10",
+        "executableFiles": [
+          "./dist/node-gyp-bin/node-gyp",
+          "./dist/node-gyp-bin/node-gyp.cmd",
+          "./dist/node_modules/node-gyp/bin/node-gyp.js"
+        ]
+      },
+      "_hasShrinkwrap": false,
+      "readmeFilename": "README.md",
+      "_npmOperationalInternal": {
+        "tmp": "tmp/pnpm_10.34.3_1781197387824_0.8105668682291054",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "_id": "pnpm@10.34.3",
+      "version": "10.34.3"
+    }
+  },
+  {
+    "source": "https://registry.npmjs.org/vitest/4.1.11",
+    "record": {
+      "bin": {
+        "vitest": "./vitest.mjs"
+      },
+      "bugs": {
+        "url": "https://github.com/vitest-dev/vitest/issues"
+      },
+      "dist": {
+        "shasum": "1653c1521ae917f960d9b21877797c47dfd8bf21",
+        "tarball": "https://registry.npmjs.org/vitest/-/vitest-4.1.11.tgz",
+        "fileCount": 114,
+        "integrity": "sha512-fhACrNXUidIbGSBr5FlbuBkO7VWC1ZyLl0DO4CU2DrQoAPxX84Ysxs+HeGQpii5lZWV1Q4gBZTTu49mF+A6Edw==",
+        "signatures": [
+          {
+            "sig": "MEUCIBSU996mnW6tNJuA1U7CRmR/Ukpn/bd/zIY/j5QMSIkrAiEA533Mf1NVfToeCZQA9EXozqd37DRbe6ZzDbSFdgHQNVo=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/vitest@4.1.11",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 1909160
+      },
+      "main": "./dist/index.js",
+      "name": "vitest",
+      "type": "module",
+      "types": "./dist/index.d.ts",
+      "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+      "module": "./dist/index.js",
+      "engines": {
+        "node": "^20.0.0 || ^22.0.0 || >=24.0.0"
+      },
+      "exports": {
+        ".": {
+          "import": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+          },
+          "require": {
+            "types": "./index.d.cts",
+            "default": "./index.cjs"
+          }
+        },
+        "./node": {
+          "types": "./dist/node.d.ts",
+          "default": "./dist/node.js"
+        },
+        "./jsdom": {
+          "types": "./jsdom.d.ts"
+        },
+        "./src/*": "./src/*",
+        "./suite": {
+          "types": "./dist/suite.d.ts",
+          "default": "./dist/suite.js"
+        },
+        "./config": {
+          "types": "./config.d.ts",
+          "default": "./dist/config.js",
+          "require": "./dist/config.cjs"
+        },
+        "./worker": {
+          "types": "./worker.d.ts",
+          "default": "./dist/worker.js"
+        },
+        "./browser": {
+          "types": "./browser/context.d.ts",
+          "default": "./browser/context.js"
+        },
+        "./globals": {
+          "types": "./globals.d.ts"
+        },
+        "./runners": {
+          "types": "./dist/runners.d.ts",
+          "default": "./dist/runners.js"
+        },
+        "./runtime": {
+          "types": "./dist/runtime.d.ts",
+          "default": "./dist/runtime.js"
+        },
+        "./coverage": {
+          "types": "./coverage.d.ts",
+          "default": "./dist/coverage.js"
+        },
+        "./snapshot": {
+          "types": "./dist/snapshot.d.ts",
+          "default": "./dist/snapshot.js"
+        },
+        "./reporters": {
+          "types": "./dist/reporters.d.ts",
+          "default": "./dist/reporters.js"
+        },
+        "./importMeta": {
+          "types": "./importMeta.d.ts"
+        },
+        "./import-meta": {
+          "types": "./import-meta.d.ts"
+        },
+        "./environments": {
+          "types": "./dist/environments.d.ts",
+          "default": "./dist/environments.js"
+        },
+        "./package.json": "./package.json",
+        "./internal/browser": {
+          "types": "./dist/browser.d.ts",
+          "default": "./dist/browser.js"
+        },
+        "./optional-types.js": {
+          "types": "./optional-types.d.ts"
+        },
+        "./optional-runtime-types.js": {
+          "types": "./optional-runtime-types.d.ts"
+        }
+      },
+      "funding": "https://opencollective.com/vitest",
+      "imports": {
+        "#module-evaluator": {
+          "types": "./dist/module-evaluator.d.ts",
+          "default": "./dist/module-evaluator.js"
+        },
+        "#nodejs-worker-loader": "./dist/nodejs-worker-loader.js"
+      },
+      "license": "MIT",
+      "scripts": {
+        "dev": "NODE_OPTIONS=\"--max-old-space-size=8192\" rollup -c --watch -m inline",
+        "build": "premove dist && rollup -c"
+      },
+      "_npmUser": {
+        "name": "GitHub Actions",
+        "email": "npm-oidc-no-reply@github.com",
+        "approver": {
+          "name": "oreanno",
+          "email": "foxzdavinci@gmail.com"
+        },
+        "trustedPublisher": {
+          "id": "github",
+          "oidcConfigId": "oidc:1f286ab6-26e9-44a1-ba48-3a20cbe590fd"
+        }
+      },
+      "homepage": "https://vitest.dev",
+      "keywords": [
+        "vite",
+        "vitest",
+        "test",
+        "jest"
+      ],
+      "repository": {
+        "url": "git+https://github.com/vitest-dev/vitest.git",
+        "type": "git",
+        "directory": "packages/vitest"
+      },
+      "description": "Next generation testing framework powered by Vite",
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "ariperkkio",
+          "email": "ari.perkkio@gmail.com"
+        },
+        {
+          "name": "antfu",
+          "email": "anthonyfu117@hotmail.com"
+        },
+        {
+          "name": "hiogawa",
+          "email": "hi.ogawa.zz@gmail.com"
+        },
+        {
+          "name": "oreanno",
+          "email": "foxzdavinci@gmail.com"
+        },
+        {
+          "name": "yyx990803",
+          "email": "yyx990803@gmail.com"
+        }
+      ],
+      "sideEffects": false,
+      "_nodeVersion": "24.19.0",
+      "dependencies": {
+        "obug": "^2.1.1",
+        "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
+        "pathe": "^2.0.3",
+        "std-env": "^4.0.0-rc.1",
+        "tinyexec": "^1.0.2",
+        "picomatch": "^4.0.3",
+        "tinybench": "^2.9.0",
+        "tinyglobby": "^0.2.15",
+        "@vitest/spy": "4.1.11",
+        "expect-type": "^1.3.0",
+        "tinyrainbow": "^3.1.0",
+        "magic-string": "^0.30.21",
+        "@vitest/utils": "4.1.11",
+        "@vitest/expect": "4.1.11",
+        "@vitest/mocker": "4.1.11",
+        "@vitest/runner": "4.1.11",
+        "es-module-lexer": "^2.0.0",
+        "@vitest/snapshot": "4.1.11",
+        "why-is-node-running": "^2.3.0",
+        "@vitest/pretty-format": "4.1.11"
+      },
+      "_hasShrinkwrap": false,
+      "devDependencies": {
+        "ws": "^8.19.0",
+        "cac": "^6.7.14",
+        "mime": "^4.1.0",
+        "acorn": "8.11.3",
+        "birpc": "^4.0.0",
+        "jsdom": "^27.4.0",
+        "flatted": "^3.4.2",
+        "prompts": "^2.4.2",
+        "empathic": "^2.0.0",
+        "happy-dom": "^20.8.3",
+        "local-pkg": "^1.1.2",
+        "acorn-walk": "^8.3.5",
+        "@types/node": "^24.12.0",
+        "@bomb.sh/tab": "^0.0.14",
+        "@types/jsdom": "^27.0.0",
+        "@types/estree": "^1.0.8",
+        "strip-literal": "^3.1.0",
+        "tinyhighlight": "^0.3.2",
+        "@types/prompts": "^2.4.9",
+        "@edge-runtime/vm": "^5.0.0",
+        "@types/picomatch": "^4.0.2",
+        "@antfu/install-pkg": "^1.1.0",
+        "@opentelemetry/api": "^1.9.0",
+        "@sinonjs/fake-timers": "15.0.0",
+        "@types/istanbul-reports": "^3.0.4",
+        "@jridgewell/trace-mapping": "0.3.31",
+        "@types/sinonjs__fake-timers": "^15.0.1",
+        "@types/istanbul-lib-coverage": "^2.0.6"
+      },
+      "peerDependencies": {
+        "vite": "^6.0.0 || ^7.0.0 || ^8.0.0",
+        "jsdom": "*",
+        "happy-dom": "*",
+        "@vitest/ui": "4.1.11",
+        "@types/node": "^20.0.0 || ^22.0.0 || >=24.0.0",
+        "@edge-runtime/vm": "*",
+        "@opentelemetry/api": "^1.9.0",
+        "@vitest/coverage-v8": "4.1.11",
+        "@vitest/browser-preview": "4.1.11",
+        "@vitest/coverage-istanbul": "4.1.11",
+        "@vitest/browser-playwright": "4.1.11",
+        "@vitest/browser-webdriverio": "4.1.11"
+      },
+      "peerDependenciesMeta": {
+        "vite": {
+          "optional": false
+        },
+        "jsdom": {
+          "optional": true
+        },
+        "happy-dom": {
+          "optional": true
+        },
+        "@vitest/ui": {
+          "optional": true
+        },
+        "@types/node": {
+          "optional": true
+        },
+        "@edge-runtime/vm": {
+          "optional": true
+        },
+        "@opentelemetry/api": {
+          "optional": true
+        },
+        "@vitest/coverage-v8": {
+          "optional": true
+        },
+        "@vitest/browser-preview": {
+          "optional": true
+        },
+        "@vitest/coverage-istanbul": {
+          "optional": true
+        },
+        "@vitest/browser-playwright": {
+          "optional": true
+        },
+        "@vitest/browser-webdriverio": {
+          "optional": true
+        }
+      },
+      "_npmOperationalInternal": {
+        "tmp": "tmp/vitest_4.1.11_1787063227137_0.09921923508290442",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "_id": "vitest@4.1.11",
+      "version": "4.1.11"
+    }
+  },
+  {
+    "source": "https://registry.npmjs.org/@vitest%2fcoverage-v8/4.1.11",
+    "record": {
+      "bugs": {
+        "url": "https://github.com/vitest-dev/vitest/issues"
+      },
+      "dist": {
+        "shasum": "6f0636abe7e23e86dd35127244554be2c60bc2a5",
+        "tarball": "https://registry.npmjs.org/@vitest/coverage-v8/-/coverage-v8-4.1.11.tgz",
+        "fileCount": 11,
+        "integrity": "sha512-8MVGEFnJIcdGjcbfKmeq8z0pZHH0JlVtoVZH9Q/qwUp6wyFnEJUBMrw9DCaj+ra3vShGmhavjalMIhPNxZAUcw==",
+        "signatures": [
+          {
+            "sig": "MEQCIFJjji4foMUg/PysvZ9FD+UnaR3jcMhjnulNmDloHmPJAiB0/b8bMkd0pA7UV6Aka9lrsce1jkwOl7qIhomLwqOrLA==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@vitest%2fcoverage-v8@4.1.11",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 23647
+      },
+      "main": "./dist/index.js",
+      "name": "@vitest/coverage-v8",
+      "type": "module",
+      "types": "./dist/index.d.ts",
+      "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+      "module": "./dist/index.js",
+      "exports": {
+        ".": {
+          "types": "./dist/index.d.ts",
+          "default": "./dist/index.js"
+        },
+        "./*": "./*",
+        "./browser": {
+          "types": "./dist/browser.d.ts",
+          "default": "./dist/browser.js"
+        }
+      },
+      "funding": "https://opencollective.com/vitest",
+      "license": "MIT",
+      "scripts": {
+        "dev": "rollup -c --watch --watch.include 'src/**'",
+        "build": "premove dist && rollup -c"
+      },
+      "_npmUser": {
+        "name": "GitHub Actions",
+        "email": "npm-oidc-no-reply@github.com",
+        "approver": {
+          "name": "oreanno",
+          "email": "foxzdavinci@gmail.com"
+        },
+        "trustedPublisher": {
+          "id": "github",
+          "oidcConfigId": "oidc:20ee9559-b9b1-495e-8ed2-682389c4d2a2"
+        }
+      },
+      "homepage": "https://vitest.dev/guide/coverage",
+      "keywords": [
+        "vite",
+        "vitest",
+        "test",
+        "coverage",
+        "v8"
+      ],
+      "repository": {
+        "url": "git+https://github.com/vitest-dev/vitest.git",
+        "type": "git",
+        "directory": "packages/coverage-v8"
+      },
+      "description": "V8 coverage provider for Vitest",
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "ariperkkio",
+          "email": "ari.perkkio@gmail.com"
+        },
+        {
+          "name": "antfu",
+          "email": "anthonyfu117@hotmail.com"
+        },
+        {
+          "name": "hiogawa",
+          "email": "hi.ogawa.zz@gmail.com"
+        },
+        {
+          "name": "oreanno",
+          "email": "foxzdavinci@gmail.com"
+        },
+        {
+          "name": "yyx990803",
+          "email": "yyx990803@gmail.com"
+        }
+      ],
+      "sideEffects": false,
+      "_nodeVersion": "24.19.0",
+      "dependencies": {
+        "obug": "^2.1.1",
+        "std-env": "^4.0.0-rc.1",
+        "magicast": "^0.5.2",
+        "tinyrainbow": "^3.1.0",
+        "@vitest/utils": "4.1.11",
+        "istanbul-reports": "^3.2.0",
+        "@bcoe/v8-coverage": "^1.0.2",
+        "ast-v8-to-istanbul": "^1.0.0",
+        "istanbul-lib-report": "^3.0.1",
+        "istanbul-lib-coverage": "^3.2.2"
+      },
+      "_hasShrinkwrap": false,
+      "devDependencies": {
+        "pathe": "^2.0.3",
+        "vitest": "4.1.11",
+        "@vitest/browser": "4.1.11",
+        "@types/istanbul-reports": "^3.0.4",
+        "@types/istanbul-lib-report": "^3.0.3",
+        "@vitest/browser-playwright": "4.1.11",
+        "@types/istanbul-lib-coverage": "^2.0.6"
+      },
+      "peerDependencies": {
+        "vitest": "4.1.11",
+        "@vitest/browser": "4.1.11"
+      },
+      "peerDependenciesMeta": {
+        "@vitest/browser": {
+          "optional": true
+        }
+      },
+      "_npmOperationalInternal": {
+        "tmp": "tmp/coverage-v8_4.1.11_1787062938804_0.7460401644999204",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "_id": "@vitest/coverage-v8@4.1.11",
+      "version": "4.1.11"
+    }
+  },
+  {
+    "source": "https://registry.npmjs.org/@stryker-mutator%2fcore/9.6.1",
+    "record": {
+      "bin": {
+        "stryker": "bin/stryker.js"
+      },
+      "bugs": {
+        "url": "https://github.com/stryker-mutator/stryker-js/issues"
+      },
+      "dist": {
+        "shasum": "c149d80754b9fc73c11f6282ec199af24be535f4",
+        "tarball": "https://registry.npmjs.org/@stryker-mutator/core/-/core-9.6.1.tgz",
+        "fileCount": 626,
+        "integrity": "sha512-WMgnvf+Wyh/yiruhNZwc8w8DlzmmjXhPjSn5MR8RhAXzlnWji8TQrUYgBUkHk9bEgSaIlB3KZHm37iiU5Q2cLQ==",
+        "signatures": [
+          {
+            "sig": "MEQCIAwyK+mEbd24Cr0s2yPll7fqtJg6LDDIcexbu7Huc3pEAiBOp0hY/NLZdRct4GjCiegeC9ix9NiLbak3egbiQwtJVA==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@stryker-mutator%2fcore@9.6.1",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 1218482
+      },
+      "name": "@stryker-mutator/core",
+      "type": "module",
+      "author": {
+        "name": "Simon de Lang"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "exports": {
+        ".": "./dist/src/index.js",
+        "./package.json": "./package.json"
+      },
+      "gitHead": "e1abfbeb9a27dba8aac9ea019860241b0ca80ead",
+      "license": "Apache-2.0",
+      "scripts": {
+        "test": "c8 npm run test:all",
+        "start": "tsc -w",
+        "stryker": "node bin/stryker.js run",
+        "test:all": "npm run test:unit && npm run test:integration",
+        "test:unit": "mocha \"dist/test/unit/**/*.js\"",
+        "test:integration": "mocha --timeout 60000 \"dist/test/integration/**/*.js\""
+      },
+      "_npmUser": {
+        "name": "GitHub Actions",
+        "email": "npm-oidc-no-reply@github.com",
+        "trustedPublisher": {
+          "id": "github",
+          "oidcConfigId": "oidc:c7cd7507-7ceb-4ab9-bc44-d23d8f0dcf9f"
+        }
+      },
+      "homepage": "https://stryker-mutator.io/",
+      "keywords": [
+        "mutation testing",
+        "mutation",
+        "testing",
+        "test",
+        "js",
+        "stryker"
+      ],
+      "repository": {
+        "url": "git+https://github.com/stryker-mutator/stryker-js.git",
+        "type": "git",
+        "directory": "packages/core"
+      },
+      "_npmVersion": "lerna/9.0.7/node@v24.14.1+x64 (linux)",
+      "description": "The extendable JavaScript mutation testing framework",
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "nicojs",
+          "email": "jansennico@gmail.com"
+        },
+        {
+          "name": "archcry",
+          "email": "hello@sanderkoenders.nl"
+        },
+        {
+          "name": "simondel",
+          "email": "simondelang@gmail.com"
+        },
+        {
+          "name": "strykermutator-npa",
+          "email": "strykermutator.npa@gmail.com"
+        }
+      ],
+      "_nodeVersion": "24.14.1",
+      "contributors": [
+        {
+          "name": "Simon de Lang",
+          "email": "simondelang@gmail.com"
+        },
+        {
+          "name": "Nico Jansen",
+          "email": "jansennico@gmail.com"
+        },
+        {
+          "name": "Sander Koenders",
+          "email": "sanderkoenders@gmail.com"
+        },
+        {
+          "name": "Philipp Weissenbacher",
+          "email": "philipp.weissenbacher@gmail.com"
+        },
+        {
+          "name": "Jasper Catthoor",
+          "email": "jasper.catthoor@gmail.com"
+        },
+        {
+          "name": "Nico Stapelbroek",
+          "email": "nstapelbroek@gmail.com"
+        },
+        {
+          "name": "Alex van Assem",
+          "email": "avassem@gmail.com"
+        },
+        {
+          "name": "Jelle Peters",
+          "email": "JellePetersHAN@users.noreply.github.com"
+        },
+        {
+          "name": "Jeremy Nagel",
+          "email": "jeremy.nagel@learnosity.com"
+        },
+        {
+          "name": "MarktHart",
+          "email": "git@markhart.nl"
+        },
+        {
+          "name": "Michael Williamson",
+          "email": "mike@zwobble.org"
+        },
+        {
+          "name": "Willem Meints",
+          "email": "willem@mein-design.nl"
+        },
+        {
+          "name": "Sharikov Vladislav",
+          "email": "sharikov.vladislav@gmail.com"
+        },
+        {
+          "name": "Jonathan Presson",
+          "email": "jonathan.presson@gmail.com"
+        }
+      ],
+      "dependencies": {
+        "ajv": "~8.18.0",
+        "rxjs": "~7.8.1",
+        "chalk": "~5.6.0",
+        "execa": "~9.6.0",
+        "tslib": "2.8.1",
+        "semver": "^7.6.3",
+        "progress": "~2.0.3",
+        "commander": "~14.0.0",
+        "minimatch": "~10.2.4",
+        "tree-kill": "~1.2.2",
+        "source-map": "~0.7.4",
+        "emoji-regex": "~10.6.0",
+        "json-rpc-2.0": "^1.7.0",
+        "npm-run-path": "~6.0.0",
+        "typed-inject": "~5.0.0",
+        "lodash.groupby": "~4.6.0",
+        "diff-match-patch": "1.0.5",
+        "@inquirer/prompts": "^8.0.0",
+        "typed-rest-client": "~2.3.0",
+        "@stryker-mutator/api": "9.6.1",
+        "@stryker-mutator/util": "9.6.1",
+        "mutation-server-protocol": "~0.4.0",
+        "mutation-testing-metrics": "3.7.3",
+        "mutation-testing-elements": "3.7.3",
+        "@stryker-mutator/instrumenter": "9.6.1",
+        "mutation-testing-report-schema": "3.7.3"
+      },
+      "publishConfig": {
+        "access": "public"
+      },
+      "_hasShrinkwrap": false,
+      "devDependencies": {
+        "glob": "13.0.6",
+        "@types/node": "24.12.2",
+        "@types/semver": "7.7.1",
+        "@types/progress": "2.0.7",
+        "@types/json-schema": "7.0.15",
+        "@types/lodash.groupby": "4.6.9",
+        "@types/diff-match-patch": "1.0.36",
+        "@stryker-mutator/test-helpers": "9.6.1"
+      },
+      "_npmOperationalInternal": {
+        "tmp": "tmp/core_9.6.1_1775852704453_0.29394441617068234",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "_id": "@stryker-mutator/core@9.6.1",
+      "version": "9.6.1"
+    }
+  },
+  {
+    "source": "https://registry.npmjs.org/@stryker-mutator%2fvitest-runner/9.6.1",
+    "record": {
+      "bugs": {
+        "url": "https://github.com/stryker-mutator/stryker-js/issues"
+      },
+      "dist": {
+        "shasum": "61e5fb7e539ad209e5f51e34f6f5b1bb13c21750",
+        "tarball": "https://registry.npmjs.org/@stryker-mutator/vitest-runner/-/vitest-runner-9.6.1.tgz",
+        "fileCount": 43,
+        "integrity": "sha512-eyUHTCf3Ui+SUn/tpFJwzw6MV391kyBLZk/cDHFUfKFELqKMLbvd7e81axArlApKqO6cOnLfrxlwED+2SRN0ow==",
+        "signatures": [
+          {
+            "sig": "MEYCIQCU/75Lp+jopyKhZ+PWPKoCY1jjIKQGl4x6hKhPhG8tygIhALNUoEg6SzPATwlWlDm4XQOUZiY9EqdrwdCE4eX8mfXQ",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@stryker-mutator%2fvitest-runner@9.6.1",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 78458
+      },
+      "name": "@stryker-mutator/vitest-runner",
+      "type": "module",
+      "author": {
+        "name": "Odin van der Linden",
+        "email": "odinvanderlinden2001@gmail.com"
+      },
+      "engines": {
+        "node": ">=14.18.0"
+      },
+      "exports": {
+        ".": "./dist/src/index.js",
+        "./package.json": "./package.json"
+      },
+      "gitHead": "e1abfbeb9a27dba8aac9ea019860241b0ca80ead",
+      "license": "Apache-2.0",
+      "scripts": {
+        "test": "c8 npm run test:all",
+        "stryker": "node ../core/bin/stryker.js run",
+        "test:all": "npm run test:unit && npm run test:integration",
+        "test:unit": "mocha \"dist/test/unit/**/*.js\"",
+        "test:integration": "mocha --timeout 30000 \"dist/test/integration/**/*.js\""
+      },
+      "_npmUser": {
+        "name": "GitHub Actions",
+        "email": "npm-oidc-no-reply@github.com",
+        "trustedPublisher": {
+          "id": "github",
+          "oidcConfigId": "oidc:1aacb4aa-00a1-4e40-ad43-9462c7cb24cb"
+        }
+      },
+      "homepage": "https://stryker-mutator.io/docs/stryker-js/vitest-runner",
+      "keywords": [
+        "stryker",
+        "vitest",
+        "@stryker-mutator/test-runner-plugin"
+      ],
+      "repository": {
+        "url": "git+https://github.com/stryker-mutator/stryker-js.git",
+        "type": "git",
+        "directory": "packages/vitest-runner"
+      },
+      "_npmVersion": "lerna/9.0.7/node@v24.14.1+x64 (linux)",
+      "description": "A plugin to use the vitest test runner and framework in Stryker, the JavaScript mutation testing framework",
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "nicojs",
+          "email": "jansennico@gmail.com"
+        },
+        {
+          "name": "archcry",
+          "email": "hello@sanderkoenders.nl"
+        },
+        {
+          "name": "simondel",
+          "email": "simondelang@gmail.com"
+        },
+        {
+          "name": "strykermutator-npa",
+          "email": "strykermutator.npa@gmail.com"
+        }
+      ],
+      "_nodeVersion": "24.14.1",
+      "contributors": [
+        {
+          "name": "Nico Jansen",
+          "email": "jansennico@gmail.com"
+        }
+      ],
+      "dependencies": {
+        "tslib": "~2.8.0",
+        "semver": "^7.7.4",
+        "@stryker-mutator/api": "9.6.1",
+        "@stryker-mutator/util": "9.6.1"
+      },
+      "publishConfig": {
+        "access": "public"
+      },
+      "_hasShrinkwrap": false,
+      "devDependencies": {
+        "vite": "7.3.2",
+        "react": "19.2.4",
+        "vitest": "4.1.3",
+        "ts-node": "10.9.2",
+        "@types/node": "24.12.2",
+        "@types/semver": "7.7.1",
+        "@vitest/browser": "4.1.3",
+        "vitest-browser-react": "2.2.0",
+        "@vitest/browser-playwright": "4.1.3",
+        "@stryker-mutator/test-helpers": "9.6.1"
+      },
+      "peerDependencies": {
+        "vitest": ">=2.0.0",
+        "@stryker-mutator/core": "9.6.1"
+      },
+      "initStrykerConfig": {
+        "coverageAnalysis": "perTest"
+      },
+      "_npmOperationalInternal": {
+        "tmp": "tmp/vitest-runner_9.6.1_1775852713909_0.20248441663682404",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "_id": "@stryker-mutator/vitest-runner@9.6.1",
+      "version": "9.6.1"
+    }
+  },
+  {
+    "source": "https://registry.npmjs.org/@stryker-mutator%2ftypescript-checker/9.6.1",
+    "record": {
+      "bugs": {
+        "url": "https://github.com/stryker-mutator/stryker-js/issues"
+      },
+      "dist": {
+        "shasum": "92ff926fa80459f6e9152fe2185bf2f4511e6807",
+        "tarball": "https://registry.npmjs.org/@stryker-mutator/typescript-checker/-/typescript-checker-9.6.1.tgz",
+        "fileCount": 64,
+        "integrity": "sha512-dCFJDoFixFe7cbilsukb7a5jpn9JRSPef7/vgx+xfaf4gPf/neDVbci8E/YSvxmcFveuPHdeUxioocA1CKZqrg==",
+        "signatures": [
+          {
+            "sig": "MEQCIB00zq6fmxeC0Wv1SGKxKBGgerQkaXKJhA49zge+jb79AiAs39ONgdiD62B4kVxooHk0YDIhuSa2xbn896LaOKxYJQ==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@stryker-mutator%2ftypescript-checker@9.6.1",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 118361
+      },
+      "name": "@stryker-mutator/typescript-checker",
+      "type": "module",
+      "author": {
+        "name": "Nico Jansen",
+        "email": "jansennico@gmail.com"
+      },
+      "engines": {
+        "node": ">=20.0.0"
+      },
+      "exports": {
+        ".": "./dist/src/index.js",
+        "./package.json": "./package.json"
+      },
+      "gitHead": "e1abfbeb9a27dba8aac9ea019860241b0ca80ead",
+      "license": "Apache-2.0",
+      "scripts": {
+        "test": "c8 npm run test:all",
+        "mocha": "mocha",
+        "stryker": "node ../core/bin/stryker.js run",
+        "test:all": "npm run test:unit && npm run test:integration",
+        "test:unit": "mocha \"dist/test/unit/**/*.js\"",
+        "test:integration": "mocha \"dist/test/integration/**/*.js\""
+      },
+      "_npmUser": {
+        "name": "GitHub Actions",
+        "email": "npm-oidc-no-reply@github.com",
+        "trustedPublisher": {
+          "id": "github",
+          "oidcConfigId": "oidc:67d7817a-2b68-4720-9b45-416a37b40ef2"
+        }
+      },
+      "homepage": "https://stryker-mutator.io/docs/stryker-js/typescript-checker",
+      "repository": {
+        "url": "git+https://github.com/stryker-mutator/stryker-js.git",
+        "type": "git",
+        "directory": "packages/typescript-checker"
+      },
+      "_npmVersion": "lerna/9.0.7/node@v24.14.1+x64 (linux)",
+      "description": "A typescript type checker plugin to be used in Stryker, the JavaScript mutation testing framework",
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "nicojs",
+          "email": "jansennico@gmail.com"
+        },
+        {
+          "name": "archcry",
+          "email": "hello@sanderkoenders.nl"
+        },
+        {
+          "name": "simondel",
+          "email": "simondelang@gmail.com"
+        },
+        {
+          "name": "strykermutator-npa",
+          "email": "strykermutator.npa@gmail.com"
+        }
+      ],
+      "_nodeVersion": "24.14.1",
+      "contributors": [
+        {
+          "name": "Simon de Lang",
+          "email": "simondelang@gmail.com"
+        },
+        {
+          "name": "Nico Jansen",
+          "email": "jansennico@gmail.com"
+        }
+      ],
+      "dependencies": {
+        "semver": "~7.7.0",
+        "@stryker-mutator/api": "9.6.1",
+        "@stryker-mutator/util": "9.6.1"
+      },
+      "publishConfig": {
+        "access": "public"
+      },
+      "_hasShrinkwrap": false,
+      "devDependencies": {
+        "@types/semver": "7.7.1",
+        "@stryker-mutator/test-helpers": "9.6.1"
+      },
+      "peerDependencies": {
+        "typescript": ">=3.6",
+        "@stryker-mutator/core": "9.6.1"
+      },
+      "_npmOperationalInternal": {
+        "tmp": "tmp/typescript-checker_9.6.1_1775852713399_0.027031180177284675",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "_id": "@stryker-mutator/typescript-checker@9.6.1",
+      "version": "9.6.1"
+    }
+  },
+  {
+    "source": "https://registry.npmjs.org/typescript/5.9.3",
+    "record": {
+      "bin": {
+        "tsc": "bin/tsc",
+        "tsserver": "bin/tsserver"
+      },
+      "bugs": {
+        "url": "https://github.com/microsoft/TypeScript/issues"
+      },
+      "dist": {
+        "shasum": "5b4f59e15310ab17a216f5d6cf53ee476ede670f",
+        "tarball": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
+        "fileCount": 132,
+        "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
+        "signatures": [
+          {
+            "sig": "MEYCIQC5ifNi1il+zAZC19ov+Q5oSrhOwlpOpghAaAAXYA0RpAIhAKdcZ6pMNZGuprpke8Zi3OPB1zol9c88KVW+apJNVjTy",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 23625066
+      },
+      "main": "./lib/typescript.js",
+      "name": "typescript",
+      "_from": "file:/mnt/vss/_work/1/tgz/typescript.tgz",
+      "volta": {
+        "npm": "8.19.4",
+        "node": "20.1.0"
+      },
+      "author": {
+        "name": "Microsoft Corp."
+      },
+      "browser": {
+        "fs": false,
+        "os": false,
+        "path": false,
+        "buffer": false,
+        "crypto": false,
+        "inspector": false,
+        "perf_hooks": false,
+        "source-map-support": false
+      },
+      "engines": {
+        "node": ">=14.17"
+      },
+      "gitHead": "c63de15a992d37f0d6cec03ac7631872838602cb",
+      "license": "Apache-2.0",
+      "scripts": {
+        "gulp": "hereby",
+        "knip": "hereby knip",
+        "lint": "hereby lint",
+        "test": "hereby runtests-parallel --light=false",
+        "build": "npm run build:compiler && npm run build:tests",
+        "clean": "hereby clean",
+        "format": "dprint fmt",
+        "build:tests": "hereby tests",
+        "setup-hooks": "node scripts/link-hooks.mjs",
+        "build:compiler": "hereby local",
+        "test:eslint-rules": "hereby run-eslint-rules-tests",
+        "build:tests:notypecheck": "hereby tests --no-typecheck"
+      },
+      "typings": "./lib/typescript.d.ts",
+      "_npmUser": {
+        "name": "typescript-bot",
+        "email": "typescript@microsoft.com"
+      },
+      "homepage": "https://www.typescriptlang.org/",
+      "keywords": [
+        "TypeScript",
+        "Microsoft",
+        "compiler",
+        "language",
+        "javascript"
+      ],
+      "_resolved": "/mnt/vss/_work/1/tgz/typescript.tgz",
+      "overrides": {
+        "typescript@*": "$typescript"
+      },
+      "_integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
+      "repository": {
+        "url": "git+https://github.com/microsoft/TypeScript.git",
+        "type": "git"
+      },
+      "_npmVersion": "10.7.0",
+      "description": "TypeScript is a language for application scale JavaScript development",
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "typescript-bot",
+          "email": "typescript@microsoft.com"
+        },
+        {
+          "name": "weswigham",
+          "email": "wwigham@gmail.com"
+        },
+        {
+          "name": "sanders_n",
+          "email": "nathan@shively-sanders.com"
+        },
+        {
+          "name": "andrewbranch",
+          "email": "andrew@wheream.io"
+        },
+        {
+          "name": "sheetalkamat",
+          "email": "shkamat@microsoft.com"
+        },
+        {
+          "name": "typescript-deploys",
+          "email": "typescript-design@microsoft.com"
+        },
+        {
+          "name": "jakebailey",
+          "email": "jacob.b.bailey@gmail.com"
+        }
+      ],
+      "_nodeVersion": "18.20.3",
+      "_hasShrinkwrap": false,
+      "packageManager": "npm@8.19.4",
+      "devDependencies": {
+        "c8": "^10.1.3",
+        "ms": "^2.1.3",
+        "chai": "^4.5.0",
+        "diff": "^7.0.0",
+        "glob": "^10.4.5",
+        "knip": "^5.44.4",
+        "mocha": "^10.8.2",
+        "tslib": "^2.8.1",
+        "which": "^3.0.1",
+        "dprint": "^0.49.0",
+        "eslint": "^9.20.1",
+        "hereby": "^1.10.0",
+        "esbuild": "^0.25.0",
+        "globals": "^15.15.0",
+        "chokidar": "^4.0.3",
+        "minimist": "^1.2.8",
+        "@types/ms": "^0.7.34",
+        "@eslint/js": "^9.20.0",
+        "picocolors": "^1.1.1",
+        "playwright": "^1.50.1",
+        "typescript": "^5.7.3",
+        "@types/chai": "^4.3.20",
+        "@types/diff": "^7.0.1",
+        "@types/node": "latest",
+        "@types/mocha": "^10.0.10",
+        "@types/which": "^3.0.4",
+        "jsonc-parser": "^3.3.1",
+        "@octokit/rest": "^21.1.1",
+        "@types/minimist": "^1.2.5",
+        "fast-xml-parser": "^4.5.2",
+        "@dprint/formatter": "^0.4.1",
+        "@esfx/canceltoken": "^1.0.0",
+        "typescript-eslint": "^8.24.1",
+        "@dprint/typescript": "0.93.4",
+        "source-map-support": "^0.5.21",
+        "eslint-plugin-regexp": "^2.7.0",
+        "azure-devops-node-api": "^14.1.0",
+        "@typescript-eslint/utils": "^8.24.1",
+        "@types/source-map-support": "^0.5.10",
+        "monocart-coverage-reports": "^2.12.1",
+        "@typescript-eslint/type-utils": "^8.24.1",
+        "@typescript-eslint/rule-tester": "^8.24.1",
+        "mocha-fivemat-progress-reporter": "^0.1.0",
+        "eslint-formatter-autolinkable-stylish": "^1.4.0"
+      },
+      "_npmOperationalInternal": {
+        "tmp": "tmp/typescript_5.9.3_1759267178540_0.2143081415904824",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "_id": "typescript@5.9.3",
+      "version": "5.9.3"
+    }
+  },
+  {
+    "source": "https://registry.npmjs.org/@biomejs%2fbiome/2.4.15",
+    "record": {
+      "bin": {
+        "biome": "bin/biome"
+      },
+      "bugs": {
+        "url": "https://github.com/biomejs/biome/issues"
+      },
+      "dist": {
+        "shasum": "cb84ad6eb4235e7230b3c105a825e9bc03399944",
+        "tarball": "https://registry.npmjs.org/@biomejs/biome/-/biome-2.4.15.tgz",
+        "fileCount": 18,
+        "integrity": "sha512-j5VH3a/h/HXTKBM50MDMxRCzkeLv9S2XJcW2WgnZT1+xyisi+0bISrXR82gCX+8S9lvK0skEvHJRN+3Ktr2hlw==",
+        "signatures": [
+          {
+            "sig": "MEUCIAhYdK5v0tTV2MWT9zNjwNp6iZZJA3sCTb2ueV4BAAJeAiEAlzTei13+pL25B6PK5OuwbaQUPL7jnbEjPOCaKcupeX8=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@biomejs%2fbiome@2.4.15",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 705072
+      },
+      "name": "@biomejs/biome",
+      "author": {
+        "name": "Emanuele Stoppa"
+      },
+      "engines": {
+        "node": ">=14.21.3"
+      },
+      "funding": {
+        "url": "https://opencollective.com/biome",
+        "type": "opencollective"
+      },
+      "gitHead": "9dd3271eef16090416b6e77615a01e3bfbcf7993",
+      "license": "MIT OR Apache-2.0",
+      "_npmUser": {
+        "name": "GitHub Actions",
+        "email": "npm-oidc-no-reply@github.com",
+        "trustedPublisher": {
+          "id": "github",
+          "oidcConfigId": "oidc:88a86367-18c3-4668-9f8d-aa7619d345aa"
+        }
+      },
+      "homepage": "https://biomejs.dev",
+      "keywords": [
+        "format",
+        "lint",
+        "toolchain",
+        "JavaScript",
+        "TypeScript",
+        "JSON",
+        "JSONC",
+        "JSX",
+        "TSX",
+        "CSS",
+        "GraphQL"
+      ],
+      "repository": {
+        "url": "git+https://github.com/biomejs/biome.git",
+        "type": "git",
+        "directory": "packages/@biomejs/biome"
+      },
+      "_npmVersion": "11.12.1",
+      "description": "Biome is a toolchain for the web: formatter, linter and more",
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "nhedger",
+          "email": "nicolas@hedger.ch"
+        },
+        {
+          "name": "dominionl",
+          "email": "denis_bezrukov@mail.ru"
+        },
+        {
+          "name": "conaclos",
+          "email": "victorien+npm@elvinger.fr"
+        },
+        {
+          "name": "ematipico",
+          "email": "my.burning@gmail.com"
+        },
+        {
+          "name": "siketyan",
+          "email": "me@s6n.jp"
+        }
+      ],
+      "_nodeVersion": "24.15.0",
+      "publishConfig": {
+        "provenance": true
+      },
+      "_hasShrinkwrap": false,
+      "optionalDependencies": {
+        "@biomejs/cli-linux-x64": "2.4.15",
+        "@biomejs/cli-win32-x64": "2.4.15",
+        "@biomejs/cli-darwin-x64": "2.4.15",
+        "@biomejs/cli-linux-arm64": "2.4.15",
+        "@biomejs/cli-win32-arm64": "2.4.15",
+        "@biomejs/cli-darwin-arm64": "2.4.15",
+        "@biomejs/cli-linux-x64-musl": "2.4.15",
+        "@biomejs/cli-linux-arm64-musl": "2.4.15"
+      },
+      "_npmOperationalInternal": {
+        "tmp": "tmp/biome_2.4.15_1778346490813_0.2059908107514581",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "_id": "@biomejs/biome@2.4.15",
+      "version": "2.4.15"
+    }
+  },
+  {
+    "source": "https://registry.npmjs.org/zod/4.6.5",
+    "record": {
+      "bugs": {
+        "url": "https://github.com/colinhacks/zod/issues"
+      },
+      "dist": {
+        "shasum": "e3af3edbdc260239c52f73caad05dbbffe6e82cd",
+        "tarball": "https://registry.npmjs.org/zod/-/zod-4.6.5.tgz",
+        "fileCount": 840,
+        "integrity": "sha512-v5l/aFXZQeai4awLbOpSoHecE9UiMrnfx75tEXLjNonXVARxQ5mOeipTjROUchszUNCqnE+hqAMujRsRHsut2Q==",
+        "signatures": [
+          {
+            "sig": "MEUCIDtkjZOq6lmdtsdqBESzHORjYxE3jnbtCMlc6fp5KcXBAiEAx7qf7EGotCL3tQfTVb+gukRlzOmeGDbJR+8DrkwN+Vs=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEQCIBNNqEXGwMQtbIAF5A2Z8IDOhQQVSkHwQAkmsgywNJSCAiAfbEx/zArqNnn/f4OQedpGwu17tlhIWsBJ1+yBFjssqQ==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/zod@4.6.5",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 6140311
+      },
+      "llms": "https://zod.dev/llms.txt",
+      "main": "./index.cjs",
+      "name": "zod",
+      "type": "module",
+      "zshy": {
+        "exports": {
+          ".": "./src/index.ts",
+          "./v3": "./src/v3/index.ts",
+          "./v4": "./src/v4/index.ts",
+          "./mini": "./src/mini/index.ts",
+          "./compile": "./src/compile.ts",
+          "./locales": "./src/locales/index.ts",
+          "./v4-mini": "./src/v4-mini/index.ts",
+          "./v4/core": "./src/v4/core/index.ts",
+          "./v4/mini": "./src/v4/mini/index.ts",
+          "./v4/locales": "./src/v4/locales/index.ts",
+          "./package.json": "./package.json",
+          "./v4/locales/*": "./src/v4/locales/*"
+        },
+        "conditions": {
+          "@zod/source": "src"
+        },
+        "sealCjsExports": true
+      },
+      "types": "./index.d.cts",
+      "author": "Colin McDonnell <zod@colinhacks.com>",
+      "module": "./index.js",
+      "exports": {
+        ".": {
+          "types": "./index.d.cts",
+          "import": "./index.js",
+          "require": "./index.cjs",
+          "@zod/source": "./src/index.ts"
+        },
+        "./v3": {
+          "types": "./v3/index.d.cts",
+          "import": "./v3/index.js",
+          "require": "./v3/index.cjs",
+          "@zod/source": "./src/v3/index.ts"
+        },
+        "./v4": {
+          "types": "./v4/index.d.cts",
+          "import": "./v4/index.js",
+          "require": "./v4/index.cjs",
+          "@zod/source": "./src/v4/index.ts"
+        },
+        "./mini": {
+          "types": "./mini/index.d.cts",
+          "import": "./mini/index.js",
+          "require": "./mini/index.cjs",
+          "@zod/source": "./src/mini/index.ts"
+        },
+        "./compile": {
+          "types": "./compile.d.cts",
+          "import": "./compile.js",
+          "require": "./compile.cjs",
+          "@zod/source": "./src/compile.ts"
+        },
+        "./locales": {
+          "types": "./locales/index.d.cts",
+          "import": "./locales/index.js",
+          "require": "./locales/index.cjs",
+          "@zod/source": "./src/locales/index.ts"
+        },
+        "./v4-mini": {
+          "types": "./v4-mini/index.d.cts",
+          "import": "./v4-mini/index.js",
+          "require": "./v4-mini/index.cjs",
+          "@zod/source": "./src/v4-mini/index.ts"
+        },
+        "./v4/core": {
+          "types": "./v4/core/index.d.cts",
+          "import": "./v4/core/index.js",
+          "require": "./v4/core/index.cjs",
+          "@zod/source": "./src/v4/core/index.ts"
+        },
+        "./v4/mini": {
+          "types": "./v4/mini/index.d.cts",
+          "import": "./v4/mini/index.js",
+          "require": "./v4/mini/index.cjs",
+          "@zod/source": "./src/v4/mini/index.ts"
+        },
+        "./v4/locales": {
+          "types": "./v4/locales/index.d.cts",
+          "import": "./v4/locales/index.js",
+          "require": "./v4/locales/index.cjs",
+          "@zod/source": "./src/v4/locales/index.ts"
+        },
+        "./package.json": "./package.json",
+        "./v4/locales/*": {
+          "types": "./v4/locales/*",
+          "import": "./v4/locales/*",
+          "require": "./v4/locales/*",
+          "@zod/source": "./src/v4/locales/*"
+        }
+      },
+      "funding": "https://github.com/sponsors/colinhacks",
+      "license": "MIT",
+      "scripts": {
+        "test": "nub exec --node vitest run",
+        "build": "nub exec --node zshy --project tsconfig.build.json",
+        "clean": "git clean -xdf . -e node_modules",
+        "postbuild": "nub ../../scripts/write-stub-package-jsons.ts && nub exec --node biome check --write .",
+        "test:watch": "nub exec --node vitest",
+        "prepublishOnly": "nub ../../scripts/check-versions.ts"
+      },
+      "support": {
+        "backing": {
+          "npm-funding": true
+        }
+      },
+      "_npmUser": {
+        "name": "GitHub Actions",
+        "email": "npm-oidc-no-reply@github.com",
+        "trustedPublisher": {
+          "id": "github",
+          "oidcConfigId": "oidc:27618225-ea3e-490f-a88f-ee02eafa1ade"
+        }
+      },
+      "homepage": "https://zod.dev",
+      "keywords": [
+        "typescript",
+        "schema",
+        "validation",
+        "type",
+        "inference"
+      ],
+      "llmsFull": "https://zod.dev/llms-full.txt",
+      "mcpServer": "https://mcp.inkeep.com/zod/mcp",
+      "repository": {
+        "url": "git+https://github.com/colinhacks/zod.git",
+        "type": "git"
+      },
+      "description": "TypeScript-first schema declaration and validation library with static type inference",
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "colinhacks",
+          "email": "colinmcd94@gmail.com"
+        }
+      ],
+      "sideEffects": [
+        "./compile.js",
+        "./compile.cjs",
+        "./src/compile.ts"
+      ],
+      "_hasShrinkwrap": false,
+      "_npmOperationalInternal": {
+        "tmp": "tmp/zod_4.6.5_1789341914484_0.5990650428548274",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "_id": "zod@4.6.5",
+      "version": "4.6.5"
+    }
+  },
+  {
+    "source": "https://registry.npmjs.org/@types%2fnode/24.10.1",
+    "record": {
+      "dist": {
+        "shasum": "91e92182c93db8bd6224fca031e2370cef9a8f01",
+        "tarball": "https://registry.npmjs.org/@types/node/-/node-24.10.1.tgz",
+        "fileCount": 88,
+        "integrity": "sha512-GNWcUTRBgIRJD5zj+Tq0fKOJ5XZajIiBroOF0yvj2bSU1WvNdYS/dn9UxwsujGW4JX06dnHyjV2y9rRaybH0iQ==",
+        "signatures": [
+          {
+            "sig": "MEYCIQCpgl9Lqf33Ja2+k9kUfJurHJElWiv2+uBqZk7yUZAWzwIhANLDpyC5o23Kzvv8rnko97AA6XQoFf3nS+Na6vVyym7H",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 2518994
+      },
+      "main": "",
+      "name": "@types/node",
+      "types": "index.d.ts",
+      "license": "MIT",
+      "scripts": {},
+      "_npmUser": {
+        "name": "types",
+        "email": "ts-npm-types@microsoft.com"
+      },
+      "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/node",
+      "repository": {
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "type": "git",
+        "directory": "types/node"
+      },
+      "description": "TypeScript definitions for node",
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "types",
+          "email": "ts-npm-types@microsoft.com"
+        }
+      ],
+      "contributors": [
+        {
+          "url": "https://github.com/Microsoft",
+          "name": "Microsoft TypeScript",
+          "githubUsername": "Microsoft"
+        },
+        {
+          "url": "https://github.com/jkomyno",
+          "name": "Alberto Schiabel",
+          "githubUsername": "jkomyno"
+        },
+        {
+          "url": "https://github.com/r3nya",
+          "name": "Andrew Makarov",
+          "githubUsername": "r3nya"
+        },
+        {
+          "url": "https://github.com/btoueg",
+          "name": "Benjamin Toueg",
+          "githubUsername": "btoueg"
+        },
+        {
+          "url": "https://github.com/touffy",
+          "name": "David Junger",
+          "githubUsername": "touffy"
+        },
+        {
+          "url": "https://github.com/mohsen1",
+          "name": "Mohsen Azimi",
+          "githubUsername": "mohsen1"
+        },
+        {
+          "url": "https://github.com/galkin",
+          "name": "Nikita Galkin",
+          "githubUsername": "galkin"
+        },
+        {
+          "url": "https://github.com/eps1lon",
+          "name": "Sebastian Silbermann",
+          "githubUsername": "eps1lon"
+        },
+        {
+          "url": "https://github.com/WilcoBakker",
+          "name": "Wilco Bakker",
+          "githubUsername": "WilcoBakker"
+        },
+        {
+          "url": "https://github.com/chyzwar",
+          "name": "Marcin Kopacz",
+          "githubUsername": "chyzwar"
+        },
+        {
+          "url": "https://github.com/trivikr",
+          "name": "Trivikram Kamat",
+          "githubUsername": "trivikr"
+        },
+        {
+          "url": "https://github.com/yoursunny",
+          "name": "Junxiao Shi",
+          "githubUsername": "yoursunny"
+        },
+        {
+          "url": "https://github.com/qwelias",
+          "name": "Ilia Baryshnikov",
+          "githubUsername": "qwelias"
+        },
+        {
+          "url": "https://github.com/ExE-Boss",
+          "name": "ExE Boss",
+          "githubUsername": "ExE-Boss"
+        },
+        {
+          "url": "https://github.com/peterblazejewicz",
+          "name": "Piotr B\u0142a\u017cejewicz",
+          "githubUsername": "peterblazejewicz"
+        },
+        {
+          "url": "https://github.com/addaleax",
+          "name": "Anna Henningsen",
+          "githubUsername": "addaleax"
+        },
+        {
+          "url": "https://github.com/victorperin",
+          "name": "Victor Perin",
+          "githubUsername": "victorperin"
+        },
+        {
+          "url": "https://github.com/NodeJS",
+          "name": "NodeJS Contributors",
+          "githubUsername": "NodeJS"
+        },
+        {
+          "url": "https://github.com/LinusU",
+          "name": "Linus Unneb\u00e4ck",
+          "githubUsername": "LinusU"
+        },
+        {
+          "url": "https://github.com/wafuwafu13",
+          "name": "wafuwafu13",
+          "githubUsername": "wafuwafu13"
+        },
+        {
+          "url": "https://github.com/mcollina",
+          "name": "Matteo Collina",
+          "githubUsername": "mcollina"
+        },
+        {
+          "url": "https://github.com/Semigradsky",
+          "name": "Dmitry Semigradsky",
+          "githubUsername": "Semigradsky"
+        },
+        {
+          "url": "https://github.com/Renegade334",
+          "name": "Ren\u00e9",
+          "githubUsername": "Renegade334"
+        },
+        {
+          "url": "https://github.com/anonrig",
+          "name": "Yagiz Nizipli",
+          "githubUsername": "anonrig"
+        }
+      ],
+      "dependencies": {
+        "undici-types": "~7.16.0"
+      },
+      "typesVersions": {
+        "<=5.6": {
+          "*": [
+            "ts5.6/*"
+          ]
+        },
+        "<=5.7": {
+          "*": [
+            "ts5.7/*"
+          ]
+        }
+      },
+      "_hasShrinkwrap": false,
+      "peerDependencies": {},
+      "typeScriptVersion": "5.2",
+      "_npmOperationalInternal": {
+        "tmp": "tmp/node_24.10.1_1762903995087_0.340724998461184",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "typesPublisherContentHash": "bf541e42e173a984f57b649839d3371001c98469b0e8944f7762074aed2acd2f",
+      "_id": "@types/node@24.10.1",
+      "version": "24.10.1"
+    }
+  }
+]
