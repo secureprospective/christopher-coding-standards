@@ -1,0 +1,152 @@
+[
+  {
+    "path": "docs/planning/evidence/c9-readable/go.mod",
+    "vm_relative": "go.mod",
+    "sha256": "aef87d37278e1c144bb0cee14dfc19e5f9abad6d9d23a89d542baecf6336b31e"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/Makefile",
+    "vm_relative": "Makefile",
+    "sha256": "1516088dee11d3e99f967ee2c11af2f87dc8cdb46299ff5c2c67cba1c03e7ff4"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/.pre-commit-config.yaml",
+    "vm_relative": ".pre-commit-config.yaml",
+    "sha256": "3eb1cca9cbe098b2d43fe4211dbaa9d9c5c06ee4da34d63278ce7b8e970285f3"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/.golangci.yml",
+    "vm_relative": ".golangci.yml",
+    "sha256": "522e05ca4ab32951d03324a515079a32b0daa8f3d7db570f7f472eb716e6a669"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/README.md",
+    "vm_relative": "README.md",
+    "sha256": "f649aa1d3156b034cf0ba5ee7c0b476e6c12337342144b717bd3111b7aeb7538"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/.gitignore",
+    "vm_relative": ".gitignore",
+    "sha256": "92f261fba93a80fbf780a092cb6b9e52cc3dbe858a72ef878617b96364d6daa4"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/coverage.out",
+    "vm_relative": "coverage.out",
+    "sha256": "d6200117d34257491c2e8d15928765662d7445d58862fb75a3f5a9540395b976"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/coverage-summary.txt",
+    "vm_relative": "coverage-summary.txt",
+    "sha256": "9510a09dc6913c226bf2a2ad05dcabee32a6e1dd486bf19af4c1171976f2ee59"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/scripts/bloat.sh",
+    "vm_relative": "scripts/bloat.sh",
+    "sha256": "4fdd831372209111c64fde702501ecfafde9a61071aa52ca908daa1d4bbcc024"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/go.mod",
+    "vm_relative": "tools/ifaceguard/go.mod",
+    "sha256": "5f04c52b5343b8e4406c66ebaf12640051691b031575f01016e6296d9275c1a7"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/go.sum",
+    "vm_relative": "tools/ifaceguard/go.sum",
+    "sha256": "9a901e50cdbf554874b8c79acb6ca4341c16aa148110b5e703ff7ec23414991c"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/ifaceguard.go",
+    "vm_relative": "tools/ifaceguard/ifaceguard.go",
+    "sha256": "9531a89818d1676adaa49d368469697485a225d85fd3b5082969b28b0d2452fb"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/ifaceguard_test.go",
+    "vm_relative": "tools/ifaceguard/ifaceguard_test.go",
+    "sha256": "a7a5527fe48409b7cacda7a0e6cdba7133797f2fee460e26dcb31601c9535451"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/README.md",
+    "vm_relative": "tools/ifaceguard/README.md",
+    "sha256": "f7b722cd6e5fd4779c55c064f6b0a4353032d0e7ebe182f9a74044b2134c4db4"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/.gitignore",
+    "vm_relative": "tools/ifaceguard/.gitignore",
+    "sha256": "cb7db1c5cf5658f17d5e3716b7f2d092777c93bc524c6bb391cd105778ea90f7"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/cmd/ifaceguard/main.go",
+    "vm_relative": "tools/ifaceguard/cmd/ifaceguard/main.go",
+    "sha256": "2edd73833cca9f485fc8f702fef1073474e6e95e92c3c48c52ee842dfe0b4fb4"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/testdata/src/a/a.go",
+    "vm_relative": "tools/ifaceguard/testdata/src/a/a.go",
+    "sha256": "16f76eec7f66e0d8a71e5ad98d8612c057e09e42dc953c5cee467979b90a64ba"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/testdata/src/c/c.go",
+    "vm_relative": "tools/ifaceguard/testdata/src/c/c.go",
+    "sha256": "642edbcb183587601291fc577b6673cf526bec66bdd68ebe9b5d0c6bf0c74f9f"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/testdata/src/b/b.go",
+    "vm_relative": "tools/ifaceguard/testdata/src/b/b.go",
+    "sha256": "44166e12b0c849afd05f600e6efbf3b74e1337270e1c81f1cfb407f01217c3b0"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/internal/schema/example_test.go",
+    "vm_relative": "internal/schema/example_test.go",
+    "sha256": "f2d994b0cbb07ceeca9a184e53ce9f7fd934b4366a16cff8d39453280ae08b13"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/internal/schema/example.go",
+    "vm_relative": "internal/schema/example.go",
+    "sha256": "02061ff8e104b37b1f45a3040b52889007b9f977c0dbf1e5b052f57bcc815769"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/internal/boundary/caller_test.go",
+    "vm_relative": "internal/boundary/caller_test.go",
+    "sha256": "b7e0ef97090a9e0565812659f86cf237c0db1062cc3f8e757198ededc858c6e2"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/internal/playerid/example_test.go",
+    "vm_relative": "internal/playerid/example_test.go",
+    "sha256": "e5907e678bda0b5cac617a223d807cfd0e5ef872af1833f40f14898e75b0f96c"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/internal/playerid/example.go",
+    "vm_relative": "internal/playerid/example.go",
+    "sha256": "4604884da39fd3f14a4182ae2bded29d78c7b0630020462307617929436fa970"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-tool-setup.py",
+    "helper_path": "/home/chris/scratch/coding-standards-c9-tool-setup.py",
+    "sha256": "33044c51daca3a173ffd311be3657d538a1d03a517c5bd134256a96bdd7371e9"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-vm.py",
+    "helper_path": "/home/chris/scratch/coding-standards-c9-vm.py",
+    "sha256": "d2b182f0555a975cefeaefe506328a6d5080b17f4de220c78e58a156619f5cf6"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-supplement.py",
+    "helper_path": "/home/chris/scratch/coding-standards-c9-supplement.py",
+    "sha256": "f5d7b933b592211ae2b1b60969ec1881e112617412f3a9e1b1438b015795aeaa"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-coverage.py",
+    "helper_path": "/home/chris/scratch/coding-standards-c9-coverage.py",
+    "sha256": "7d3c0bf343bba0d743662f303efe44ef79c11f311e1a019b85678f97c28d7c1b"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-integration.py",
+    "helper_path": "/home/chris/scratch/coding-standards-c9-integration.py",
+    "sha256": "fa5701efb3b28c6a98a565a2dc44bbc6035fb79a9986a8c7792c8561f0648014"
+  },
+  {
+    "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-spaces.py",
+    "helper_path": "/home/chris/scratch/coding-standards-c9-spaces.py",
+    "sha256": "505409b73de5aa73cbceddf9884a69f5f8f5fd2da8a598a2b2b74fb79253854f"
+  }
+]

@@ -1,29 +1,21 @@
 # HANDOFF
 
 ## Baton
-Bee · 2026-10-09 · approved rebuild underway; local-only overnight continuation.
+Bee · 2026-10-09 · approved quality-first rebuild, local-only continuation.
 
 ## Where it stands
-Branch `rebuild/quality-core-2026-10-08`. C0–C8 accepted locally; C5 TypeScript reference checks passed on ClaudeOS, fresh review CLEAR, parent verified all37frozen inputs/5helpers/175protected files and accepted the bounded reference. No complete-kit release/publication.
-C5 disposition: `docs/planning/c5-acceptance-result.md`; reviewer report preserved unchanged, with parent correction of its line-count arithmetic (actual326→325, not426→425). Earlier acceptance records remain authoritative for C0–C4; RESUME/frozen scope notes are historical.
+Branch rebuild/quality-core-2026-10-08. C0–C9 accepted locally within recorded scopes. Current acceptance results in docs/planning/c0-acceptance-result.md through c9-acceptance-result.md supersede historical RESUME/planning status. No complete-kit release/publication.
+
+C9: generic Go commands/selected checks, optional typed ifaceguard and safe physical inventory; valid domain rules preserved, signed-ID/zero-struct serialization/null/trailing JSON/non-finite salary defects tested/corrected. Actual ClaudeOS lint/format/vet/build/uncached race tests/98.2%reference coverage, intended diagnostics/restores/analyzer/module/hook and normal/space-path checks; review CLEAR, parent77inputs/6helpers/301protected/diff/metadata verified. Two product-check failures and helper startup failure retained/repaired. Fresh private space-free /tmp binary works around pinned x/tools vet-version path bug; Unix/noexec/other-platform limits explicit. Watchdog launch-HEAD failure retained; supplied exact frozen delta reviewed, not a watchdog pass.
 
 ## Next move
-C8 Bun accepted locally:25tests, actual Bun lock/frozen install/audit/type/lint, optional profile diagnostics/inventory, state/snapshot behavior and actual installed read-only/native hooks checked on ClaudeOS; review CLEAR. See docs/planning/c8-acceptance-result.md/c8-candidate.json. Two initial fixture/profile failures retained/repaired; valid movement preserved, malformed coordinates no longer corrupt state. No mandatory quota/purity/DAG or live-game/network guarantee. Begin C9 Go, then C10–C13 sequentially. Operator requested morning report for merge review; no push/main merge/deploy.
-
-## Test environment
-Christopher approved isolated tests on existing ClaudeOS, preserving computer-use setup; profile `ssh claudeos`, user claude. C5 selected Node24.21.0/pnpm10.34.3/Biome2.4.15/TypeScript5.9.3/Vitest+coverage4.1.11/Stryker9.6.1/Zod4.6.5; reused verified native Gitleaks8.30.1 and task-owned pre-commit4.6.2. No sudo/global packages/system/GUI/config changes or product tests on Beelink.
+C10Python, then C11tracking decision (legitimate deferral if no owner/source), C12actual CI repair, C13cold start from shipped consumer instructions. Sequential execution/freeze/fresh review/parent disposition/local checkpoint. Operator requested morning report for merge review. No rebuild-branch push/main merge/deploy.
 
 ## Blocked / limits
-No C5 blocker.16actual tests on the assembled reference include15schema tests and1synthetic mutation target;100% reference coverage and five-mutant score100, weak-test score0 correctly rejects. Audit observes no reported vulnerabilities after scoped qs6.16.0 repair, not universal safety. Ordinary clean fixture commit/hook checks passed; no broken commits/bypass. Other platforms/versions, full applications, hosted enforcement, live consumers and all-overlay release unverified.
-An actual dependency-free npm-install guard probe rejected but had already created package-lock.json; guard is not isolation or a no-write guarantee. Initial audit, formatting, Stryker CLI/plugin failures and lock-diagnostic harness mismatch preserved. Earlier C4 unconfined pip/Go caches retained untouched; no pristine-VM claim.
+C10–C13/morning report pending. Tracking authority/catalog/source unselected; no invented enrollment. Other platforms/versions/full applications/hosted settings or execution/live consumers/authorization/persistence/complete SAST or scanning/race-freedom remain unverified. Pins/locks/audits/editable records/SSH/hook green are not authenticated approval or containment. C12 still owns legacy manager and negative-diagnostic wiring; overlay acceptance does not repair it.
 
-## Findings carried forward
-C9: Go negative fixture suppresses advertised errcheck violation; prove intended diagnostics.
-C5/C12: npm-ci conflicts with pnpm contract; C12 owns workflow repair, not guard deletion.
-C6 closed: official Workers plugin/npm composition, exact uncommented binding recipe and limitations verified; no deployed/optional mutation guarantee.
-C7 closed: preserve local pnpm guard; non-React/default and separately selected React composition checked, with bounded static-render/type/format/hook evidence and no browser/hosted guarantee.
-C8 closed: Bun composition/runtime/tests and narrowly selected optional profiles checked; actual snapshot aliasing/no-broadcast/permission limits explicit.
-C12: legacy negative workflows suppress diagnostics/accept arbitrary errors; checker/overlay alone does not repair wiring.
+## Test environment
+Christopher authorized isolated runtime/product checks on existing ClaudeOS only: ssh claudeos, user claude; preserve computer-use setup. Task-owned Go1.27.2/golangci2.14.0 and disabled auto-SDK download; accepted Node/pnpm/Bun/native scanner/pre-commit references retained. No product tests on Beelink, sudo/global packages/system/GUI/config changes. Earlier unconfined caches/unused bootstrap artifacts untouched; no pristine-VM claim.
 
-## Rejected
-Workflow-first machinery, graph/agent-stage/purity frameworks, blind size/DRY quotas, false green skips, arbitrary nonzero as intended rejection and blanket upgrades. C5 replaces unpinned npx bootstrap with a small local guard, duplicate remote Biome resolver with the project binary, broken Stryker false argument with documented force and implicit plugin discovery with explicit modules. Ownership/publication/credential constraints unchanged; no push/merge/deploy, App/broker, fleet rollout or consumer rewrite.
+## Tried / rejected
+Workflow-first/purity/DAG/framework mandates, blind size/DRY/comment/tiny-file quotas, arbitrary nonzero/green skips as evidence, speculative infrastructure/blanket upgrades, consumer-rule erasure and bypassed hooks. Exact failures/reports remain evidence; fixes do not retroactively turn them green. No App/broker, fleet rollout or consumer rewrite.

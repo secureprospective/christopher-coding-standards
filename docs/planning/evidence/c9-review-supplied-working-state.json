@@ -1,0 +1,296 @@
+{
+  "base": "ad2477fbc283fd1f159b31074d5889d1eba1d0d0",
+  "actual_head": "ad2477fbc283fd1f159b31074d5889d1eba1d0d0",
+  "diff_path": "/home/chris/scratch/coding-standards-c9-frozen-tracked.patch",
+  "diff_sha256": "1ac9465bd8c7dab9785a165c2ee801a88c5a7bfba0142695e7d6bfa166c73647",
+  "staged_paths": [],
+  "untracked": [
+    {
+      "path": ".project.yaml",
+      "sha256": "86fc2d04c5c8f960b09c72a671dcd89d8126564d66868f91148a8d0c0f3b563c",
+      "scope": "unrelated metadata; do not inspect"
+    },
+    {
+      "path": "docs/planning/c9-baseline.json",
+      "sha256": "bf5165ebcc9361186ec94c7daa9ed868355eeaefb7e9a9ca93cc432daeb300c6",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/c9-candidate.json",
+      "sha256": "1aaf19317a4b08a3190fd5df00e289ce5271ae4214db524d714344c5c0dcb674",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/c9-checks-disposition.md",
+      "sha256": "d107b51bfe32e69e03612a1cfae12fbc075f521d2006622a32afeb8a9f84b056",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/c9-metrics.json",
+      "sha256": "c06873292da9901b0c36dfeec623486f499a9b52114bbd314f2bf53b874530e2",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/c9-scope.md",
+      "sha256": "d3a569b54c1566b2daa9ed1e9b6c34d51c0fee43de2e9aa3ba73c0bec829540c",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/c9-source-copy.json",
+      "sha256": "1630eff0fd416051a149a9432ae7e7fe00ffcad9c6f2e25aa09c3da825af0d56",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-checks.json",
+      "sha256": "fb47a3f3e2373f4de5684930fd7ca42b391d115ea85d621924ce1e8a71da40f2",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-coverage.json",
+      "sha256": "9c1f26bc2c6bc39ee3e285a825317dcd6c86ed43a2c4e1da775f5f7c17b0feb2",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-environment.json",
+      "sha256": "d922096c77550df69696eb0e39f3a477ebba3a95bf57b0ffd70358ebadc398a9",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-final-candidate.json",
+      "sha256": "135f5e985a5cf2c2317edbcd9c18f775f86245d00b7576c0b6d2297c041d6fd1",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-final-supplement.json",
+      "sha256": "7debacefd3d5949f9a9b9dde91e5761d55882f982f3b305b3ac501ca37233836",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-final.json",
+      "sha256": "7045d2fb134bdda624a26e72a2035dc157bba74d00b0bbed7d339f244437fdba",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-integration-initial-failure.json",
+      "sha256": "a9a51b095db951e3e11ba89e46f5b27992ea79d0aaee2a84036b58c417abfd92",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-integration-initial-helper.py",
+      "sha256": "73c6686c0b0c1b2753790259181616026c64852ccc53bc60a8aacbcaf8f928d0",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-integration.json",
+      "sha256": "70c827a5d654f33abc13f7aedd6d663c60f08cccebbb2b5351f423680bda01e7",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-metadata.json",
+      "sha256": "355613ca55a4b35d3c8cfc08b8ab5033721ba3c0b3fb04461acf95d9ece0dc96",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-pinned-analysisflags.go",
+      "sha256": "4df2ebc76b1246120f2a35fab26bb871ccbe967c2fb7c2865fb44522433ad4af",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/.gitignore",
+      "sha256": "92f261fba93a80fbf780a092cb6b9e52cc3dbe858a72ef878617b96364d6daa4",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/.golangci.yml",
+      "sha256": "522e05ca4ab32951d03324a515079a32b0daa8f3d7db570f7f472eb716e6a669",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/.pre-commit-config.yaml",
+      "sha256": "3eb1cca9cbe098b2d43fe4211dbaa9d9c5c06ee4da34d63278ce7b8e970285f3",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/Makefile",
+      "sha256": "1516088dee11d3e99f967ee2c11af2f87dc8cdb46299ff5c2c67cba1c03e7ff4",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/README.md",
+      "sha256": "f649aa1d3156b034cf0ba5ee7c0b476e6c12337342144b717bd3111b7aeb7538",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/go.mod",
+      "sha256": "aef87d37278e1c144bb0cee14dfc19e5f9abad6d9d23a89d542baecf6336b31e",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-coverage.py",
+      "sha256": "7d3c0bf343bba0d743662f303efe44ef79c11f311e1a019b85678f97c28d7c1b",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-integration.py",
+      "sha256": "fa5701efb3b28c6a98a565a2dc44bbc6035fb79a9986a8c7792c8561f0648014",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-spaces.py",
+      "sha256": "505409b73de5aa73cbceddf9884a69f5f8f5fd2da8a598a2b2b74fb79253854f",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-supplement.py",
+      "sha256": "f5d7b933b592211ae2b1b60969ec1881e112617412f3a9e1b1438b015795aeaa",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-tool-setup.py",
+      "sha256": "33044c51daca3a173ffd311be3657d538a1d03a517c5bd134256a96bdd7371e9",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/helpers/coding-standards-c9-vm.py",
+      "sha256": "d2b182f0555a975cefeaefe506328a6d5080b17f4de220c78e58a156619f5cf6",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/internal/boundary/caller_test.go",
+      "sha256": "b7e0ef97090a9e0565812659f86cf237c0db1062cc3f8e757198ededc858c6e2",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/internal/playerid/example.go",
+      "sha256": "4604884da39fd3f14a4182ae2bded29d78c7b0630020462307617929436fa970",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/internal/playerid/example_test.go",
+      "sha256": "e5907e678bda0b5cac617a223d807cfd0e5ef872af1833f40f14898e75b0f96c",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/internal/schema/example.go",
+      "sha256": "02061ff8e104b37b1f45a3040b52889007b9f977c0dbf1e5b052f57bcc815769",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/internal/schema/example_test.go",
+      "sha256": "f2d994b0cbb07ceeca9a184e53ce9f7fd934b4366a16cff8d39453280ae08b13",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/manifest.json",
+      "sha256": "29cfc54be6909b06d37d007106ebcddaec212aa1bd52d2bce6a3b7c4411db251",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/observations.log",
+      "sha256": "fdd0e975b671f2ebbd0ce641365ee54f8619c38bf4a414ae35f0a7f38a2f0d38",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/scripts/bloat.sh",
+      "sha256": "4fdd831372209111c64fde702501ecfafde9a61071aa52ca908daa1d4bbcc024",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/.gitignore",
+      "sha256": "cb7db1c5cf5658f17d5e3716b7f2d092777c93bc524c6bb391cd105778ea90f7",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/README.md",
+      "sha256": "f7b722cd6e5fd4779c55c064f6b0a4353032d0e7ebe182f9a74044b2134c4db4",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/cmd/ifaceguard/main.go",
+      "sha256": "2edd73833cca9f485fc8f702fef1073474e6e95e92c3c48c52ee842dfe0b4fb4",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/go.mod",
+      "sha256": "5f04c52b5343b8e4406c66ebaf12640051691b031575f01016e6296d9275c1a7",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/go.sum",
+      "sha256": "9a901e50cdbf554874b8c79acb6ca4341c16aa148110b5e703ff7ec23414991c",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/ifaceguard.go",
+      "sha256": "9531a89818d1676adaa49d368469697485a225d85fd3b5082969b28b0d2452fb",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/ifaceguard_test.go",
+      "sha256": "a7a5527fe48409b7cacda7a0e6cdba7133797f2fee460e26dcb31601c9535451",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/testdata/src/a/a.go",
+      "sha256": "16f76eec7f66e0d8a71e5ad98d8612c057e09e42dc953c5cee467979b90a64ba",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/testdata/src/b/b.go",
+      "sha256": "44166e12b0c849afd05f600e6efbf3b74e1337270e1c81f1cfb407f01217c3b0",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-readable/tools/ifaceguard/testdata/src/c/c.go",
+      "sha256": "642edbcb183587601291fc577b6673cf526bec66bdd68ebe9b5d0c6bf0c74f9f",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-source-inputs.json",
+      "sha256": "26f27de46bf6ddb9a9cdad246aa5967829d6d72ad1eebc97da972b6f0731a52b",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-spaces-initial-failure.json",
+      "sha256": "ce223693be06bafe58f8237f9954bb0390b28d490f612bce6cf1a9bd5dad92e4",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-spaces-initial-helper.py",
+      "sha256": "9b96266e8466d51282a9bb93295ab01ff77ef21a0d538751ed8153f15bbbaf3a",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-spaces.json",
+      "sha256": "e4c9fd03e79f590d370c246485e8ec2df96b92287ad918bb7ed1974a10ed2d2d",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "docs/planning/evidence/c9-supplement.json",
+      "sha256": "97b41a78b44025ece6afe90a96f85714c06e7be67a7dd7b9334555fe2a82f1e2",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "templates/go/playerid/example_test.go",
+      "sha256": "e5907e678bda0b5cac617a223d807cfd0e5ef872af1833f40f14898e75b0f96c",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "templates/go/schema/example_test.go",
+      "sha256": "f2d994b0cbb07ceeca9a184e53ce9f7fd934b4366a16cff8d39453280ae08b13",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "templates/go/tools/ifaceguard/testdata/src/b/b.go",
+      "sha256": "44166e12b0c849afd05f600e6efbf3b74e1337270e1c81f1cfb407f01217c3b0",
+      "scope": "C9 owned frozen input/candidate"
+    },
+    {
+      "path": "templates/go/tools/ifaceguard/testdata/src/c/c.go",
+      "sha256": "642edbcb183587601291fc577b6673cf526bec66bdd68ebe9b5d0c6bf0c74f9f",
+      "scope": "C9 owned frozen input/candidate"
+    }
+  ],
+  "status": " M scratch/fixtures/go/violating.go\n M templates/go/.golangci.yml\n M templates/go/.pre-commit-config.yaml\n M templates/go/Makefile.snippet\n M templates/go/README.md\n M templates/go/bloat.sh\n M templates/go/playerid/example.go\n M templates/go/schema/example.go\n M templates/go/tools/ifaceguard/README.md\n M templates/go/tools/ifaceguard/cmd/ifaceguard/main.go\n M templates/go/tools/ifaceguard/ifaceguard.go\n M templates/go/tools/ifaceguard/ifaceguard_test.go\n?? .project.yaml\n?? docs/planning/c9-baseline.json\n?? docs/planning/c9-candidate.json\n?? docs/planning/c9-checks-disposition.md\n?? docs/planning/c9-metrics.json\n?? docs/planning/c9-scope.md\n?? docs/planning/c9-source-copy.json\n?? docs/planning/evidence/c9-checks.json\n?? docs/planning/evidence/c9-coverage.json\n?? docs/planning/evidence/c9-environment.json\n?? docs/planning/evidence/c9-final-candidate.json\n?? docs/planning/evidence/c9-final-supplement.json\n?? docs/planning/evidence/c9-final.json\n?? docs/planning/evidence/c9-integration-initial-failure.json\n?? docs/planning/evidence/c9-integration-initial-helper.py\n?? docs/planning/evidence/c9-integration.json\n?? docs/planning/evidence/c9-metadata.json\n?? docs/planning/evidence/c9-pinned-analysisflags.go\n?? docs/planning/evidence/c9-readable/\n?? docs/planning/evidence/c9-source-inputs.json\n?? docs/planning/evidence/c9-spaces-initial-failure.json\n?? docs/planning/evidence/c9-spaces-initial-helper.py\n?? docs/planning/evidence/c9-spaces.json\n?? docs/planning/evidence/c9-supplement.json\n?? templates/go/playerid/example_test.go\n?? templates/go/schema/example_test.go\n?? templates/go/tools/ifaceguard/testdata/src/b/\n?? templates/go/tools/ifaceguard/testdata/src/c/\n",
+  "source_input_verification": "77files/6helpers/301protected verified unchanged after supplied-diff request"
+}
