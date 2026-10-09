@@ -1,0 +1,523 @@
+{
+  "source_fingerprints": {
+    ".pre-commit-config.yaml": "de1c3114739ac9290a2b8cffd73335300445426e55ea02bec41dd3016fa4a838",
+    ".shellcheckrc": "49280db0ea528d2a481dc6d7c6e7f29bfe94767d52bbfe861c895bf81130e746",
+    "Makefile.snippet": "ed52b96a59ffeecc144406a8b9964a868a5d23f8fdf31925b02fffb69550e820",
+    "README.md": "218f8d51daf9c934155ced6cb18756c82fb8e0e1794fc9a278330b8f4ed346b4",
+    "lib/strict-mode.sh": "9864d946a46cfbbe5cab83d999e6030fa1345d5dc11d83b30aa2e8f4d5ac2945",
+    "scripts/example.sh": "0efa52e12a84ec2b79b588a79763aad369ce01c8617754d7f1364705bd3b495c",
+    "tests/example.bats": "a8deb8b994c8ca77b7115c9733e067b647832a8e1ab11131a975fa433f8dc0cc"
+  },
+  "checks": [
+    {
+      "name": "make_lint",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "lint"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shellcheck --\nfind . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shfmt -d -i 2 -ci -sr --\n",
+      "stderr": ""
+    },
+    {
+      "name": "make_test",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "test"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "bats --print-output-on-failure tests/\n1..17\nok 1 require_arg rejects empty without continuing\nok 2 require_arg rejects missing value\nok 3 require_arg preserves nonempty strings\nok 4 positive integer rejects zero and all-zero strings\nok 5 positive integer rejects negatives and malformed strings\nok 6 positive integer rejects empty and missing value\nok 7 positive integer preserves positives and leading zeros\nok 8 positive integer does not overflow on large decimal strings\nok 9 example rejects missing input with no success output\nok 10 example rejects zero negative and malformed input before work\nok 11 example preserves exact positive and leading-zero output\nok 12 shell metacharacters remain data and cannot execute\nok 13 ERR reports top-level failing file line and original status\nok 14 ERR inherits into ordinary function calls\nok 15 pipefail reports pipeline line and original failure\nok 16 handled command condition does not trigger ERR\nok 17 function used as a condition has Bash conditional suppression\n",
+      "stderr": ""
+    },
+    {
+      "name": "make_fmt",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "fmt"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shfmt -w -i 2 -ci -sr --\n",
+      "stderr": ""
+    },
+    {
+      "name": "make_lint",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "lint"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shellcheck --\nfind . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shfmt -d -i 2 -ci -sr --\n",
+      "stderr": ""
+    },
+    {
+      "name": "make_test",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "test"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "bats --print-output-on-failure tests/\n1..17\nok 1 require_arg rejects empty without continuing\nok 2 require_arg rejects missing value\nok 3 require_arg preserves nonempty strings\nok 4 positive integer rejects zero and all-zero strings\nok 5 positive integer rejects negatives and malformed strings\nok 6 positive integer rejects empty and missing value\nok 7 positive integer preserves positives and leading zeros\nok 8 positive integer does not overflow on large decimal strings\nok 9 example rejects missing input with no success output\nok 10 example rejects zero negative and malformed input before work\nok 11 example preserves exact positive and leading-zero output\nok 12 shell metacharacters remain data and cannot execute\nok 13 ERR reports top-level failing file line and original status\nok 14 ERR inherits into ordinary function calls\nok 15 pipefail reports pipeline line and original failure\nok 16 handled command condition does not trigger ERR\nok 17 function used as a condition has Bash conditional suppression\n",
+      "stderr": ""
+    },
+    {
+      "name": "standalone_shellcheck",
+      "command": [
+        "shellcheck",
+        "--",
+        "lib/strict-mode.sh",
+        "scripts/example.sh"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "standalone_shfmt",
+      "command": [
+        "shfmt",
+        "-d",
+        "-i",
+        "2",
+        "-ci",
+        "-sr",
+        "--",
+        "lib/strict-mode.sh",
+        "scripts/example.sh"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "gitleaks_clean_dir",
+      "command": [
+        "gitleaks",
+        "dir",
+        ".",
+        "--no-banner",
+        "--redact"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": "10:03PM INF scanned ~16793 bytes (16.79 KB) in 4.15ms\n10:03PM INF no leaks found\n"
+    },
+    {
+      "name": "make_lint_safe_paths",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "lint"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/paths",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shellcheck --\nfind . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shfmt -d -i 2 -ci -sr --\n",
+      "stderr": ""
+    },
+    {
+      "name": "make_lint_violation",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "lint"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/lint",
+      "exit": 2,
+      "expected_exit": 2,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shellcheck --\n\nIn ./scripts/bad.sh line 3:\nprintf '%s\\n' ${name}\n              ^-----^ SC2086 (info): Double quote to prevent globbing and word splitting.\n\nDid you mean:\nprintf '%s\\n' \"${name}\"\n\nFor more information:\n  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...\n",
+      "stderr": "make: *** [Makefile.snippet:15: lint] Error 123\n"
+    },
+    {
+      "name": "standalone_shellcheck_violation",
+      "command": [
+        "shellcheck",
+        "--",
+        "scripts/bad.sh"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/lint",
+      "exit": 1,
+      "expected_exit": 1,
+      "stdout": "\nIn scripts/bad.sh line 3:\nprintf '%s\\n' ${name}\n              ^-----^ SC2086 (info): Double quote to prevent globbing and word splitting.\n\nDid you mean:\nprintf '%s\\n' \"${name}\"\n\nFor more information:\n  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...\n",
+      "stderr": ""
+    },
+    {
+      "name": "make_format_violation",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "lint"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/format",
+      "exit": 2,
+      "expected_exit": 2,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shellcheck --\nfind . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shfmt -d -i 2 -ci -sr --\ndiff ./scripts/unformatted.sh.orig ./scripts/unformatted.sh\n--- ./scripts/unformatted.sh.orig\n+++ ./scripts/unformatted.sh\n@@ -1,4 +1,4 @@\n #!/usr/bin/env bash\n if true; then\n-printf '%s\\n' 'safe'\n+  printf '%s\\n' 'safe'\n fi\n",
+      "stderr": "make: *** [Makefile.snippet:16: lint] Error 123\n"
+    },
+    {
+      "name": "standalone_shfmt_violation",
+      "command": [
+        "shfmt",
+        "-d",
+        "-i",
+        "2",
+        "-ci",
+        "-sr",
+        "--",
+        "scripts/unformatted.sh"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/format",
+      "exit": 1,
+      "expected_exit": 1,
+      "stdout": "diff scripts/unformatted.sh.orig scripts/unformatted.sh\n--- scripts/unformatted.sh.orig\n+++ scripts/unformatted.sh\n@@ -1,4 +1,4 @@\n #!/usr/bin/env bash\n if true; then\n-printf '%s\\n' 'safe'\n+  printf '%s\\n' 'safe'\n fi\n",
+      "stderr": ""
+    },
+    {
+      "name": "make_fmt_repair",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "fmt"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/format",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shfmt -w -i 2 -ci -sr --\n",
+      "stderr": ""
+    },
+    {
+      "name": "make_fmt_repair_lint",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "lint"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/format",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shellcheck --\nfind . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shfmt -d -i 2 -ci -sr --\n",
+      "stderr": ""
+    },
+    {
+      "name": "empty_source_not_pass",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "lint"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/empty",
+      "exit": 2,
+      "expected_exit": 2,
+      "stdout": "",
+      "stderr": "No .sh sources found; lint not verified\nmake: *** [Makefile.snippet:14: lint] Error 1\n"
+    },
+    {
+      "name": "missing_shellcheck_not_pass",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "lint"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+      "exit": 2,
+      "expected_exit": 2,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shellcheck --\n",
+      "stderr": "xargs: shellcheck: No such file or directory\nmake: *** [Makefile.snippet:15: lint] Error 127\n"
+    },
+    {
+      "name": "missing_shfmt_not_pass",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "lint"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+      "exit": 2,
+      "expected_exit": 2,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shellcheck --\nfind . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shfmt -d -i 2 -ci -sr --\n",
+      "stderr": "xargs: shfmt: No such file or directory\nmake: *** [Makefile.snippet:16: lint] Error 127\n"
+    },
+    {
+      "name": "missing_bats_not_pass",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "test"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+      "exit": 2,
+      "expected_exit": 2,
+      "stdout": "bats --print-output-on-failure tests/\n",
+      "stderr": "/bin/bash: line 1: bats: command not found\nmake: *** [Makefile.snippet:23: test] Error 127\n"
+    },
+    {
+      "name": "discovery_error_not_pass",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "lint"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/discovery",
+      "exit": 2,
+      "expected_exit": 2,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shellcheck --\n",
+      "stderr": "find: \u2018./blocked\u2019: Permission denied\nmake: *** [Makefile.snippet:15: lint] Error 1\n"
+    },
+    {
+      "name": "git_fixture_init",
+      "command": [
+        "git",
+        "init"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "Initialized empty Git repository in /home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks/.git/\n",
+      "stderr": "hint: Using 'master' as the name for the initial branch. This default branch name\nhint: is subject to change. To configure the initial branch name to use in all\nhint: of your new repositories, which will suppress this warning, call:\nhint:\nhint: \tgit config --global init.defaultBranch <name>\nhint:\nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint:\nhint: \tgit branch -m <name>\n"
+    },
+    {
+      "name": "git_fixture_name",
+      "command": [
+        "git",
+        "config",
+        "--local",
+        "user.name",
+        "Bee fixture"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "git_fixture_email",
+      "command": [
+        "git",
+        "config",
+        "--local",
+        "user.email",
+        "fixture@example.invalid"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "git_fixture_add_clean",
+      "command": [
+        "git",
+        "add",
+        "."
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "hook_install",
+      "command": [
+        "pre-commit",
+        "install",
+        "--install-hooks"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "pre-commit installed at .git/hooks/pre-commit\n",
+      "stderr": ""
+    },
+    {
+      "name": "hooks_clean_all",
+      "command": [
+        "pre-commit",
+        "run",
+        "--all-files"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "shellcheck...............................................................Passed\nshfmt....................................................................Passed\nDetect hardcoded secrets.................................................Passed\n",
+      "stderr": ""
+    },
+    {
+      "name": "clean_fixture_commit",
+      "command": [
+        "git",
+        "commit",
+        "-m",
+        "test: clean copied Bash fixture"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "[master (root-commit) 3e36dbf] test: clean copied Bash fixture\n 7 files changed, 333 insertions(+)\n create mode 100644 .pre-commit-config.yaml\n create mode 100644 .shellcheckrc\n create mode 100644 Makefile.snippet\n create mode 100644 README.md\n create mode 100755 lib/strict-mode.sh\n create mode 100755 scripts/example.sh\n create mode 100644 tests/example.bats\n",
+      "stderr": "shellcheck...............................................................Passed\nshfmt....................................................................Passed\nDetect hardcoded secrets.................................................Passed\n"
+    },
+    {
+      "name": "git_stage_lint_violation",
+      "command": [
+        "git",
+        "add",
+        "scripts/bad-lint.sh"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "hook_shellcheck_violation",
+      "command": [
+        "pre-commit",
+        "run",
+        "shellcheck",
+        "--files",
+        "scripts/bad-lint.sh"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 1,
+      "expected_exit": 1,
+      "stdout": "shellcheck...............................................................Failed\n- hook id: shellcheck\n- exit code: 1\n\nIn scripts/bad-lint.sh line 3:\nprintf '%s\\n' ${name}\n              ^-----^ SC2086 (info): Double quote to prevent globbing and word splitting.\n\nDid you mean:\nprintf '%s\\n' \"${name}\"\n\nFor more information:\n  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...\n\n",
+      "stderr": ""
+    },
+    {
+      "name": "git_unstage_lint_violation",
+      "command": [
+        "git",
+        "restore",
+        "--staged",
+        "scripts/bad-lint.sh"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "git_stage_format_violation",
+      "command": [
+        "git",
+        "add",
+        "scripts/bad-format.sh"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "hook_shfmt_violation",
+      "command": [
+        "pre-commit",
+        "run",
+        "shfmt",
+        "--files",
+        "scripts/bad-format.sh"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 1,
+      "expected_exit": 1,
+      "stdout": "shfmt....................................................................Failed\n- hook id: shfmt\n- files were modified by this hook\n",
+      "stderr": ""
+    },
+    {
+      "name": "hook_shfmt_repaired",
+      "command": [
+        "pre-commit",
+        "run",
+        "shfmt",
+        "--files",
+        "scripts/bad-format.sh"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "shfmt....................................................................Passed\n",
+      "stderr": ""
+    },
+    {
+      "name": "git_unstage_format_violation",
+      "command": [
+        "git",
+        "restore",
+        "--staged",
+        "scripts/bad-format.sh"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "hooks_final_clean_all",
+      "command": [
+        "pre-commit",
+        "run",
+        "--all-files"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "shellcheck...............................................................Passed\nshfmt....................................................................Passed\nDetect hardcoded secrets.................................................Passed\n",
+      "stderr": ""
+    },
+    {
+      "name": "git_fixture_final_clean",
+      "command": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "limits": "Only copied Bash overlay on selected Linux/tool versions. Gitleaks clean results are not seeded-secret detection proof. Initial pip bootstrap default shared cache was not confined; subsequent child processes use task-owned PIP_CACHE_DIR/PRE_COMMIT_HOME. Existing shared cache left untouched. No global package/system/config changes, no failed-code commit or hook bypass."
+}

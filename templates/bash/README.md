@@ -1,186 +1,58 @@
-# Bash Overlay — Adoption Guide
+# Bash overlay
 
-Part of `christopher-coding-standards`, Phase 2 (final overlay). Companion to
-the TypeScript, Go, and Python overlays — same role, Bash-specific tooling.
-Model-agnostic and reusable by any project with a `scripts/`/`bin/` tree of
-shell scripts (deploy scripts, cron jobs, CI glue — the kind of code that
-tends to accumulate outside a "real" language's guardrails).
+Copy and customize Bash boundary helpers, shell lint/format configuration and Bats examples. Use the shared quality contract and existing project idioms. This is not a shell sandbox, automatic adoption or proof of hosted enforcement.
 
----
+## Units and ownership
 
-## What this overlay adds
+| Unit | Purpose |
+|---|---|
+| `.shellcheckrc` | Bash mode, source resolution and five explicit optional checks; not all possible correctness/security checks. |
+| `.pre-commit-config.yaml` | Pinned ShellCheck/shfmt/Gitleaks hooks. Merge with existing controls; configured hooks are not execution evidence. |
+| `Makefile.snippet` | GNU Make/Bash/find/xargs lint, format and test recipes. Merge deliberately; preserve existing targets/settings. |
+| `lib/strict-mode.sh` | Required-value and positive-decimal validation; process-owned strict options, IFS and ERR diagnostic trap. |
+| `scripts/example.sh`, `tests/example.bats` | Reference CLI and real helper/integration assertions; adapt to the actual project. The example prints, it does not start a listener. |
 
-| Layer | Tool | What it enforces |
-|---|---|---|
-| Linter | shellcheck 0.9+ (`.shellcheckrc` curates the optional-check set) | Correctness bugs (unquoted expansion, unused vars, wrong test operators) and a handful of SAST-adjacent checks |
-| Formatter | shfmt | Consistent indentation, `case` styling, redirect spacing |
-| Pre-commit hooks | pre-commit + shellcheck + shfmt + gitleaks | Blocks commits with lint/format failures or secrets |
-| Boundary validation | `lib/strict-mode.sh` (`require_arg`, `require_positive_int`) | No script proceeds on an empty/malformed input — the Bash analogue of the Go/Python/TS overlays' schema validation |
-| Test discipline | bats-core | Unit + integration tests for shell functions and scripts |
+Source the library only where its process-wide options/IFS/trap are appropriate. It replaces an existing ERR trap; do not blindly add it to a host shell, test driver or recovery-oriented library. Tests source it in a child Bash, not the Bats driver.
 
-**Why shellcheck's curated set, not `enable=all`:** the same reasoning as the
-Go overlay's `linters: default: none` — `enable=all` includes a long tail of
-style-opinionated optional checks with real false-positive noise. This
-overlay enables five specific high-value ones (see `.shellcheckrc` for the
-rationale on each) rather than everything.
+## Boundary contract
 
----
+`require_arg NAME VALUE` accepts nonempty strings, including spaces/zero; missing/empty VALUE prints a named diagnostic to stderr and exits1.
 
-## Adoption steps
+`require_positive_int NAME VALUE` accepts ASCII decimal strings representing positive integers, including `08`/`0001` and values larger than machine integers. It rejects empty, all-zero, signed, fractional, exponent and malformed strings. Validation uses a nonzero-digit pattern, not arithmetic/octal conversion. It preserves the supplied string; no range or canonicalization is imposed. If later code requires bounded arithmetic, a real port range, authorized path or permission, validate that caller-specific contract separately.
 
-### 1. Install the toolchain
+Helpers terminate the calling process on rejection; they are not recoverable predicates. NAME is a caller-supplied diagnostic label, not external input. Never interpolate external values into shell commands, source paths or eval strings; quote argument expansions.
 
-```bash
-# Debian/Ubuntu — apt ships current-enough versions of all three:
-sudo apt-get install shellcheck shfmt bats
-shellcheck --version   # verified against 0.9.0
-shfmt --version         # verified against 3.6.0
-bats --version          # verified against 1.8.2
+## Setup and adoption
 
-pip install pre-commit  # if not already installed
-```
-
-**pre-commit version matters here:** the `shfmt` hook's manifest uses the
-modern `stages: [pre-commit]` name. **pre-commit < ~3.2 rejects this with
-`InvalidManifestError`** (confirmed 2026-07-24 against pre-commit 3.0.4).
-Upgrade with `pip install --upgrade pre-commit` if you hit that error.
-
-### 2. Copy files into your repo root
-
-```
-.shellcheckrc
-.pre-commit-config.yaml
-Makefile.snippet     →  merge targets into your project Makefile
-lib/strict-mode.sh   →  keep as lib/strict-mode.sh (or your project's shared-lib location)
-scripts/example.sh   →  reference only — shows the adoption pattern, not meant to ship as-is
-tests/example.bats   →  reference only — same
-```
-
-### 3. Adopt the strict-mode pattern in every script
-
-Every script should start:
+1. Identify the owner-approved project/environment and existing checks/package/config rules. Install chosen trusted tool versions there, preferably in an isolated test workspace; record source identity/integrity. No automatic sudo/global install or computer-use changes.
+2. Merge `.shellcheckrc`, selected pre-commit hooks and Makefile recipes. Copy/adapt the library/example/tests into actual project locations. Retain source-path comments if needed for static resolution.
+3. Adapt the CLI pattern:
 
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# shellcheck source=lib/strict-mode.sh
-source "${here}/lib/strict-mode.sh"
+# shellcheck source=../lib/strict-mode.sh
+source "${here}/../lib/strict-mode.sh"
+require_positive_int "count" "${1:-}"
+# Actual authorized work follows validation.
 ```
 
-Then validate every argument/env var before using it:
+4. Run `make lint` and `make test` on the assembled copy. `make fmt` writes formatting changes; inspect them, then rerun lint/tests. Bats DSL is outside these `.sh` lint recipes; its behavior is exercised by Bats. GNU NUL-delimited discovery selects regular `.sh` files, preserves spaces/newlines/metacharacters in names, prunes `.git`/`node_modules`, and propagates discovery/tool failures. Symlinked scripts are not followed/checked; assess their real targets/ownership and adapt coverage explicitly rather than silently dropping a project's existing link-based checks. An empty `.sh` set is explicitly unverified, not a green tool run.
+5. In a disposable Git copy, run `pre-commit run --all-files` with the copied hook configuration and a task-owned cache. Activate `pre-commit install` in a real project only under its owner's authority. Recheck actual runtime loading/coverage; hooks may not be installed or may be bypassed outside this procedure. This overlay grants no bypass permission.
 
-```bash
-require_arg "config_path" "${1:-}"
-require_positive_int "port" "${2:-}"
-```
+Pinned sources retain ShellCheck wrapper0.11.0.1 (native0.11.0), shfmt3.13.1 and the Gitleaks8.30.1 hook definition. `gitleaks-system` requires an owner-installed verified Gitleaks binary on PATH (selected/tested8.30.1); the hook does not pin that binary automatically. It avoids the default hook's implicit unpinned Go SDK bootstrap. Resolve the full configured commits against intended official repos when selecting/updating dependencies; tags/hash text alone are not trust or compatibility proof. Do not blanket-upgrade or remove guards to manufacture green.
 
-### 4. Activate pre-commit hooks
+## Error behavior and limits
 
-```bash
-pre-commit install
-```
+Sourcing enables `-Eeuo pipefail`; ERR is inherited into ordinary functions/subshells. Eligible failures report failing source file/line/status to stderr, without converting failure into success. Required-value/positive validation emits its own explicit exit1 diagnostic.
 
-### 5. Re-pin hook SHAs if you bump versions
+Bash suppresses ERR/errexit in handled conditions, including functions invoked in `if`/`&&`/`||` contexts. Pipelines, command substitutions and subshells have additional context rules; `-E` is not universal exception handling or a guarantee every failing subprocess aborts its caller. Explicitly inspect statuses where the contract needs it. Internal CLI diagnostics are not safe external API responses by default.
 
-```bash
-git ls-remote https://github.com/shellcheck-py/shellcheck-py v0.11.0.1
-git ls-remote https://github.com/scop/pre-commit-shfmt v3.13.1-1
-git ls-remote https://github.com/gitleaks/gitleaks v8.30.1
-```
+## Verification, not historical claims
 
-Replace the `rev:` values in `.pre-commit-config.yaml` with the full
-40-character SHA. Never use a mutable tag (`@v1`, `@latest`) — the
-trivy-action lesson (AGENTS.md hard rule).
+Bats observes zero/negative/malformed/positive/leading-zero/large values, absence of success after rejection, literal metacharacters, original failure status/location and handled conditions. Run the actual copied tests; their presence alone proves nothing.
 
----
+Verify lint/format on clean copied inputs and harmless deliberate violations in a separate disposable tree: ShellCheck must identify the intended rule, shfmt must produce the intended formatting diff, and no missing-tool/config error counts as either result. Keep failure output, exact candidate/config/lock identity and tool versions. Do not try to commit broken scripts or plant real credentials. The Gitleaks hook scans the staged Git diff, not the filenames selected by `pre-commit --all-files`; an empty staged diff is not a whole-tree scan. Use an explicit directory scan to check a full copied tree. A clean scan is not proof every possible secret would be detected; assess selected rules/exclusions with authorized non-secret test data separately.
 
-## Verification test — deliberate violations
-
-Run this after adoption to confirm every gate fires. Verified live against
-the real tools during this overlay's build (shellcheck 0.9.0, shfmt 3.6.0,
-gitleaks — full `pre-commit run`, not just standalone CLI output).
-
-**Step 1:** Create `scripts/scratch_bad.sh` with one violation per gate:
-
-```bash
-#!/bin/bash
-name=$1
-echo Hello $name                          # shellcheck SC2086/SC2250 — unquoted expansion
-password="hunter2hunter2hunter2"          # shellcheck SC2034 — assigned but unused
-eval "echo $name"                         # shellcheck SC2250
-aws_key="AKIAABCDEFGHIJKLMNOP"            # gitleaks — AWS access key pattern
-if [ $name = "" ]
-then
-echo empty                                # shfmt — missing indent, `if/then` not collapsed
-fi
-```
-
-(Do not use AWS's own documented example key `AKIAIOSFODNN7EXAMPLE` — every
-overlay in this repo's gitleaks setup allowlists it by design as a known
-false-positive. Any other `AKIA`-prefixed 20-char string will trigger.)
-
-**Step 2:** Try to commit it:
-
-```bash
-git add scripts/scratch_bad.sh
-git commit -m "test: verify gates"
-```
-
-**Expected — all three must fire:**
-- shellcheck flags the unquoted expansions and the unused variable →
-  pre-commit blocks the commit
-- shfmt rewrites the `if`/`then`/indent block → pre-commit blocks the
-  commit (`files were modified by this hook`)
-- gitleaks flags the AWS key → pre-commit blocks the commit
-- `make lint` exits non-zero standalone (not just inside pre-commit)
-
-If any gate stays silent, stop and fix the overlay before trusting it in
-production.
-
-**Step 3:** Delete `scripts/scratch_bad.sh` and proceed.
-
-**A note on the shfmt hook config** (found during this overlay's build): the
-`shfmt` pre-commit hook's *default* args are `[--write]`. This overlay's
-`.pre-commit-config.yaml` passes a custom `args:` list to set the indent/
-style flags (`-i 2 -ci -sr`) — and a custom `args:` list **replaces** the
-default rather than merging with it. The first draft of this overlay omitted
-`-w`/`--write` from the custom list, which silently turned the hook into a
-no-op: no diff, no fix, no failure, `Passed` on a misformatted file. Fixed by
-including `-w` explicitly (see the comment in `.pre-commit-config.yaml`).
-Caught only by running the deliberate-violation test through the actual
-pre-commit hook, not by reading the config — the same lesson the Python
-overlay's session-notes entry drew from the AWS-example-key mistake:
-templates need to be run, not just written.
-
----
-
-## Test discipline — bats-core
-
-```bash
-make test   # bats tests/
-```
-
-`tests/example.bats` demonstrates both unit-level tests (sourcing
-`lib/strict-mode.sh` directly and calling `require_arg`/`require_positive_int`)
-and integration-level tests (`run`-ing `scripts/example.sh` end to end and
-asserting on `$status`/`$output`). All 9 assertions pass live against the
-example files in this directory.
-
-`.bats` files are excluded from the shellcheck/shfmt lint target — bats'
-`@test "..." { }` syntax isn't plain bash, and shellcheck false-positives on
-bats-runtime-injected variables (`BATS_TEST_DIRNAME`, `run`, `$status`,
-`$output`). They're validated by `bats` itself, not the linter.
-
----
-
-## Phase status
-
-- ✅ Phase 1A — repo skeleton
-- ✅ Phase 1B — language-agnostic templates
-- ✅ Phase 1C — TypeScript overlay
-- ✅ Phase 1D — Astro overlay
-- ✅ Phase 2 — Go overlay
-- ✅ Phase 2 (cont.) — Python overlay
-- ✅ Phase 2 (cont.) — Bash overlay (this directory) — **Phase 2 complete**
-- ⏳ Phase 3 — local-model selection guidance, dual-model architecture doc
+Current rebuild evidence/status lives in the kit's HANDOFF and C4 records, not old phase checkmarks. Verification is candidate/environment-specific; no universal version/platform compatibility, total security, CI enforcement or publication authority is implied.

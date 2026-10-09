@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/home/claude/coding-standards-verification/bee-c4-2026-10-08/bats-core/bin/bats",
+    "--tap",
+    "--print-output-on-failure",
+    "project/tests/example.bats"
+  ],
+  "exit": 1,
+  "stdout": "1..17\nok 1 require_arg rejects empty without continuing\nok 2 require_arg rejects missing value\nok 3 require_arg preserves nonempty strings\nok 4 positive integer rejects zero and all-zero strings\nok 5 positive integer rejects negatives and malformed strings\nok 6 positive integer rejects empty and missing value\nok 7 positive integer preserves positives and leading zeros\nok 8 positive integer does not overflow on large decimal strings\nok 9 example rejects missing input with no success output\nok 10 example rejects zero negative and malformed input before work\nok 11 example preserves exact positive and leading-zero output\nok 12 shell metacharacters remain data and cannot execute\nnot ok 13 ERR reports top-level failing file line and original status\n# (in test file project/tests/example.bats, line 119)\n#   `[ \"${output}\" = \"ERROR: ${script}:2 exited with status 7\" ]' failed\n# Last output:\n# ERROR: /tmp/bats-run-jPUnLv/test/13/failure.sh:0 exited with status 7\nnot ok 14 ERR inherits into ordinary function calls\n# (in test file project/tests/example.bats, line 127)\n#   `[ \"${output}\" = \"ERROR: ${script}:3 exited with status 7\" ]' failed\nnot ok 15 pipefail reports pipeline line and original failure\n# (in test file project/tests/example.bats, line 135)\n#   `[ \"${output}\" = \"ERROR: ${script}:2 exited with status 7\" ]' failed\n# Last output:\n# ERROR: /tmp/bats-run-jPUnLv/test/15/pipeline-failure.sh:0 exited with status 7\nok 16 handled command condition does not trigger ERR\nok 17 function used as a condition has Bash conditional suppression\n",
+  "stderr": "",
+  "failed_test_ids": [
+    13,
+    14,
+    15
+  ],
+  "library_sha256": "6f50cf16636e39ca66b9118b50074a6346ea474803f161da40a9e36136666ab2",
+  "tests_sha256": "a8deb8b994c8ca77b7115c9733e067b647832a8e1ab11131a975fa433f8dc0cc"
+}

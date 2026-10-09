@@ -1,0 +1,196 @@
+{
+  "chunk": "C4",
+  "base": "5761c151442bb213e2953ccc021f0164461a29bb",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4965,
+      "sha256": "b254441ea02bcac1c23d71d24380c9e109a24cf74c829ca37fe24f7fdd9f1708"
+    },
+    {
+      "path": "docs/INDEX.md",
+      "bytes": 3262,
+      "sha256": "baa8272cbc860fafc57f2d94ff77e1d4a226a0404858265609efa83f58178b8b"
+    },
+    {
+      "path": "templates/bash/.pre-commit-config.yaml",
+      "bytes": 1018,
+      "sha256": "de1c3114739ac9290a2b8cffd73335300445426e55ea02bec41dd3016fa4a838"
+    },
+    {
+      "path": "templates/bash/.shellcheckrc",
+      "bytes": 430,
+      "sha256": "49280db0ea528d2a481dc6d7c6e7f29bfe94767d52bbfe861c895bf81130e746"
+    },
+    {
+      "path": "templates/bash/Makefile.snippet",
+      "bytes": 1084,
+      "sha256": "ed52b96a59ffeecc144406a8b9964a868a5d23f8fdf31925b02fffb69550e820"
+    },
+    {
+      "path": "templates/bash/README.md",
+      "bytes": 6639,
+      "sha256": "218f8d51daf9c934155ced6cb18756c82fb8e0e1794fc9a278330b8f4ed346b4"
+    },
+    {
+      "path": "templates/bash/lib/strict-mode.sh",
+      "bytes": 1817,
+      "sha256": "9864d946a46cfbbe5cab83d999e6030fa1345d5dc11d83b30aa2e8f4d5ac2945"
+    },
+    {
+      "path": "templates/bash/tests/example.bats",
+      "bytes": 5294,
+      "sha256": "a8deb8b994c8ca77b7115c9733e067b647832a8e1ab11131a975fa433f8dc0cc"
+    },
+    {
+      "path": "docs/planning/c4-scope.md",
+      "bytes": 4563,
+      "sha256": "6e935e4a109079c8bc66a6d494e51a9c21be9186a6cbc4477f6f5df0b6535efe"
+    },
+    {
+      "path": "docs/planning/c4-source-copy.json",
+      "bytes": 1688,
+      "sha256": "90cd967f25e9742d42ecadddbd99e3138d13daa21f96e970bdae6b45e7824154"
+    },
+    {
+      "path": "docs/planning/c4-vm-evidence-manifest.json",
+      "bytes": 2451,
+      "sha256": "891c72978c2d08be852ee89881bd31d121157ced0da520ba9ea2cb2faf218056"
+    },
+    {
+      "path": "docs/planning/evidence/c4-environment.json",
+      "bytes": 4283,
+      "sha256": "ab360e1a2f00498a8a38bda2bae6c967341edf2c66729673f0f0f3c511fbfcbd"
+    },
+    {
+      "path": "docs/planning/evidence/c4-baseline-positivity.json",
+      "bytes": 3157,
+      "sha256": "211efa1f33150d2eca76a7daca96a2d2de8952649bd56aa5c54be125c3c7cd91"
+    },
+    {
+      "path": "docs/planning/evidence/c4-positivity-repair.json",
+      "bytes": 1195,
+      "sha256": "bca459ecdac1a58e5376c8f6d3a003a71b9546a507e18c61ed8dfcdc04d42680"
+    },
+    {
+      "path": "docs/planning/evidence/c4-baseline-trap.json",
+      "bytes": 2051,
+      "sha256": "b05acbc401358b1efcf89e48fc52e6891273c87ba2aa7ef79434b6f936ccc1eb"
+    },
+    {
+      "path": "docs/planning/evidence/c4-trap-location-repair.json",
+      "bytes": 1656,
+      "sha256": "f29b04d83e8d4d5f15463783504d909dc098557121b5c907293f8aefc1322481"
+    },
+    {
+      "path": "docs/planning/evidence/c4-trap-inheritance-repair.json",
+      "bytes": 1521,
+      "sha256": "a8d379b3a9e46aab34346b7cbc70a78494f25f892b360e8e779c1f6d48d9ba4d"
+    },
+    {
+      "path": "docs/planning/evidence/c4-final-checks.json",
+      "bytes": 22048,
+      "sha256": "5b3ccb002f1465df91b7b82172a22bbd3e55b92d547db5be6172375d5c38d31a"
+    },
+    {
+      "path": "docs/planning/evidence/c4-system-hook-initial-failure.json",
+      "bytes": 8620,
+      "sha256": "a3ba6cea46c35c00c90ea1a5c4c45a55361f9381527da8eee58a93376e67c50f"
+    },
+    {
+      "path": "docs/planning/evidence/c4-final-candidate-checks.json",
+      "bytes": 21449,
+      "sha256": "d57c9f00e1df305d2d53264858b17553056ac7e7ccb8e3aa5448bc2c61208590"
+    },
+    {
+      "path": "docs/planning/evidence/c4-final-additional-checks.json",
+      "bytes": 6176,
+      "sha256": "ad194112231b41e46f4c09d75f53c3caf92081b233c11eec969c6dba877a5a1f"
+    },
+    {
+      "path": "docs/planning/evidence/c4-hook-provenance.json",
+      "bytes": 8828,
+      "sha256": "c1d89c2018b57221b6d2b62c004f17dec794b99403b6189c42d0f38445d14a37"
+    },
+    {
+      "path": "docs/planning/evidence/c4-pre-commit-resolve.json",
+      "bytes": 95778,
+      "sha256": "ff1d39b8b722cc5bdcf000cd0940a87905a61e52b1d443062258c1905c0a0e72"
+    },
+    {
+      "path": "docs/planning/evidence/c4-pre-commit-install.json",
+      "bytes": 95768,
+      "sha256": "986e7c2fcc06ec8f887112e7f56bf7b0f55abc8cb734187848221414276d37c9"
+    },
+    {
+      "path": "docs/planning/evidence/c4-pre-commit-requirements.txt",
+      "bytes": 1059,
+      "sha256": "7a3a43cca8e2ed097fc0b45ea3b8603d2248cdff17f88b93c9f1342459b859b4"
+    },
+    {
+      "path": "docs/planning/c4-checks.json",
+      "bytes": 31871,
+      "sha256": "6436fad2fecc1ffa1bb44624f1a5814c4baaf9792749a2d4600eae832bf964e2"
+    },
+    {
+      "path": "templates/bash/scripts/example.sh",
+      "bytes": 511,
+      "sha256": "0efa52e12a84ec2b79b588a79763aad369ce01c8617754d7f1364705bd3b495c"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 3116,
+      "sha256": "259dd5e1395952c5742e50098e51aeb30c723f403d862f2692b68889a071fe91"
+    },
+    {
+      "path": "docs/quality-contract.md",
+      "bytes": 5915,
+      "sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f"
+    },
+    {
+      "path": "templates/AGENTS.md",
+      "bytes": 2674,
+      "sha256": "c8bbb045bc89e8bf0dc90467b673e00fcc34846e793586434b06e9ca3c878fe7"
+    },
+    {
+      "path": "templates/SYSTEM_MAP.md",
+      "bytes": 1747,
+      "sha256": "54ad30fdc50804e044b6a741c21aa041883672e558c397097d69f1273111c5b4"
+    },
+    {
+      "path": "docs/planning/rebuild-chunk-plan-2026-10-08.md",
+      "bytes": 14971,
+      "sha256": "1ceb843a55b57d0fa3a8c6c4f5a7294525c94e01c09bb501fcd8f6dfa8022edf"
+    }
+  ],
+  "tracked_diff_sha256": "c179aeb89e0c858c7712b2c3a5bc980383747957353a574f556242d2abf8fecd",
+  "session_helpers": [
+    {
+      "path": "/home/chris/scratch/coding-standards-c4-vm-setup.py",
+      "sha256": "ae10299b95c56f041e5c323f1e49e9d47dbc2b35648716ee6637fa18f479e255"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c4-vm-check.py",
+      "sha256": "63e8a9771c2b8ac2f09fa8238f6489d248e0fb32aeef34c78a8b0dc032fd3ce5"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c4-final-vm-check.py",
+      "sha256": "074b299f988d29b7a7d8fbbb6b84c3c42671d48101f81c012dde43bfe072bdb9"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c4-system-hook-recheck.py",
+      "sha256": "8eb27db244c3bd20d87f93d5af4ee50e5ae0c157acb43d55d5bd7c7c737e3dd2"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c4-integrity.py",
+      "sha256": "419976260909dedcafa2347b7bda5d875e71e8471516add9673308b9bd909777"
+    }
+  ],
+  "protected_untracked_metadata": {
+    "path": ".project.yaml",
+    "sha256": "86fc2d04c5c8f960b09c72a671dcd89d8126564d66868f91148a8d0c0f3b563c"
+  },
+  "closure_boundary": "HANDOFF is progress-only outside frozen source inputs. Freeze whole candidate during review; closure changes only progress/result/report after gate, not reviewed source.",
+  "runtime_boundary": "Only isolated operator-approved ClaudeOS. Earlier regression/failed-hook/bootstrap/cache observations retained explicitly; final current-source records authoritative. No host product tests or whole-kit/security/hosted guarantee."
+}

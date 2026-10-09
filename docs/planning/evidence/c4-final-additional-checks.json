@@ -1,0 +1,126 @@
+{
+  "source_fingerprints": {
+    ".pre-commit-config.yaml": "de1c3114739ac9290a2b8cffd73335300445426e55ea02bec41dd3016fa4a838",
+    ".shellcheckrc": "49280db0ea528d2a481dc6d7c6e7f29bfe94767d52bbfe861c895bf81130e746",
+    "Makefile.snippet": "ed52b96a59ffeecc144406a8b9964a868a5d23f8fdf31925b02fffb69550e820",
+    "README.md": "218f8d51daf9c934155ced6cb18756c82fb8e0e1794fc9a278330b8f4ed346b4",
+    "lib/strict-mode.sh": "9864d946a46cfbbe5cab83d999e6030fa1345d5dc11d83b30aa2e8f4d5ac2945",
+    "scripts/example.sh": "0efa52e12a84ec2b79b588a79763aad369ce01c8617754d7f1364705bd3b495c",
+    "tests/example.bats": "a8deb8b994c8ca77b7115c9733e067b647832a8e1ab11131a975fa433f8dc0cc"
+  },
+  "checks": [
+    {
+      "name": "stage_nonsecret_marker",
+      "command": [
+        "git",
+        "add",
+        "staged-wiring.txt"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "real_staged_scanner_wiring_reject",
+      "command": [
+        "pre-commit",
+        "run",
+        "gitleaks-system",
+        "--files",
+        "staged-wiring.txt"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 1,
+      "expected_exit": 1,
+      "stdout": "Detect hardcoded secrets.................................................Failed\n- hook id: gitleaks-system\n- exit code: 1\n\n\u25cb\n    \u2502\u2572\n    \u2502 \u25cb\n    \u25cb \u2591\n    \u2591    gitleaks\n\nFinding:     \u001b[1;3;mREDACTED\u001b[0m\nSecret:      \u001b[1;3;mREDACTED\u001b[0m\nRuleID:      bee-fixture-marker\nEntropy:     2.953243\nFile:        staged-wiring.txt\nLine:        1\nFingerprint: staged-wiring.txt:bee-fixture-marker:1\n\n10:04PM INF 0 commits scanned.\n10:04PM INF scanned ~25 bytes (25 bytes) in 2.66ms\n10:04PM WRN leaks found: 1\n\n",
+      "stderr": ""
+    },
+    {
+      "name": "unstage_nonsecret_marker",
+      "command": [
+        "git",
+        "restore",
+        "--staged",
+        "staged-wiring.txt"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "missing_gitleaks_setup_rejected",
+      "command": [
+        "pre-commit",
+        "run",
+        "gitleaks-system",
+        "--all-files"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 1,
+      "expected_exit": 1,
+      "stdout": "Detect hardcoded secrets.................................................Failed\n- hook id: gitleaks-system\n- exit code: 1\n\nExecutable `gitleaks` not found\n\n",
+      "stderr": ""
+    },
+    {
+      "name": "final_default_hooks_clean",
+      "command": [
+        "pre-commit",
+        "run",
+        "--all-files"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "shellcheck...............................................................Passed\nshfmt....................................................................Passed\nDetect hardcoded secrets.................................................Passed\n",
+      "stderr": ""
+    },
+    {
+      "name": "git_fixture_clean",
+      "command": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/hooks",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "space_root_lint",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "lint"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/CLI with spaces",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shellcheck --\nfind . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shfmt -d -i 2 -ci -sr --\n",
+      "stderr": ""
+    },
+    {
+      "name": "space_root_test",
+      "command": [
+        "make",
+        "-f",
+        "Makefile.snippet",
+        "test"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes-final/CLI with spaces",
+      "exit": 0,
+      "expected_exit": 0,
+      "stdout": "bats --print-output-on-failure tests/\n1..17\nok 1 require_arg rejects empty without continuing\nok 2 require_arg rejects missing value\nok 3 require_arg preserves nonempty strings\nok 4 positive integer rejects zero and all-zero strings\nok 5 positive integer rejects negatives and malformed strings\nok 6 positive integer rejects empty and missing value\nok 7 positive integer preserves positives and leading zeros\nok 8 positive integer does not overflow on large decimal strings\nok 9 example rejects missing input with no success output\nok 10 example rejects zero negative and malformed input before work\nok 11 example preserves exact positive and leading-zero output\nok 12 shell metacharacters remain data and cannot execute\nok 13 ERR reports top-level failing file line and original status\nok 14 ERR inherits into ordinary function calls\nok 15 pipefail reports pipeline line and original failure\nok 16 handled command condition does not trigger ERR\nok 17 function used as a condition has Bash conditional suppression\n",
+      "stderr": ""
+    }
+  ],
+  "rule": "title = \"Bee harmless wiring probe\"\n[[rules]]\nid = \"bee-fixture-marker\"\ndescription = \"Non-secret staged wiring sentinel\"\nregex = 'BEE_TEST_SECRET_SENTINEL'\n",
+  "rule_sha256": "a6089333a2355bfaa4ccef3b4bee361fa7330589d9f8bbdd5cdea97aec447e23",
+  "limit": "Harmless custom rule proves staged-scanner wiring, NOT default secret-detection completeness. Missing binary is setup failure, not secret rejection. Copied project root containing spaces has17behavior tests and lint executed."
+}

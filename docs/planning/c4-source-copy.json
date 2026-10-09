@@ -1,0 +1,48 @@
+{
+  "base": "5761c151442bb213e2953ccc021f0164461a29bb",
+  "stage": "final candidate runtime copy; earlier phase snapshots preserved separately",
+  "sources": [
+    {
+      "source": "templates/bash/.pre-commit-config.yaml",
+      "destination": "project/.pre-commit-config.yaml",
+      "bytes": 1018,
+      "sha256": "de1c3114739ac9290a2b8cffd73335300445426e55ea02bec41dd3016fa4a838"
+    },
+    {
+      "source": "templates/bash/.shellcheckrc",
+      "destination": "project/.shellcheckrc",
+      "bytes": 430,
+      "sha256": "49280db0ea528d2a481dc6d7c6e7f29bfe94767d52bbfe861c895bf81130e746"
+    },
+    {
+      "source": "templates/bash/Makefile.snippet",
+      "destination": "project/Makefile.snippet",
+      "bytes": 1084,
+      "sha256": "ed52b96a59ffeecc144406a8b9964a868a5d23f8fdf31925b02fffb69550e820"
+    },
+    {
+      "source": "templates/bash/README.md",
+      "destination": "project/README.md",
+      "bytes": 6639,
+      "sha256": "218f8d51daf9c934155ced6cb18756c82fb8e0e1794fc9a278330b8f4ed346b4"
+    },
+    {
+      "source": "templates/bash/lib/strict-mode.sh",
+      "destination": "project/lib/strict-mode.sh",
+      "bytes": 1817,
+      "sha256": "9864d946a46cfbbe5cab83d999e6030fa1345d5dc11d83b30aa2e8f4d5ac2945"
+    },
+    {
+      "source": "templates/bash/scripts/example.sh",
+      "destination": "project/scripts/example.sh",
+      "bytes": 511,
+      "sha256": "0efa52e12a84ec2b79b588a79763aad369ce01c8617754d7f1364705bd3b495c"
+    },
+    {
+      "source": "templates/bash/tests/example.bats",
+      "destination": "project/tests/example.bats",
+      "bytes": 5294,
+      "sha256": "a8deb8b994c8ca77b7115c9733e067b647832a8e1ab11131a975fa433f8dc0cc"
+    }
+  ]
+}

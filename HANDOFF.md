@@ -4,23 +4,23 @@
 Bee · 2026-10-08 · approved rebuild underway.
 
 ## Where it stands
-Branch `rebuild/quality-core-2026-10-08`. C0/C1/C2/C3 accepted. C3 adds the minimal maintainer fixture checker/tests/docs and narrow routes. ClaudeOS:14checker tests, real ShellCheck clean/intended-SC2086 pair and two rejected nonmatch probes passed; fresh review CLEAR. No template/config/workflow/core/consumer changes by C3, all-overlay claim, complete-kit release or publication.
-Current evidence: `docs/planning/c3-acceptance-result.md`; earlier C0/C1/C2 results. Frozen scope/candidate notes and `docs/planning/RESUME.md` are history, not current progress.
+Branch `rebuild/quality-core-2026-10-08`. C0/C1/C2/C3/C4 accepted; C4 is the first runtime overlay (Bash).17Bats tests, real Make/lint/format/hook/path/setup-failure checks passed on final copied source; fresh review CLEAR. Core/consumer templates, other overlays, workflows/root security configuration and fixtures unchanged by C4. No complete-kit release or publication.
+Current evidence: `docs/planning/c4-acceptance-result.md`; earlier C0–C3 results. Frozen scope/candidate notes and `docs/planning/RESUME.md` are historical, not current progress.
 
 ## Next move
-C4: Bash boundary helpers, error/trap contract, Bats and lint wiring. Start with preservation-backed positive-integer repair/tests; then assess error/trap behavior separately. Fresh read-only review gates actual source and runtime observations. Use candidate-bound copied shipped files, not green arbitrary-error results.
+C5: TypeScript dependency/security/test compatibility. Reverify current advisory/fixed-version facts before selecting versions. Establish actual package-manager/lockfile and dependency compatibility on a copied fixture, with intended positive/negative checks and fresh review. C6/C7/C8 depend on accepted TS.
 
 ## Test environment
-Christopher approved isolated coding-standards tests on ClaudeOS while preserving computer-use setup. Profile `ssh claudeos`, user `claude`, Debian13/KVM; Python3.13.5. Bee's task-owned VM workspace contains public copies and verified ShellCheck0.11.0 binary only; location/identity: `docs/planning/evidence/c3-vm-environment.json`. No sudo, system packages/services/config changes or GUI launch. Earlier test@localhost connection was wrong; don't troubleshoot it as the current profile. Do not test products on Beelink or touch other agents' files.
+Christopher approved isolated tests on ClaudeOS, preserving computer-use setup. Profile `ssh claudeos`, user `claude`, Debian13/KVM. Owned workspace/provenance: `docs/planning/evidence/c3-vm-environment.json`, `docs/planning/evidence/c4-environment.json`. C4 selected Bash5.2.37/ShellCheck0.11.0/shfmt3.13.1/Gitleaks8.30.1/Bats1.14.0/pre-commit4.6.2; Python3.13.5. No sudo/global packages/system/GUI/config changes. Do not use old test@localhost profile or run product tests on Beelink.
 
-## Blocked on
-No C3 blocker. C4 must establish its isolated Bats/tool setup and execute relevant paths. Other Python versions/platforms, all-overlay fitness, containment and hosted enforcement remain unverified. Tracking selection, publication authority, credentials, consumers and fleet rollout remain separate decisions.
+## Blocked / limits
+No C4 blocker. C5 tools/compatibility/commands still need establishing. Initial C4 pip/default Go caches were not confined; leave existing shared caches/initial SDK artifact untouched. Final Bash uses verified native Gitleaks system hook, not the checksum-unverified Go bootstrap. Subsequent child process caches are task-owned. Other versions/platforms, all-overlay fitness, containment and hosted enforcement remain unverified; tracking/publication/consumers/fleet decisions remain separate.
 
 ## Findings carried forward
 C9: Go negative fixture suppresses advertised errcheck violation; prove intended diagnostics, not arbitrary failure.
-C4: digit-only helper accepts zero/all-zero strings; omitted boundary tests. Preserve leading-zero positives and diagnostics without overflow-prone conversion; verify ERR-trap promises against actual context/errtrace behavior.
 C5/C12: npm-ci conflicts with pnpm-only consumer snippets; align installation/lockfile contract without bypassing guards.
-C12: legacy fixture workflows suppress diagnostics/accept arbitrary nonzero; new CLI does not fix wiring by existing.
+C12: legacy fixture workflows suppress diagnostics/accept arbitrary nonzero; new checker/overlay does not fix wiring by existing.
+C4 limits: ERR has Bash context suppression; only regular .sh discovery, so symlink targets require deliberate project coverage; harmless custom scanner rule proves wiring, not full default secret policy. Staged hook scanning is not whole-tree scanning.
 
 ## Rejected
-Workflow-first machinery, worktree-as-sandbox, green skipped checks as verification, blind size/DRY quotas and code-golf. Existing ownership/publication/credential safeguards remain live; no publisher/App/broker, automatic deployment or consumer rewrite authorized.
+Workflow-first machinery, worktree-as-sandbox, green skipped checks as verification, blind size/DRY quotas and code-golf. Existing ownership/publication/credential safeguards remain live; no publisher/App/broker, deployment or consumer rewrite authorized.

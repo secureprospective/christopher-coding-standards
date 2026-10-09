@@ -46,7 +46,7 @@ Global skill installation, hosted protection, publication and live consumer enro
 
 ## Current verification status
 
-C0 documentation/scenario baseline and C1 core/routing cleared their independent content reviews; see [C1 acceptance](docs/planning/c1-acceptance-result.md). Runtime overlays, dependency migrations and CI repairs remain later chunks. No complete-kit release, automatic updater, tracker registry or publisher is claimed.
+The rebuild clears units independently; see [current handoff](HANDOFF.md) and its candidate-bound acceptance records for accepted units and remaining gates. A reviewed core or one overlay does not establish compatibility/enforcement for the rest. No complete-kit release, automatic updater, tracker registry or publisher is claimed.
 
 Existing required TS contexts historically succeeded while substantive steps skipped; Python/Go/Bash fixture successes do not prove every advertised gate or complete project behavior. Known inherited fixture and npm/pnpm mismatches are assigned to later gates. See [C0 baseline](docs/planning/c0-gate-baseline.md) and [current handoff](HANDOFF.md), not old phase badges, for evidence and limits.
 

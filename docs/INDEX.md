@@ -20,4 +20,4 @@ For writing/reviewing a change, read [quality-contract.md](quality-contract.md) 
 
 Add a route for new maintained responsibilities; mark stale/unknown context instead of guessing. A task not named here does not need an approval merely to inspect relevant source—ask only for a material scope/behavior/risk ambiguity.
 
-**Status:** C1 core/routing cleared content review; [acceptance record](planning/c1-acceptance-result.md). Language overlays/fixture mechanisms/CI are unchanged pending their own chunks; existence and historical green checks are not complete compatibility/enforcement proof. No complete-kit release. Tracking remains proposed, not deployed.
+**Status:** Follow [current handoff](../HANDOFF.md) and unit-specific acceptance evidence. Units clear separately; existence and historical green checks are not complete compatibility/enforcement proof. No complete-kit release. Tracking remains proposed, not deployed.

@@ -1,20 +1,23 @@
-# Makefile snippet — Bash overlay. Mirrors the TS/Go/Python overlays' target
-# names (lint / fmt / test) so muscle memory transfers across languages.
-# Merge these targets into the project Makefile.
+# Merge deliberately: these recipes require Bash, GNU find and GNU xargs.
+# Preserve the project's existing targets/settings when adapting this snippet.
+SHELL := /bin/bash
+.SHELLFLAGS := -euo pipefail -c
 
 .PHONY: lint fmt test
 
-# .bats files are excluded — bats' `@test "..." { }` syntax isn't plain
-# bash, so shellcheck/shfmt aren't run on them (see .pre-commit-config.yaml
-# for the same exclusion). They're validated by `make test` instead.
-SHELL_FILES := $(shell find . -name '*.sh' -not -path './node_modules/*' -not -path './.git/*')
+# Regular .sh files only; project symlinks need explicit target/ownership review.
+# Prune dependencies/git; NUL-delimited paths preserve spaces/metacharacters.
+# Bats DSL files are tested separately, not included in the .sh lint set.
+FIND_SHELL_SOURCES = find . -type d \( -name node_modules -o -name .git \) -prune -o -type f -name '*.sh'
 
 lint:
-	shellcheck $(SHELL_FILES)
-	shfmt -d -i 2 -ci -sr $(SHELL_FILES)
+	@test -n "$$($(FIND_SHELL_SOURCES) -print -quit)" || { printf '%s\n' 'No .sh sources found; lint not verified' >&2; exit 1; }
+	$(FIND_SHELL_SOURCES) -print0 | xargs -0 -r shellcheck --
+	$(FIND_SHELL_SOURCES) -print0 | xargs -0 -r shfmt -d -i 2 -ci -sr --
 
 fmt:
-	shfmt -w -i 2 -ci -sr $(SHELL_FILES)
+	@test -n "$$($(FIND_SHELL_SOURCES) -print -quit)" || { printf '%s\n' 'No .sh sources found; format not applicable' >&2; exit 1; }
+	$(FIND_SHELL_SOURCES) -print0 | xargs -0 -r shfmt -w -i 2 -ci -sr --
 
 test:
-	bats tests/
+	bats --print-output-on-failure tests/

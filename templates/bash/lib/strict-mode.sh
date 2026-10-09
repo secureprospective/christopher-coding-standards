@@ -12,13 +12,13 @@
 #   # shellcheck source=lib/strict-mode.sh
 #   source "${here}/lib/strict-mode.sh"
 
-set -euo pipefail
+set -Eeuo pipefail
 IFS=$'\n\t'
 
-# Report the failing file:line on any untrapped error instead of a bare
-# "command not found" or silent non-zero exit — `set -e` on its own tells
-# you a script failed, not where.
-trap 'echo "ERROR: ${BASH_SOURCE[1]:-$0}:${BASH_LINENO[0]} exited with status $?" >&2' ERR
+# -E inherits ERR into functions/subshells. Bash still suppresses ERR/errexit
+# in handled conditions; do not treat this as universal error handling.
+# Report the failing command's location and preserve its original status.
+trap 'printf "ERROR: %s:%s exited with status %s\n" "${BASH_SOURCE[0]:-$0}" "${LINENO}" "$?" >&2' ERR
 
 # require_arg NAME VALUE — fail loud if a required argument/variable is
 # empty or unset. Boundary validation for script inputs: never let a raw
@@ -32,14 +32,14 @@ require_arg() {
   fi
 }
 
-# require_positive_int NAME VALUE — require_arg plus a numeric-shape check.
-# The Bash analogue of the Go/Python schema templates' "parseable number"
-# validation on a raw string field before it crosses into business logic.
+# require_positive_int NAME VALUE — positive ASCII decimal string.
+# Leading zeros are allowed; all-zero strings are not. No arithmetic
+# conversion means large inputs cannot overflow or become octal.
 require_positive_int() {
   local name="$1"
   local value="${2:-}"
   require_arg "${name}" "${value}"
-  if ! [[ "${value}" =~ ^[0-9]+$ ]]; then
+  if ! [[ "${value}" =~ ^0*[1-9][0-9]*$ ]]; then
     echo "ERROR: ${name} must be a positive integer, got: ${value}" >&2
     exit 1
   fi

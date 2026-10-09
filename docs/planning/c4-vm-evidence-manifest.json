@@ -1,0 +1,72 @@
+[
+  {
+    "path": "docs/planning/evidence/c4-environment.json",
+    "bytes": 4283,
+    "sha256": "ab360e1a2f00498a8a38bda2bae6c967341edf2c66729673f0f0f3c511fbfcbd"
+  },
+  {
+    "path": "docs/planning/evidence/c4-baseline-positivity.json",
+    "bytes": 3157,
+    "sha256": "211efa1f33150d2eca76a7daca96a2d2de8952649bd56aa5c54be125c3c7cd91"
+  },
+  {
+    "path": "docs/planning/evidence/c4-positivity-repair.json",
+    "bytes": 1195,
+    "sha256": "bca459ecdac1a58e5376c8f6d3a003a71b9546a507e18c61ed8dfcdc04d42680"
+  },
+  {
+    "path": "docs/planning/evidence/c4-baseline-trap.json",
+    "bytes": 2051,
+    "sha256": "b05acbc401358b1efcf89e48fc52e6891273c87ba2aa7ef79434b6f936ccc1eb"
+  },
+  {
+    "path": "docs/planning/evidence/c4-trap-location-repair.json",
+    "bytes": 1656,
+    "sha256": "f29b04d83e8d4d5f15463783504d909dc098557121b5c907293f8aefc1322481"
+  },
+  {
+    "path": "docs/planning/evidence/c4-trap-inheritance-repair.json",
+    "bytes": 1521,
+    "sha256": "a8d379b3a9e46aab34346b7cbc70a78494f25f892b360e8e779c1f6d48d9ba4d"
+  },
+  {
+    "path": "docs/planning/evidence/c4-final-checks.json",
+    "bytes": 22048,
+    "sha256": "5b3ccb002f1465df91b7b82172a22bbd3e55b92d547db5be6172375d5c38d31a"
+  },
+  {
+    "path": "docs/planning/evidence/c4-system-hook-initial-failure.json",
+    "bytes": 8620,
+    "sha256": "a3ba6cea46c35c00c90ea1a5c4c45a55361f9381527da8eee58a93376e67c50f"
+  },
+  {
+    "path": "docs/planning/evidence/c4-final-candidate-checks.json",
+    "bytes": 21449,
+    "sha256": "d57c9f00e1df305d2d53264858b17553056ac7e7ccb8e3aa5448bc2c61208590"
+  },
+  {
+    "path": "docs/planning/evidence/c4-final-additional-checks.json",
+    "bytes": 6176,
+    "sha256": "ad194112231b41e46f4c09d75f53c3caf92081b233c11eec969c6dba877a5a1f"
+  },
+  {
+    "path": "docs/planning/evidence/c4-hook-provenance.json",
+    "bytes": 8828,
+    "sha256": "c1d89c2018b57221b6d2b62c004f17dec794b99403b6189c42d0f38445d14a37"
+  },
+  {
+    "path": "docs/planning/evidence/c4-pre-commit-resolve.json",
+    "bytes": 95778,
+    "sha256": "ff1d39b8b722cc5bdcf000cd0940a87905a61e52b1d443062258c1905c0a0e72"
+  },
+  {
+    "path": "docs/planning/evidence/c4-pre-commit-install.json",
+    "bytes": 95768,
+    "sha256": "986e7c2fcc06ec8f887112e7f56bf7b0f55abc8cb734187848221414276d37c9"
+  },
+  {
+    "path": "docs/planning/evidence/c4-pre-commit-requirements.txt",
+    "bytes": 1059,
+    "sha256": "7a3a43cca8e2ed097fc0b45ea3b8603d2248cdff17f88b93c9f1342459b859b4"
+  }
+]
