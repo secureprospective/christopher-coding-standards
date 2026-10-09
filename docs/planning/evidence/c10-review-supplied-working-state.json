@@ -1,0 +1,256 @@
+{
+  "base": "aa34bd02c66b2a432450576a789db591e75f5d8a",
+  "actual_head": "aa34bd02c66b2a432450576a789db591e75f5d8a",
+  "diff_path": "/home/chris/scratch/coding-standards-c10-frozen-tracked.patch",
+  "diff_sha256": "a6467f79d833d1861350fa0f3e7e4072fd42bf3683c3b2ff58a6d2e5cb05cd98",
+  "staged_paths": [],
+  "untracked": [
+    {
+      "path": "docs/planning/c10-baseline.json",
+      "bytes": 60128,
+      "sha256": "e46f061292e206876242645d245448b3176ffbb4a47ff9711f8addb7497ad612"
+    },
+    {
+      "path": "docs/planning/c10-candidate.json",
+      "bytes": 77615,
+      "sha256": "df1f13e76cded1632443c52324388032c14ee8a85d1e470f4c0c5dfcac151926"
+    },
+    {
+      "path": "docs/planning/c10-checks-disposition.md",
+      "bytes": 6234,
+      "sha256": "e287401cf6cc132801131ec2e5392a9f9d56101d6ce0a82cf3e1ff7e68cdbf42"
+    },
+    {
+      "path": "docs/planning/c10-metrics.json",
+      "bytes": 629,
+      "sha256": "c6789983f6ae5e472c0828b0dbb9c8b55230b9749f129857bfbb196419983070"
+    },
+    {
+      "path": "docs/planning/c10-scope.md",
+      "bytes": 1483,
+      "sha256": "80ca82f2691e9328fdf4773b5062663ad7a8d96acb94e63d5cdd8019ae6bbb6c"
+    },
+    {
+      "path": "docs/planning/c10-source-copy.json",
+      "bytes": 1579,
+      "sha256": "fb1821fe4bbb9355d91c3b8c4920d27cba024d9353afe462a7b09e1a2fe83a1a"
+    },
+    {
+      "path": "docs/planning/evidence/c10-checks.json",
+      "bytes": 65897,
+      "sha256": "76782d0295b7bc40f1cc1006505004d12775d3e927949eb92d249d4dc54f7b69"
+    },
+    {
+      "path": "docs/planning/evidence/c10-environment.json",
+      "bytes": 516,
+      "sha256": "01a259d649b062ea25ed579bb33a6a683db714338a5c2c996d5f610748a09d77"
+    },
+    {
+      "path": "docs/planning/evidence/c10-final-candidate.json",
+      "bytes": 22869,
+      "sha256": "b57127a07a32673d2375ff86d6799e12f473d71ee9818064686d3815268073c0"
+    },
+    {
+      "path": "docs/planning/evidence/c10-final-checks.json",
+      "bytes": 42194,
+      "sha256": "b29bec8e59bb0c68a77fede9eab482a97f7506a83d578895e51626497c3a6800"
+    },
+    {
+      "path": "docs/planning/evidence/c10-final.json",
+      "bytes": 15478,
+      "sha256": "0c46701a3440184aab8fd255d3b2f4586261ebe40deaf1cdeb92898dc29a898d"
+    },
+    {
+      "path": "docs/planning/evidence/c10-format-marker-initial-failure.json",
+      "bytes": 31204,
+      "sha256": "1d8130bf3ebd321e8c7bc943e1f9c2a7aa1c43a73cf88e5427d52d7ca841e935"
+    },
+    {
+      "path": "docs/planning/evidence/c10-initial-checks.json",
+      "bytes": 8093,
+      "sha256": "35b284a67a9c14c22759320d3aa376d0cf23ca65fe6f480037211c35ff37b87b"
+    },
+    {
+      "path": "docs/planning/evidence/c10-initial-source-inputs.json",
+      "bytes": 21059,
+      "sha256": "285ed66c7d2baea3590d5b297393c911740a4708670f718e927ae0fe8cd203a6"
+    },
+    {
+      "path": "docs/planning/evidence/c10-initial-vm-helper.py",
+      "bytes": 5808,
+      "sha256": "576f8d29bfd53d3e6729816bd2f8166a1ecf0878360d038ca3234218c75b0ae7"
+    },
+    {
+      "path": "docs/planning/evidence/c10-metadata.json",
+      "bytes": 3368921,
+      "sha256": "ead1e512153002c8f209a86f74c18d7c311b4a8a0bb38d46f7f63de2dad06b5c"
+    },
+    {
+      "path": "docs/planning/evidence/c10-mutation-files.json",
+      "bytes": 15251,
+      "sha256": "addbcdb308dc3ae6ec97f7c59b861cfb591cfbfe96313178e161da9395fa40df"
+    },
+    {
+      "path": "docs/planning/evidence/c10-mutation.json",
+      "bytes": 20896,
+      "sha256": "da803252965494308681ccc4bffb1cdc293ed1fd5f3cf42e20a8a9426e62c915"
+    },
+    {
+      "path": "docs/planning/evidence/c10-mutmut-configured-help.json",
+      "bytes": 623,
+      "sha256": "36512869c02336ab980654718281c55e4b7e606761fa9965f922550d908f7bcb"
+    },
+    {
+      "path": "docs/planning/evidence/c10-mutmut-help.json",
+      "bytes": 1869,
+      "sha256": "d6aa36205eb46047aef3a8b1cb5bf8bb20451e100db09ff7247fb0f0f3073bb0"
+    },
+    {
+      "path": "docs/planning/evidence/c10-mutmut-junitxml-configured-help.json",
+      "bytes": 481,
+      "sha256": "e26fcdfff7611c2bfe898c4d4ba9abc15ade14794b51ebcf81f39be32599542e"
+    },
+    {
+      "path": "docs/planning/evidence/c10-mutmut-junitxml-help.json",
+      "bytes": 1885,
+      "sha256": "5945f7f4a67509fba3d06ee80eac8fb6aaf38affad3b12e144534eb4532d645d"
+    },
+    {
+      "path": "docs/planning/evidence/c10-mutmut-results-configured-help.json",
+      "bytes": 476,
+      "sha256": "f3d8d1bf63c3ec9b7d9b76a8544c5e0d9f0326364c252e35d04c8de4a262595a"
+    },
+    {
+      "path": "docs/planning/evidence/c10-mutmut-results-help.json",
+      "bytes": 1884,
+      "sha256": "e129713c80aa697713ce0b676d5d4dc145cdbf93a451b17c5cc0be28ae9eb910"
+    },
+    {
+      "path": "docs/planning/evidence/c10-mutmut-run-configured-help.json",
+      "bytes": 504,
+      "sha256": "4ba7cfabb189a5c68af165460853b58a3d2fa63b72a7a78ea360b05ebeefd53b"
+    },
+    {
+      "path": "docs/planning/evidence/c10-mutmut-run-help.json",
+      "bytes": 1880,
+      "sha256": "5c081651d99a5592a9f13d7dfa1772ee82f282b631cbc4f04dfb4e3b5db9591f"
+    },
+    {
+      "path": "docs/planning/evidence/c10-namespace-coverage-initial-failure.json",
+      "bytes": 4964,
+      "sha256": "fc5521298d97a5983360e9cd8b9ba4834561f78f494e8bd19f9959f88a174851"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/.gitignore",
+      "bytes": 73,
+      "sha256": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/.pre-commit-config.yaml",
+      "bytes": 742,
+      "sha256": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/Makefile",
+      "bytes": 815,
+      "sha256": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/README.md",
+      "bytes": 6869,
+      "sha256": "df3072c109f717f7b5654975c2d2594e8521cd65b2e51411a860751dedb6dcf3"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/helpers/coding-standards-c10-final.py",
+      "bytes": 3784,
+      "sha256": "713f7b537a2ce0c3ec7856525b1bd66225486f1815212b17911b535d8c24a1af"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/helpers/coding-standards-c10-mutation.py",
+      "bytes": 2143,
+      "sha256": "db267164ec578edf7b430029e59ce937ae0f33d00a549af098f53f00ba3ec346"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/helpers/coding-standards-c10-supplement.py",
+      "bytes": 2830,
+      "sha256": "1e49a7dd7e9741f163ff39ec7e26392388bb82b64c1fce77358f9b5366027352"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/helpers/coding-standards-c10-tool-setup.py",
+      "bytes": 3583,
+      "sha256": "4dd5e2fb14ee7acdc6ed0781b77b1a83a833a0006b97834fa5c954fd4ddaa8df"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/helpers/coding-standards-c10-vm.py",
+      "bytes": 5820,
+      "sha256": "d0611849bf0ba2ba197d1d4b0fb4e4ac9aa506b98047f2322237704e1cd29e97"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/manifest.json",
+      "bytes": 6187,
+      "sha256": "ad1a17a24a2b69dee5bb20ff663d598a3731ba198abe663f1b82a979a97d9d76"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/pyproject.toml",
+      "bytes": 1259,
+      "sha256": "0fad143a60ec62b699c88819d88c098df900aeee13c1efd4c99b8c1b45eddb03"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/requirements-reference.lock",
+      "bytes": 5159,
+      "sha256": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/src/schema/example.py",
+      "bytes": 2213,
+      "sha256": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/tests/test_example.py",
+      "bytes": 3436,
+      "sha256": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/weak/pyproject.toml",
+      "bytes": 1237,
+      "sha256": "0809f9fb8da778c7bec51bef91192abe835e409f7d8aae43752068bd8a30ebef"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/weak/src/schema/example.py",
+      "bytes": 2213,
+      "sha256": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    {
+      "path": "docs/planning/evidence/c10-readable/weak/tests/test_weak.py",
+      "bytes": 85,
+      "sha256": "fd7a576d2f51025b02abcb95fd86cbcf95cfaeeefd358faa613328e4dd0e455f"
+    },
+    {
+      "path": "docs/planning/evidence/c10-source-inputs.json",
+      "bytes": 21090,
+      "sha256": "1de354fc8d71db7e2979e5cf475361b101964e16e4b48320c016a7e40069a393"
+    },
+    {
+      "path": "docs/planning/evidence/c10-weak-control.json",
+      "bytes": 12199,
+      "sha256": "a89b90771e5d20f2858f2586c99c577b3d398d5454fbbd7b201bf6f911ede014"
+    },
+    {
+      "path": "docs/planning/evidence/c10-wheel-verification.json",
+      "bytes": 68603,
+      "sha256": "c7a83f1c1ba048682fa2563201cc403e663d3ffca05553782c1aeea720054b6b"
+    },
+    {
+      "path": "templates/python/requirements-reference.lock",
+      "bytes": 5159,
+      "sha256": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed"
+    },
+    {
+      "path": "templates/python/tests/test_example.py",
+      "bytes": 3436,
+      "sha256": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c"
+    }
+  ],
+  "unrelated_metadata": "untracked.project remains byte-identical; no inspection",
+  "status": " M templates/python/.pre-commit-config.yaml\n M templates/python/Makefile.snippet\n M templates/python/README.md\n M templates/python/pyproject.toml.snippet\n M templates/python/schema/example.py\n?? .project.yaml\n?? docs/planning/c10-baseline.json\n?? docs/planning/c10-candidate.json\n?? docs/planning/c10-checks-disposition.md\n?? docs/planning/c10-metrics.json\n?? docs/planning/c10-scope.md\n?? docs/planning/c10-source-copy.json\n?? docs/planning/evidence/c10-checks.json\n?? docs/planning/evidence/c10-environment.json\n?? docs/planning/evidence/c10-final-candidate.json\n?? docs/planning/evidence/c10-final-checks.json\n?? docs/planning/evidence/c10-final.json\n?? docs/planning/evidence/c10-format-marker-initial-failure.json\n?? docs/planning/evidence/c10-initial-checks.json\n?? docs/planning/evidence/c10-initial-source-inputs.json\n?? docs/planning/evidence/c10-initial-vm-helper.py\n?? docs/planning/evidence/c10-metadata.json\n?? docs/planning/evidence/c10-mutation-files.json\n?? docs/planning/evidence/c10-mutation.json\n?? docs/planning/evidence/c10-mutmut-configured-help.json\n?? docs/planning/evidence/c10-mutmut-help.json\n?? docs/planning/evidence/c10-mutmut-junitxml-configured-help.json\n?? docs/planning/evidence/c10-mutmut-junitxml-help.json\n?? docs/planning/evidence/c10-mutmut-results-configured-help.json\n?? docs/planning/evidence/c10-mutmut-results-help.json\n?? docs/planning/evidence/c10-mutmut-run-configured-help.json\n?? docs/planning/evidence/c10-mutmut-run-help.json\n?? docs/planning/evidence/c10-namespace-coverage-initial-failure.json\n?? docs/planning/evidence/c10-readable/\n?? docs/planning/evidence/c10-source-inputs.json\n?? docs/planning/evidence/c10-weak-control.json\n?? docs/planning/evidence/c10-wheel-verification.json\n?? templates/python/requirements-reference.lock\n?? templates/python/tests/\n"
+}

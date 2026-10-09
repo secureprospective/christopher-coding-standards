@@ -1,0 +1,142 @@
+[
+  {
+    "path": "docs/planning/evidence/c10-readable/requirements-reference.lock",
+    "vm_relative": "requirements-reference.lock",
+    "sha256": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/Makefile",
+    "vm_relative": "Makefile",
+    "sha256": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/.pre-commit-config.yaml",
+    "vm_relative": ".pre-commit-config.yaml",
+    "sha256": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/.gitignore",
+    "vm_relative": ".gitignore",
+    "sha256": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/pyproject.toml",
+    "vm_relative": "pyproject.toml",
+    "sha256": "0fad143a60ec62b699c88819d88c098df900aeee13c1efd4c99b8c1b45eddb03"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/tests/test_example.py",
+    "vm_relative": "tests/test_example.py",
+    "sha256": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/src/schema/example.py",
+    "vm_relative": "src/schema/example.py",
+    "sha256": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/README.md",
+    "vm_relative": "README.md",
+    "sha256": "df3072c109f717f7b5654975c2d2594e8521cd65b2e51411a860751dedb6dcf3"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/helpers/coding-standards-c10-tool-setup.py",
+    "helper_path": "/home/chris/scratch/coding-standards-c10-tool-setup.py",
+    "sha256": "4dd5e2fb14ee7acdc6ed0781b77b1a83a833a0006b97834fa5c954fd4ddaa8df"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/helpers/coding-standards-c10-vm.py",
+    "helper_path": "/home/chris/scratch/coding-standards-c10-vm.py",
+    "sha256": "d0611849bf0ba2ba197d1d4b0fb4e4ac9aa506b98047f2322237704e1cd29e97"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/helpers/coding-standards-c10-mutation.py",
+    "helper_path": "/home/chris/scratch/coding-standards-c10-mutation.py",
+    "sha256": "db267164ec578edf7b430029e59ce937ae0f33d00a549af098f53f00ba3ec346"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/helpers/coding-standards-c10-supplement.py",
+    "helper_path": "/home/chris/scratch/coding-standards-c10-supplement.py",
+    "sha256": "1e49a7dd7e9741f163ff39ec7e26392388bb82b64c1fce77358f9b5366027352"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/helpers/coding-standards-c10-final.py",
+    "helper_path": "/home/chris/scratch/coding-standards-c10-final.py",
+    "sha256": "713f7b537a2ce0c3ec7856525b1bd66225486f1815212b17911b535d8c24a1af"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/weak/pyproject.toml",
+    "record_key": "pyproject.toml",
+    "sha256": "0809f9fb8da778c7bec51bef91192abe835e409f7d8aae43752068bd8a30ebef"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/weak/mutants/mutmut-cicd-stats.json",
+    "record_key": "mutants/mutmut-cicd-stats.json",
+    "sha256": "2e6253381f49226b3b60e688db2f830ea889532b5e13f03a01fc4092dccd84f8"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/weak/mutants/pyproject.toml",
+    "record_key": "mutants/pyproject.toml",
+    "sha256": "0809f9fb8da778c7bec51bef91192abe835e409f7d8aae43752068bd8a30ebef"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/weak/mutants/mutmut-stats.json",
+    "record_key": "mutants/mutmut-stats.json",
+    "sha256": "9f7ef8cc2d54ebca44836aa351aac766c73f8c3acb6d5b529c3b33b62a0301f7"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/weak/tests/test_weak.py",
+    "record_key": "tests/test_weak.py",
+    "sha256": "fd7a576d2f51025b02abcb95fd86cbcf95cfaeeefd358faa613328e4dd0e455f"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/weak/src/schema/example.py",
+    "record_key": "src/schema/example.py",
+    "sha256": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/weak/mutants/tests/test_weak.py",
+    "record_key": "mutants/tests/test_weak.py",
+    "sha256": "fd7a576d2f51025b02abcb95fd86cbcf95cfaeeefd358faa613328e4dd0e455f"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/weak/mutants/src/schema/example.py",
+    "record_key": "mutants/src/schema/example.py",
+    "sha256": "82ff449ac498882c5ceff8e952870cd4dd52dea4f6e16d9ee32104cab17b6d46"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/weak/mutants/src/schema/example.py.meta",
+    "record_key": "mutants/src/schema/example.py.meta",
+    "sha256": "2b58c9173f4914979357463f4793b110bc8a31f7a4e12a63ce05a113f236390a"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/strong/mutants/mutmut-cicd-stats.json",
+    "record_key": "mutants/mutmut-cicd-stats.json",
+    "sha256": "5097b8fe3467ee7544453fec76dab6c1996e90547f2cb0ad803dcbb38e26d81f"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/strong/mutants/pyproject.toml",
+    "record_key": "mutants/pyproject.toml",
+    "sha256": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/strong/mutants/mutmut-stats.json",
+    "record_key": "mutants/mutmut-stats.json",
+    "sha256": "5288c634e1414ca9c713e01d2966d644a42a45c179c9c0508afbc9f3e94dd6f3"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/strong/mutants/tests/test_example.py",
+    "record_key": "mutants/tests/test_example.py",
+    "sha256": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/strong/mutants/src/schema/example.py",
+    "record_key": "mutants/src/schema/example.py",
+    "sha256": "82ff449ac498882c5ceff8e952870cd4dd52dea4f6e16d9ee32104cab17b6d46"
+  },
+  {
+    "path": "docs/planning/evidence/c10-readable/strong/mutants/src/schema/example.py.meta",
+    "record_key": "mutants/src/schema/example.py.meta",
+    "sha256": "ebf87f868522b80944608c8f73380a32e9c70b1b0b917fb6bfd4502d64d62faa"
+  }
+]

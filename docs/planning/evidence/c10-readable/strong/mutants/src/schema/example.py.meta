@@ -1,0 +1,21 @@
+{
+    "exit_code_by_key": {
+        "schema.example.x__is_numeric__mutmut_1": 1,
+        "schema.example.x__is_numeric__mutmut_2": 1,
+        "schema.example.x__is_numeric__mutmut_3": 1
+    },
+    "hash_by_function_name": {
+        "x__is_numeric": "40a31fd97e97"
+    },
+    "type_check_error_by_key": {},
+    "durations_by_key": {
+        "schema.example.x__is_numeric__mutmut_1": 0.034631,
+        "schema.example.x__is_numeric__mutmut_2": 0.044721,
+        "schema.example.x__is_numeric__mutmut_3": 0.042998
+    },
+    "estimated_durations_by_key": {
+        "schema.example.x__is_numeric__mutmut_1": 0.0009498050130787306,
+        "schema.example.x__is_numeric__mutmut_2": 0.0009498050130787306,
+        "schema.example.x__is_numeric__mutmut_3": 0.0009498050130787306
+    }
+}

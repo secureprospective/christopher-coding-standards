@@ -1,0 +1,154 @@
+[
+  {
+    "label": "resolved-install-check",
+    "argv": [
+      "python",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "No broken requirements found.\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "e11e89771b452bd69d0281f58071036f759996b64ce2cf6ef2a5db3b0a7c8679",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "58b33708b85bf3d841e898328f18f353b5d8449d80f4d3aaa3c07400bb321f01"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "e11e89771b452bd69d0281f58071036f759996b64ce2cf6ef2a5db3b0a7c8679",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "58b33708b85bf3d841e898328f18f353b5d8449d80f4d3aaa3c07400bb321f01"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "deliberate-reference-format",
+    "argv": [
+      "make",
+      "fmt"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "ruff format .\n1 file reformatted, 1 file left unchanged\nruff check --fix .\nAll checks passed!\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "e11e89771b452bd69d0281f58071036f759996b64ce2cf6ef2a5db3b0a7c8679",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "58b33708b85bf3d841e898328f18f353b5d8449d80f4d3aaa3c07400bb321f01"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "e11e89771b452bd69d0281f58071036f759996b64ce2cf6ef2a5db3b0a7c8679",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": false,
+    "matched": true
+  },
+  {
+    "label": "default-lint",
+    "argv": [
+      "make",
+      "lint"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "ruff check .\nAll checks passed!\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "e11e89771b452bd69d0281f58071036f759996b64ce2cf6ef2a5db3b0a7c8679",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "e11e89771b452bd69d0281f58071036f759996b64ce2cf6ef2a5db3b0a7c8679",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "default-format",
+    "argv": [
+      "make",
+      "format-check"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "ruff format --check .\n2 files already formatted\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "e11e89771b452bd69d0281f58071036f759996b64ce2cf6ef2a5db3b0a7c8679",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "e11e89771b452bd69d0281f58071036f759996b64ce2cf6ef2a5db3b0a7c8679",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "typed-src-and-tests",
+    "argv": [
+      "make",
+      "typecheck"
+    ],
+    "status": 2,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "mypy src tests\nsrc/schema/example.py: error: Source file found twice under different module names: \"example\" and \"schema.example\"\nsrc/schema/example.py: note: See https://mypy.readthedocs.io/en/stable/running_mypy.html#mapping-file-paths-to-modules for more info\nsrc/schema/example.py: note: Common resolutions include:\nsrc/schema/example.py: note:     a) adding `__init__.py` somewhere,\nsrc/schema/example.py: note:     b) using `--explicit-package-bases` or adjusting `MYPYPATH`\nFound 1 error in 1 file (errors prevented further checking)\n",
+    "stderr": "make: *** [Makefile:15: typecheck] Error 2\n",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "e11e89771b452bd69d0281f58071036f759996b64ce2cf6ef2a5db3b0a7c8679",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "e11e89771b452bd69d0281f58071036f759996b64ce2cf6ef2a5db3b0a7c8679",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": false
+  }
+]

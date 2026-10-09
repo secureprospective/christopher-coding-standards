@@ -1,0 +1,220 @@
+Collecting ruff==0.16.0
+  Downloading ruff-0.16.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (26 kB)
+Collecting mypy==2.3.0
+  Downloading mypy-2.3.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting pydantic==2.14.0
+  Downloading pydantic-2.14.0-py3-none-any.whl.metadata (131 kB)
+Collecting pytest==9.1.1
+  Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting pytest-cov==7.1.0
+  Downloading pytest_cov-7.1.0-py3-none-any.whl.metadata (32 kB)
+Collecting pip-audit==2.10.1
+  Downloading pip_audit-2.10.1-py3-none-any.whl.metadata (28 kB)
+Collecting mutmut==3.8.0
+  Downloading mutmut-3.8.0-py3-none-any.whl.metadata (23 kB)
+Collecting typing_extensions>=4.6.0 (from mypy==2.3.0)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting mypy_extensions>=1.0.0 (from mypy==2.3.0)
+  Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+Collecting pathspec>=1.0.0 (from mypy==2.3.0)
+  Downloading pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+Collecting librt>=0.13.0 (from mypy==2.3.0)
+  Downloading librt-0.16.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (1.3 kB)
+Collecting ast-serialize<1.0.0,>=0.6.0 (from mypy==2.3.0)
+  Downloading ast_serialize-0.12.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.4 kB)
+Collecting annotated-types>=0.6.0 (from pydantic==2.14.0)
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.0 (from pydantic==2.14.0)
+  Downloading pydantic_core-2.50.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+Collecting typing-inspection>=0.4.4 (from pydantic==2.14.0)
+  Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting iniconfig>=1.0.1 (from pytest==9.1.1)
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging>=22 (from pytest==9.1.1)
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.5 (from pytest==9.1.1)
+  Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Collecting pygments>=2.7.2 (from pytest==9.1.1)
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting coverage>=7.10.6 (from coverage[toml]>=7.10.6->pytest-cov==7.1.0)
+  Downloading coverage-7.16.2-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.2 kB)
+Collecting CacheControl>=0.13.0 (from CacheControl[filecache]>=0.13.0->pip-audit==2.10.1)
+  Downloading cachecontrol-0.14.4-py3-none-any.whl.metadata (3.1 kB)
+Collecting cyclonedx-python-lib<12,>=5 (from pip-audit==2.10.1)
+  Downloading cyclonedx_python_lib-11.12.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting pip-api>=0.0.28 (from pip-audit==2.10.1)
+  Downloading pip_api-0.0.35-py3-none-any.whl.metadata (17 kB)
+Collecting pip-requirements-parser>=32.0.0 (from pip-audit==2.10.1)
+  Downloading pip_requirements_parser-32.0.1-py3-none-any.whl.metadata (9.3 kB)
+Collecting requests>=2.31.0 (from pip-audit==2.10.1)
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting rich>=12.4 (from pip-audit==2.10.1)
+  Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting tomli>=2.2.1 (from pip-audit==2.10.1)
+  Downloading tomli-2.5.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (10 kB)
+Collecting tomli-w>=1.2.0 (from pip-audit==2.10.1)
+  Downloading tomli_w-1.2.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting platformdirs>=4.2.0 (from pip-audit==2.10.1)
+  Downloading platformdirs-4.12.4-py3-none-any.whl.metadata (5.5 kB)
+Collecting click>=8.4.2 (from mutmut==3.8.0)
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting libcst>=1.9.0 (from mutmut==3.8.0)
+  Downloading libcst-1.9.0-cp313-cp313-manylinux_2_28_x86_64.whl.metadata (15 kB)
+Collecting setproctitle>=1.3.7 (from mutmut==3.8.0)
+  Downloading setproctitle-1.3.8-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (10 kB)
+Collecting textual>=1.0.0 (from mutmut==3.8.0)
+  Downloading textual-8.2.8-py3-none-any.whl.metadata (9.1 kB)
+Collecting license-expression<31,>=30 (from cyclonedx-python-lib<12,>=5->pip-audit==2.10.1)
+  Downloading license_expression-30.4.4-py3-none-any.whl.metadata (11 kB)
+Collecting packageurl-python<2,>=0.11 (from cyclonedx-python-lib<12,>=5->pip-audit==2.10.1)
+  Downloading packageurl_python-0.17.6-py3-none-any.whl.metadata (5.1 kB)
+Collecting py-serializable<3.0.0,>=2.1.0 (from cyclonedx-python-lib<12,>=5->pip-audit==2.10.1)
+  Downloading py_serializable-2.1.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting sortedcontainers<3.0.0,>=2.4.0 (from cyclonedx-python-lib<12,>=5->pip-audit==2.10.1)
+  Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl.metadata (10 kB)
+Collecting boolean.py>=4.0 (from license-expression<31,>=30->cyclonedx-python-lib<12,>=5->pip-audit==2.10.1)
+  Downloading boolean_py-5.0-py3-none-any.whl.metadata (2.3 kB)
+Collecting defusedxml<0.8.0,>=0.7.1 (from py-serializable<3.0.0,>=2.1.0->cyclonedx-python-lib<12,>=5->pip-audit==2.10.1)
+  Downloading defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+Collecting msgpack<2.0.0,>=0.5.2 (from CacheControl>=0.13.0->CacheControl[filecache]>=0.13.0->pip-audit==2.10.1)
+  Downloading msgpack-1.2.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+Collecting filelock>=3.8.0 (from CacheControl[filecache]>=0.13.0->pip-audit==2.10.1)
+  Downloading filelock-4.0.12-py3-none-any.whl.metadata (2.0 kB)
+Collecting pyyaml-ft>=8.0.0 (from libcst>=1.9.0->mutmut==3.8.0)
+  Downloading pyyaml_ft-8.0.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (8.4 kB)
+Collecting pip (from pip-api>=0.0.28->pip-audit==2.10.1)
+  Downloading pip-26.2.1-py3-none-any.whl.metadata (4.6 kB)
+Collecting pyparsing (from pip-requirements-parser>=32.0.0->pip-audit==2.10.1)
+  Downloading pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)
+Collecting charset_normalizer<4,>=2 (from requests>=2.31.0->pip-audit==2.10.1)
+  Downloading charset_normalizer-3.5.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Collecting idna<4,>=2.5 (from requests>=2.31.0->pip-audit==2.10.1)
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting urllib3<3,>=1.26 (from requests>=2.31.0->pip-audit==2.10.1)
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting certifi>=2023.5.7 (from requests>=2.31.0->pip-audit==2.10.1)
+  Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=12.4->pip-audit==2.10.1)
+  Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=12.4->pip-audit==2.10.1)
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting mdit-py-plugins (from textual>=1.0.0->mutmut==3.8.0)
+  Downloading mdit_py_plugins-0.6.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting linkify-it-py<3,>=1 (from markdown-it-py[linkify]>=2.1.0->textual>=1.0.0->mutmut==3.8.0)
+  Downloading linkify_it_py-2.2.0-py3-none-any.whl.metadata (8.6 kB)
+Downloading ruff-0.16.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.4/11.4 MB 11.5 MB/s eta 0:00:00
+Downloading mypy-2.3.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (15.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.2/15.2 MB 11.5 MB/s eta 0:00:00
+Downloading pydantic-2.14.0-py3-none-any.whl (487 kB)
+Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+Downloading pytest_cov-7.1.0-py3-none-any.whl (22 kB)
+Downloading pip_audit-2.10.1-py3-none-any.whl (62 kB)
+Downloading mutmut-3.8.0-py3-none-any.whl (81 kB)
+Downloading pydantic_core-2.50.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 11.1 MB/s eta 0:00:00
+Downloading ast_serialize-0.12.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 10.8 MB/s eta 0:00:00
+Downloading cyclonedx_python_lib-11.12.0-py3-none-any.whl (529 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 529.5/529.5 kB 9.8 MB/s eta 0:00:00
+Downloading license_expression-30.4.4-py3-none-any.whl (120 kB)
+Downloading packageurl_python-0.17.6-py3-none-any.whl (36 kB)
+Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+Downloading py_serializable-2.1.0-py3-none-any.whl (23 kB)
+Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Downloading sortedcontainers-2.4.0-py2.py3-none-any.whl (29 kB)
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading boolean_py-5.0-py3-none-any.whl (26 kB)
+Downloading cachecontrol-0.14.4-py3-none-any.whl (22 kB)
+Downloading msgpack-1.2.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (466 kB)
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Downloading coverage-7.16.2-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (257 kB)
+Downloading filelock-4.0.12-py3-none-any.whl (111 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading libcst-1.9.0-cp313-cp313-manylinux_2_28_x86_64.whl (2.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.3/2.3 MB 11.0 MB/s eta 0:00:00
+Downloading librt-0.16.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (531 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 531.7/531.7 kB 11.0 MB/s eta 0:00:00
+Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+Downloading pip_api-0.0.35-py3-none-any.whl (123 kB)
+Downloading pip_requirements_parser-32.0.1-py3-none-any.whl (35 kB)
+Downloading platformdirs-4.12.4-py3-none-any.whl (32 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 9.8 MB/s eta 0:00:00
+Downloading pyyaml_ft-8.0.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (778 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 778.7/778.7 kB 9.7 MB/s eta 0:00:00
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading charset_normalizer-3.5.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (254 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading setproctitle-1.3.8-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (33 kB)
+Downloading textual-8.2.8-py3-none-any.whl (731 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 731.4/731.4 kB 10.1 MB/s eta 0:00:00
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading linkify_it_py-2.2.0-py3-none-any.whl (21 kB)
+Downloading tomli-2.5.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (283 kB)
+Downloading tomli_w-1.2.0-py3-none-any.whl (6.7 kB)
+Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading mdit_py_plugins-0.6.1-py3-none-any.whl (66 kB)
+Downloading pip-26.2.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 11.2 MB/s eta 0:00:00
+Downloading pyparsing-3.3.3-py3-none-any.whl (126 kB)
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/ruff-0.16.0-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/mypy-2.3.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pydantic-2.14.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pytest-9.1.1-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pytest_cov-7.1.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pip_audit-2.10.1-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/mutmut-3.8.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pydantic_core-2.50.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/ast_serialize-0.12.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/cyclonedx_python_lib-11.12.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/license_expression-30.4.4-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/packageurl_python-0.17.6-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pluggy-1.6.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/py_serializable-2.1.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/defusedxml-0.7.1-py2.py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/sortedcontainers-2.4.0-py2.py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/annotated_types-0.8.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/boolean_py-5.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/cachecontrol-0.14.4-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/msgpack-1.2.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/click-8.5.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/coverage-7.16.2-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/filelock-4.0.12-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/iniconfig-2.3.1-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/libcst-1.9.0-cp313-cp313-manylinux_2_28_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/librt-0.16.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/mypy_extensions-1.1.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/packaging-26.3-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pathspec-1.1.1-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pip_api-0.0.35-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pip_requirements_parser-32.0.1-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/platformdirs-4.12.4-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pygments-2.21.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pyyaml_ft-8.0.0-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/requests-2.34.2-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/charset_normalizer-3.5.2-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/idna-3.20-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/urllib3-2.8.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/certifi-2026.7.22-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/rich-15.0.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/markdown_it_py-4.2.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/mdurl-0.1.2-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/setproctitle-1.3.8-cp313-cp313-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/textual-8.2.8-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/typing_extensions-4.16.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/linkify_it_py-2.2.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/tomli-2.5.0-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/tomli_w-1.2.0-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/typing_inspection-0.4.4-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/mdit_py_plugins-0.6.1-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pip-26.2.1-py3-none-any.whl
+Saved ./coding-standards-verification/bee-c10-2026-10-09/downloads/pyparsing-3.3.3-py3-none-any.whl
+Successfully downloaded ruff mypy pydantic pytest pytest-cov pip-audit mutmut pydantic-core ast-serialize cyclonedx-python-lib license-expression packageurl-python pluggy py-serializable defusedxml sortedcontainers annotated-types boolean.py CacheControl msgpack click coverage filelock iniconfig libcst librt mypy_extensions packaging pathspec pip-api pip-requirements-parser platformdirs pygments pyyaml-ft requests charset_normalizer idna urllib3 certifi rich markdown-it-py mdurl setproctitle textual typing_extensions linkify-it-py tomli tomli-w typing-inspection mdit-py-plugins pip pyparsing

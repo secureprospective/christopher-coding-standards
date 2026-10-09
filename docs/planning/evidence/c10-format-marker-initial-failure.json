@@ -1,0 +1,416 @@
+[
+  {
+    "label": "resolved-install-check",
+    "argv": [
+      "python",
+      "-m",
+      "pip",
+      "check"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "No broken requirements found.\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "58b33708b85bf3d841e898328f18f353b5d8449d80f4d3aaa3c07400bb321f01"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "58b33708b85bf3d841e898328f18f353b5d8449d80f4d3aaa3c07400bb321f01"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "deliberate-reference-format",
+    "argv": [
+      "make",
+      "fmt"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "ruff format .\n1 file reformatted, 1 file left unchanged\nruff check --fix .\nAll checks passed!\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "58b33708b85bf3d841e898328f18f353b5d8449d80f4d3aaa3c07400bb321f01"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": false,
+    "matched": true
+  },
+  {
+    "label": "default-lint",
+    "argv": [
+      "make",
+      "lint"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "ruff check .\nAll checks passed!\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "default-format",
+    "argv": [
+      "make",
+      "format-check"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "ruff format --check .\n2 files already formatted\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "typed-src-and-tests",
+    "argv": [
+      "make",
+      "typecheck"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "mypy src tests\nSuccess: no issues found in 2 source files\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "actual-reference-tests",
+    "argv": [
+      "make",
+      "test"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "pytest -v\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/coding-standards-verification/bee-c10-2026-10-09/venv/bin/python\ncachedir: .pytest_cache\nrootdir: /home/claude/coding-standards-verification/bee-c10-2026-10-09/project with spaces\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: cov-7.1.0, platformdirs-4.12.4\ncollecting ... collected 35 items\n\ntests/test_example.py::test_valid_provider_normalization_and_unknown_fields PASSED [  2%]\ntests/test_example.py::test_invalid_required_field[-id] PASSED           [  5%]\ntests/test_example.py::test_invalid_required_field[-name] PASSED         [  8%]\ntests/test_example.py::test_invalid_required_field[-position] PASSED     [ 11%]\ntests/test_example.py::test_invalid_required_field[ -id] PASSED          [ 14%]\ntests/test_example.py::test_invalid_required_field[ -name] PASSED        [ 17%]\ntests/test_example.py::test_invalid_required_field[ -position] PASSED    [ 20%]\ntests/test_example.py::test_invalid_required_field[None-id] PASSED       [ 22%]\ntests/test_example.py::test_invalid_required_field[None-name] PASSED     [ 25%]\ntests/test_example.py::test_invalid_required_field[None-position] PASSED [ 28%]\ntests/test_example.py::test_invalid_required_field[42-id] PASSED         [ 31%]\ntests/test_example.py::test_invalid_required_field[42-name] PASSED       [ 34%]\ntests/test_example.py::test_invalid_required_field[42-position] PASSED   [ 37%]\ntests/test_example.py::test_invalid_required_field[True-id] PASSED       [ 40%]\ntests/test_example.py::test_invalid_required_field[True-name] PASSED     [ 42%]\ntests/test_example.py::test_invalid_required_field[True-position] PASSED [ 45%]\ntests/test_example.py::test_invalid_numeric_id[-99] PASSED               [ 48%]\ntests/test_example.py::test_invalid_numeric_id[+99] PASSED               [ 51%]\ntests/test_example.py::test_invalid_numeric_id[\\uff19\\uff19] PASSED      [ 54%]\ntests/test_example.py::test_invalid_numeric_id[\\xb2] PASSED              [ 57%]\ntests/test_example.py::test_invalid_numeric_id[9x] PASSED                [ 60%]\ntests/test_example.py::test_invalid_numeric_id[1 2] PASSED               [ 62%]\ntests/test_example.py::test_invalid_salary[NaN] PASSED                   [ 65%]\ntests/test_example.py::test_invalid_salary[Inf] PASSED                   [ 68%]\ntests/test_example.py::test_invalid_salary[-Infinity] PASSED             [ 71%]\ntests/test_example.py::test_invalid_salary[1e999] PASSED                 [ 74%]\ntests/test_example.py::test_invalid_salary[bad] PASSED                   [ 77%]\ntests/test_example.py::test_valid_salary[] PASSED                        [ 80%]\ntests/test_example.py::test_valid_salary[ ] PASSED                       [ 82%]\ntests/test_example.py::test_valid_salary[-1] PASSED                      [ 85%]\ntests/test_example.py::test_valid_salary[1e3] PASSED                     [ 88%]\ntests/test_example.py::test_valid_salary[1.5] PASSED                     [ 91%]\ntests/test_example.py::test_owned_update_policy_and_json PASSED          [ 94%]\ntests/test_example.py::test_assignment_and_documented_bypass PASSED      [ 97%]\ntests/test_example.py::test_synthetic_caller_rejects_before_effect PASSED [100%]\n\n============================== 35 passed in 0.13s ==============================\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "actual-reference-coverage",
+    "argv": [
+      "make",
+      "test-coverage"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "pytest --cov --cov-report=term-missing --cov-fail-under=80\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/claude/coding-standards-verification/bee-c10-2026-10-09/project with spaces\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: cov-7.1.0, platformdirs-4.12.4\ncollected 35 items\n\ntests/test_example.py ...................................                [100%]\n\n================================ tests coverage ================================\n_______________ coverage: platform linux, python 3.13.5-final-0 ________________\n\nName                    Stmts   Miss Branch BrPart  Cover   Missing\n-------------------------------------------------------------------\nsrc/schema/example.py      40      0      8      0   100%\n-------------------------------------------------------------------\nTOTAL                      40      0      8      0   100%\nRequired test coverage of 80% reached. Total coverage: 100.00%\n============================== 35 passed in 0.19s ==============================\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": false,
+    "matched": true
+  },
+  {
+    "label": "actual-reference-graph-audit",
+    "argv": [
+      "make",
+      "sca"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "pip-audit --disable-pip --no-deps -r requirements-reference.lock\n",
+    "stderr": "WARNING:pip_audit._cli:--no-deps is supported, but users are encouraged to fully hash their pinned dependencies\nWARNING:pip_audit._cli:Consider using a tool like `pip-compile`: https://pip-tools.readthedocs.io/en/latest/#using-hashes\nNo known vulnerabilities found\n",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "configured-mutation-cli",
+    "argv": [
+      "mutmut",
+      "run",
+      "--help"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "Usage: mutmut run [OPTIONS] [MUTANT_NAMES]...\n\nOptions:\n  --max-children INTEGER\n  --help                  Show this message and exit.\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "intended-plugin-ctor-typing",
+    "argv": [
+      "make",
+      "typecheck"
+    ],
+    "status": 2,
+    "expected": 2,
+    "diagnostic": "[arg-type]",
+    "stdout": "mypy src tests\nsrc/schema/pydantic_typing_probe.py:2: error: Argument \"id\" to \"RawPlayerRecord\" has incompatible type \"int\"; expected \"str\"  [arg-type]\nFound 1 error in 1 file (checked 3 source files)\n",
+    "stderr": "make: *** [Makefile:15: typecheck] Error 1\n",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c",
+      "src/schema/pydantic_typing_probe.py": "7f5e387da17164b69a53d982934b693f2013de5032818dccb627f7348db9d0ee"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c",
+      "src/schema/pydantic_typing_probe.py": "7f5e387da17164b69a53d982934b693f2013de5032818dccb627f7348db9d0ee"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "intended-security-diagnostic",
+    "argv": [
+      "make",
+      "lint"
+    ],
+    "status": 2,
+    "expected": 2,
+    "diagnostic": "S307",
+    "stdout": "ruff check .\nS307 Use of possibly insecure function; consider using `ast.literal_eval`\n --> src/security_probe.py:2:12\n  |\n1 | def insecure(value: str) -> object:\n2 |     return eval(value)\n  |            ^^^^^^^^^^^\n  |\n\nFound 1 error.\n",
+    "stderr": "make: *** [Makefile:5: lint] Error 1\n",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "src/security_probe.py": "f70ed66bc48b5ee134640c76e1f2b3eaac2ab20c0e6b1e7ace384c62974a2e03",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "src/security_probe.py": "f70ed66bc48b5ee134640c76e1f2b3eaac2ab20c0e6b1e7ace384c62974a2e03",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "intended-assertion",
+    "argv": [
+      "make",
+      "test"
+    ],
+    "status": 2,
+    "expected": 2,
+    "diagnostic": "C10 intended assertion",
+    "stdout": "pytest -v\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/coding-standards-verification/bee-c10-2026-10-09/venv/bin/python\ncachedir: .pytest_cache\nrootdir: /home/claude/coding-standards-verification/bee-c10-2026-10-09/project with spaces\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: cov-7.1.0, platformdirs-4.12.4\ncollecting ... collected 36 items\n\ntests/test_assertion_probe.py::test_c10_intended_failure FAILED          [  2%]\ntests/test_example.py::test_valid_provider_normalization_and_unknown_fields PASSED [  5%]\ntests/test_example.py::test_invalid_required_field[-id] PASSED           [  8%]\ntests/test_example.py::test_invalid_required_field[-name] PASSED         [ 11%]\ntests/test_example.py::test_invalid_required_field[-position] PASSED     [ 13%]\ntests/test_example.py::test_invalid_required_field[ -id] PASSED          [ 16%]\ntests/test_example.py::test_invalid_required_field[ -name] PASSED        [ 19%]\ntests/test_example.py::test_invalid_required_field[ -position] PASSED    [ 22%]\ntests/test_example.py::test_invalid_required_field[None-id] PASSED       [ 25%]\ntests/test_example.py::test_invalid_required_field[None-name] PASSED     [ 27%]\ntests/test_example.py::test_invalid_required_field[None-position] PASSED [ 30%]\ntests/test_example.py::test_invalid_required_field[42-id] PASSED         [ 33%]\ntests/test_example.py::test_invalid_required_field[42-name] PASSED       [ 36%]\ntests/test_example.py::test_invalid_required_field[42-position] PASSED   [ 38%]\ntests/test_example.py::test_invalid_required_field[True-id] PASSED       [ 41%]\ntests/test_example.py::test_invalid_required_field[True-name] PASSED     [ 44%]\ntests/test_example.py::test_invalid_required_field[True-position] PASSED [ 47%]\ntests/test_example.py::test_invalid_numeric_id[-99] PASSED               [ 50%]\ntests/test_example.py::test_invalid_numeric_id[+99] PASSED               [ 52%]\ntests/test_example.py::test_invalid_numeric_id[\\uff19\\uff19] PASSED      [ 55%]\ntests/test_example.py::test_invalid_numeric_id[\\xb2] PASSED              [ 58%]\ntests/test_example.py::test_invalid_numeric_id[9x] PASSED                [ 61%]\ntests/test_example.py::test_invalid_numeric_id[1 2] PASSED               [ 63%]\ntests/test_example.py::test_invalid_salary[NaN] PASSED                   [ 66%]\ntests/test_example.py::test_invalid_salary[Inf] PASSED                   [ 69%]\ntests/test_example.py::test_invalid_salary[-Infinity] PASSED             [ 72%]\ntests/test_example.py::test_invalid_salary[1e999] PASSED                 [ 75%]\ntests/test_example.py::test_invalid_salary[bad] PASSED                   [ 77%]\ntests/test_example.py::test_valid_salary[] PASSED                        [ 80%]\ntests/test_example.py::test_valid_salary[ ] PASSED                       [ 83%]\ntests/test_example.py::test_valid_salary[-1] PASSED                      [ 86%]\ntests/test_example.py::test_valid_salary[1e3] PASSED                     [ 88%]\ntests/test_example.py::test_valid_salary[1.5] PASSED                     [ 91%]\ntests/test_example.py::test_owned_update_policy_and_json PASSED          [ 94%]\ntests/test_example.py::test_assignment_and_documented_bypass PASSED      [ 97%]\ntests/test_example.py::test_synthetic_caller_rejects_before_effect PASSED [100%]\n\n=================================== FAILURES ===================================\n__________________________ test_c10_intended_failure ___________________________\n\n    def test_c10_intended_failure() -> None:\n>       assert False, \"C10 intended assertion\"\nE       AssertionError: C10 intended assertion\nE       assert False\n\ntests/test_assertion_probe.py:2: AssertionError\n=========================== short test summary info ============================\nFAILED tests/test_assertion_probe.py::test_c10_intended_failure - AssertionError: C10 intended assertion\nassert False\n========================= 1 failed, 35 passed in 0.12s =========================\n",
+    "stderr": "make: *** [Makefile:18: test] Error 1\n",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_assertion_probe.py": "9e889d2e937cd86420833169aa6cbfe09b698c537d7654557395b8b36e795bd6",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_assertion_probe.py": "9e889d2e937cd86420833169aa6cbfe09b698c537d7654557395b8b36e795bd6",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": true
+  },
+  {
+    "label": "intended-read-only-format",
+    "argv": [
+      "make",
+      "format-check"
+    ],
+    "status": 2,
+    "expected": 2,
+    "diagnostic": "Would reformat",
+    "stdout": "ruff format --check .\nunformatted: File would be reformatted\n --> src/format_probe.py:1:1\n  |\n  - def format_probe( )->str:return \"probe\"\n1 + def format_probe() -> str:\n2 +     return \"probe\"\n  |\n\n1 file would be reformatted, 2 files already formatted\n",
+    "stderr": "make: *** [Makefile:12: format-check] Error 1\n",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "src/format_probe.py": "cb2791bea818882cf4f11d568b05a43ef57d57976eef9eca4b53105a31d43327",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "src/format_probe.py": "cb2791bea818882cf4f11d568b05a43ef57d57976eef9eca4b53105a31d43327",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "unchanged_required": true,
+    "matched": false
+  }
+]

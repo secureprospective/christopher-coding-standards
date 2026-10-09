@@ -1,0 +1,16 @@
+{
+  "repo": "/home/chris/work/christopher-coding-standards",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "head": "aa34bd02c66b2a432450576a789db591e75f5d8a",
+  "packet_sha256": "df1f13e76cded1632443c52324388032c14ee8a85d1e470f4c0c5dfcac151926",
+  "tracked_diff_sha256": "a6467f79d833d1861350fa0f3e7e4072fd42bf3683c3b2ff58a6d2e5cb05cd98",
+  "checked_inputs": 69,
+  "checked_helpers": 5,
+  "checked_protected": 374,
+  "status": " M templates/python/.pre-commit-config.yaml\n M templates/python/Makefile.snippet\n M templates/python/README.md\n M templates/python/pyproject.toml.snippet\n M templates/python/schema/example.py\n?? .project.yaml\n?? docs/planning/c10-baseline.json\n?? docs/planning/c10-candidate.json\n?? docs/planning/c10-checks-disposition.md\n?? docs/planning/c10-metrics.json\n?? docs/planning/c10-scope.md\n?? docs/planning/c10-source-copy.json\n?? docs/planning/evidence/c10-checks.json\n?? docs/planning/evidence/c10-environment.json\n?? docs/planning/evidence/c10-final-candidate.json\n?? docs/planning/evidence/c10-final-checks.json\n?? docs/planning/evidence/c10-final.json\n?? docs/planning/evidence/c10-format-marker-initial-failure.json\n?? docs/planning/evidence/c10-initial-checks.json\n?? docs/planning/evidence/c10-initial-source-inputs.json\n?? docs/planning/evidence/c10-initial-vm-helper.py\n?? docs/planning/evidence/c10-metadata.json\n?? docs/planning/evidence/c10-mutation-files.json\n?? docs/planning/evidence/c10-mutation.json\n?? docs/planning/evidence/c10-mutmut-configured-help.json\n?? docs/planning/evidence/c10-mutmut-help.json\n?? docs/planning/evidence/c10-mutmut-junitxml-configured-help.json\n?? docs/planning/evidence/c10-mutmut-junitxml-help.json\n?? docs/planning/evidence/c10-mutmut-results-configured-help.json\n?? docs/planning/evidence/c10-mutmut-results-help.json\n?? docs/planning/evidence/c10-mutmut-run-configured-help.json\n?? docs/planning/evidence/c10-mutmut-run-help.json\n?? docs/planning/evidence/c10-namespace-coverage-initial-failure.json\n?? docs/planning/evidence/c10-readable/\n?? docs/planning/evidence/c10-source-inputs.json\n?? docs/planning/evidence/c10-weak-control.json\n?? docs/planning/evidence/c10-wheel-verification.json\n?? templates/python/requirements-reference.lock\n?? templates/python/tests/\n",
+  "staged": "",
+  "reviewer": "aefeb04e-936a-43bc-b0be-14f048aac846",
+  "workflow": "01fda755-fe47-4a2c-8765-079720b73f08",
+  "failure": "Codex error: The usage limit has been reached; required structured output absent. No review verdict/pass. C10 frozen/uncommitted; C11-C13 not implemented.",
+  "supplement_sha256": "e815c36d9f5ec9c1a0912a3c9cd069ae53f2b6ae65c3f91b4452ebb6f889e627"
+}

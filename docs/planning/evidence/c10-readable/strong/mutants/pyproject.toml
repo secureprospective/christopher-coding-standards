@@ -36,7 +36,6 @@ branch = true
 source = ["src"]
 
 [tool.coverage.report]
-include_namespace_packages = true
 fail_under = 80
 show_missing = true
 

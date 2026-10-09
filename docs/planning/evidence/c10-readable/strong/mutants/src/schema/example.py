@@ -14,6 +14,9 @@ import math
 from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
+from mutmut.mutation.trampoline import wrap_in_trampoline as _mutmut_mutated, MutantDict
+
+
 class RawPlayerRecord(BaseModel):
     """Provider strings normalized; unknown fields intentionally ignored."""
 
@@ -48,13 +51,48 @@ class RawPlayerRecord(BaseModel):
         if stripped and not _is_numeric(stripped):
             raise ValueError("salary must be a finite number when present")
         return stripped
+mutants_x__is_numeric__mutmut: MutantDict = {}  # type: ignore
 
 
+@_mutmut_mutated(mutants_x__is_numeric__mutmut)
 def _is_numeric(value: str) -> bool:
     try:
         return math.isfinite(float(value))
     except ValueError:
         return False
+
+
+def x__is_numeric__mutmut_orig(value: str) -> bool:
+    try:
+        return math.isfinite(float(value))
+    except ValueError:
+        return False
+
+
+def x__is_numeric__mutmut_1(value: str) -> bool:
+    try:
+        return math.isfinite(None)
+    except ValueError:
+        return False
+
+
+def x__is_numeric__mutmut_2(value: str) -> bool:
+    try:
+        return math.isfinite(float(None))
+    except ValueError:
+        return False
+
+
+def x__is_numeric__mutmut_3(value: str) -> bool:
+    try:
+        return math.isfinite(float(value))
+    except ValueError:
+        return True
+
+mutants_x__is_numeric__mutmut['_mutmut_orig'] = x__is_numeric__mutmut_orig # type: ignore # mutmut generated
+mutants_x__is_numeric__mutmut['x__is_numeric__mutmut_1'] = x__is_numeric__mutmut_1 # type: ignore # mutmut generated
+mutants_x__is_numeric__mutmut['x__is_numeric__mutmut_2'] = x__is_numeric__mutmut_2 # type: ignore # mutmut generated
+mutants_x__is_numeric__mutmut['x__is_numeric__mutmut_3'] = x__is_numeric__mutmut_3 # type: ignore # mutmut generated
 
 
 class InternalPlayerUpdate(BaseModel):

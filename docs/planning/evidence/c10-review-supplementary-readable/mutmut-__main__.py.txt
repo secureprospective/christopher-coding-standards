@@ -1,0 +1,149 @@
+## Original line 722
+    clamped_score = max(0.0, min(100.0, score))
+    hue = (clamped_score / 100.0) * (120.0 / 360.0)
+    red, green, blue = hls_to_rgb(hue, 0.5, 1.0)
+    return f"#{round(red * 255):02x}{round(green * 255):02x}{round(blue * 255):02x}"
+
+
+# exports CI/CD stats to block pull requests from merging if mutation score is too low, or used in other ways in CI/CD pipelines
+@cli.command()
+def export_cicd_stats() -> None:
+
+    source_file_mutation_data_by_path: dict[str, SourceFileMutationData] = {}
+
+    for path in walk_mutatable_files():
+        meta_path = Path("mutants") / (str(path) + ".meta")
+        if not meta_path.exists():
+            continue
+
+        m = SourceFileMutationData(path=path)
+        m.load()
+        if not m.exit_code_by_key:
+            continue
+
+        source_file_mutation_data_by_path[str(path)] = m
+
+    if not source_file_mutation_data_by_path:
+        print('No previous mutation data found. Run "mutmut run" first.')
+        return
+
+    save_cicd_stats(source_file_mutation_data_by_path)
+    print("Saved CI/CD stats to mutants/mutmut-cicd-stats.json")
+
+
+@cli.command()
+@click.option(
+    "--input",
+    "input_path",
+    default="mutants/mutmut-cicd-stats.json",
+    show_default=True,
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+)
+@click.option("--output", required=True, type=click.Path(dir_okay=False, path_type=Path))
+@click.option("--label", default="mutation", show_default=True)
+def badge(input_path: Path, output: Path, label: str) -> None:
+    try:
+        with input_path.open() as f:
+            stats = json.load(f)
+    except JSONDecodeError as e:
+        raise click.ClickException(f"{input_path} does not contain valid JSON") from e
+
+## Original line 929
+        "mutmut.__main__ was re-executed because it was not cached in "
+        "sys.modules. Use `mutmut run` instead of `python -m mutmut run` "
+        "to avoid this.",
+        stacklevel=1,
+    )
+
+
+@cli.command()
+@click.option("--max-children", type=int)
+@click.argument("mutant_names", required=False, nargs=-1)
+def run(mutant_names: tuple[str, ...] | list[str], *, max_children: int | None) -> None:
+    assert isinstance(mutant_names, (tuple, list)), mutant_names
+    _run(mutant_names, max_children)
+
+
+# separate function, so we can call it directly from the tests
+def _run(mutant_names: tuple[str, ...] | list[str], max_children: int | None) -> None:
+    # TODO: run no-ops once in a while to detect if we get false negatives
+    # TODO: we should be able to get information on which tests killed mutants, which means we can get a list of tests and how many mutants each test kills. Those that kill zero mutants are redundant!
+    set_mutant_under_test("mutant_generation")
+
+    if max_children is None:
+        max_children = os.cpu_count() or 4
+
+    start = datetime.now()
+    makedirs(Path("mutants"), exist_ok=True)
+    with CatchOutput(spinner_title="Generating mutants"):
+        copy_src_dir()
+        copy_also_copy_files()
+        setup_source_paths()
+        store_lines_covered_by_tests()
+        stats = create_mutants(max_children)
+
+    time = datetime.now() - start
+    print(
+        f"    done in {round(time.total_seconds() * 1000)}ms ({stats.mutated} files mutated, {stats.ignored} ignored, {stats.unmodified} unmodified)",
+    )
+
+    mutants_caught_by_type_checker: dict[str, FailedTypeCheckMutant] = {}
+    if config().type_check_command:
+        with CatchOutput(spinner_title="Filtering mutations with type checker"):
+            mutants_caught_by_type_checker = filter_mutants_with_type_checker()
+
+    # TODO: config/option for the test runner (e.g. HammettRunner)
+    runner: MutantRunner = get_mutant_runner(max_children)
+
+    # TODO: run these steps only if we have mutants to test
+
+    collect_or_load_stats(
+        runner,
+
+## Original line 1095
+                    tests |= set(tests_of_this_name)
+        else:
+            tests |= set(state().tests_by_mangled_function_name[mangled_name_from_mutant_name(mutant_name)])
+    return tests
+
+
+@cli.command()
+@click.option("--all", default=False)
+def results(all: bool) -> None:
+    for path in walk_mutatable_files():
+        m = SourceFileMutationData(path=path)
+        m.load()
+        for k, v in m.exit_code_by_key.items():
+            status = status_by_exit_code[v]
+            if status == "killed" and not all:
+                continue
+            print(f"    {k}: {status}")
+
+
+@cli.command()
+@click.argument("mutant_name")
+def show(mutant_name: str) -> None:
+    m = find_mutant(mutant_name)
+    print(f"# {mutant_name}: {status_by_exit_code[m.exit_code_by_key[mutant_name]]}")
+    print(get_diff_for_mutant(mutant_name, path=m.path))
+    return
+
+
+@cli.command()
+@click.argument("mutant_name")
+def apply(mutant_name: str) -> None:
+    # try:
+    apply_mutant(mutant_name)
+    # except FileNotFoundError as e:
+    #     print(e)
+
+
+@cli.command()
+@click.option("--show-killed", is_flag=True, default=False, help="Display mutants killed by tests and type checker.")
+def browse(show_killed: bool) -> None:
+    run_result_browser(show_killed=show_killed)
+
+
+if __name__ == "__main__":
+    cli()
+

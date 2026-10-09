@@ -36,7 +36,6 @@ branch = true
 source = ["src"]
 
 [tool.coverage.report]
-include_namespace_packages = true
 fail_under = 80
 show_missing = true
 
@@ -44,4 +43,4 @@ show_missing = true
 # Tool results are observations, not an automatic score/pass/approval.
 [tool.mutmut]
 source_paths = ["src/"]
-pytest_add_cli_args_test_selection = ["tests/"]
+pytest_add_cli_args_test_selection = ["tests/test_weak.py"]

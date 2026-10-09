@@ -1,0 +1,190 @@
+{
+  "ruff": {
+    "url": "https://pypi.org/pypi/ruff/0.16.0/json",
+    "version": "0.16.0",
+    "requires_python": ">=3.7",
+    "requires_dist": null,
+    "project_urls": {
+      "Changelog": "https://github.com/astral-sh/ruff/blob/main/CHANGELOG.md",
+      "Documentation": "https://docs.astral.sh/ruff/",
+      "Homepage": "https://docs.astral.sh/ruff",
+      "Repository": "https://github.com/astral-sh/ruff"
+    },
+    "description_interface_passages": []
+  },
+  "mypy": {
+    "url": "https://pypi.org/pypi/mypy/2.3.0/json",
+    "version": "2.3.0",
+    "requires_python": ">=3.10",
+    "requires_dist": [
+      "typing_extensions>=4.6.0; python_version < \"3.15\"",
+      "typing_extensions>=4.14.0; python_version >= \"3.15\"",
+      "mypy_extensions>=1.0.0",
+      "pathspec>=1.0.0",
+      "tomli>=1.1.0; python_version < \"3.11\"",
+      "librt>=0.13.0; platform_python_implementation != \"PyPy\"",
+      "ast-serialize<1.0.0,>=0.6.0",
+      "psutil>=4.0; extra == \"dmypy\"",
+      "setuptools>=50; extra == \"mypyc\"",
+      "lxml; extra == \"reports\"",
+      "pip; extra == \"install-types\"",
+      "orjson; extra == \"faster-cache\""
+    ],
+    "project_urls": {
+      "Changelog": "https://github.com/python/mypy/blob/master/CHANGELOG.md",
+      "Documentation": "https://mypy.readthedocs.io/en/stable/index.html",
+      "Homepage": "https://www.mypy-lang.org/",
+      "Issues": "https://github.com/python/mypy/issues",
+      "Repository": "https://github.com/python/mypy"
+    },
+    "description_interface_passages": []
+  },
+  "pydantic": {
+    "url": "https://pypi.org/pypi/pydantic/json",
+    "version": "2.14.0",
+    "requires_python": ">=3.10",
+    "requires_dist": [
+      "annotated-types>=0.6.0",
+      "pydantic-core==2.50.0",
+      "typing-extensions>=4.16.0",
+      "typing-inspection>=0.4.4",
+      "email-validator>=2.0.0; extra == \"email\"",
+      "tzdata; platform_system == \"Windows\" and extra == \"timezone\""
+    ],
+    "project_urls": {
+      "Changelog": "https://pydantic.dev/docs/validation/latest/get-started/changelog/",
+      "Documentation": "https://pydantic.dev/docs/validation/latest/get-started/",
+      "Funding": "https://github.com/sponsors/samuelcolvin",
+      "Homepage": "https://github.com/pydantic/pydantic",
+      "Source": "https://github.com/pydantic/pydantic"
+    },
+    "description_interface_passages": []
+  },
+  "pytest": {
+    "url": "https://pypi.org/pypi/pytest/json",
+    "version": "9.1.1",
+    "requires_python": ">=3.10",
+    "requires_dist": [
+      "colorama>=0.4; sys_platform == \"win32\"",
+      "exceptiongroup>=1; python_version < \"3.11\"",
+      "iniconfig>=1.0.1",
+      "packaging>=22",
+      "pluggy<2,>=1.5",
+      "pygments>=2.7.2",
+      "tomli>=1; python_version < \"3.11\"",
+      "argcomplete; extra == \"dev\"",
+      "attrs>=19.2; extra == \"dev\"",
+      "hypothesis>=3.56; extra == \"dev\"",
+      "mock; extra == \"dev\"",
+      "requests; extra == \"dev\"",
+      "setuptools; extra == \"dev\"",
+      "xmlschema; extra == \"dev\""
+    ],
+    "project_urls": {
+      "Changelog": "https://docs.pytest.org/en/stable/changelog.html",
+      "Contact": "https://docs.pytest.org/en/stable/contact.html",
+      "Funding": "https://docs.pytest.org/en/stable/sponsor.html",
+      "Homepage": "https://docs.pytest.org/en/latest/",
+      "Source": "https://github.com/pytest-dev/pytest",
+      "Tracker": "https://github.com/pytest-dev/pytest/issues"
+    },
+    "description_interface_passages": []
+  },
+  "pytest-cov": {
+    "url": "https://pypi.org/pypi/pytest-cov/json",
+    "version": "7.1.0",
+    "requires_python": ">=3.9",
+    "requires_dist": [
+      "coverage[toml]>=7.10.6",
+      "pluggy>=1.2",
+      "pytest>=7",
+      "process-tests; extra == \"testing\"",
+      "pytest-xdist; extra == \"testing\"",
+      "virtualenv; extra == \"testing\""
+    ],
+    "project_urls": {
+      "Changelog": "https://pytest-cov.readthedocs.io/en/latest/changelog.html",
+      "Documentation": "https://pytest-cov.readthedocs.io/",
+      "Issue Tracker": "https://github.com/pytest-dev/pytest-cov/issues",
+      "Sources": "https://github.com/pytest-dev/pytest-cov"
+    },
+    "description_interface_passages": []
+  },
+  "pip-audit": {
+    "url": "https://pypi.org/pypi/pip-audit/json",
+    "version": "2.10.1",
+    "requires_python": ">=3.10",
+    "requires_dist": [
+      "CacheControl[filecache]>=0.13.0",
+      "cyclonedx-python-lib<12,>=5",
+      "packaging>=23.0.0",
+      "pip-api>=0.0.28",
+      "pip-requirements-parser>=32.0.0",
+      "requests>=2.31.0",
+      "rich>=12.4",
+      "tomli>=2.2.1",
+      "tomli-w>=1.2.0",
+      "platformdirs>=4.2.0",
+      "coverage[toml]!=7.3.3,~=7.0; extra == \"cov\"",
+      "build; extra == \"dev\"",
+      "pip-audit[doc,lint,test]; extra == \"dev\"",
+      "pdoc; extra == \"doc\"",
+      "ruff>=0.14; extra == \"lint\"",
+      "interrogate~=1.6; extra == \"lint\"",
+      "mypy; extra == \"lint\"",
+      "types-requests; extra == \"lint\"",
+      "types-toml; extra == \"lint\"",
+      "typos; extra == \"lint\"",
+      "pretend; extra == \"test\"",
+      "pytest; extra == \"test\"",
+      "pip-audit[cov]; extra == \"test\""
+    ],
+    "project_urls": {
+      "Homepage": "https://pypi.org/project/pip-audit/",
+      "Issues": "https://github.com/pypa/pip-audit/issues",
+      "Source": "https://github.com/pypa/pip-audit"
+    },
+    "description_interface_passages": []
+  },
+  "mutmut": {
+    "url": "https://pypi.org/pypi/mutmut/3.8.0/json",
+    "version": "3.8.0",
+    "requires_python": ">=3.10",
+    "requires_dist": [
+      "click>=8.4.2",
+      "coverage>=7.3.0",
+      "libcst>=1.9.0",
+      "pytest>=6.2.5",
+      "setproctitle>=1.3.7",
+      "textual>=1.0.0",
+      "toml>=0.10.2; python_full_version < \"3.11\""
+    ],
+    "project_urls": {
+      "Changelog": "https://github.com/boxed/mutmut/blob/main/HISTORY.rst",
+      "Documentation": "https://mutmut.readthedocs.io/en/latest/",
+      "Homepage": "https://github.com/boxed/mutmut",
+      "Issues": "https://github.com/boxed/mutmut/issues",
+      "Repository": "https://github.com/boxed/mutmut"
+    },
+    "description_interface_passages": [
+      "    mutmut run",
+      "    mutmut run \"my_module*\"",
+      "    mutmut run \"my_module.my_function*\"",
+      "    source_paths=src/",
+      "    pytest_add_cli_args_test_selection=tests/",
+      "    source_paths = [ \"src/\" ]",
+      "    pytest_add_cli_args_test_selection= [ \"tests/\" ]",
+      "if the stack depth is below some limit. Only stack frames from code inside `source_paths`",
+      "By default mutmut mutates all python files in `source_paths`.",
+      "    # for CLI args that select or deselect tests, use `pytest_add_cli_args_test_selection`",
+      "    pytest_add_cli_args_test_selection = [\"-m\", \"not fail\", \"-k\", \"test_include\"]",
+      "    # for other CLI args, use `pytest_add_cli_args`",
+      "    pytest_add_cli_args = [\"-p\", \"no:some_plugin\"] # disable a plugin",
+      "    pytest_add_cli_args = [\"-o\", \"xfail_strict=False\"] # overrides xfail_strict from your normal config",
+      "    pytest_add_cli_args = [\"-c\", \"mutmut_pytest.ini\"]",
+      "Changes to mutmut's own result-affecting config (such as `pytest_add_cli_args`,",
+      "1. Run mutmut with `mutmut run`. A full run is preferred but if you're just",
+      "directory. If you want to make sure you run a full mutmut run you can delete"
+    ]
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "workflowRunId": "01fda755-fe47-4a2c-8765-079720b73f08",
+  "state": "failed",
+  "createdAt": 1791558239901,
+  "entries": {
+    "c8-review-1": {
+      "key": "c8-review-1",
+      "agent": "reviewer",
+      "requestedContext": "fresh",
+      "resolvedContext": "fresh",
+      "outputReference": "/home/chris/scratch/coding-standards-c8-remaining-review-1.json",
+      "continuation": {
+        "runIds": [
+          "95801a0a-1d17-4016-b030-7281fa1c9b0a"
+        ]
+      },
+      "latestRunId": "95801a0a-1d17-4016-b030-7281fa1c9b0a",
+      "resumability": {
+        "state": "resumable"
+      }
+    },
+    "c9-review-1": {
+      "key": "c9-review-1",
+      "agent": "reviewer",
+      "requestedContext": "fresh",
+      "resolvedContext": "fresh",
+      "outputReference": "/home/chris/scratch/coding-standards-c9-remaining-review-1.json",
+      "continuation": {
+        "runIds": [
+          "d66f2aa8-292f-46f0-bf15-335eb82a80a8"
+        ]
+      },
+      "latestRunId": "d66f2aa8-292f-46f0-bf15-335eb82a80a8",
+      "resumability": {
+        "state": "resumable"
+      }
+    },
+    "c10-review-1": {
+      "key": "c10-review-1",
+      "agent": "reviewer",
+      "requestedContext": "fresh",
+      "resolvedContext": "fresh",
+      "continuation": {
+        "runIds": [
+          "aefeb04e-936a-43bc-b0be-14f048aac846"
+        ]
+      },
+      "latestRunId": "aefeb04e-936a-43bc-b0be-14f048aac846",
+      "resumability": {
+        "state": "resumable"
+      }
+    }
+  },
+  "argsDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "workflowChildren": {
+    "version": 1,
+    "parentToolCallId": "call_79c66aa23324412895811ccd0db65a28|fc_09235d8d16de66c6016ac8dc05b374819ba02c49cce19e9638",
+    "workflowRunId": "01fda755-fe47-4a2c-8765-079720b73f08",
+    "inventoryComplete": true,
+    "workflowState": "failed",
+    "children": [
+      {
+        "childId": "c8-review-1",
+        "state": "completed",
+        "runId": "95801a0a-1d17-4016-b030-7281fa1c9b0a",
+        "agent": "reviewer",
+        "sessionName": "reviewer: You are the fresh read-only reviewer for approved C8, pas...",
+        "model": "openai-codex/gpt-6.1-sol:high"
+      },
+      {
+        "childId": "c9-review-1",
+        "state": "completed",
+        "runId": "d66f2aa8-292f-46f0-bf15-335eb82a80a8",
+        "agent": "reviewer",
+        "sessionName": "reviewer: You are the fresh read-only reviewer for approved C9, pas...",
+        "model": "openai-codex/gpt-6.1-sol:high"
+      },
+      {
+        "childId": "c10-review-1",
+        "state": "rejected",
+        "runId": "aefeb04e-936a-43bc-b0be-14f048aac846",
+        "agent": "reviewer",
+        "sessionName": "reviewer: You are the fresh read-only reviewer for approved C10, pa...",
+        "model": "openai-codex/gpt-6.1-sol:high"
+      }
+    ]
+  }
+}

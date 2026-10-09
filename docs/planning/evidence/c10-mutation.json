@@ -1,0 +1,228 @@
+[
+  {
+    "label": "actual-mutation-report",
+    "argv": [
+      "make",
+      "mutation-report"
+    ],
+    "status": 0,
+    "stdout": "mutmut run --max-children 1\n\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n\u2834 Generating mutants\n\u2826 Generating mutants\n\u2827 Generating mutants\n\u2807 Generating mutants\n\u280f Generating mutants\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n\u2834 Generating mutants\n\u2826 Generating mutants\n\u2827 Generating mutants\n\u2807 Generating mutants\n\u280f Generating mutants\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n\u2834 Generating mutants\n\u2826 Generating mutants\n\u2827 Generating mutants\n\u2807 Generating mutants\n\u280f Generating mutants\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n    done in 73ms (1 files mutated, 0 ignored, 0 unmodified)\n\n\u2838 Running stats     \n\u283c Running stats\n\u2834 Running stats\n\u2826 Running stats\n\u2827 Running stats\n\u2807 Running stats\n\u280f Running stats\n\u280b Running stats\n\u2819 Running stats\n\u2839 Running stats\n\u2838 Running stats\n\u283c Running stats\n\u2834 Running stats\n\u2826 Running stats\n\u2827 Running stats\n\u2807 Running stats\n\u280f Running stats\n\u280b Running stats\n\u2819 Running stats\n\u2839 Running stats\n\u2838 Running stats\n\u283c Running stats\n\u2834 Running stats\n\u2826 Running stats\n\u2827 Running stats\n\u2807 Running stats\n\u280f Running stats\n\u280b Running stats\n\u2819 Running stats\n\u2839 Running stats\n\u2838 Running stats\n\u283c Running stats\n\u2834 Running stats\n\u2826 Running stats\n\u2827 Running stats\n\u2807 Running stats\n\u280f Running stats\n\u280b Running stats\n\u2819 Running stats\n\u2839 Running stats\n    done\n\n\u2838 Running clean tests\n\u283c Running clean tests\n\u2834 Running clean tests\n\u2826 Running clean tests\n\u2827 Running clean tests\n\u2807 Running clean tests\n\u280f Running clean tests\n\u280b Running clean tests\n\u2819 Running clean tests\n\u2839 Running clean tests\n\u2838 Running clean tests\n\u283c Running clean tests\n\u2834 Running clean tests\n\u2826 Running clean tests\n\u2827 Running clean tests\n\u2807 Running clean tests\n\u280f Running clean tests\n\u280b Running clean tests\n\u2819 Running clean tests\n\u2839 Running clean tests\n\u2838 Running clean tests\n\u283c Running clean tests\n\u2834 Running clean tests\n\u2826 Running clean tests\n\u2827 Running clean tests\n\u2807 Running clean tests\n\u280f Running clean tests\n\u280b Running clean tests\n\u2819 Running clean tests\n\u2839 Running clean tests\n\u2838 Running clean tests\n\u283c Running clean tests\n\u2834 Running clean tests\n\u2826 Running clean tests\n\u2827 Running clean tests\n\u2807 Running clean tests\n\u280f Running clean tests\n\u280b Running clean tests\n\u2819 Running clean tests\n\u2839 Running clean tests\n    done\n\n\u2838 Running forced fail test\n\u283c Running forced fail test\n\u2834 Running forced fail test\n\u2826 Running forced fail test\n\u2827 Running forced fail test\n\u2807 Running forced fail test\n\u280f Running forced fail test\n\u280b Running forced fail test\n\u2819 Running forced fail test\n\u2839 Running forced fail test\n\u2838 Running forced fail test\n\u283c Running forced fail test\n\u2834 Running forced fail test\n\u2826 Running forced fail test\n\u2827 Running forced fail test\n\u2807 Running forced fail test\n    done\nRunning mutation testing\n\n\u280f 0/3  \ud83c\udf89 0 \ud83e\udee5 0  \u23f0 0  \ud83e\udd14 0  \ud83d\ude41 0  \ud83d\udd07 0  \ud83e\uddd9 0\n\u280b 0/3  \ud83c\udf89 0 \ud83e\udee5 0  \u23f0 0  \ud83e\udd14 0  \ud83d\ude41 0  \ud83d\udd07 0  \ud83e\uddd9 0\n\u2819 1/3  \ud83c\udf89 1 \ud83e\udee5 0  \u23f0 0  \ud83e\udd14 0  \ud83d\ude41 0  \ud83d\udd07 0  \ud83e\uddd9 0\n\u2839 3/3  \ud83c\udf89 3 \ud83e\udee5 0  \u23f0 0  \ud83e\udd14 0  \ud83d\ude41 0  \ud83d\udd07 0  \ud83e\uddd9 0\n22.92 mutations/second\nmutmut results\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "source_unchanged": true,
+    "scope": "Mutants/cache/reports expected separately; status0 tool completion is not all-killed or approval."
+  },
+  {
+    "label": "actual-mutation-all-results",
+    "argv": [
+      "mutmut",
+      "results",
+      "--all",
+      "true"
+    ],
+    "status": 0,
+    "stdout": "    schema.example.x__is_numeric__mutmut_1: killed\n    schema.example.x__is_numeric__mutmut_2: killed\n    schema.example.x__is_numeric__mutmut_3: killed\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "source_unchanged": true,
+    "scope": "Mutants/cache/reports expected separately; status0 tool completion is not all-killed or approval."
+  },
+  {
+    "label": "actual-mutation-export",
+    "argv": [
+      "mutmut",
+      "export-cicd-stats"
+    ],
+    "status": 0,
+    "stdout": "Saved CI/CD stats to mutants/mutmut-cicd-stats.json\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "source_unchanged": true,
+    "scope": "Mutants/cache/reports expected separately; status0 tool completion is not all-killed or approval."
+  },
+  {
+    "label": "restored-lint",
+    "argv": [
+      "make",
+      "lint"
+    ],
+    "status": 0,
+    "stdout": "ruff check .\nAll checks passed!\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "source_unchanged": true,
+    "scope": "Mutants/cache/reports expected separately; status0 tool completion is not all-killed or approval."
+  },
+  {
+    "label": "restored-format",
+    "argv": [
+      "make",
+      "format-check"
+    ],
+    "status": 0,
+    "stdout": "ruff format --check .\n2 files already formatted\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "source_unchanged": true,
+    "scope": "Mutants/cache/reports expected separately; status0 tool completion is not all-killed or approval."
+  },
+  {
+    "label": "restored-types",
+    "argv": [
+      "make",
+      "typecheck"
+    ],
+    "status": 0,
+    "stdout": "mypy src tests\nSuccess: no issues found in 2 source files\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "source_unchanged": true,
+    "scope": "Mutants/cache/reports expected separately; status0 tool completion is not all-killed or approval."
+  },
+  {
+    "label": "restored-tests",
+    "argv": [
+      "make",
+      "test"
+    ],
+    "status": 0,
+    "stdout": "pytest -v\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0 -- /home/claude/coding-standards-verification/bee-c10-2026-10-09/venv/bin/python\ncachedir: .pytest_cache\nrootdir: /home/claude/coding-standards-verification/bee-c10-2026-10-09/project with spaces\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: cov-7.1.0, platformdirs-4.12.4\ncollecting ... collected 35 items\n\ntests/test_example.py::test_valid_provider_normalization_and_unknown_fields PASSED [  2%]\ntests/test_example.py::test_invalid_required_field[-id] PASSED           [  5%]\ntests/test_example.py::test_invalid_required_field[-name] PASSED         [  8%]\ntests/test_example.py::test_invalid_required_field[-position] PASSED     [ 11%]\ntests/test_example.py::test_invalid_required_field[ -id] PASSED          [ 14%]\ntests/test_example.py::test_invalid_required_field[ -name] PASSED        [ 17%]\ntests/test_example.py::test_invalid_required_field[ -position] PASSED    [ 20%]\ntests/test_example.py::test_invalid_required_field[None-id] PASSED       [ 22%]\ntests/test_example.py::test_invalid_required_field[None-name] PASSED     [ 25%]\ntests/test_example.py::test_invalid_required_field[None-position] PASSED [ 28%]\ntests/test_example.py::test_invalid_required_field[42-id] PASSED         [ 31%]\ntests/test_example.py::test_invalid_required_field[42-name] PASSED       [ 34%]\ntests/test_example.py::test_invalid_required_field[42-position] PASSED   [ 37%]\ntests/test_example.py::test_invalid_required_field[True-id] PASSED       [ 40%]\ntests/test_example.py::test_invalid_required_field[True-name] PASSED     [ 42%]\ntests/test_example.py::test_invalid_required_field[True-position] PASSED [ 45%]\ntests/test_example.py::test_invalid_numeric_id[-99] PASSED               [ 48%]\ntests/test_example.py::test_invalid_numeric_id[+99] PASSED               [ 51%]\ntests/test_example.py::test_invalid_numeric_id[\\uff19\\uff19] PASSED      [ 54%]\ntests/test_example.py::test_invalid_numeric_id[\\xb2] PASSED              [ 57%]\ntests/test_example.py::test_invalid_numeric_id[9x] PASSED                [ 60%]\ntests/test_example.py::test_invalid_numeric_id[1 2] PASSED               [ 62%]\ntests/test_example.py::test_invalid_salary[NaN] PASSED                   [ 65%]\ntests/test_example.py::test_invalid_salary[Inf] PASSED                   [ 68%]\ntests/test_example.py::test_invalid_salary[-Infinity] PASSED             [ 71%]\ntests/test_example.py::test_invalid_salary[1e999] PASSED                 [ 74%]\ntests/test_example.py::test_invalid_salary[bad] PASSED                   [ 77%]\ntests/test_example.py::test_valid_salary[] PASSED                        [ 80%]\ntests/test_example.py::test_valid_salary[ ] PASSED                       [ 82%]\ntests/test_example.py::test_valid_salary[-1] PASSED                      [ 85%]\ntests/test_example.py::test_valid_salary[1e3] PASSED                     [ 88%]\ntests/test_example.py::test_valid_salary[1.5] PASSED                     [ 91%]\ntests/test_example.py::test_owned_update_policy_and_json PASSED          [ 94%]\ntests/test_example.py::test_assignment_and_documented_bypass PASSED      [ 97%]\ntests/test_example.py::test_synthetic_caller_rejects_before_effect PASSED [100%]\n\n============================== 35 passed in 0.10s ==============================\n",
+    "stderr": "",
+    "before": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "after": {
+      "requirements-reference.lock": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed",
+      "Makefile": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb",
+      ".pre-commit-config.yaml": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9",
+      ".gitignore": "1a6cad61552916cac31625b9c90a9c9c3771fc8e49caf4c99219cd25999be708",
+      "pyproject.toml": "ce5135874fbf30e743989e64effbf21c8cdbd72fbabab3e8dca4e0ab3ee1da06",
+      ".coverage": "6722e251a2132dd759b7beb0dac81e915c2c8be2fc6c4426a0184e57bdb8e9f1",
+      "tests/test_example.py": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c",
+      "src/schema/example.py": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    "source_unchanged": true,
+    "scope": "Mutants/cache/reports expected separately; status0 tool completion is not all-killed or approval."
+  }
+]

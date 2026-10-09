@@ -1,0 +1,20 @@
+{
+  "ignored_owned_exact_evidence": [
+    "docs/planning/evidence/c10-readable/strong/mutants/mutmut-cicd-stats.json",
+    "docs/planning/evidence/c10-readable/strong/mutants/mutmut-stats.json",
+    "docs/planning/evidence/c10-readable/strong/mutants/pyproject.toml",
+    "docs/planning/evidence/c10-readable/strong/mutants/src/schema/example.py",
+    "docs/planning/evidence/c10-readable/strong/mutants/src/schema/example.py.meta",
+    "docs/planning/evidence/c10-readable/strong/mutants/tests/test_example.py",
+    "docs/planning/evidence/c10-readable/weak/mutants/mutmut-cicd-stats.json",
+    "docs/planning/evidence/c10-readable/weak/mutants/mutmut-stats.json",
+    "docs/planning/evidence/c10-readable/weak/mutants/pyproject.toml",
+    "docs/planning/evidence/c10-readable/weak/mutants/src/schema/example.py",
+    "docs/planning/evidence/c10-readable/weak/mutants/src/schema/example.py.meta",
+    "docs/planning/evidence/c10-readable/weak/mutants/tests/test_weak.py"
+  ],
+  "staged_count": 81,
+  "full_whitespace_status": 2,
+  "stdout": "docs/planning/evidence/c10-review-supplementary-readable/mutmut-__main__.py.txt:149: new blank line at EOF.\ndocs/planning/evidence/c10-review-supplementary-readable/mutmut-configuration.py.txt:315: new blank line at EOF.\n",
+  "stderr": ""
+}
