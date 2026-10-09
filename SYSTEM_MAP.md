@@ -12,6 +12,7 @@ This map describes the actual kit, not example application directories. Update r
 | `templates/astro/`, `templates/cloudflare-workers/`, `templates/bun-ecs/` | Selected additive/specialized TS overlays; their READMEs define merge/runtime particulars. |
 | `templates/go/`, `templates/python/`, `templates/bash/` | Language configs, examples and command interfaces. Go includes the existing ifaceguard analyzer; Bash includes strict-mode helpers/Bats examples. |
 | `scratch/fixtures/` | Tracked deliberate clean/violating Python, Go and Bash inputs used by existing workflows. Not generated disposable output. |
+| `tools/verify_fixture.py`, `tools/tests/`, `tools/README.md` | Maintainer-only exact-result/diagnostic checker, contract tests and fixture-use boundaries. Copied inputs/runtime environment remain caller-owned; no sandbox or automatic assembly. |
 | `.github/workflows/` | Security workflow and Python/Go/Bash fixture workflows. Source configuration is not proof checks ran or reject the intended defect. |
 | `.gitleaks.toml`, `.claude/settings.json` | Existing scanner/vendor settings; exclusions/runtime semantics constrain any enforcement claim. No sandbox established by these files. |
 | `skills/` | Adoption proposal guidance and read-side GitHub helper skill. Global installation is operator-managed. |

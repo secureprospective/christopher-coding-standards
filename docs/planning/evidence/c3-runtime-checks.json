@@ -1,0 +1,278 @@
+{
+  "source_copy": {
+    "base": "8fd8e82d30c19f842d0d8a8f3dde162c2596269f",
+    "branch": "rebuild/quality-core-2026-10-08",
+    "purpose": "C3 provisional test-copy identity, not acceptance or complete kit",
+    "sources": [
+      {
+        "path": "tools/verify_fixture.py",
+        "bytes": 3407,
+        "sha256": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11"
+      },
+      {
+        "path": "tools/tests/test_verify_fixture.py",
+        "bytes": 7257,
+        "sha256": "95bcb399773cf0e12a314f72fe5b9ff242eee4b28c196c04453a5c503acdc05f"
+      },
+      {
+        "path": "tools/README.md",
+        "bytes": 4007,
+        "sha256": "297543a4e1819eff601016b3f771e00634ea36722ebeab1e4406d8be4baf62c4"
+      },
+      {
+        "path": "scratch/fixtures/bash/clean.sh",
+        "bytes": 347,
+        "sha256": "6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a"
+      },
+      {
+        "path": "scratch/fixtures/bash/violating.sh",
+        "bytes": 634,
+        "sha256": "cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b"
+      }
+    ]
+  },
+  "checks": [
+    {
+      "name": "checker_unit_tests",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "output": "test_clean_exit_and_input_identity (test_verify_fixture.VerifyFixtureTests.test_clean_exit_and_input_identity) ... ok\ntest_clean_nonzero_is_failure (test_verify_fixture.VerifyFixtureTests.test_clean_nonzero_is_failure) ... ok\ntest_closed_stdin (test_verify_fixture.VerifyFixtureTests.test_closed_stdin) ... ok\ntest_deleted_input_is_setup_failure (test_verify_fixture.VerifyFixtureTests.test_deleted_input_is_setup_failure) ... ok\ntest_intended_rejection (test_verify_fixture.VerifyFixtureTests.test_intended_rejection) ... ok\ntest_invalid_timeout_and_diagnostic_options_are_usage_errors (test_verify_fixture.VerifyFixtureTests.test_invalid_timeout_and_diagnostic_options_are_usage_errors) ... ok\ntest_missing_directory_absolute_and_parent_inputs_rejected (test_verify_fixture.VerifyFixtureTests.test_missing_directory_absolute_and_parent_inputs_rejected) ... ok\ntest_missing_executable_is_setup_failure_not_rejection (test_verify_fixture.VerifyFixtureTests.test_missing_executable_is_setup_failure_not_rejection) ... ok\ntest_mutation_invalidates_either_expected_result (test_verify_fixture.VerifyFixtureTests.test_mutation_invalidates_either_expected_result) ... ok\ntest_non_utf8_output_is_replaced_not_silently_dropped (test_verify_fixture.VerifyFixtureTests.test_non_utf8_output_is_replaced_not_silently_dropped) ... ok\ntest_rejection_diagnostic_can_be_on_stderr (test_verify_fixture.VerifyFixtureTests.test_rejection_diagnostic_can_be_on_stderr) ... ok\ntest_symlink_escape_rejected (test_verify_fixture.VerifyFixtureTests.test_symlink_escape_rejected) ... ok\ntest_timeout_preserves_partial_output_and_cannot_pass (test_verify_fixture.VerifyFixtureTests.test_timeout_preserves_partial_output_and_cannot_pass) ... ok\ntest_wrong_exit_or_missing_diagnostic_is_not_rejection (test_verify_fixture.VerifyFixtureTests.test_wrong_exit_or_missing_diagnostic_is_not_rejection) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 1.549s\n\nOK\n"
+    },
+    {
+      "name": "shellcheck_clean",
+      "command": [
+        "/usr/bin/python3",
+        "tools/verify_fixture.py",
+        "--expect",
+        "pass",
+        "--input",
+        "tools/verify_fixture.py",
+        "--input",
+        "bin/shellcheck",
+        "--input",
+        "scratch/fixtures/bash/clean.sh",
+        "--",
+        "env",
+        "-u",
+        "SHELLCHECK_OPTS",
+        "/home/claude/coding-standards-verification/bee-c3-2026-10-08/bin/shellcheck",
+        "--norc",
+        "scratch/fixtures/bash/clean.sh"
+      ],
+      "checker_exit": 0,
+      "expected_checker_exit": 0,
+      "record": {
+        "command": [
+          "env",
+          "-u",
+          "SHELLCHECK_OPTS",
+          "/home/claude/coding-standards-verification/bee-c3-2026-10-08/bin/shellcheck",
+          "--norc",
+          "scratch/fixtures/bash/clean.sh"
+        ],
+        "expectation": {
+          "exit_code": 0,
+          "diagnostic": null
+        },
+        "timeout_seconds": 120,
+        "inputs_before": {
+          "tools/verify_fixture.py": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11",
+          "bin/shellcheck": "4da528ddb3a4d1b7b24a59d4e16eb2f5fd960f4bd9a3708a15baddbdf1d5a55b",
+          "scratch/fixtures/bash/clean.sh": "6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a"
+        },
+        "inputs_after": {
+          "tools/verify_fixture.py": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11",
+          "bin/shellcheck": "4da528ddb3a4d1b7b24a59d4e16eb2f5fd960f4bd9a3708a15baddbdf1d5a55b",
+          "scratch/fixtures/bash/clean.sh": "6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a"
+        },
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "error": null,
+        "matched": true
+      },
+      "checker_stderr": ""
+    },
+    {
+      "name": "shellcheck_intended_rejection",
+      "command": [
+        "/usr/bin/python3",
+        "tools/verify_fixture.py",
+        "--expect",
+        "reject",
+        "--input",
+        "tools/verify_fixture.py",
+        "--input",
+        "bin/shellcheck",
+        "--input",
+        "scratch/fixtures/bash/violating.sh",
+        "--diagnostic",
+        "SC2086 (info):",
+        "--",
+        "env",
+        "-u",
+        "SHELLCHECK_OPTS",
+        "/home/claude/coding-standards-verification/bee-c3-2026-10-08/bin/shellcheck",
+        "--norc",
+        "scratch/fixtures/bash/violating.sh"
+      ],
+      "checker_exit": 0,
+      "expected_checker_exit": 0,
+      "record": {
+        "command": [
+          "env",
+          "-u",
+          "SHELLCHECK_OPTS",
+          "/home/claude/coding-standards-verification/bee-c3-2026-10-08/bin/shellcheck",
+          "--norc",
+          "scratch/fixtures/bash/violating.sh"
+        ],
+        "expectation": {
+          "exit_code": 1,
+          "diagnostic": "SC2086 (info):"
+        },
+        "timeout_seconds": 120,
+        "inputs_before": {
+          "tools/verify_fixture.py": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11",
+          "bin/shellcheck": "4da528ddb3a4d1b7b24a59d4e16eb2f5fd960f4bd9a3708a15baddbdf1d5a55b",
+          "scratch/fixtures/bash/violating.sh": "cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b"
+        },
+        "inputs_after": {
+          "tools/verify_fixture.py": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11",
+          "bin/shellcheck": "4da528ddb3a4d1b7b24a59d4e16eb2f5fd960f4bd9a3708a15baddbdf1d5a55b",
+          "scratch/fixtures/bash/violating.sh": "cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b"
+        },
+        "exit_code": 1,
+        "stdout": "\nIn scratch/fixtures/bash/violating.sh line 8:\npath=/tmp/file.txt\n^--^ SC2034 (warning): path appears unused. Verify use (or export if used externally).\n\n\nIn scratch/fixtures/bash/violating.sh line 11:\n    echo Processing: $name\n                     ^---^ SC2086 (info): Double quote to prevent globbing and word splitting.\n\nDid you mean:\n    echo Processing: \"$name\"\n\n\nIn scratch/fixtures/bash/violating.sh line 14:\nunused_var=\"this is never used\"\n^--------^ SC2034 (warning): unused_var appears unused. Verify use (or export if used externally).\n\nFor more information:\n  https://www.shellcheck.net/wiki/SC2034 -- path appears unused. Verify use (...\n  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...\n",
+        "stderr": "",
+        "error": null,
+        "matched": true
+      },
+      "checker_stderr": ""
+    },
+    {
+      "name": "shellcheck_unexpected_green_probe",
+      "command": [
+        "/usr/bin/python3",
+        "tools/verify_fixture.py",
+        "--expect",
+        "reject",
+        "--input",
+        "tools/verify_fixture.py",
+        "--input",
+        "bin/shellcheck",
+        "--input",
+        "scratch/fixtures/bash/clean.sh",
+        "--diagnostic",
+        "SC2086 (info):",
+        "--",
+        "env",
+        "-u",
+        "SHELLCHECK_OPTS",
+        "/home/claude/coding-standards-verification/bee-c3-2026-10-08/bin/shellcheck",
+        "--norc",
+        "scratch/fixtures/bash/clean.sh"
+      ],
+      "checker_exit": 1,
+      "expected_checker_exit": 1,
+      "record": {
+        "command": [
+          "env",
+          "-u",
+          "SHELLCHECK_OPTS",
+          "/home/claude/coding-standards-verification/bee-c3-2026-10-08/bin/shellcheck",
+          "--norc",
+          "scratch/fixtures/bash/clean.sh"
+        ],
+        "expectation": {
+          "exit_code": 1,
+          "diagnostic": "SC2086 (info):"
+        },
+        "timeout_seconds": 120,
+        "inputs_before": {
+          "tools/verify_fixture.py": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11",
+          "bin/shellcheck": "4da528ddb3a4d1b7b24a59d4e16eb2f5fd960f4bd9a3708a15baddbdf1d5a55b",
+          "scratch/fixtures/bash/clean.sh": "6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a"
+        },
+        "inputs_after": {
+          "tools/verify_fixture.py": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11",
+          "bin/shellcheck": "4da528ddb3a4d1b7b24a59d4e16eb2f5fd960f4bd9a3708a15baddbdf1d5a55b",
+          "scratch/fixtures/bash/clean.sh": "6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a"
+        },
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "",
+        "error": null,
+        "matched": false
+      },
+      "checker_stderr": ""
+    },
+    {
+      "name": "shellcheck_wrong_diagnostic_probe",
+      "command": [
+        "/usr/bin/python3",
+        "tools/verify_fixture.py",
+        "--expect",
+        "reject",
+        "--input",
+        "tools/verify_fixture.py",
+        "--input",
+        "bin/shellcheck",
+        "--input",
+        "scratch/fixtures/bash/violating.sh",
+        "--diagnostic",
+        "INTENTIONALLY_ABSENT_DIAGNOSTIC",
+        "--",
+        "env",
+        "-u",
+        "SHELLCHECK_OPTS",
+        "/home/claude/coding-standards-verification/bee-c3-2026-10-08/bin/shellcheck",
+        "--norc",
+        "scratch/fixtures/bash/violating.sh"
+      ],
+      "checker_exit": 1,
+      "expected_checker_exit": 1,
+      "record": {
+        "command": [
+          "env",
+          "-u",
+          "SHELLCHECK_OPTS",
+          "/home/claude/coding-standards-verification/bee-c3-2026-10-08/bin/shellcheck",
+          "--norc",
+          "scratch/fixtures/bash/violating.sh"
+        ],
+        "expectation": {
+          "exit_code": 1,
+          "diagnostic": "INTENTIONALLY_ABSENT_DIAGNOSTIC"
+        },
+        "timeout_seconds": 120,
+        "inputs_before": {
+          "tools/verify_fixture.py": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11",
+          "bin/shellcheck": "4da528ddb3a4d1b7b24a59d4e16eb2f5fd960f4bd9a3708a15baddbdf1d5a55b",
+          "scratch/fixtures/bash/violating.sh": "cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b"
+        },
+        "inputs_after": {
+          "tools/verify_fixture.py": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11",
+          "bin/shellcheck": "4da528ddb3a4d1b7b24a59d4e16eb2f5fd960f4bd9a3708a15baddbdf1d5a55b",
+          "scratch/fixtures/bash/violating.sh": "cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b"
+        },
+        "exit_code": 1,
+        "stdout": "\nIn scratch/fixtures/bash/violating.sh line 8:\npath=/tmp/file.txt\n^--^ SC2034 (warning): path appears unused. Verify use (or export if used externally).\n\n\nIn scratch/fixtures/bash/violating.sh line 11:\n    echo Processing: $name\n                     ^---^ SC2086 (info): Double quote to prevent globbing and word splitting.\n\nDid you mean:\n    echo Processing: \"$name\"\n\n\nIn scratch/fixtures/bash/violating.sh line 14:\nunused_var=\"this is never used\"\n^--------^ SC2034 (warning): unused_var appears unused. Verify use (or export if used externally).\n\nFor more information:\n  https://www.shellcheck.net/wiki/SC2034 -- path appears unused. Verify use (...\n  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...\n",
+        "stderr": "",
+        "error": null,
+        "matched": false
+      },
+      "checker_stderr": ""
+    }
+  ],
+  "all_requirements_observed": true,
+  "limits": "14checker contract tests plus one real ShellCheck pair and two real nonmatch probes. Not Bash helper/Bats/shfmt/Gitleaks/Go/Python/all-overlay/CI coverage."
+}

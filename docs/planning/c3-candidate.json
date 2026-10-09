@@ -1,0 +1,109 @@
+{
+  "chunk": "C3",
+  "base": "8fd8e82d30c19f842d0d8a8f3dde162c2596269f",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "files": [
+    {
+      "path": "SYSTEM_MAP.md",
+      "bytes": 3331,
+      "sha256": "37c87cf46774f2a8165e8f3c18f208301fc49cc888d3aa146e0f848894321dbb"
+    },
+    {
+      "path": "docs/INDEX.md",
+      "bytes": 3334,
+      "sha256": "c5ede8eb37650897f13dc473a3da18b39b5327ebbc48fd2ebff8b3004e9656c8"
+    },
+    {
+      "path": "tools/verify_fixture.py",
+      "bytes": 3407,
+      "sha256": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11"
+    },
+    {
+      "path": "tools/tests/test_verify_fixture.py",
+      "bytes": 7257,
+      "sha256": "95bcb399773cf0e12a314f72fe5b9ff242eee4b28c196c04453a5c503acdc05f"
+    },
+    {
+      "path": "tools/README.md",
+      "bytes": 4007,
+      "sha256": "297543a4e1819eff601016b3f771e00634ea36722ebeab1e4406d8be4baf62c4"
+    },
+    {
+      "path": "docs/planning/c3-scope.md",
+      "bytes": 3625,
+      "sha256": "97787f7d5bf51d4817252ee0229fe245b1a7203b716ebc1739a86ec771c7e3d7"
+    },
+    {
+      "path": "docs/planning/c3-source-copy.json",
+      "bytes": 1014,
+      "sha256": "96eaab9790c015759a66dfdf08ca0b54b4758e3c652d22a72819b2317f7a6f47"
+    },
+    {
+      "path": "docs/planning/evidence/c3-vm-environment.json",
+      "bytes": 2830,
+      "sha256": "268ffa77cc9ef6e4d22005da20cf11d82e4b4808a31d6ad41c06a58961a1f527"
+    },
+    {
+      "path": "docs/planning/evidence/c3-runtime-checks.json",
+      "bytes": 12782,
+      "sha256": "95d1bb15346969c3e7ba546bdf7412d03bd74378aa9ca82ac852a554c93e08a1"
+    },
+    {
+      "path": "docs/planning/evidence/c3-unit-tests.log",
+      "bytes": 1975,
+      "sha256": "cae1bbbf7d99f9fda81a4084b334a1bbe12a32ac62e4e1d33df3927a3cb6e210"
+    },
+    {
+      "path": "docs/planning/c3-checks.json",
+      "bytes": 27799,
+      "sha256": "13bd60b894d922797395bbc1eb2f520bf6576cfc19ac2ba6de248a02b44fb192"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 3116,
+      "sha256": "259dd5e1395952c5742e50098e51aeb30c723f403d862f2692b68889a071fe91"
+    },
+    {
+      "path": "docs/quality-contract.md",
+      "bytes": 5915,
+      "sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f"
+    },
+    {
+      "path": "docs/planning/rebuild-chunk-plan-2026-10-08.md",
+      "bytes": 14971,
+      "sha256": "1ceb843a55b57d0fa3a8c6c4f5a7294525c94e01c09bb501fcd8f6dfa8022edf"
+    },
+    {
+      "path": "scratch/fixtures/bash/clean.sh",
+      "bytes": 347,
+      "sha256": "6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a"
+    },
+    {
+      "path": "scratch/fixtures/bash/violating.sh",
+      "bytes": 634,
+      "sha256": "cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b"
+    },
+    {
+      "path": ".github/workflows/verify-templates-bash.yml",
+      "bytes": 5142,
+      "sha256": "569e20d05c45c1281f7ebda763d8d6a61c12d681f7a9557d89f92e2f21d36c65"
+    }
+  ],
+  "tracked_diff_sha256": "a547d34bbe0da0bc17692e2d6e0ac9b1a3e16e4980a3c08bb28d6ea69ad1954f",
+  "session_helpers": [
+    {
+      "path": "/home/chris/scratch/coding-standards-c3-doc-check.py",
+      "sha256": "0eba2dca8ed9e67ad3c7550e59aebc3b9f38485fc6def29927f0775393b20b46"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c3-vm-setup.py",
+      "sha256": "78217dcbc49b0c6d9fa732d19bc91888ed42d6818dc629374034261589097dd9"
+    }
+  ],
+  "protected_untracked_metadata": {
+    "path": ".project.yaml",
+    "sha256": "86fc2d04c5c8f960b09c72a671dcd89d8126564d66868f91148a8d0c0f3b563c"
+  },
+  "runtime_environment": "Operator-authorized isolated ClaudeOS workspace; see preserved environment/runtime evidence. Not a sandbox or all-overlay acceptance.",
+  "closure_boundary": "HANDOFF.md is progress-only, outside frozen source inputs. Preserve whole candidate during review; after gate closure update only HANDOFF and acceptance/report records, never reviewed source."
+}

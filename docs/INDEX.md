@@ -12,6 +12,7 @@ For writing/reviewing a change, read [quality-contract.md](quality-contract.md) 
 | Authorized delegation / independent review | [Scoped roles](review-roles.md); exact task/candidate/check evidence. No fixed vendor/fleet mapping. |
 | Material design/data-flow/debloat review | [Task-scoped method](architecture-review.md) plus the actual project slice. Optional deeper context, not a default full-repo load or graph service. |
 | Understand current core/migration decision | [ADR-0002](adr/0002-quality-first-acceptance.md); [ADR-0001](adr/0001-why-this-standard-exists.md) is original history, partly superseded after acceptance. |
+| Verify copied fixtures | [Maintainer fixture checker](../tools/README.md), selected shipped inputs/config and actual tool commands in an approved environment. No automatic consumer payload or workflow replacement. |
 | CI/security behavior | Actual `.github/workflows/` and `.gitleaks.toml`; [branch-protection guide](branch-protection.md) is a procedure, not evidence of current hosted settings. |
 | Read-side GitHub inspection when needed | [GitHub helper skill](../skills/github-pr/SKILL.md). Read access is not publication authority. |
 | Continue approved rebuild / inspect evidence | [HANDOFF](../HANDOFF.md), [chunk plan](planning/rebuild-chunk-plan-2026-10-08.md), relevant candidate/result only. [C0 result](planning/c0-acceptance-result.md), [C1 scope](planning/c1-scope.md). |
