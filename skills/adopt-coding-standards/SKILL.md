@@ -32,7 +32,7 @@ Historical Codex/model-role guides and research/session archives are not require
 1. Show exact new/changed units and preservation/compatibility decisions. Material changes to task scope, behavior, risk or authority need clarification, not silent policy replacement.
 2. Within authorized scope, apply the bounded merge without overwriting unrelated content. Respect applicable MPL notices when redistributing; do not replace the target's license.
 3. Verify document routing/profile facts and applicable real lint/type/behavior/security checks in the designated suitable environment. New/changed gates need clean/intended-failure cases with the expected diagnostics. Unsupported commands, missing tools and skipped steps are not passes.
-4. Report source bindings/customizations separately from configured controls, actual execution evidence and approval. Tracking/checker infrastructure is still proposed; do not invent authenticated receipts or adoption history.
+4. Report source bindings/customizations separately from configured controls, actual execution evidence and approval. Use [manual adoption status](../../docs/adoption-status.md) for conservative unknown/customized/mixed reporting and update proposals. Tracking implementation is deferred pending owner/source/catalog decisions; no checker/enrollment or new required receipt format exists. Do not invent authenticated receipts or adoption history.
 5. Commit/push/merge/install/deploy only under existing authority; no hook bypass, force-push or known-broken operational commit.
 
 Keep the report short: selected source/units; what changed/preserved; candidate-bound checks/review; specific unverified limits. A read-only proposal requires no automatic installation or destructive action.

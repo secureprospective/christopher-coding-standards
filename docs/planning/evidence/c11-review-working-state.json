@@ -1,0 +1,8 @@
+{
+  "base": "27c68a1044b44a126aa74a324e959bff23d7d0d8",
+  "actual_head": "27c68a1044b44a126aa74a324e959bff23d7d0d8",
+  "diff_path": "/home/chris/scratch/coding-standards-c11-frozen-tracked.patch",
+  "diff_sha256": "54b15a5ef9718f37f2fd14ba8c74081e0356807131ecc30b212ec5775ee9b84b",
+  "staged": "",
+  "status": " M docs/INDEX.md\n M skills/adopt-coding-standards/SKILL.md\n?? .project.yaml\n?? docs/adoption-status.md\n?? docs/planning/c11-baseline.json\n?? docs/planning/c11-candidate.json\n?? docs/planning/c11-scope.md\n?? docs/planning/c11-tracking-decision.md\n?? docs/planning/evidence/c11-doc-checks.json\n"
+}
