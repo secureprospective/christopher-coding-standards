@@ -1,0 +1,51 @@
+{
+  "type": "module",
+  "packageManager": "pnpm@10.34.3",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "preinstall": "node scripts/check-package-manager.mjs",
+    "lint": "biome ci .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "typecheck": "astro check",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "mutation-test": "stryker run",
+    "mutation-test:full": "stryker run --force",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "format:astro": "prettier --write \"**/*.astro\"",
+    "lint:astro": "prettier --check \"**/*.astro\"",
+    "typecheck:astro": "astro check"
+  },
+  "dependencies": {
+    "zod": "4.6.5",
+    "astro": "7.3.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.15",
+    "@stryker-mutator/core": "9.6.1",
+    "@stryker-mutator/typescript-checker": "9.6.1",
+    "@stryker-mutator/vitest-runner": "9.6.1",
+    "@types/node": "24.10.1",
+    "@vitest/coverage-v8": "4.1.11",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11",
+    "@astrojs/check": "0.9.10",
+    "prettier": "3.9.9",
+    "prettier-plugin-astro": "1.1.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "typed-rest-client>qs": "6.16.0"
+    }
+  },
+  "name": "bee-c7-fixture",
+  "version": "0.0.0",
+  "private": true
+}

@@ -1,0 +1,285 @@
+{
+  "base": "e8624dd0f752933c1dfdc3a2b1d4e2ff3304e61d",
+  "files": [
+    {
+      "path": "HANDOFF.md",
+      "bytes": 3677,
+      "sha256": "3b7b88b17c31cce9d285caf9a65a23dd4d4fca99b1311da61ece339dd3c2a619"
+    },
+    {
+      "path": "docs/planning/c7-baseline.json",
+      "bytes": 37903,
+      "sha256": "a94eb089127d4a241c52ba5e04871782f420b421c2e913b5ee95d466e2853b86"
+    },
+    {
+      "path": "docs/planning/c7-checks-disposition.md",
+      "bytes": 3903,
+      "sha256": "37922adf7da6e295a3de758d4306efeb2a4a8b5a3521c94c9125ad3fc715704d"
+    },
+    {
+      "path": "docs/planning/c7-scope.md",
+      "bytes": 1033,
+      "sha256": "acc53495fffa6e3dc79b04b6d67fb0c74ebdecbad6c4339a34f8aad505566a79"
+    },
+    {
+      "path": "docs/planning/c7-source-copy.json",
+      "bytes": 1223,
+      "sha256": "5c393ae94e1bc3581ba2ce5ec7ea3060063ac52bc6922bb6cf688edb2e004d3a"
+    },
+    {
+      "path": "docs/planning/evidence/c7-checks.json",
+      "bytes": 179762,
+      "sha256": "30c16c29bca44a9a9f29de9ae7fee6a8b52d15e5633ef3a257c0b0fd1ca1cf7d"
+    },
+    {
+      "path": "docs/planning/evidence/c7-final-checks.json",
+      "bytes": 45639,
+      "sha256": "07cad7765902626913db235083b5792e6eda41aeb3e3410f434e927ab7a8e6df"
+    },
+    {
+      "path": "docs/planning/evidence/c7-final-initial-failure.json",
+      "bytes": 141442,
+      "sha256": "0d1ff61482e53220fb8e024f1828ba7e98748709c1d0a70fa759ed7923f70f0e"
+    },
+    {
+      "path": "docs/planning/evidence/c7-final.json",
+      "bytes": 204380,
+      "sha256": "0dad8b8cf2b9d4d9f753068859536d49db0835072f3234de384e134f6e530e52"
+    },
+    {
+      "path": "docs/planning/evidence/c7-initial-checks.json",
+      "bytes": 93569,
+      "sha256": "f4c408e4968537c9b6ba655d034b723e2fe435ad1b412afcb275e24731854599"
+    },
+    {
+      "path": "docs/planning/evidence/c7-initial-vm.py",
+      "bytes": 10816,
+      "sha256": "7b011847af685bd88188a432587ebb60c2ebe8b4aac6ed7f0cbde1dfe70b295e"
+    },
+    {
+      "path": "docs/planning/evidence/c7-metadata.json",
+      "bytes": 51176,
+      "sha256": "12c8d59a08c2941fdf08609907171d5d529106df555b0fffc0f3a8a298bad273"
+    },
+    {
+      "path": "docs/planning/evidence/c7-non-react-snapshot.json",
+      "bytes": 197926,
+      "sha256": "eda9074aa15d24469cdfadc0c133274c71c692770c6f9bcf6f92f2f8630834ba"
+    },
+    {
+      "path": "docs/planning/evidence/c7-preset-base.json",
+      "bytes": 1618,
+      "sha256": "ebf359cd308507804b7bcf1cdd79a80928a12cbb3b1830f6f87eab16f7b88b8c"
+    },
+    {
+      "path": "docs/planning/evidence/c7-preset-strict.json",
+      "bytes": 260,
+      "sha256": "897756360c33c8dcdeae3b2741316e5eefe24e883f5988656bdef3089dc388d1"
+    },
+    {
+      "path": "docs/planning/evidence/c7-preset-strictest.json",
+      "bytes": 1201,
+      "sha256": "26aa401c3fc8785b7cf8189700655a93b962c8cab6cb710b1e43599ccecadf2f"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/manifest.json",
+      "bytes": 5053,
+      "sha256": "0b8670281944fa9ff31474a231f575852bc2a726feb9d839880918cc8bcbfcd0"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/non-react/.astro/types.d.ts",
+      "bytes": 76,
+      "sha256": "38ea3df3779cce222cd51ba2c9dc9ac053a859208d3097aa3165f70c71517736"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/non-react/.pre-commit-config.yaml",
+      "bytes": 1139,
+      "sha256": "5609748f60cafa79794a7b1357b09ee2f91de581db74de5fcfd30f1398285c45"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/non-react/Makefile",
+      "bytes": 890,
+      "sha256": "77e9c9075ff6974dace59082197140e3bb62d8580c00f3f4d3bc7ceb0d84201b"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/non-react/astro.config.mjs",
+      "bytes": 79,
+      "sha256": "119b6b81d073419a4fc0a34c8843dab6f6e4607b9fbbf120b59e8dad7100a0c3"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/non-react/biome.json",
+      "bytes": 886,
+      "sha256": "55f9d5382cce875cac10a453fb526e3d0f412fc3c7dc9682b4ff8f360a7bbba8"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/non-react/package.json",
+      "bytes": 1398,
+      "sha256": "8aa3aa17533b3d33bcaa321a488ddc8bdcab644c7e9931f1a836c655a0f27d4a"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/non-react/pnpm-lock.yaml",
+      "bytes": 167642,
+      "sha256": "86eee9375b13752ece150da82e64b8e1bcdd1c268e1b11363a41dc9e184ea6a5"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/non-react/src/pages/index.astro",
+      "bytes": 208,
+      "sha256": "94763eb880f5ce61c388b9c5107e7bc44118b0c00de23ea935a128d0108c2416"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/non-react/tsconfig.json",
+      "bytes": 481,
+      "sha256": "807f6458ee39a1c32f8bd2271f5cbc535da40ef18f577df3cd4663dc6e51f712"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/.astro/types.d.ts",
+      "bytes": 76,
+      "sha256": "38ea3df3779cce222cd51ba2c9dc9ac053a859208d3097aa3165f70c71517736"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/.pre-commit-config.yaml",
+      "bytes": 1139,
+      "sha256": "5609748f60cafa79794a7b1357b09ee2f91de581db74de5fcfd30f1398285c45"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/Makefile",
+      "bytes": 890,
+      "sha256": "77e9c9075ff6974dace59082197140e3bb62d8580c00f3f4d3bc7ceb0d84201b"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/astro.config.mjs",
+      "bytes": 140,
+      "sha256": "5f14f1b65c632bda129f7541e7978812b4bdb0a79941353a14cb9e983681a222"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/biome.json",
+      "bytes": 886,
+      "sha256": "55f9d5382cce875cac10a453fb526e3d0f412fc3c7dc9682b4ff8f360a7bbba8"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/package.json",
+      "bytes": 1543,
+      "sha256": "8e28f56717c79d1aeebde5294eab4877381261a61821312801a8040f98748ed6"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/pnpm-lock.yaml",
+      "bytes": 171618,
+      "sha256": "3a7f5d9eb5fa717ef474b937c7298c6a1e2445d98ec21251d49469c881955664"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/src/components/Counter.tsx",
+      "bytes": 95,
+      "sha256": "f97ff1d35f46cfbfcce9aeeef86a4a5fb6a5f899aa2a74a8c36c4650d16b6c71"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/src/pages/index.astro",
+      "bytes": 208,
+      "sha256": "94763eb880f5ce61c388b9c5107e7bc44118b0c00de23ea935a128d0108c2416"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/src/pages/react.astro",
+      "bytes": 80,
+      "sha256": "5b8e848116060fb4f046a324cd117bc89415d9a7f7b6c454c0b62cbf2784f7e0"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/template-tsconfig.jsonc",
+      "bytes": 479,
+      "sha256": "a1ebc9c8b30c17600ba60936a829e5a2a34610db451cc2647fafb9b924cce3cd"
+    },
+    {
+      "path": "docs/planning/evidence/c7-readable/react/tsconfig.json",
+      "bytes": 535,
+      "sha256": "6b070797d344e427393b6070cc6288425ce2aa21262043fc56a14bde379df5e0"
+    },
+    {
+      "path": "docs/planning/evidence/c7-source-inputs.json",
+      "bytes": 17189,
+      "sha256": "81907e1ca8437fe866d5acffe3d5a9d6abfee57640eaed5c5aa054bf4761e45c"
+    },
+    {
+      "path": "docs/quality-contract.md",
+      "bytes": 5915,
+      "sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f"
+    },
+    {
+      "path": "templates/astro/.pre-commit-config.yaml.snippet",
+      "bytes": 369,
+      "sha256": "39112a16d256ac14a723ebba8bb4c21655d91ea904fd040f6b168c00c06af399"
+    },
+    {
+      "path": "templates/astro/.prettierrc.json",
+      "bytes": 319,
+      "sha256": "11dd1f482635de42e243161d727a652d953f17ebd0095ce86d939f0162542b39"
+    },
+    {
+      "path": "templates/astro/Makefile.snippet",
+      "bytes": 259,
+      "sha256": "e359369186e4f2d8f20dc9ea4332c70d31d97dd369a87aa9eda7d8cc49b4a7ea"
+    },
+    {
+      "path": "templates/astro/README.md",
+      "bytes": 4359,
+      "sha256": "bcef7373688cce03bf448acded6fb58ebb3be461f9f2624c7998bd37cd50061a"
+    },
+    {
+      "path": "templates/astro/package.json.snippet",
+      "bytes": 472,
+      "sha256": "6ea15cf2d4c490d1e40c5af1a7ad26f01c5c45f5084101a19cce7b4741063ab8"
+    },
+    {
+      "path": "templates/astro/tsconfig.json",
+      "bytes": 479,
+      "sha256": "a1ebc9c8b30c17600ba60936a829e5a2a34610db451cc2647fafb9b924cce3cd"
+    },
+    {
+      "path": "templates/typescript/.pre-commit-config.yaml",
+      "bytes": 769,
+      "sha256": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a"
+    },
+    {
+      "path": "templates/typescript/README.md",
+      "bytes": 7575,
+      "sha256": "253b5cf517762912e6e7079163a0975cffc22a3c13bd6e48d8f0b29b87bbb343"
+    },
+    {
+      "path": "templates/typescript/biome.json",
+      "bytes": 852,
+      "sha256": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc"
+    },
+    {
+      "path": "templates/typescript/package.json.snippet",
+      "bytes": 983,
+      "sha256": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156"
+    },
+    {
+      "path": "templates/typescript/tsconfig.json",
+      "bytes": 1684,
+      "sha256": "bbeaf612d2b1db2bfd8e404d93e3a564699b9681a8312e7f87997ea25dfe9128"
+    },
+    {
+      "path": "templates/typescript/vitest.config.ts",
+      "bytes": 942,
+      "sha256": "8ddd3f10a71b0b2232a7a7f3e5319c35beee35d3b844b7c1d133f806a4c5c2e4"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "/home/chris/scratch/coding-standards-c7-vm.py",
+      "bytes": 10862,
+      "sha256": "c4437648d9aa37363e25fe847366bb8b219139b87adc0bac61a9551dfa04e603"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c7-resume.py",
+      "bytes": 4270,
+      "sha256": "ea5bc777ec1c1b58a5017e0d74724dd10f6c45efc9155a464d632b8bafc1a50f"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c7-final.py",
+      "bytes": 3082,
+      "sha256": "1683a3a3ca36693a7bb86b6f7cdf542a43ca82efc323695a0a422657f0756390"
+    }
+  ],
+  "diff_sha256": "49e59394dd339c1699fc2615137956e12a512744e1ff1b10ebd6bb80cb18b780",
+  "protected_count": 238,
+  "unrelated_project_sha256": "86fc2d04c5c8f960b09c72a671dcd89d8126564d66868f91148a8d0c0f3b563c"
+}

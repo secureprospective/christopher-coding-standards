@@ -1,0 +1,30 @@
+repos:
+  # Use the project's locked binary, not a second npm-resolved hook environment.
+  - repo: local
+    hooks:
+      - id: biome-ci
+        name: biome ci (project dependency, read-only)
+        entry: node_modules/.bin/biome ci --files-ignore-unknown=true --no-errors-on-unmatched
+        language: system
+        types: [text]
+        files: '\.(jsx?|tsx?|c(js|ts)|m(js|ts)|jsonc?|css|graphql|gql)$'
+        require_serial: true
+
+  # Native Gitleaks must already be installed and its version/integrity verified.
+  # This hook scans the staged diff, not every path passed by pre-commit.
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: 83d9cd684c87d95d656c1458ef04895a7f1cbd8e  # v8.30.1
+    hooks:
+      - id: gitleaks-system
+        pass_filenames: false
+
+# Merge into the existing repos list; use the project's locked installation.
+# Read-only: formatting is a separate deliberate command, not a commit side effect.
+  - repo: local
+    hooks:
+      - id: prettier-astro
+        name: prettier (astro)
+        entry: pnpm exec prettier --check --
+        language: system
+        files: \.astro$
+        pass_filenames: true

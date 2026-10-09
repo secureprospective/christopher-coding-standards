@@ -4,6 +4,8 @@
   "compilerOptions": {
     // Keep base checks explicit alongside the selected Astro strictest preset.
     "noImplicitOverride": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true
   },

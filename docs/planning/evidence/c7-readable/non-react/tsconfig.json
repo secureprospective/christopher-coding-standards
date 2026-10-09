@@ -2,7 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    // Keep base checks explicit alongside the selected Astro strictest preset.
+    // Keep the base reference's checks not supplied by Astro's strictest preset.
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true

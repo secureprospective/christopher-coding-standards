@@ -1,22 +1,10 @@
-# Astro overlay — merge this hook into your existing .pre-commit-config.yaml
-# (templates/typescript/.pre-commit-config.yaml). Formats/checks .astro files
-# only; Biome continues to handle .ts/.tsx/.js — see README for the one-line
-# addition to biome.json's files.ignore.
-#
-# DELIBERATELY a `repo: local` hook, not the `pre-commit/mirrors-prettier`
-# remote hook — see README "Why a local hook, not mirrors-prettier" for the
-# confirmed defect that ruled the remote hook out (pinned rev didn't exist,
-# and even repinned, its isolated additional_dependencies env can't satisfy
-# Prettier 3's ESM plugin resolution for prettier-plugin-astro). This hook
-# runs the project's OWN installed prettier (from package.json.snippet's
-# devDependencies) via `npx --no-install`, so plugin resolution happens in
-# the project's real node_modules where it actually works.
-
+# Merge into the existing repos list; use the project's locked installation.
+# Read-only: formatting is a separate deliberate command, not a commit side effect.
   - repo: local
     hooks:
       - id: prettier-astro
         name: prettier (astro)
-        entry: npx --no-install prettier --write
+        entry: pnpm exec prettier --check --
         language: system
         files: \.astro$
         pass_filenames: true
