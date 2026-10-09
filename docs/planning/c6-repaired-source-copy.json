@@ -1,0 +1,27 @@
+[
+  {
+    "path": "templates/cloudflare-workers/README.md",
+    "sha256": "beaed045716e87f2bb9212be469a42603d6cca711e54ff034c871afbbab42826",
+    "runtime_field": "README.md"
+  },
+  {
+    "path": "templates/cloudflare-workers/package.json.snippet",
+    "sha256": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+    "runtime_field": "package.json.snippet"
+  },
+  {
+    "path": "templates/cloudflare-workers/tsconfig.json",
+    "sha256": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+    "runtime_field": "tsconfig.json"
+  },
+  {
+    "path": "templates/cloudflare-workers/vitest.config.ts",
+    "sha256": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+    "runtime_field": "vitest.config.ts"
+  },
+  {
+    "path": "templates/cloudflare-workers/wrangler.jsonc",
+    "sha256": "ff697f916f4bfdd7051a6be715fdbd0750e96adba17f7b3c0191d49bba7d77a6",
+    "runtime_field": "template-wrangler.jsonc"
+  }
+]

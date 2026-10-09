@@ -1,0 +1,261 @@
+[
+  {
+    "label": "clean-lint",
+    "argv": [
+      "npm",
+      "run",
+      "lint"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "\n> lint\n> biome ci .\n\n\u001b[0m\u001b[34mChecked 9 files in 4\u001b[0m\u001b[0m\u001b[2m\u001b[34mms\u001b[0m\u001b[0m\u001b[34m.\u001b[0m\u001b[0m\u001b[34m No fixes applied.\u001b[0m\n",
+    "stderr": "",
+    "before": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048"
+    },
+    "after": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048"
+    }
+  },
+  {
+    "label": "clean-typecheck",
+    "argv": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "\n> typecheck\n> wrangler types && tsc --noEmit\n\n\n \u26c5\ufe0f wrangler 4.149.0\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nGenerating project types...\n\ninterface __BaseEnv_Env {\n\tKV: KVNamespace;\n}\ndeclare namespace Cloudflare {\n\tinterface GlobalProps {\n\t\tmainModule: typeof import(\"./src/index\");\n\t}\n\tinterface Env extends __BaseEnv_Env {}\n}\ninterface Env extends __BaseEnv_Env {}\n\nGenerating runtime types...\n\nRuntime types generated.\n\n\n\u2728 Types written to worker-configuration.d.ts\n\n\ud83d\udcd6 Read about runtime types\nhttps://developers.cloudflare.com/workers/languages/typescript/#generate-types\n\ud83d\udce3 Remember to rerun 'wrangler types' after you change your wrangler.jsonc file.\n\n",
+    "stderr": "",
+    "before": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048"
+    },
+    "after": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048"
+    }
+  },
+  {
+    "label": "clean-workerd",
+    "argv": [
+      "npm",
+      "test"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "\n> test\n> vitest run\n\n\n RUN  v4.1.11 /home/claude/coding-standards-verification/bee-c6-2026-10-08/project\n\n \u2713 src/index.test.ts (5 tests) 24ms\n\n Test Files  1 passed (1)\n      Tests  5 passed (5)\n   Start at  23:31:09\n   Duration  1.08s (transform 22ms, setup 0ms, import 44ms, tests 24ms, environment 0ms)\n\n",
+    "stderr": "",
+    "before": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048"
+    },
+    "after": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048"
+    }
+  },
+  {
+    "label": "bundle-no-deploy",
+    "argv": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "\n> build\n> wrangler deploy --dry-run --outdir dist\n\n\n \u26c5\ufe0f wrangler 4.149.0\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTotal Upload: 0.74 KiB / gzip: 0.36 KiB\nYour Worker has access to the following bindings:\nBinding                                        Resource          \nenv.KV (00000000000000000000000000000000)      KV Namespace      \n\n--dry-run: exiting now.\n",
+    "stderr": "",
+    "before": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048"
+    },
+    "after": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048"
+    }
+  },
+  {
+    "label": "lint-probe",
+    "argv": [
+      "npm",
+      "run",
+      "lint"
+    ],
+    "status": 1,
+    "expected": 1,
+    "diagnostic": "noExplicitAny",
+    "stdout": "\n> lint\n> biome ci .\n\n\u001b[0m\u001b[34mChecked 10 files in 4\u001b[0m\u001b[0m\u001b[2m\u001b[34mms\u001b[0m\u001b[0m\u001b[34m.\u001b[0m\u001b[0m\u001b[34m No fixes applied.\u001b[0m\u001b[0m\n\u001b[0m\u001b[0m\u001b[31mFound \u001b[0m\u001b[0m\u001b[31m1\u001b[0m\u001b[0m\u001b[31m error.\u001b[0m\n",
+    "stderr": "\u001b[0msrc/probe.ts\u001b[0m\u001b[0m:\u001b[0m\u001b[0m1\u001b[0m\u001b[0m:\u001b[0m\u001b[0m21\u001b[0m\u001b[0m \u001b[0m\u001b[0m\u001b]8;;https://biomejs.dev/linter/rules/no-explicit-any\u001b\\lint/suspicious/noExplicitAny\u001b]8;;\u001b\\\u001b[0m\u001b[0m \u001b[0m\u001b[0m\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u001b[0m\u001b[0m\n\n\u001b[0m\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[31m\u2716\u001b[0m\u001b[0m \u001b[0m\u001b[0m\u001b[31mUnexpected \u001b[0m\u001b[0m\u001b[1m\u001b[31many\u001b[0m\u001b[0m\u001b[31m. Specify a different type.\u001b[0m\u001b[0m\n\u001b[0m\u001b[0m  \u001b[0m\u001b[0m\n\u001b[0m\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[31m>\u001b[0m\u001b[0m \u001b[0m\u001b[0m\u001b[1m1 \u2502 \u001b[0m\u001b[0me\u001b[0m\u001b[0mx\u001b[0m\u001b[0mp\u001b[0m\u001b[0mo\u001b[0m\u001b[0mr\u001b[0m\u001b[0mt\u001b[0m\u001b[0m \u001b[0m\u001b[0mc\u001b[0m\u001b[0mo\u001b[0m\u001b[0mn\u001b[0m\u001b[0ms\u001b[0m\u001b[0mt\u001b[0m\u001b[0m \u001b[0m\u001b[0mv\u001b[0m\u001b[0ma\u001b[0m\u001b[0ml\u001b[0m\u001b[0mu\u001b[0m\u001b[0me\u001b[0m\u001b[0m:\u001b[0m\u001b[0m \u001b[0m\u001b[0ma\u001b[0m\u001b[0mn\u001b[0m\u001b[0my\u001b[0m\u001b[0m \u001b[0m\u001b[0m=\u001b[0m\u001b[0m \u001b[0m\u001b[0m1\u001b[0m\u001b[0m;\u001b[0m\u001b[0m\n\u001b[0m\u001b[0m  \u001b[0m\u001b[0m \u001b[0m\u001b[0m\u001b[1m   \u2502 \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m \u001b[0m\u001b[0m\u001b[1m\u001b[31m^\u001b[0m\u001b[0m\u001b[1m\u001b[31m^\u001b[0m\u001b[0m\u001b[1m\u001b[31m^\u001b[0m\u001b[0m\n\u001b[0m\u001b[0m  \u001b[0m\u001b[0m  \u001b[0m\u001b[0m\u001b[1m2 \u2502 \u001b[0m\u001b[0m\n\u001b[0m\u001b[0m  \u001b[0m\u001b[0m\n\u001b[0m\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[34m\u2139\u001b[0m\u001b[0m \u001b[0m\u001b[0m\u001b[1m\u001b[34many\u001b[0m\u001b[0m\u001b[34m disables many type checking rules. Its use should be avoided.\u001b[0m\u001b[0m\n\u001b[0m\u001b[0m  \u001b[0m\u001b[0m\n\u001b[0m\n\u001b[0mci\u001b[0m\u001b[0m \u001b[0m\u001b[0m\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u001b[0m\u001b[0m\n\n\u001b[0m\u001b[0m  \u001b[0m\u001b[0m\u001b[1m\u001b[31m\u2716\u001b[0m\u001b[0m \u001b[0m\u001b[0m\u001b[31mSome \u001b[0m\u001b[0m\u001b[1m\u001b[31merrors\u001b[0m\u001b[0m\u001b[31m were emitted while \u001b[0m\u001b[0m\u001b[1m\u001b[31mrunning checks\u001b[0m\u001b[0m\u001b[31m.\u001b[0m\u001b[0m\n\u001b[0m\u001b[0m  \u001b[0m\u001b[0m\n\u001b[0m\n",
+    "before": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048",
+      "src/probe.ts": "360e5199ca66ae24f988e6963ae63ffd41a6cbd6bf8008114398cd4903e09b4e"
+    },
+    "after": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048",
+      "src/probe.ts": "360e5199ca66ae24f988e6963ae63ffd41a6cbd6bf8008114398cd4903e09b4e"
+    }
+  },
+  {
+    "label": "restored-lint",
+    "argv": [
+      "npm",
+      "run",
+      "lint"
+    ],
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "\n> lint\n> biome ci .\n\n\u001b[0m\u001b[34mChecked 9 files in 4\u001b[0m\u001b[0m\u001b[2m\u001b[34mms\u001b[0m\u001b[0m\u001b[34m.\u001b[0m\u001b[0m\u001b[34m No fixes applied.\u001b[0m\n",
+    "stderr": "",
+    "before": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048"
+    },
+    "after": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "1d56420a730d6bc2e65109d2d37e0e0d5ede7d58abac71e21a42f040cd3baeaf",
+      "README.md": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "biome.json": "fecfc8d5ca163379f64dff429b11e0e2ec590a0dfb3fd88fb23a4c1fed89a346",
+      "template-wrangler.jsonc": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+      "src/index.test.ts": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048"
+    }
+  }
+]

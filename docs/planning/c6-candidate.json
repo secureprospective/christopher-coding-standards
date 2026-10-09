@@ -1,0 +1,105 @@
+{
+  "base": "c66962fc3551571dbd7707152ae3b7831460a936",
+  "files": [
+    {
+      "path": "docs/planning/c6-baseline.json",
+      "bytes": 32750,
+      "sha256": "f4f5da44b38e266bfae2bcc251d5b184b2a6e94cffee95f0dba7e824840a3f04"
+    },
+    {
+      "path": "docs/planning/c6-scope.md",
+      "bytes": 854,
+      "sha256": "d1906718fd619ffb037799ee063774902ec0c3301b5b060f5ca5896eacea51b5"
+    },
+    {
+      "path": "docs/planning/c6-source-copy.json",
+      "bytes": 1445,
+      "sha256": "520b164ecb9caccec38010193ff7231df943e3ceddc4e06c8cc581dcc0fd35c8"
+    },
+    {
+      "path": "docs/planning/evidence/c6-config-lint-initial.json",
+      "bytes": 177,
+      "sha256": "a368411f35d1c96fc5890d96b4d54814b728c5a91f15615b98c604399b85deb1"
+    },
+    {
+      "path": "docs/planning/evidence/c6-final-supplement.json",
+      "bytes": 781693,
+      "sha256": "9a231059ed31e101c72d0e5ee59e645a7565a7f96b3b9cb808099ae39a016f60"
+    },
+    {
+      "path": "docs/planning/evidence/c6-metadata.json",
+      "bytes": 40494,
+      "sha256": "d89c5f2bb1e785d8225dca5d9d5b68fb5e3274a8a7341333b36354e42a788343"
+    },
+    {
+      "path": "docs/planning/evidence/c6-runtime.json",
+      "bytes": 18430,
+      "sha256": "fb6d19d35fd26c69dd894f52f48434faf3f92c124933208121ecf5130c61d810"
+    },
+    {
+      "path": "docs/planning/evidence/c6-supplement-lint-initial-failure.json",
+      "bytes": 16387,
+      "sha256": "91f2e26ec793065fe7b7ef1eb50dbfa4e25168645ac2b3965f0bf4cb8e7f2006"
+    },
+    {
+      "path": "docs/planning/evidence/c6-supplement.json",
+      "bytes": 22110,
+      "sha256": "7358440e8503ff9e3fb602cf0d1ff2a7bd47f7971079c7cb8807969dd9e2760a"
+    },
+    {
+      "path": "docs/quality-contract.md",
+      "bytes": 5915,
+      "sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f"
+    },
+    {
+      "path": "templates/cloudflare-workers/README.md",
+      "bytes": 4004,
+      "sha256": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff"
+    },
+    {
+      "path": "templates/cloudflare-workers/package.json.snippet",
+      "bytes": 456,
+      "sha256": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10"
+    },
+    {
+      "path": "templates/cloudflare-workers/tsconfig.json",
+      "bytes": 2163,
+      "sha256": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866"
+    },
+    {
+      "path": "templates/cloudflare-workers/vitest.config.ts",
+      "bytes": 1309,
+      "sha256": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780"
+    },
+    {
+      "path": "templates/cloudflare-workers/wrangler.jsonc",
+      "bytes": 3555,
+      "sha256": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a"
+    },
+    {
+      "path": "templates/typescript/biome.json",
+      "bytes": 852,
+      "sha256": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc"
+    },
+    {
+      "path": "templates/typescript/package.json.snippet",
+      "bytes": 983,
+      "sha256": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "/home/chris/scratch/coding-standards-c6-vm.py",
+      "bytes": 6931,
+      "sha256": "0db2aff26c08d12b0c181841316931902201fae0d4ad552304a792599ce15b50"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c6-supplement.py",
+      "bytes": 2091,
+      "sha256": "ae4d2e3d5d13ee6f71dcd1dcad1fff86cc1609f5b2de544db9226f746f49e712"
+    }
+  ],
+  "diff_sha256": "fffe13e3eb3a662dcc78e6706baff383f0f921050252a0c072ed4fef4f3fdcf9",
+  "protected_count": 207,
+  "unrelated_project_sha256": "86fc2d04c5c8f960b09c72a671dcd89d8126564d66868f91148a8d0c0f3b563c"
+}

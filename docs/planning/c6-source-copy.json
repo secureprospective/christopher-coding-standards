@@ -1,0 +1,35 @@
+{
+  "files": [
+    {
+      "source": "templates/cloudflare-workers/README.md",
+      "vm_path": "README.md",
+      "sha256": "f6e0e3ff2cebf14d33de0f8892ecb7d81de84b2e32131238676e5893fa46beff",
+      "bytes": 4004
+    },
+    {
+      "source": "templates/cloudflare-workers/package.json.snippet",
+      "vm_path": "package.json.snippet",
+      "sha256": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "bytes": 456
+    },
+    {
+      "source": "templates/cloudflare-workers/tsconfig.json",
+      "vm_path": "tsconfig.json",
+      "sha256": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "bytes": 2163
+    },
+    {
+      "source": "templates/cloudflare-workers/vitest.config.ts",
+      "vm_path": "vitest.config.ts",
+      "sha256": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "bytes": 1309
+    },
+    {
+      "source": "templates/cloudflare-workers/wrangler.jsonc",
+      "vm_path": "template-wrangler.jsonc",
+      "sha256": "c7c95906f3d2591ea733fbecb9d52505718636d83cb138ca3e8f755f0122d71a",
+      "bytes": 3555
+    }
+  ],
+  "adaptations": "Actual fixture wrangler.jsonc changes only name/local KV grant/format; compatibility_date2026-06-01 preserved. Shared C5 manifest composed as npm without Stryker/guard; source cases in final snapshot. Biome exact generated-output exclusion. Docs direct endpoints returned403; official GitHub docs-content source used."
+}

@@ -1,9 +1,9 @@
-import { cloudflareTest } from "@cloudflare/vitest-pool-workers";
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
 import { defineConfig } from "vitest/config";
 
 // Cloudflare Workers test config — runs tests INSIDE the workerd runtime via
-// @cloudflare/vitest-pool-workers, so `env` bindings (D1/KV/Queues) behave exactly
-// as they do in production. Requires Vitest 4.1+.
+// @cloudflare/vitest-plugin, so `env` bindings (D1/KV/Queues) exercise a local workerd runtime,
+// not every deployed platform behavior. Requires Vitest 4.1+.
 //
 // NOTE on the API: this uses the current `cloudflareTest()` Vite plugin. The older
 // `defineWorkersConfig` / `defineWorkersProject` + `test.poolOptions.workers` form is

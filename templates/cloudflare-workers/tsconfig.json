@@ -19,7 +19,7 @@
     // (your bindings) AND the workerd runtime types keyed to compatibility_date.
     // Prefer this over manually depending on @cloudflare/workers-types — it cannot
     // drift from wrangler.jsonc the way a hand-pinned types package can.
-    "types": ["./worker-configuration.d.ts"],
+    "types": ["./worker-configuration.d.ts", "@cloudflare/vitest-plugin/types"],
 
     // --- strict: true enables strictNullChecks, strictFunctionTypes,
     // strictBindCallApply, strictPropertyInitialization, noImplicitAny,
@@ -31,7 +31,7 @@
     "noUncheckedIndexedAccess": true,
     // Absent property != property set to undefined. Kills silent auth/financial defaults.
     "exactOptionalPropertyTypes": true,
-    // override keyword required — stops AI-generated code silently shadowing methods.
+    // Make overrides explicit to readers and the compiler.
     "noImplicitOverride": true,
 
     // --- Additional safety flags ---
@@ -49,5 +49,5 @@
   },
 
   "include": ["src/**/*", "worker-configuration.d.ts"],
-  "exclude": ["node_modules", "dist", "build", "**/*.test.ts", "**/*.spec.ts"]
+  "exclude": ["node_modules", "dist", "build"]
 }

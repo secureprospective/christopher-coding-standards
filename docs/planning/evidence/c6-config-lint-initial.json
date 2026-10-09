@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "biome",
+    "ci",
+    "tsconfig.json",
+    "vitest.config.ts"
+  ],
+  "status": 0,
+  "stdout": "Checked 2 files in 3ms. No fixes applied.\n",
+  "stderr": ""
+}

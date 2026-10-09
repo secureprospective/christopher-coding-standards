@@ -7,7 +7,7 @@
 
   "$schema": "./node_modules/wrangler/config-schema.json",
 
-  "name": "REPLACE-with-worker-name",
+  "name": "bee-c6-fixture",
   "main": "src/index.ts",
 
   // Preserve the project compatibility date; bump only with migration checks.
@@ -47,12 +47,12 @@
   // ],
 
   // KV — eventually-consistent key/value. Tokens (paired with encryption), flags, caches.
-  // "kv_namespaces": [
-  //   {
-  //     "binding": "KV",
-  //     "id": "REPLACE-namespace-id"
-  //   }
-  // ],
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "00000000000000000000000000000000"
+    }
+  ],
 
   // Queues — async work with backpressure. A consumer is a natural server-side gate:
   // queue settings bound this consumer, not every alternate path to an effect.
