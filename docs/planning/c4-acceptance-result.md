@@ -25,6 +25,8 @@ The initial legacy Gitleaks hook bootstrapped an unpinned/checksum-unverified Go
 
 The first system-hook trial failed because its upstream manifest passed filenames to a staged-repository scanner. The actual CLI failure is preserved, not counted as intended rejection. Explicit pass_filenames:false fixes that interface; affected and full final-copy checks reran successfully.
 
+Checkpoint hygiene incident: the full staged whitespace check flagged two intentional Markdown two-space hard breaks at lines3/4 of the byte-preserved independent report. The outer shell lacked fail-fast chaining and still created local source checkpoint `e6ce2b3` after the Python check raised CalledProcessError. This sequencing mistake is not a passed check. With strict shell fail-fast enabled, all29other committed paths then passed `git diff --check HEAD^ HEAD`; the report was separately verified to have only those two valid hard breaks and its original SHA256 unchanged. No runtime/source defect or hook bypass occurred. This closure record is a follow-up metadata correction; reviewed source and evidence are unchanged.
+
 Only Bash and two root status routes changed. Root status now follows HANDOFF, avoiding stale C1-era all-overlay language. Core/consumer templates, other overlays, workflows/root security configuration and fixture sources are byte-identical. No guard removed, blanket upgrade, graph/platform or consumer enrollment.
 
 ## Retained limits / next
