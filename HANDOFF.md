@@ -1,7 +1,7 @@
 # HANDOFF
 
 ## Baton
-Bee · 2026-10-10 · Christopher explicitly approved push, hosted CI verification, then merge only if remaining gates clear. No deployment. C0–C13 accepted locally; narrow publication-log repair actual checks/CLEAR/parent freshness accepted. Hosted CI/conditional merge is the current gate.
+Bee · 2026-10-10 · Christopher explicitly approved push, hosted CI verification, then merge only if remaining gates clear. No deployment. C0–C13 accepted locally; narrow publication-log repair actual checks/CLEAR/parent freshness accepted. PR35 published at177ccb4; first hosted8jobs completed with5passes/3failures. Three bounded repairs native-verified/independent follow-up CLEAR/parent15owned25private646protected freshness accepted; all-eight hosted rerun/head-base-policy/conditional merge is the current gate.
 
 ## Where it stands
 Branch `rebuild/quality-core-2026-10-08`. C0–C13 accepted locally within recorded scopes. Current `docs/planning/c0-acceptance-result.md` through `c13-acceptance-result.md` supersede historical RESUME/phase/planning status. Main remains `93ee82a346289f7fdf77a696a20a999ffcc61dc6`.
@@ -13,7 +13,7 @@ C13 this accepted checkpoint: fresh shipped-instruction synthetic core/Node cons
 Final report: `docs/planning/rebuild-morning-report-2026-10-09.md` (completed10-10). Recommended bounded source merge review, not automatic release/enforcement. Actual checkpoints/proofs/failures/unknowns are reconciled there and in acceptance records.
 
 ## Next move
-Publish the accepted Semgrep private-output follow-up checkpoint/rebuild branch and open the main PR for actual hosted checks. Verify all eight substantive jobs plus live required policy/head/base; ordinary protected linear-history-compatible merge only after gates clear. No deployment or control weakening. See `docs/planning/publication-ci-2026-10-10.md`. Any hosted candidate must actually run before configured checks are called enforced. No live consumer enrollment, App/broker/catalog/updater/fleet rollout recommended while ownership/source/approval choices remain unselected.
+Push the accepted PATH-priority, ANSI assertion-detail and exact zero-miss registry-wrapper follow-up to PR35 and rerun all hosted jobs. See `docs/planning/hosted-first-ci-disposition-2026-10-10.md`. Verify all eight substantive jobs plus live required policy/head/base; ordinary protected linear-history-compatible merge only after gates clear. No deployment or control weakening. See `docs/planning/publication-ci-2026-10-10.md`. Any hosted candidate must actually run before configured checks are called enforced. No live consumer enrollment, App/broker/catalog/updater/fleet rollout recommended while ownership/source/approval choices remain unselected.
 
 ## Blocked / limits
 C0–C13 implementation gates complete; publication-output follow-up accepted; actual hosted candidate/merge gates remain. Operator has granted conditional push/CI/merge, not deployment or third-party rights. Hosted actions/setup/current required-check policy/server-history reachability, other platforms/versions/full applications/live consumers/real authorization/persistence/all default detection/all advisories/race-proof containment/legal/private-rule rights remain unknown or separately authorized. Scanner exclusions/default ignores/current DB/severity/upstream limitations remain real. Pins/hashes/SRI/audits/SSH/green hooks/editable records are not authenticated approval or containment. Source/unit acceptance is not a complete-kit publication grant.

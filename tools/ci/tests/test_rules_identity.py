@@ -47,6 +47,20 @@ class RulesIdentityTests(unittest.TestCase):
             with self.subTest(value=value), self.assertRaises(ValueError):
                 self.observe(value)
 
+    def test_observed_zero_miss_wrapper_preserves_complete_rule_identity(self):
+        rules = [{"id": "a", "metadata": {"license": "own-notice"}, "patterns": ["x", "y"]}]
+        plain = self.observe({"rules": rules})
+        wrapped = self.observe({"rules": rules, "missed": 0})
+        self.assertEqual(plain["rule_map_sha256"], wrapped["rule_map_sha256"])
+        self.assertNotEqual(plain["raw_sha256"], wrapped["raw_sha256"])
+        self.assertIsNone(plain["registry_missed"])
+        self.assertEqual(wrapped["registry_missed"], 0)
+
+    def test_nonzero_or_untyped_registry_misses_fail(self):
+        for value in [1, -1, False, True, 0.0, None, "0", [], {}]:
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, "zero registry misses"):
+                self.observe({"rules": [{"id": "a"}], "missed": value})
+
     def test_non_string_id_fails(self):
         with self.assertRaisesRegex(ValueError, "named vendor rule objects"):
             self.observe({"rules": [{"id": 1}]})

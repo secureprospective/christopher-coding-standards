@@ -1,0 +1,87 @@
+{
+  "baseRefName": "main",
+  "headRefOid": "177ccb4d27b01d89eee045734bac0a919bba2469",
+  "mergeStateStatus": "BLOCKED",
+  "statusCheckRollup": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-10T17:28:12Z",
+      "conclusion": "FAILURE",
+      "detailsUrl": "https://github.com/secureprospective/christopher-coding-standards/actions/runs/38071835279/job/114270643929",
+      "name": "go overlay \u2014 fixtures pass/fail",
+      "startedAt": "2026-10-10T17:27:52Z",
+      "status": "COMPLETED",
+      "workflowName": "verify-templates-go"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-10T17:28:17Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/secureprospective/christopher-coding-standards/actions/runs/38071835269/job/114270644358",
+      "name": "secrets \u2014 gitleaks",
+      "startedAt": "2026-10-10T17:27:52Z",
+      "status": "COMPLETED",
+      "workflowName": "security"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-10T17:28:31Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/secureprospective/christopher-coding-standards/actions/runs/38071835274/job/114270643815",
+      "name": "python overlay \u2014 fixtures pass/fail",
+      "startedAt": "2026-10-10T17:27:52Z",
+      "status": "COMPLETED",
+      "workflowName": "verify-templates"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-10T17:28:05Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/secureprospective/christopher-coding-standards/actions/runs/38071835262/job/114270644052",
+      "name": "bash overlay \u2014 fixtures pass/fail",
+      "startedAt": "2026-10-10T17:27:52Z",
+      "status": "COMPLETED",
+      "workflowName": "verify-templates-bash"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-10T17:28:20Z",
+      "conclusion": "FAILURE",
+      "detailsUrl": "https://github.com/secureprospective/christopher-coding-standards/actions/runs/38071835269/job/114270644266",
+      "name": "sast \u2014 semgrep",
+      "startedAt": "2026-10-10T17:27:52Z",
+      "status": "COMPLETED",
+      "workflowName": "security"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-10T17:28:23Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/secureprospective/christopher-coding-standards/actions/runs/38071835269/job/114270644327",
+      "name": "sca \u2014 trivy",
+      "startedAt": "2026-10-10T17:27:53Z",
+      "status": "COMPLETED",
+      "workflowName": "security"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-10T17:28:20Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/secureprospective/christopher-coding-standards/actions/runs/38071835269/job/114270644282",
+      "name": "ts \u2014 lint",
+      "startedAt": "2026-10-10T17:27:52Z",
+      "status": "COMPLETED",
+      "workflowName": "security"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-10T17:28:11Z",
+      "conclusion": "FAILURE",
+      "detailsUrl": "https://github.com/secureprospective/christopher-coding-standards/actions/runs/38071835269/job/114270644091",
+      "name": "ts \u2014 test",
+      "startedAt": "2026-10-10T17:27:52Z",
+      "status": "COMPLETED",
+      "workflowName": "security"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "actual_status": "verified",
+  "policies": [
+    {
+      "name": "semgrep-security-audit.yml",
+      "raw_sha256": "5509b33efc0c08e2134ccb76f2c7172065f7ba4a89f28799661029e274c306c7",
+      "rule_map_sha256": "29bce88305b589394f54eea39bb88f6ad5bec138cf312a79326df726bfd24700",
+      "rules": 225,
+      "bytes": 433040,
+      "registry_missed": 0,
+      "complete_original_map_equal": true
+    },
+    {
+      "name": "semgrep-secrets.yml",
+      "raw_sha256": "139b35ad3442bc83d1f0864db82fa4fdc7e1f1ee4b5ac872bfbeb604c82c6518",
+      "rule_map_sha256": "29e43a16ff26d29c7fb03c6d09cb480eb6ad12642149367a27203ea80eeb1790",
+      "rules": 52,
+      "bytes": 89772,
+      "registry_missed": null,
+      "complete_original_map_equal": true
+    },
+    {
+      "name": "semgrep-owasp-top-ten.yml",
+      "raw_sha256": "374c9d5d564d3550bf9f5f1b4f2bfdd621805b1a2566e8a81e58e7a0c7a06137",
+      "rule_map_sha256": "771361de7ac0f4402c6b906b1694bd9600fcbfecb5a8d5768fe891c9b5c90835",
+      "rules": 560,
+      "bytes": 1448110,
+      "registry_missed": null,
+      "complete_original_map_equal": true
+    }
+  ],
+  "public_summary": [
+    {
+      "private_observation": "/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/private semgrep controls with spaces/semgrep-root-private.json",
+      "sha256": "79a83ecde097d7fd9670e51ba96b652570b92718078d9d141e53f8d287c5a337",
+      "checker_exit": 0
+    },
+    {
+      "private_observation": "/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/private semgrep controls with spaces/semgrep-rejection-private.json",
+      "sha256": "4f55c5ff7e274c1219d76b62d6743fc1105131c45c44608de04a5311ef53b7b6",
+      "checker_exit": 0
+    },
+    {
+      "private_observation": "/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/private semgrep controls with spaces/semgrep-safe-private.json",
+      "sha256": "268894788d1712f1f3498043b3cc667e7598868187a596f9ca2ca9a8100af029",
+      "checker_exit": 0
+    },
+    {
+      "completed_security_mode": "semgrep",
+      "limits": "Actual CLI scope and narrow controls; not hosted run, authenticated approval or complete safety."
+    }
+  ],
+  "original_raw_bytes_preserved": true,
+  "all_declared_source_unchanged": true,
+  "root_eval_safe_actual_tool_exits": [
+    0,
+    1,
+    0
+  ],
+  "nonzero_registry_miss_actual_rejected": true,
+  "limits": "Only exact zero integer misses recognized; no additional metadata/missing rules/field or license changes normalized. Current exact bytes private; not legal/race-proof/complete detection assurance."
+}

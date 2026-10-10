@@ -65,6 +65,15 @@ GROUPS = {
 }
 
 
+def github_environment(environment):
+    if "GITHUB_PATH" in os.environ:
+        # The runner prepends each line; emit reverse order to preserve PATH priority.
+        with open(os.environ["GITHUB_PATH"], "a") as stream:
+            stream.write("\n".join(reversed(environment["PATH"].split(os.pathsep))) + "\n")
+        with open(os.environ["GITHUB_ENV"], "a") as stream:
+            stream.write("".join(k + "=" + v + "\n" for k, v in environment.items() if k != "PATH"))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("group", choices=GROUPS)
@@ -218,11 +227,7 @@ def main():
         environment["CODING_STANDARDS_SEMGREP_RULES_DIR"] = str(rules_dir)
     (dest / "environment.json").write_text(json.dumps(environment, indent=2) + "\n")
     (dest / "downloads.json").write_text(json.dumps(records, indent=2) + "\n")
-    if "GITHUB_PATH" in os.environ:
-        with open(os.environ["GITHUB_PATH"], "a") as stream:
-            stream.write("\n".join(environment["PATH"].split(os.pathsep)) + "\n")
-        with open(os.environ["GITHUB_ENV"], "a") as stream:
-            stream.write("".join(k + "=" + v + "\n" for k, v in environment.items() if k != "PATH"))
+    github_environment(environment)
     print(
         json.dumps(
             {"directory": str(dest), "environment": environment, "downloads": records}, indent=2

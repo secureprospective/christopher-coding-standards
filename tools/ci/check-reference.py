@@ -249,7 +249,7 @@ def main():
                 probe.write_text(
                     'import { expect, test } from "vitest";\ntest("intended CI assertion probe", () => { expect(1).toBe(2); });\n'
                 )
-                check(work, ["pnpm", "run", "test"], "AssertionError: expected 1 to be 2")
+                check(work, ["pnpm", "run", "test"], "expected 1 to be 2")
             finally:
                 probe.unlink(missing_ok=True)
             check(work, ["pnpm", "run", "test"])

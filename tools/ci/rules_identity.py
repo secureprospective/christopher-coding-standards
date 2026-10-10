@@ -11,8 +11,10 @@ from ruamel.yaml import YAML
 def identity(path):
     raw = path.read_bytes()
     payload = YAML(typ="safe").load(raw)
-    if not isinstance(payload, dict) or set(payload) != {"rules"}:
-        raise ValueError("expected rules-only vendor configuration")
+    if not isinstance(payload, dict) or set(payload) not in ({"rules"}, {"rules", "missed"}):
+        raise ValueError("expected vendor rules with optional zero-miss registry wrapper")
+    if "missed" in payload and (type(payload["missed"]) is not int or payload["missed"] != 0):
+        raise ValueError("expected exactly zero registry misses")
     if not isinstance(payload["rules"], list) or not payload["rules"]:
         raise ValueError("expected nonempty vendor rules")
     rules = {}
@@ -30,6 +32,7 @@ def identity(path):
         "rule_map_sha256": hashlib.sha256(encoded).hexdigest(),
         "rules": len(rules),
         "bytes": len(raw),
+        "registry_missed": payload.get("missed"),
     }
 
 
