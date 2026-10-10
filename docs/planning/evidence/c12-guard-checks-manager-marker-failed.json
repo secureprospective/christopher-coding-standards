@@ -1,0 +1,123 @@
+[
+  {
+    "label": "unexpected clean is not rejection",
+    "argv": [
+      "python3",
+      "tools/verify_fixture.py",
+      "--expect",
+      "reject",
+      "--diagnostic",
+      "SC2086",
+      "--input",
+      "scratch/fixtures/bash/clean.sh",
+      "--",
+      "shellcheck",
+      "scratch/fixtures/bash/clean.sh"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "\"matched\": false",
+    "stdout": "{\n  \"command\": [\n    \"shellcheck\",\n    \"scratch/fixtures/bash/clean.sh\"\n  ],\n  \"expectation\": {\n    \"exit_code\": 1,\n    \"diagnostic\": \"SC2086\"\n  },\n  \"timeout_seconds\": 120,\n  \"inputs_before\": {\n    \"scratch/fixtures/bash/clean.sh\": \"6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a\"\n  },\n  \"inputs_after\": {\n    \"scratch/fixtures/bash/clean.sh\": \"6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a\"\n  },\n  \"exit_code\": 0,\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"error\": null,\n  \"matched\": false\n}\n",
+    "stderr": "",
+    "matched": true
+  },
+  {
+    "label": "wrong marker is not rejection",
+    "argv": [
+      "python3",
+      "tools/verify_fixture.py",
+      "--expect",
+      "reject",
+      "--diagnostic",
+      "BEE_WRONG_MARKER",
+      "--input",
+      "scratch/fixtures/bash/violating.sh",
+      "--",
+      "shellcheck",
+      "scratch/fixtures/bash/violating.sh"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "\"matched\": false",
+    "stdout": "{\n  \"command\": [\n    \"shellcheck\",\n    \"scratch/fixtures/bash/violating.sh\"\n  ],\n  \"expectation\": {\n    \"exit_code\": 1,\n    \"diagnostic\": \"BEE_WRONG_MARKER\"\n  },\n  \"timeout_seconds\": 120,\n  \"inputs_before\": {\n    \"scratch/fixtures/bash/violating.sh\": \"cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b\"\n  },\n  \"inputs_after\": {\n    \"scratch/fixtures/bash/violating.sh\": \"cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b\"\n  },\n  \"exit_code\": 1,\n  \"stdout\": \"\\nIn scratch/fixtures/bash/violating.sh line 8:\\npath=/tmp/file.txt\\n^--^ SC2034 (warning): path appears unused. Verify use (or export if used externally).\\n\\n\\nIn scratch/fixtures/bash/violating.sh line 11:\\n    echo Processing: $name\\n                     ^---^ SC2086 (info): Double quote to prevent globbing and word splitting.\\n\\nDid you mean:\\n    echo Processing: \\\"$name\\\"\\n\\n\\nIn scratch/fixtures/bash/violating.sh line 14:\\nunused_var=\\\"this is never used\\\"\\n^--------^ SC2034 (warning): unused_var appears unused. Verify use (or export if used externally).\\n\\nFor more information:\\n  https://www.shellcheck.net/wiki/SC2034 -- path appears unused. Verify use (...\\n  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...\\n\",\n  \"stderr\": \"\",\n  \"error\": null,\n  \"matched\": false\n}\n",
+    "stderr": "",
+    "matched": true
+  },
+  {
+    "label": "missing tool is not rejection",
+    "argv": [
+      "python3",
+      "tools/verify_fixture.py",
+      "--expect",
+      "reject",
+      "--diagnostic",
+      "SC2086",
+      "--input",
+      "scratch/fixtures/bash/clean.sh",
+      "--",
+      "bee_missing_ci_binary_123"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 2,
+    "expected_status": 2,
+    "required_marker": "No such file or directory",
+    "stdout": "{\n  \"command\": [\n    \"bee_missing_ci_binary_123\"\n  ],\n  \"expectation\": {\n    \"exit_code\": 1,\n    \"diagnostic\": \"SC2086\"\n  },\n  \"timeout_seconds\": 120,\n  \"inputs_before\": {\n    \"scratch/fixtures/bash/clean.sh\": \"6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a\"\n  },\n  \"inputs_after\": null,\n  \"exit_code\": null,\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"error\": \"[Errno 2] No such file or directory: 'bee_missing_ci_binary_123'\",\n  \"matched\": false\n}\n",
+    "stderr": "",
+    "matched": true
+  },
+  {
+    "label": "missing input is not rejection",
+    "argv": [
+      "python3",
+      "tools/verify_fixture.py",
+      "--expect",
+      "reject",
+      "--diagnostic",
+      "SC2086",
+      "--input",
+      "scratch/fixtures/bash/missing-input.sh",
+      "--",
+      "shellcheck",
+      "scratch/fixtures/bash/clean.sh"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 2,
+    "expected_status": 2,
+    "required_marker": "input must resolve to a file",
+    "stdout": "{\n  \"command\": [\n    \"shellcheck\",\n    \"scratch/fixtures/bash/clean.sh\"\n  ],\n  \"expectation\": {\n    \"exit_code\": 1,\n    \"diagnostic\": \"SC2086\"\n  },\n  \"timeout_seconds\": 120,\n  \"inputs_before\": null,\n  \"inputs_after\": null,\n  \"exit_code\": null,\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"error\": \"input must resolve to a file inside the workspace: scratch/fixtures/bash/missing-input.sh\",\n  \"matched\": false\n}\n",
+    "stderr": "",
+    "matched": true
+  },
+  {
+    "label": "absent lock with selected overrides fails frozen config validation",
+    "argv": [
+      "pnpm",
+      "install",
+      "--frozen-lockfile"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-reference-repeat with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "ERR_PNPM_LOCKFILE_CONFIG_MISMATCH",
+    "stdout": "\u2009ERR_PNPM_LOCKFILE_CONFIG_MISMATCH\u2009 Cannot proceed with the frozen installation. The current \"overrides\" configuration doesn't match the value found in the lockfile\n\nUpdate your lockfile using \"pnpm install --no-frozen-lockfile\"\n",
+    "stderr": "",
+    "matched": true
+  },
+  {
+    "label": "npm does not bypass shipped manager guard",
+    "argv": [
+      "npm",
+      "run",
+      "preinstall"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-reference-repeat with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "pnpm@10.34.3",
+    "stdout": "\n> preinstall\n> node scripts/check-package-manager.mjs\n\n",
+    "stderr": "npm warn Unknown env config \"store-dir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nUse the pnpm version declared in package.json; keep pnpm-lock.yaml frozen.\n",
+    "matched": false
+  }
+]

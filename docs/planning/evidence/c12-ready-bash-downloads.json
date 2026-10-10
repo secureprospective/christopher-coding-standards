@@ -1,0 +1,22 @@
+[
+  {
+    "tool": "shellcheck",
+    "url": "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.xz",
+    "archive_sha256": "8c3be12b05d5c177a04c29e3c78ce89ac86f1595681cab149b65b97c4e227198"
+  },
+  {
+    "tool": "shfmt",
+    "url": "https://github.com/mvdan/sh/releases/download/v3.13.1/shfmt_v3.13.1_linux_amd64",
+    "archive_sha256": "fb096c5d1ac6beabbdbaa2874d025badb03ee07929f0c9ff67563ce8c75398b1"
+  },
+  {
+    "tool": "gitleaks",
+    "url": "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz",
+    "archive_sha256": "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+  },
+  {
+    "tool": "bats",
+    "url": "https://github.com/bats-core/bats-core/archive/eb7f42f8d608ac693d7a4b67474f6714ea68cfc5.tar.gz",
+    "archive_sha256": "845574549f4c9777bf02fcdf307f1bf347d40c66920fb6b47dcc8fdfa065ac39"
+  }
+]

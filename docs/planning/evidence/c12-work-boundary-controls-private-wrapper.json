@@ -1,0 +1,57 @@
+{
+  "source_before": "f13521d493aea034f7ac5a398da82f7a6729433b51971a51fed29e48a60b54ab",
+  "source_after": "f13521d493aea034f7ac5a398da82f7a6729433b51971a51fed29e48a60b54ab",
+  "records": [
+    {
+      "label": "direct inside-checkout path",
+      "argv": [
+        "python3",
+        "tools/ci/check-security.py",
+        "semgrep",
+        "--work",
+        "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/guard-work-direct-denied"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+      "status": 1,
+      "resolved_destination": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/guard-work-direct-denied",
+      "destination_created": false,
+      "matched": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "de5688c3d5b9c1005754ea20df924fd9164531fb6ad45c06ba67dfaee30bedfc"
+    },
+    {
+      "label": "symlink-resolved inside-checkout path",
+      "argv": [
+        "python3",
+        "tools/ci/check-security.py",
+        "semgrep",
+        "--work",
+        "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-work-alias/guard-work-symlink-denied"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+      "status": 1,
+      "resolved_destination": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/guard-work-symlink-denied",
+      "destination_created": false,
+      "matched": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "de5688c3d5b9c1005754ea20df924fd9164531fb6ad45c06ba67dfaee30bedfc"
+    },
+    {
+      "label": "outside-checkout root/bad/safe positive",
+      "argv": [
+        "python3",
+        "tools/ci/check-security.py",
+        "semgrep",
+        "--work",
+        "/home/claude/coding-standards-verification/bee-c12-2026-10-09/checks-work-boundary-positive with spaces"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+      "status": 0,
+      "stdout_sha256": "24db882d045795746d4c0bf9792fc530a7c5ad41dc4407baf0c2120882bde200",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "private_raw_path": "/home/chris/scratch/coding-standards-c12-private-source/work-boundary-controls.json",
+  "private_raw_sha256": "18f5063db02babaf09fbf96cd21e7db181dd4889e9aabe33e0759c9830e34484",
+  "limits": "Original exact decoded SAST prose remains private; actual direct/symlink named rejection/no-created-path plus outside0. Not new inferred individual receipts or legal/containment approval."
+}

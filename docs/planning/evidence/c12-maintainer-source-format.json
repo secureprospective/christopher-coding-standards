@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-python-checker-outside/venv/bin/ruff",
+    "format",
+    "--line-length",
+    "100",
+    "tools/ci/install-tools.py",
+    "tools/ci/check-reference.py",
+    "tools/ci/check-security.py",
+    "tools/ci/rules_identity.py",
+    "tools/ci/tests/test_rules_identity.py"
+  ],
+  "status": 0,
+  "stdout": "4 files reformatted, 1 file left unchanged\n",
+  "stderr": "",
+  "limits": "Explicit mechanical formatting of own unfrozen new maintainer code only; not root/consumer lint or product acceptance."
+}

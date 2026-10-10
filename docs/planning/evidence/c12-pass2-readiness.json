@@ -1,0 +1,30 @@
+{
+  "status": "READY for repaired same-native C12review, not accepted",
+  "packet_sha256": "da12d1756ea7619896564894a5ec698f79e809ea7415835faf7381f3bc511fa3",
+  "inputs": 228,
+  "helpers": 15,
+  "private_inputs": 30,
+  "protected_including_project": 461,
+  "tracked_diff_sha256": "4d0ff436bdd0697a5970c327f3e3977b130b654f4f29abc1ff0ad6d176e03574",
+  "working_state_sha256": "35925d9a6dec6a10780dc667d3fd26937275589614b7db26d620a56424f39176",
+  "post_freeze_records": [
+    {
+      "path": "/home/chris/scratch/coding-standards-c12-pass2-post-freeze-gitleaks.json",
+      "sha256": "ed1a113bbf7b9df173d61d1876a47fd9b5589b19560a987eb44a8cbe522f885f",
+      "status": 0
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c12-pass2-post-freeze-semgrep.json",
+      "sha256": "be958fd402b67ba1a0cab775e84b03862b7de59d7a39e4e1eeaf27965cd363dc",
+      "status": 0
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c12-pass2-post-freeze-trivy.json",
+      "sha256": "178ac6d8c96e92ef50003fcae6f0a598994246f00c6520838700571015fa6299",
+      "status": 0
+    }
+  ],
+  "readability_manifest": "/home/chris/scratch/coding-standards-c12-pass2-post-freeze-readable/manifest.json",
+  "readability_manifest_sha256": "2e9bacdf7a0d9be3c0237f243740832a7208f01e869d1f944f1a816b546c3c1f",
+  "limits": "Pass1 needs_change/missing gate and attempted fixed4.17.21 failure preserved. Current security/advisory/path/input/DB facts not hosted/licensing/authentication approval."
+}

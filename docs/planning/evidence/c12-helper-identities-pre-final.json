@@ -1,0 +1,30 @@
+{
+  "records": [
+    {
+      "path": "/home/chris/scratch/coding-standards-c12-final.py",
+      "sha256": "0bd9cfb1de9a885271768d5f59f38bfe544bfd8b8fe43783f0774ceece5d2d49",
+      "bytes": 3142
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c12-final-initial.py",
+      "sha256": "dc6a3be48547af48709ae092d648698a511c84beb28d026f3c98cb949cf1c01a",
+      "bytes": 3142
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c12-final-publication.py",
+      "sha256": "e3034398eed08ae5178adf95912d8e4ae8a17f9b01c62afd1e05e25af76f89f7",
+      "bytes": 3154
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c12-guard-checks.py",
+      "sha256": "c679ffacf2470b01f187c0c7a0c35eca0a05a4e27c3298dd1b3df30212cad6dc",
+      "bytes": 4558
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c12-source-audit.py",
+      "sha256": "b1aa410f268c2b60a0af1da8735e4db81406eed7180a786642dedc81913829f3",
+      "bytes": 4502
+    }
+  ],
+  "limits": "Own source-version identities, not original separately serialized process statuses; actual command records carry statuses."
+}

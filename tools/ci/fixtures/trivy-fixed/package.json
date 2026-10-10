@@ -1,0 +1,8 @@
+{
+  "private": true,
+  "name": "own-passive-trivy-control",
+  "version": "0.0.0",
+  "devDependencies": {
+    "lodash": "4.18.0"
+  }
+}

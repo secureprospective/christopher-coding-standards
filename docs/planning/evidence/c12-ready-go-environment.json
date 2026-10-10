@@ -1,0 +1,13 @@
+{
+  "PATH": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-go/go/go/bin:/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-go/bin:/home/claude/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/games",
+  "PIP_CACHE_DIR": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-go/cache/pip",
+  "npm_config_store_dir": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-go/cache/pnpm",
+  "TMPDIR": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-go/tmp",
+  "XDG_CACHE_HOME": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-go/cache",
+  "GOENV": "off",
+  "GOTOOLCHAIN": "local",
+  "GOPATH": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-go/gopath",
+  "GOMODCACHE": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-go/cache/go-mod",
+  "GOCACHE": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-go/cache/go-build",
+  "GOROOT": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-go/go/go"
+}

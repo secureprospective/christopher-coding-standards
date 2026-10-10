@@ -1,0 +1,17 @@
+{
+  "original_rules": 560,
+  "current_rules": 560,
+  "unique_original_ids": 560,
+  "unique_current_ids": 560,
+  "same_ids": true,
+  "same_complete_rule_map": true,
+  "top_keys_original": [
+    "rules"
+  ],
+  "top_keys_current": [
+    "rules"
+  ],
+  "changed_ids": [],
+  "original_full_rule_map_sha256": "771361de7ac0f4402c6b906b1694bd9600fcbfecb5a8d5768fe891c9b5c90835",
+  "current_full_rule_map_sha256": "771361de7ac0f4402c6b906b1694bd9600fcbfecb5a8d5768fe891c9b5c90835"
+}

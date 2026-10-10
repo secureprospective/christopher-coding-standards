@@ -1,0 +1,35 @@
+[
+  {
+    "argv": [
+      "python3",
+      "tools/ci/install-tools.py",
+      "typescript",
+      "--directory",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ts-lint-initial"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 0,
+    "stdout": "{\n  \"directory\": \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ts-lint-initial\",\n  \"environment\": {\n    \"PATH\": \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ts-lint-initial/bin:/home/claude/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/games\",\n    \"PIP_CACHE_DIR\": \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ts-lint-initial/cache/pip\",\n    \"TMPDIR\": \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ts-lint-initial/tmp\",\n    \"XDG_CACHE_HOME\": \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ts-lint-initial/cache\",\n    \"GOENV\": \"off\",\n    \"GOTOOLCHAIN\": \"local\",\n    \"GOPATH\": \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ts-lint-initial/gopath\",\n    \"GOMODCACHE\": \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ts-lint-initial/cache/go-mod\",\n    \"GOCACHE\": \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ts-lint-initial/cache/go-build\"\n  },\n  \"downloads\": [\n    {\n      \"tool\": \"pnpm\",\n      \"url\": \"https://registry.npmjs.org/pnpm/-/pnpm-10.34.3.tgz\",\n      \"archive_sha256\": \"1c40544020a2e633068ed43a98eb5c0fed7d64a1c6d6f2382e43df91419dad62\"\n    }\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "--version"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 0,
+    "stdout": "v24.21.0\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "pnpm",
+      "--version"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 0,
+    "stdout": "10.34.3\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,30 @@
+[
+  {
+    "label": "owned public-source shallow clone setup",
+    "argv": [
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "file:///home/claude/coding-standards-verification/bee-c12-2026-10-09/kit%20with%20spaces",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-shallow-clone"
+    ],
+    "status": 0,
+    "stdout": "",
+    "stderr": "Cloning into '/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-shallow-clone'...\nhint: Using 'master' as the name for the initial branch. This default branch name\nhint: is subject to change. To configure the initial branch name to use in all\nhint: of your new repositories, which will suppress this warning, call:\nhint:\nhint: \tgit config --global init.defaultBranch <name>\nhint:\nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint:\nhint: \tgit branch -m <name>\nhint: Using 'master' as the name for the initial branch. This default branch name\nhint: is subject to change. To configure the initial branch name to use in all\nhint: of your new repositories, which will suppress this warning, call:\nhint:\nhint: \tgit config --global init.defaultBranch <name>\nhint:\nhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and\nhint: 'development'. The just-created branch can be renamed via this command:\nhint:\nhint: \tgit branch -m <name>\nNote: switching to 'fa080cd49a3503fcd1b3bd868ec211ce5f422a7a'.\n\nYou are in 'detached HEAD' state. You can look around, make experimental\nchanges and commit them, and you can discard any commits you make in this\nstate without impacting any branches by switching back to a branch.\n\nIf you want to create a new branch to retain commits you create, you may\ndo so (now or later) by using -c with the switch command. Example:\n\n  git switch -c <new-branch-name>\n\nOr undo this operation with:\n\n  git switch -\n\nTurn off this advice by setting config variable advice.detachedHead to false\n\n"
+  },
+  {
+    "label": "actual current main rejects shallow checkout before scanner, own module ROOT overridden to own shallow clone only",
+    "argv": [
+      "python3",
+      "-c",
+      "import importlib.util,sys;from pathlib import Path;s=importlib.util.spec_from_file_location('own_security',Path('tools/ci/check-security.py'));m=importlib.util.module_from_spec(s);s.loader.exec_module(m);m.ROOT=Path(sys.argv[1]);sys.argv=['check-security.py','gitleaks','--work',sys.argv[2]];m.main()",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-shallow-clone",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-shallow-rejected-work"
+    ],
+    "status": 1,
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import importlib.util,sys;from pathlib import Path;s=importlib.util.spec_from_file_location('own_security',Path('tools/ci/check-security.py'));m=importlib.util.module_from_spec(s);s.loader.exec_module(m);m.ROOT=Path(sys.argv[1]);sys.argv=['check-security.py','gitleaks','--work',sys.argv[2]];m.main()\n                                                                                                                                                                                                                                                                                                        ~~~~~~^^\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 81, in main\n    raise ValueError(\"Git history scan requires non-shallow checkout; configure fetch-depth: 0\")\nValueError: Git history scan requires non-shallow checkout; configure fetch-depth: 0\n",
+    "matched": true
+  }
+]

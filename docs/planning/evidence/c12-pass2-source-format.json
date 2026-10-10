@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-python/venv/bin/ruff",
+    "format",
+    "--line-length",
+    "100",
+    "tools/ci/check-security.py"
+  ],
+  "status": 0,
+  "stdout": "1 file reformatted\n",
+  "stderr": ""
+}

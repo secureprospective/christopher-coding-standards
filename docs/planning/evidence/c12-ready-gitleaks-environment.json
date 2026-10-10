@@ -1,0 +1,12 @@
+{
+  "PATH": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-gitleaks/bin:/home/claude/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/games",
+  "PIP_CACHE_DIR": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-gitleaks/cache/pip",
+  "npm_config_store_dir": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-gitleaks/cache/pnpm",
+  "TMPDIR": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-gitleaks/tmp",
+  "XDG_CACHE_HOME": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-gitleaks/cache",
+  "GOENV": "off",
+  "GOTOOLCHAIN": "local",
+  "GOPATH": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-gitleaks/gopath",
+  "GOMODCACHE": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-gitleaks/cache/go-mod",
+  "GOCACHE": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-gitleaks/cache/go-build"
+}

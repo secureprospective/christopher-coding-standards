@@ -1,0 +1,12 @@
+[
+  {
+    "tool": "trivy",
+    "url": "https://github.com/aquasecurity/trivy/releases/download/v0.75.0/trivy_0.75.0_Linux-64bit.tar.gz",
+    "archive_sha256": "c6e65abddb348e25f10549df887045629cf28cc72453cd1c63acb717316b3f3f"
+  },
+  {
+    "tool": "pnpm",
+    "url": "https://registry.npmjs.org/pnpm/-/pnpm-10.34.3.tgz",
+    "archive_sha256": "1c40544020a2e633068ed43a98eb5c0fed7d64a1c6d6f2382e43df91419dad62"
+  }
+]

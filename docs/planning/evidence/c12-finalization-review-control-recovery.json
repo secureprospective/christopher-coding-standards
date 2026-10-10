@@ -1,0 +1,16 @@
+{
+  "status_call": {
+    "id": "1c7eed52-dd94-41c9-b730-cc23b4a2b680",
+    "response": "Async run not found. Provide id or dir."
+  },
+  "authoritative_resume_call": {
+    "id": "1c7eed52-dd94-41c9-b730-cc23b4a2b680",
+    "response": "Async run not found. Provide id or dir."
+  },
+  "repo": "/home/chris/work/christopher-coding-standards",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "base": "fa080cd49a3503fcd1b3bd868ec211ce5f422a7a",
+  "staged_empty": true,
+  "partial_frozen_source_and_working_state_preserved": true,
+  "recovery": "Labeled fresh same-role native reviewer fallback after known-run resume rejection, exact model openai-codex/gpt-6.1-sol:high/read-only builtin/schema/timeout. No CLI/provider/foreground/mode contract fallback. Completed pass2report remains exact."
+}

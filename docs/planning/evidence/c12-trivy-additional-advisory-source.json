@@ -1,0 +1,51 @@
+{
+  "url": "https://api.github.com/advisories?cve_id=CVE-2026-4800",
+  "http_status": 200,
+  "sha256": "095ed77e6dc9d6d5c051b1caf95bbb332109471935317858b6e636d679711ac5",
+  "bytes": 11330,
+  "facts": [
+    {
+      "ghsa_id": "GHSA-r5fr-rjxr-66jc",
+      "cve_id": "CVE-2026-4800",
+      "severity": "high",
+      "vulnerabilities": [
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "lodash"
+          },
+          "vulnerable_version_range": ">= 4.0.0, <= 4.17.23",
+          "first_patched_version": "4.18.0",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "lodash-es"
+          },
+          "vulnerable_version_range": ">= 4.0.0, <= 4.17.23",
+          "first_patched_version": "4.18.0",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "lodash-amd"
+          },
+          "vulnerable_version_range": ">= 4.0.0, <= 4.17.23",
+          "first_patched_version": "4.18.0",
+          "vulnerable_functions": []
+        },
+        {
+          "package": {
+            "ecosystem": "npm",
+            "name": "lodash.template"
+          },
+          "vulnerable_version_range": ">= 4.0.0, < 4.18.0",
+          "first_patched_version": "4.18.0",
+          "vulnerable_functions": []
+        }
+      ]
+    }
+  ]
+}

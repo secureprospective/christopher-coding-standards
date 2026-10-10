@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "git",
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "status": 2,
+  "stdout": ".github/workflows/security.yml:110: new blank line at EOF.\n.gitleaks.toml:63: new blank line at EOF.\n",
+  "stderr": ""
+}

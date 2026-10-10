@@ -1,0 +1,291 @@
+{
+  "inputs": {
+    ".github/workflows/security.yml": "d38eb69f88d80613261b782c2cde40e2b8ef2c748c9e032efd0debd030848074",
+    ".github/workflows/verify-templates.yml": "ea524bbea3838536fb036c094cb4443d7a714f74008cfc177e1cdb180f3f9f7a",
+    ".github/workflows/verify-templates-bash.yml": "b5001667386a1d6c136c88e2a70c6684aac7fc05ec96315d1c94a65ae476f555",
+    ".github/workflows/verify-templates-go.yml": "e77a9a73b4cde949d0daac795452dffb3a57aeb16c5c9f1c203f45dad4e1008b",
+    "tools/ci/check-reference.py": "c4307a323a5af015201c75bee262978d65c0b07b203c1f1e2dff38085f01ead1",
+    "tools/ci/check-security.py": "0c99f407195f25222c12e56029a517493802a8e4c465b936492c406a2b95e5bc",
+    "tools/ci/install-tools.py": "81dc780ea9c76c6630e82b485a9dffbef81c0f4925e6837a5b1d0f14bee7c5f9",
+    "tools/ci/rules_identity.py": "28fefe8e243b68ce3e8089d5d181fb245f30d64d8998c051e4a32eb83061ac8b",
+    "tools/ci/tests/test_rules_identity.py": "d3458f0db973c3324e8cc09b90f0e7cb57e032a847ce3e32773fdac3e7ff9376",
+    "docs/ci-checks.md": "18c8bffb17795b1fb96181fe3f4bf723c51bf48025ae56eeb59038a98da8cc6c",
+    "docs/INDEX.md": "778110f9289fca43629cecdf661ec284f4e0ff91ec59969ba1cdf62779a94911",
+    "tools/README.md": "5370b47d64c4edeba04ede8ef1d3e8de01bc24522fc53d22f3b63503110b5f01",
+    "docs/planning/c12-scope.md": "74e5f6f33d417d37c2f09ce248b74f9e0ff3a12ee08982e6e64d97cc3d3c9733",
+    "docs/planning/c12-licensing-disposition.md": "b41442575ec6637a7952e3ff59898837bcc656e89f916164c7e6734bc2340d92"
+  },
+  "configured_jobs": {
+    "gitleaks": {
+      "name": "secrets \u2014 gitleaks",
+      "uses": [
+        "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065"
+      ],
+      "runs": [
+        "python3 tools/ci/install-tools.py gitleaks --directory \"$RUNNER_TEMP/standards-tools\"",
+        "python3 tools/ci/check-security.py gitleaks --work \"$RUNNER_TEMP/standards-checks\""
+      ]
+    },
+    "semgrep": {
+      "name": "sast \u2014 semgrep",
+      "uses": [
+        "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065"
+      ],
+      "runs": [
+        "python3 tools/ci/install-tools.py semgrep --directory \"$RUNNER_TEMP/standards-tools\"",
+        "PYTHONPATH=tools/ci python3 -m unittest discover -s tools/ci/tests -v",
+        "python3 tools/ci/check-security.py semgrep --work \"$RUNNER_TEMP/standards-checks\""
+      ]
+    },
+    "trivy": {
+      "name": "sca \u2014 trivy",
+      "uses": [
+        "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+        "actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38"
+      ],
+      "runs": [
+        "python3 tools/ci/install-tools.py trivy --directory \"$RUNNER_TEMP/standards-tools\"",
+        "python3 tools/ci/check-security.py trivy --work \"$RUNNER_TEMP/standards-checks\""
+      ]
+    },
+    "ts-lint": {
+      "name": "ts \u2014 lint",
+      "uses": [
+        "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+        "actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38"
+      ],
+      "runs": [
+        "python3 tools/ci/install-tools.py typescript --directory \"$RUNNER_TEMP/standards-tools\"",
+        "python3 tools/ci/check-reference.py ts-lint --work \"$RUNNER_TEMP/standards-checks\""
+      ]
+    },
+    "ts-test": {
+      "name": "ts \u2014 test",
+      "uses": [
+        "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+        "actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38"
+      ],
+      "runs": [
+        "python3 tools/ci/install-tools.py typescript --directory \"$RUNNER_TEMP/standards-tools\"",
+        "python3 tools/ci/check-reference.py ts-test --work \"$RUNNER_TEMP/standards-checks\""
+      ]
+    },
+    "python-fixtures": {
+      "name": "python overlay \u2014 fixtures pass/fail",
+      "uses": [
+        "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065"
+      ],
+      "runs": [
+        "python3 tools/ci/install-tools.py python --directory \"$RUNNER_TEMP/standards-tools\"",
+        "python3 -m unittest discover -s tools/tests -v",
+        "python3 tools/ci/check-reference.py python --work \"$RUNNER_TEMP/standards-checks\""
+      ]
+    },
+    "bash-fixtures": {
+      "name": "bash overlay \u2014 fixtures pass/fail",
+      "uses": [
+        "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065"
+      ],
+      "runs": [
+        "python3 tools/ci/install-tools.py bash --directory \"$RUNNER_TEMP/standards-tools\"",
+        "python3 tools/ci/check-reference.py bash --work \"$RUNNER_TEMP/standards-checks\""
+      ]
+    },
+    "go-fixtures": {
+      "name": "go overlay \u2014 fixtures pass/fail",
+      "uses": [
+        "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065"
+      ],
+      "runs": [
+        "python3 tools/ci/install-tools.py go --directory \"$RUNNER_TEMP/standards-tools\"",
+        "python3 tools/ci/check-reference.py go --work \"$RUNNER_TEMP/standards-checks\""
+      ]
+    }
+  },
+  "jobs_checked": 8,
+  "links": [
+    {
+      "source": "docs/ci-checks.md",
+      "target": "planning/c12-licensing-disposition.md"
+    },
+    {
+      "source": "docs/ci-checks.md",
+      "target": "quality-contract.md"
+    },
+    {
+      "source": "docs/ci-checks.md",
+      "target": "adoption-status.md"
+    },
+    {
+      "source": "docs/ci-checks.md",
+      "target": "../tools/README.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "quality-contract.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../AGENTS.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../templates/AGENTS.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../SYSTEM_MAP.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../skills/adopt-coding-standards/SKILL.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "adoption-status.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "planning/c11-tracking-decision.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../templates/typescript/README.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../templates/astro/README.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../templates/cloudflare-workers/README.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../templates/bun-ecs/README.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../templates/go/README.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../templates/python/README.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../templates/bash/README.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "review-roles.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "architecture-review.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "adr/0002-quality-first-acceptance.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "adr/0001-why-this-standard-exists.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../tools/README.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "ci-checks.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "branch-protection.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../skills/github-pr/SKILL.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../HANDOFF.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "planning/rebuild-chunk-plan-2026-10-08.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "planning/c0-acceptance-result.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "planning/c1-scope.md"
+    },
+    {
+      "source": "docs/INDEX.md",
+      "target": "../HANDOFF.md"
+    },
+    {
+      "source": "tools/README.md",
+      "target": "../docs/ci-checks.md"
+    }
+  ],
+  "links_checked": 32,
+  "actual_cli_help_records": [
+    {
+      "argv": [
+        "python3",
+        "tools/ci/install-tools.py",
+        "--help"
+      ],
+      "status": 0,
+      "stdout": "usage: install-tools.py [-h] --directory DIRECTORY\n                        {bash,go,python,typescript,gitleaks,semgrep,trivy}\n\nInstall only selected Linux-x86_64 CI tools into a new caller-owned directory.\n\npositional arguments:\n  {bash,go,python,typescript,gitleaks,semgrep,trivy}\n\noptions:\n  -h, --help            show this help message and exit\n  --directory DIRECTORY\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "tools/ci/check-reference.py",
+        "--help"
+      ],
+      "status": 0,
+      "stdout": "usage: check-reference.py [-h] --work WORK\n                          {ts-lint,ts-test,python,go,bash,sca-prepare}\n\nExercise shipped reference inputs; records are observations, not hosted\napproval.\n\npositional arguments:\n  {ts-lint,ts-test,python,go,bash,sca-prepare}\n\noptions:\n  -h, --help            show this help message and exit\n  --work WORK\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "tools/ci/check-security.py",
+        "--help"
+      ],
+      "status": 0,
+      "stdout": "usage: check-security.py [-h] --work WORK {gitleaks,semgrep,trivy}\n\nRun selected actual security commands; do not confuse scope with complete\nsafety.\n\npositional arguments:\n  {gitleaks,semgrep,trivy}\n\noptions:\n  -h, --help            show this help message and exit\n  --work WORK\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "tools/ci/rules_identity.py",
+        "--help"
+      ],
+      "status": 0,
+      "stdout": "usage: rules_identity.py [-h] path\n\nIdentify complete private Semgrep rule maps despite observed registry\nordering.\n\npositional arguments:\n  path\n\noptions:\n  -h, --help  show this help message and exit\n",
+      "stderr": ""
+    }
+  ],
+  "seven_overlay_map": true,
+  "accepted_typescript_lock_exact": true,
+  "no_licensed_rule_bodies_in_public_source": true,
+  "limits": "Source/config/CLI syntax/routes evidence, not hosted execution, live required policy, authenticated approval, root application lint or safety proof."
+}

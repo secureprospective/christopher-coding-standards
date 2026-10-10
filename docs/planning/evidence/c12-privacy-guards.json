@@ -1,0 +1,32 @@
+[
+  {
+    "label": "inside installer prefix rejects before writing",
+    "argv": [
+      "python3",
+      "tools/ci/install-tools.py",
+      "semgrep",
+      "--directory",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/guard-rejected-private-prefix"
+    ],
+    "status": 1,
+    "required_marker": "licensed rule prefix must remain outside",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/install-tools.py\", line 234, in <module>\n    main()\n    ~~~~^^\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/install-tools.py\", line 81, in main\n    raise ValueError(\"licensed rule prefix must remain outside the publication checkout\")\nValueError: licensed rule prefix must remain outside the publication checkout\n",
+    "matched": true
+  },
+  {
+    "label": "rule file symlink cannot escape private directory",
+    "argv": [
+      "python3",
+      "tools/ci/check-security.py",
+      "semgrep",
+      "--work",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-link-rejection-work"
+    ],
+    "status": 1,
+    "required_marker": "private vendor policy file must stay within",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 249, in <module>\n    main()\n    ~~~~^^\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 114, in main\n    configs = rule_configs()\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 53, in rule_configs\n    raise ValueError(\"private vendor policy file must stay within its outside-checkout directory\")\nValueError: private vendor policy file must stay within its outside-checkout directory\n",
+    "matched": true
+  }
+]

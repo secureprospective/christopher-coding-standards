@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "/home/claude/coding-standards-verification/bee-c12-2026-10-09/semgrep-env/bin/python",
+    "-c",
+    "from ruamel.yaml import YAML;from pathlib import Path;import json,hashlib; y=YAML(typ='safe');a=y.load(Path('results/semgrep-owasp-top-ten.yml').read_text());b=y.load(Path('results/owasp-probe-Bee-C12-standards.yml').read_text());print('parsed_equal',a==b);print('rulecounts',len(a['rules']),len(b['rules']));print('hashes',*[hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest() for x in [a,b]])"
+  ],
+  "status": 0,
+  "stdout": "parsed_equal False\nrulecounts 560 560\nhashes f91812ad151384023dbca4a13c66765651d88855d4e18d2d2083327fa9b3dab8 9fe18b97b5ee771ce58cd366c607e1b2d6feb13ee6a08b4210fe7fc6f1e15e0a\n",
+  "stderr": ""
+}

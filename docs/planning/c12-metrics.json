@@ -1,0 +1,226 @@
+{
+  "rows": [
+    {
+      "path": ".github/workflows/security.yml",
+      "before": {
+        "physical_lines": 160,
+        "codepoints": 5491,
+        "utf8_bytes": 5523
+      },
+      "after": {
+        "physical_lines": 109,
+        "codepoints": 4455,
+        "utf8_bytes": 4465
+      }
+    },
+    {
+      "path": ".github/workflows/verify-templates-bash.yml",
+      "before": {
+        "physical_lines": 118,
+        "codepoints": 5132,
+        "utf8_bytes": 5142
+      },
+      "after": {
+        "physical_lines": 30,
+        "codepoints": 993,
+        "utf8_bytes": 995
+      }
+    },
+    {
+      "path": ".github/workflows/verify-templates-go.yml",
+      "before": {
+        "physical_lines": 123,
+        "codepoints": 5615,
+        "utf8_bytes": 5623
+      },
+      "after": {
+        "physical_lines": 30,
+        "codepoints": 983,
+        "utf8_bytes": 985
+      }
+    },
+    {
+      "path": ".github/workflows/verify-templates.yml",
+      "before": {
+        "physical_lines": 117,
+        "codepoints": 5261,
+        "utf8_bytes": 5273
+      },
+      "after": {
+        "physical_lines": 32,
+        "codepoints": 1123,
+        "utf8_bytes": 1125
+      }
+    },
+    {
+      "path": ".gitleaks.toml",
+      "before": {
+        "physical_lines": 37,
+        "codepoints": 1381,
+        "utf8_bytes": 1385
+      },
+      "after": {
+        "physical_lines": 62,
+        "codepoints": 3249,
+        "utf8_bytes": 3249
+      }
+    },
+    {
+      "path": "scratch/fixtures/typescript/pnpm-lock.yaml",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 2421,
+        "codepoints": 80839,
+        "utf8_bytes": 80839
+      }
+    },
+    {
+      "path": "tools/ci/check-reference.py",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 281,
+        "codepoints": 10696,
+        "utf8_bytes": 10696
+      }
+    },
+    {
+      "path": "tools/ci/check-security.py",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 318,
+        "codepoints": 12478,
+        "utf8_bytes": 12478
+      }
+    },
+    {
+      "path": "tools/ci/install-tools.py",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 234,
+        "codepoints": 10250,
+        "utf8_bytes": 10250
+      }
+    },
+    {
+      "path": "tools/ci/requirements-semgrep.lock",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 67,
+        "codepoints": 6730,
+        "utf8_bytes": 6730
+      }
+    },
+    {
+      "path": "tools/ci/rules/MANIFEST.json",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 29,
+        "codepoints": 1215,
+        "utf8_bytes": 1215
+      }
+    },
+    {
+      "path": "tools/ci/rules_identity.py",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 40,
+        "codepoints": 1537,
+        "utf8_bytes": 1537
+      }
+    },
+    {
+      "path": "tools/ci/fixtures/trivy-vulnerable/package.json",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 8,
+        "codepoints": 135,
+        "utf8_bytes": 135
+      }
+    },
+    {
+      "path": "tools/ci/fixtures/trivy-vulnerable/pnpm-lock.yaml",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 15,
+        "codepoints": 380,
+        "utf8_bytes": 380
+      }
+    },
+    {
+      "path": "tools/ci/fixtures/trivy-fixed/package.json",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 8,
+        "codepoints": 134,
+        "utf8_bytes": 134
+      }
+    },
+    {
+      "path": "tools/ci/fixtures/trivy-fixed/pnpm-lock.yaml",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 15,
+        "codepoints": 376,
+        "utf8_bytes": 376
+      }
+    }
+  ],
+  "totals": {
+    "before": {
+      "physical_lines": 555,
+      "codepoints": 22880,
+      "utf8_bytes": 22946
+    },
+    "after": {
+      "physical_lines": 3699,
+      "codepoints": 135573,
+      "utf8_bytes": 135589
+    }
+  },
+  "scope": "Whole changed/new operational workflow/scanner/installer/reference/parser/config/lock footprint including replacements and reference-lock data. Tests/docs/evidence separate. Private vendor bodies not shipped. Passive vulnerability-control locks/package declarations are included as required operational fixture data; no vulnerable package code shipped or executed.",
+  "limits": "Physical lines/codepoints/UTF8bytes, not tokens/performance/quality; real added command execution/identity/hash graphs justify increase, no debloat claim."
+}

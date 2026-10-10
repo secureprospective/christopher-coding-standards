@@ -1,0 +1,9 @@
+{
+  "pid": 2472,
+  "command": "python3 -",
+  "parent": 1,
+  "elapsed_seconds": 409.05999999999995,
+  "basis": "Unique orphan stdin Python process began with our timed-out 1.45MB character SequenceMatcher comparison; 100%CPU, no other stdin Python process. Own task only, no services/browser/GUI/agents affected.",
+  "failed_observation": "ParentSSH/tool timed out after300seconds; no parsed comparison/status serialized yet.",
+  "action": "SIGTERM own runaway comparison; retry linear-size parsed/line comparison only."
+}
