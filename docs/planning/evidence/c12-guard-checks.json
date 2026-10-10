@@ -1,0 +1,190 @@
+[
+  {
+    "label": "unexpected clean is not rejection",
+    "argv": [
+      "python3",
+      "tools/verify_fixture.py",
+      "--expect",
+      "reject",
+      "--diagnostic",
+      "SC2086",
+      "--input",
+      "scratch/fixtures/bash/clean.sh",
+      "--",
+      "shellcheck",
+      "scratch/fixtures/bash/clean.sh"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "\"matched\": false",
+    "stdout": "{\n  \"command\": [\n    \"shellcheck\",\n    \"scratch/fixtures/bash/clean.sh\"\n  ],\n  \"expectation\": {\n    \"exit_code\": 1,\n    \"diagnostic\": \"SC2086\"\n  },\n  \"timeout_seconds\": 120,\n  \"inputs_before\": {\n    \"scratch/fixtures/bash/clean.sh\": \"6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a\"\n  },\n  \"inputs_after\": {\n    \"scratch/fixtures/bash/clean.sh\": \"6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a\"\n  },\n  \"exit_code\": 0,\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"error\": null,\n  \"matched\": false\n}\n",
+    "stderr": "",
+    "matched": true
+  },
+  {
+    "label": "wrong marker is not rejection",
+    "argv": [
+      "python3",
+      "tools/verify_fixture.py",
+      "--expect",
+      "reject",
+      "--diagnostic",
+      "BEE_WRONG_MARKER",
+      "--input",
+      "scratch/fixtures/bash/violating.sh",
+      "--",
+      "shellcheck",
+      "scratch/fixtures/bash/violating.sh"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "\"matched\": false",
+    "stdout": "{\n  \"command\": [\n    \"shellcheck\",\n    \"scratch/fixtures/bash/violating.sh\"\n  ],\n  \"expectation\": {\n    \"exit_code\": 1,\n    \"diagnostic\": \"BEE_WRONG_MARKER\"\n  },\n  \"timeout_seconds\": 120,\n  \"inputs_before\": {\n    \"scratch/fixtures/bash/violating.sh\": \"cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b\"\n  },\n  \"inputs_after\": {\n    \"scratch/fixtures/bash/violating.sh\": \"cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b\"\n  },\n  \"exit_code\": 1,\n  \"stdout\": \"\\nIn scratch/fixtures/bash/violating.sh line 8:\\npath=/tmp/file.txt\\n^--^ SC2034 (warning): path appears unused. Verify use (or export if used externally).\\n\\n\\nIn scratch/fixtures/bash/violating.sh line 11:\\n    echo Processing: $name\\n                     ^---^ SC2086 (info): Double quote to prevent globbing and word splitting.\\n\\nDid you mean:\\n    echo Processing: \\\"$name\\\"\\n\\n\\nIn scratch/fixtures/bash/violating.sh line 14:\\nunused_var=\\\"this is never used\\\"\\n^--------^ SC2034 (warning): unused_var appears unused. Verify use (or export if used externally).\\n\\nFor more information:\\n  https://www.shellcheck.net/wiki/SC2034 -- path appears unused. Verify use (...\\n  https://www.shellcheck.net/wiki/SC2086 -- Double quote to prevent globbing ...\\n\",\n  \"stderr\": \"\",\n  \"error\": null,\n  \"matched\": false\n}\n",
+    "stderr": "",
+    "matched": true
+  },
+  {
+    "label": "missing tool is not rejection",
+    "argv": [
+      "python3",
+      "tools/verify_fixture.py",
+      "--expect",
+      "reject",
+      "--diagnostic",
+      "SC2086",
+      "--input",
+      "scratch/fixtures/bash/clean.sh",
+      "--",
+      "bee_missing_ci_binary_123"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 2,
+    "expected_status": 2,
+    "required_marker": "No such file or directory",
+    "stdout": "{\n  \"command\": [\n    \"bee_missing_ci_binary_123\"\n  ],\n  \"expectation\": {\n    \"exit_code\": 1,\n    \"diagnostic\": \"SC2086\"\n  },\n  \"timeout_seconds\": 120,\n  \"inputs_before\": {\n    \"scratch/fixtures/bash/clean.sh\": \"6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a\"\n  },\n  \"inputs_after\": null,\n  \"exit_code\": null,\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"error\": \"[Errno 2] No such file or directory: 'bee_missing_ci_binary_123'\",\n  \"matched\": false\n}\n",
+    "stderr": "",
+    "matched": true
+  },
+  {
+    "label": "missing input is not rejection",
+    "argv": [
+      "python3",
+      "tools/verify_fixture.py",
+      "--expect",
+      "reject",
+      "--diagnostic",
+      "SC2086",
+      "--input",
+      "scratch/fixtures/bash/missing-input.sh",
+      "--",
+      "shellcheck",
+      "scratch/fixtures/bash/clean.sh"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 2,
+    "expected_status": 2,
+    "required_marker": "input must resolve to a file",
+    "stdout": "{\n  \"command\": [\n    \"shellcheck\",\n    \"scratch/fixtures/bash/clean.sh\"\n  ],\n  \"expectation\": {\n    \"exit_code\": 1,\n    \"diagnostic\": \"SC2086\"\n  },\n  \"timeout_seconds\": 120,\n  \"inputs_before\": null,\n  \"inputs_after\": null,\n  \"exit_code\": null,\n  \"stdout\": \"\",\n  \"stderr\": \"\",\n  \"error\": \"input must resolve to a file inside the workspace: scratch/fixtures/bash/missing-input.sh\",\n  \"matched\": false\n}\n",
+    "stderr": "",
+    "matched": true
+  },
+  {
+    "label": "absent lock with selected overrides fails frozen config validation",
+    "argv": [
+      "pnpm",
+      "install",
+      "--frozen-lockfile"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-reference-final with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "ERR_PNPM_LOCKFILE_CONFIG_MISMATCH",
+    "stdout": "\u2009ERR_PNPM_LOCKFILE_CONFIG_MISMATCH\u2009 Cannot proceed with the frozen installation. The current \"overrides\" configuration doesn't match the value found in the lockfile\n\nUpdate your lockfile using \"pnpm install --no-frozen-lockfile\"\n",
+    "stderr": "",
+    "matched": true
+  },
+  {
+    "label": "npm does not bypass shipped manager guard",
+    "argv": [
+      "npm",
+      "run",
+      "preinstall"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-reference-final with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "Use the pnpm version declared in package.json; keep pnpm-lock.yaml frozen.",
+    "stdout": "\n> preinstall\n> node scripts/check-package-manager.mjs\n\n",
+    "stderr": "npm warn Unknown env config \"store-dir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nUse the pnpm version declared in package.json; keep pnpm-lock.yaml frozen.\n",
+    "matched": true
+  },
+  {
+    "label": "changed complete rule map fails",
+    "argv": [
+      "python3",
+      "tools/ci/check-security.py",
+      "semgrep",
+      "--work",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-rule-mismatch-work"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "vendor complete rule map differs",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 247, in <module>\n    main()\n    ~~~~^^\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 112, in main\n    configs = rule_configs()\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 57, in rule_configs\n    raise ValueError(\n        \"vendor complete rule map differs from reviewed reference: \" + path.name\n    )\nValueError: vendor complete rule map differs from reviewed reference: semgrep-security-audit.yml\n",
+    "matched": true
+  },
+  {
+    "label": "missing private rule binding fails",
+    "argv": [
+      "python3",
+      "tools/ci/check-security.py",
+      "semgrep",
+      "--work",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-rule-missing-work"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "missing installed private Semgrep rule directory",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 247, in <module>\n    main()\n    ~~~~^^\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 112, in main\n    configs = rule_configs()\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 41, in rule_configs\n    raise ValueError(\"missing installed private Semgrep rule directory\")\nValueError: missing installed private Semgrep rule directory\n",
+    "matched": true
+  },
+  {
+    "label": "private rules cannot be in publication checkout",
+    "argv": [
+      "python3",
+      "tools/ci/check-security.py",
+      "semgrep",
+      "--work",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-rule-public-work"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "licensed rules must remain outside",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 247, in <module>\n    main()\n    ~~~~^^\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 112, in main\n    configs = rule_configs()\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/check-security.py\", line 44, in rule_configs\n    raise ValueError(\"licensed rules must remain outside the publication checkout\")\nValueError: licensed rules must remain outside the publication checkout\n",
+    "matched": true
+  },
+  {
+    "label": "bad native archive checksum blocks installation",
+    "argv": [
+      "python3",
+      "-c",
+      "import importlib.util,sys;from pathlib import Path;s=importlib.util.spec_from_file_location('own_install',Path('tools/ci/install-tools.py'));m=importlib.util.module_from_spec(s);s.loader.exec_module(m);v=m.TOOLS['gitleaks'];m.TOOLS['gitleaks']=(v[0],'0'*64,*v[2:]);sys.argv=['install-tools.py','gitleaks','--directory',sys.argv[1]];m.main()",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/guard-checksum-prefix"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+    "status": 1,
+    "expected_status": 1,
+    "required_marker": "gitleaks: archive checksum mismatch",
+    "stdout": "",
+    "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n    import importlib.util,sys;from pathlib import Path;s=importlib.util.spec_from_file_location('own_install',Path('tools/ci/install-tools.py'));m=importlib.util.module_from_spec(s);s.loader.exec_module(m);v=m.TOOLS['gitleaks'];m.TOOLS['gitleaks']=(v[0],'0'*64,*v[2:]);sys.argv=['install-tools.py','gitleaks','--directory',sys.argv[1]];m.main()\n                                                                                                                                                                                                                                                                                                                                                ~~~~~~^^\n  File \"/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/install-tools.py\", line 105, in main\n    raise ValueError(f\"{name}: archive checksum mismatch\")\nValueError: gitleaks: archive checksum mismatch\n",
+    "matched": true
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "path": "templates/astro/.pre-commit-config.yaml.snippet",
+    "sha256": "39112a16d256ac14a723ebba8bb4c21655d91ea904fd040f6b168c00c06af399",
+    "runtime_source_field": "initial overlay .pre-commit-config.yaml.snippet"
+  },
+  {
+    "path": "templates/astro/.prettierrc.json",
+    "sha256": "11dd1f482635de42e243161d727a652d953f17ebd0095ce86d939f0162542b39",
+    "runtime_source_field": "initial overlay .prettierrc.json"
+  },
+  {
+    "path": "templates/astro/Makefile.snippet",
+    "sha256": "e359369186e4f2d8f20dc9ea4332c70d31d97dd369a87aa9eda7d8cc49b4a7ea",
+    "runtime_source_field": "initial overlay Makefile.snippet"
+  },
+  {
+    "path": "templates/astro/README.md",
+    "sha256": "bcef7373688cce03bf448acded6fb58ebb3be461f9f2624c7998bd37cd50061a",
+    "runtime_source_field": "final README.md"
+  },
+  {
+    "path": "templates/astro/package.json.snippet",
+    "sha256": "6ea15cf2d4c490d1e40c5af1a7ad26f01c5c45f5084101a19cce7b4741063ab8",
+    "runtime_source_field": "initial overlay package.json.snippet"
+  },
+  {
+    "path": "templates/astro/tsconfig.json",
+    "sha256": "a1ebc9c8b30c17600ba60936a829e5a2a34610db451cc2647fafb9b924cce3cd",
+    "runtime_source_field": "final template-tsconfig.jsonc"
+  }
+]

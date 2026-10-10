@@ -1,0 +1,58 @@
+[
+  {
+    "label": "weak-mutation-tool-completion",
+    "argv": [
+      "mutmut",
+      "run",
+      "--max-children",
+      "1"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c10-2026-10-09/weak control",
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n\u2834 Generating mutants\n\u2826 Generating mutants\n\u2827 Generating mutants\n\u2807 Generating mutants\n\u280f Generating mutants\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n\u2834 Generating mutants\n\u2826 Generating mutants\n\u2827 Generating mutants\n\u2807 Generating mutants\n\u280f Generating mutants\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n\u2834 Generating mutants\n\u2826 Generating mutants\n\u2827 Generating mutants\n\u2807 Generating mutants\n\u280f Generating mutants\n\u280b Generating mutants\n\u2819 Generating mutants\n\u2839 Generating mutants\n\u2838 Generating mutants\n\u283c Generating mutants\n    done in 79ms (1 files mutated, 0 ignored, 0 unmodified)\n\n\u2838 Running stats     \n\u283c Running stats\n\u2834 Running stats\n\u2826 Running stats\n\u2827 Running stats\n\u2807 Running stats\n    done\n\n\u280f Running clean tests\n\u280b Running clean tests\n\u2819 Running clean tests\n\u2839 Running clean tests\n\u2838 Running clean tests\n\u283c Running clean tests\n    done\n\n\u2834 Running forced fail test\n\u2826 Running forced fail test\n\u2827 Running forced fail test\n\u2807 Running forced fail test\n\u280f Running forced fail test\n\u280b Running forced fail test\n\u2819 Running forced fail test\n\u2839 Running forced fail test\n\u2838 Running forced fail test\n\u283c Running forced fail test\n\u2834 Running forced fail test\n\u2826 Running forced fail test\n\u2827 Running forced fail test\n\u2807 Running forced fail test\n\u280f Running forced fail test\n\u280b Running forced fail test\n    done\nRunning mutation testing\n\n\u2819 0/3  \ud83c\udf89 0 \ud83e\udee5 0  \u23f0 0  \ud83e\udd14 0  \ud83d\ude41 0  \ud83d\udd07 0  \ud83e\uddd9 0\n\u2839 0/3  \ud83c\udf89 0 \ud83e\udee5 0  \u23f0 0  \ud83e\udd14 0  \ud83d\ude41 0  \ud83d\udd07 0  \ud83e\uddd9 0\n\u2838 1/3  \ud83c\udf89 1 \ud83e\udee5 0  \u23f0 0  \ud83e\udd14 0  \ud83d\ude41 0  \ud83d\udd07 0  \ud83e\uddd9 0\n\u283c 3/3  \ud83c\udf89 2 \ud83e\udee5 0  \u23f0 0  \ud83e\udd14 0  \ud83d\ude41 1  \ud83d\udd07 0  \ud83e\uddd9 0\n22.13 mutations/second\n",
+    "stderr": ""
+  },
+  {
+    "label": "weak-results",
+    "argv": [
+      "mutmut",
+      "results",
+      "--all",
+      "true"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c10-2026-10-09/weak control",
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "    schema.example.x__is_numeric__mutmut_1: killed\n    schema.example.x__is_numeric__mutmut_2: killed\n    schema.example.x__is_numeric__mutmut_3: survived\n",
+    "stderr": ""
+  },
+  {
+    "label": "weak-stats-export",
+    "argv": [
+      "mutmut",
+      "export-cicd-stats"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c10-2026-10-09/weak control",
+    "status": 0,
+    "expected": 0,
+    "diagnostic": null,
+    "stdout": "Saved CI/CD stats to mutants/mutmut-cicd-stats.json\n",
+    "stderr": ""
+  },
+  {
+    "label": "unimported-namespace-coverage",
+    "argv": [
+      "make",
+      "test-coverage"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c10-2026-10-09/project with spaces",
+    "status": 0,
+    "expected": 2,
+    "diagnostic": "not reached",
+    "stdout": "pytest --cov --cov-report=term-missing --cov-fail-under=80\n============================= test session starts ==============================\nplatform linux -- Python 3.13.5, pytest-9.1.1, pluggy-1.6.0\nrootdir: /home/claude/coding-standards-verification/bee-c10-2026-10-09/project with spaces\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: cov-7.1.0, platformdirs-4.12.4\ncollected 35 items\n\ntests/test_example.py ...................................                [100%]\n\n================================ tests coverage ================================\n_______________ coverage: platform linux, python 3.13.5-final-0 ________________\n\nName                    Stmts   Miss Branch BrPart  Cover   Missing\n-------------------------------------------------------------------\nsrc/schema/example.py      40      0      8      0   100%\n-------------------------------------------------------------------\nTOTAL                      40      0      8      0   100%\nRequired test coverage of 80% reached. Total coverage: 100.00%\n============================== 35 passed in 0.24s ==============================\n",
+    "stderr": ""
+  }
+]

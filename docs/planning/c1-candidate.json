@@ -1,0 +1,101 @@
+{
+  "chunk": "C1",
+  "base": "1ea1a0e4acc17e8d7ca6d8cc90161660a891919b",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "scope": "Core acceptance and documentation routing only; runtime/CI/consumer changes excluded.",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 2998,
+      "sha256": "78379bdf1dbf6534178fa94f79619b9df6fe6561a89b991f766ca2ceaa6f23a5"
+    },
+    {
+      "path": "SYSTEM_MAP.md",
+      "bytes": 2942,
+      "sha256": "ec9b488d997b3f2f0978cd75e57996583952ca49c16f27a250777bd453ea4e2d"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4712,
+      "sha256": "ee2391cd8adb1f315de8126dc17a656a6fea55ea4f5b37ece656a46de40ca1e9"
+    },
+    {
+      "path": "docs/INDEX.md",
+      "bytes": 3012,
+      "sha256": "b7221cd0a413f3132fbbcaa9adb04a8e04d872ddd235be6de58579d4de22e585"
+    },
+    {
+      "path": "skills/adopt-coding-standards/SKILL.md",
+      "bytes": 4512,
+      "sha256": "9564e06be0b4f56c9fff4dc13c21cce16b15aac7a7748e3cb17e0c1cfd5cf967"
+    },
+    {
+      "path": "docs/agent-codex.md",
+      "bytes": 29684,
+      "sha256": "2455b367fbc96ee4f31b8135760b8a23f01175c54d03c0007f72bd01a9324d6c"
+    },
+    {
+      "path": "docs/agent-codex-lite.md",
+      "bytes": 6304,
+      "sha256": "51cbaef673eca3dda854fac7f668f6f82a71699d7f051c4958e39d22efb7594f"
+    },
+    {
+      "path": "docs/multi-agent-roles.md",
+      "bytes": 15477,
+      "sha256": "5bd2ff5a098badf582b91322c76dd942a916053bb54190970451bc019d99afd2"
+    },
+    {
+      "path": "docs/glm-auditor-discipline.md",
+      "bytes": 6781,
+      "sha256": "35dfecf580509bbd8b35952af2ef57348fd234f17335ede342d0eee27723745d"
+    },
+    {
+      "path": "docs/local-model-guidance.md",
+      "bytes": 6213,
+      "sha256": "bffa24821a6ccd8cb27d993297f183666db164b4507fdbb112bc9bb2c3e6428f"
+    },
+    {
+      "path": "docs/quality-contract.md",
+      "bytes": 5915,
+      "sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f"
+    },
+    {
+      "path": "docs/review-roles.md",
+      "bytes": 2230,
+      "sha256": "129803c502e6511b032cdaaa980ad488fefb5f3b1474d75d30149eb6fcae98e5"
+    },
+    {
+      "path": "docs/adr/0002-quality-first-acceptance.md",
+      "bytes": 4729,
+      "sha256": "75ceb8ca6231a1493a069de671ec8669bfefce7413bba4960954ba14b5644aed"
+    },
+    {
+      "path": "templates/AGENTS.md",
+      "bytes": 2674,
+      "sha256": "c8bbb045bc89e8bf0dc90467b673e00fcc34846e793586434b06e9ca3c878fe7"
+    },
+    {
+      "path": "templates/SYSTEM_MAP.md",
+      "bytes": 1747,
+      "sha256": "54ad30fdc50804e044b6a741c21aa041883672e558c397097d69f1273111c5b4"
+    },
+    {
+      "path": "docs/planning/c1-scope.md",
+      "bytes": 2955,
+      "sha256": "2fa9e254f76f62bff4e7e884da1ad49a877477e8f4fa25ea7f14c73119c500ad"
+    },
+    {
+      "path": "docs/planning/c1-checks.json",
+      "bytes": 2202,
+      "sha256": "a4b113d527a26c2d551d732e142c97eb41ac34adea1eb4b29771fd6a16bcf329"
+    }
+  ],
+  "diagnostic_helper": {
+    "path": "/home/chris/scratch/coding-standards-c1-doc-check.py",
+    "sha256": "d89fd5134a61571482643bed41ebb39992b88688ec525a18af8910a8af13bdad",
+    "role": "Session-only document-integrity check, not shipped product tooling."
+  },
+  "structural_checks": "docs/planning/c1-checks.json",
+  "independent_review": "pending; rerun all16 C0 exercise judgments under actual new core, oracle/previous verdicts withheld",
+  "diff_sha256": "b92805ef87ce2502a7ef4a971c9e235c51c244b243ab3125e73ab2c34fbc94d4"
+}

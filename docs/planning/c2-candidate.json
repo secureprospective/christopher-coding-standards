@@ -1,0 +1,126 @@
+{
+  "chunk": "C2",
+  "base": "d49e0ab51d7d72ab36040623f2fa94400a94878d",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4952,
+      "sha256": "feb9d9f21dea6e581197e825cd6c8c2e11d2181b92ed2cac85e6d1938c443a71",
+      "review_input": true
+    },
+    {
+      "path": "SYSTEM_MAP.md",
+      "bytes": 3083,
+      "sha256": "128fa9e73266f9704a5169da7a717266d0b24f3adfe09617353935a748794c03",
+      "review_input": true
+    },
+    {
+      "path": "docs/INDEX.md",
+      "bytes": 3116,
+      "sha256": "b9f4178cbd9ce4cfb3451c48186ccc171d6f865bc04f6bfb9984fd830c511460",
+      "review_input": true
+    },
+    {
+      "path": "skills/adopt-coding-standards/SKILL.md",
+      "bytes": 4831,
+      "sha256": "4ddd44903c0374299bea4d9ae807376b59db0506b461b2d23523b8be10b891eb",
+      "review_input": true
+    },
+    {
+      "path": "docs/architecture-review.md",
+      "bytes": 7994,
+      "sha256": "9fd74d10b1b1c6929624e8a72552c711e06d3dac65ec1083b717fcc72d88f7bc",
+      "review_input": true
+    },
+    {
+      "path": "docs/planning/c2-scope.md",
+      "bytes": 2456,
+      "sha256": "5cb75f7b3097d074516a0ef23da4d357ef823d6791843c83fe5aff5254f37588",
+      "review_input": true
+    },
+    {
+      "path": "docs/planning/c2-review-exercises.md",
+      "bytes": 5133,
+      "sha256": "c65b21424a341d08ca656b4a1cd92c9c177466d3ad2d9653a3fa0550b69c74f1",
+      "review_input": true
+    },
+    {
+      "path": "docs/planning/c2-review-oracle.md",
+      "bytes": 3604,
+      "sha256": "db6b60adfa5a78138c3fb07960daba7834eebf29e9e058e69c0bc3b243e26f57",
+      "review_input": false
+    },
+    {
+      "path": "docs/planning/c2-checks.json",
+      "bytes": 27708,
+      "sha256": "34523a18b81295d7e714f64dd0c2e1e396df6abcb78496dc497691095133b0cd",
+      "review_input": true
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 3116,
+      "sha256": "259dd5e1395952c5742e50098e51aeb30c723f403d862f2692b68889a071fe91",
+      "review_input": true
+    },
+    {
+      "path": "docs/quality-contract.md",
+      "bytes": 5915,
+      "sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f",
+      "review_input": true
+    },
+    {
+      "path": "templates/AGENTS.md",
+      "bytes": 2674,
+      "sha256": "c8bbb045bc89e8bf0dc90467b673e00fcc34846e793586434b06e9ca3c878fe7",
+      "review_input": true
+    },
+    {
+      "path": "templates/SYSTEM_MAP.md",
+      "bytes": 1747,
+      "sha256": "54ad30fdc50804e044b6a741c21aa041883672e558c397097d69f1273111c5b4",
+      "review_input": true
+    },
+    {
+      "path": "docs/planning/rebuild-chunk-plan-2026-10-08.md",
+      "bytes": 14971,
+      "sha256": "1ceb843a55b57d0fa3a8c6c4f5a7294525c94e01c09bb501fcd8f6dfa8022edf",
+      "review_input": true
+    },
+    {
+      "path": "docs/planning/c0-review-cases.md",
+      "bytes": 12953,
+      "sha256": "d086c353b8f2cfc9479dc581bd8a379fc27b8398d33841d1fc126a9d50551aa5",
+      "review_input": true
+    },
+    {
+      "path": "templates/bash/lib/strict-mode.sh",
+      "bytes": 1779,
+      "sha256": "9d400b070d0b62060998b8a1c4badaf9f77026ce5e39e8fd8069653f5522ecb7",
+      "review_input": true
+    },
+    {
+      "path": "templates/bash/scripts/example.sh",
+      "bytes": 511,
+      "sha256": "0efa52e12a84ec2b79b588a79763aad369ce01c8617754d7f1364705bd3b495c",
+      "review_input": true
+    },
+    {
+      "path": "templates/bash/tests/example.bats",
+      "bytes": 1880,
+      "sha256": "b57443833b6e792468069869b9583cb4567325741dd98bed62036c2f89f36e11",
+      "review_input": true
+    }
+  ],
+  "tracked_diff_sha256": "4c44690d5ef9a382f31abca828725d4051ce4cf51a089fdb91c5ecbe661cfb8e",
+  "session_helper": {
+    "path": "/home/chris/scratch/coding-standards-c2-doc-check.py",
+    "sha256": "4c284e7b59fc80f15bcd65f23a8492a6902db1099313e85ea9f5d929a267f52b"
+  },
+  "oracle_boundary": "c2-review-oracle.md is fingerprinted for parent provenance, withheld from independent reviewer. Prior case oracles/verdicts also withheld. Test/check assertions remain reviewable.",
+  "no_product_runtime_execution": true,
+  "protected_untracked_metadata": {
+    "path": ".project.yaml",
+    "sha256": "86fc2d04c5c8f960b09c72a671dcd89d8126564d66868f91148a8d0c0f3b563c"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "astro/tsconfigs/strictest",
+  "compilerOptions": {
+    // Keep base checks explicit alongside the selected Astro strictest preset.
+    "noImplicitOverride": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  // Include generated client/content types, source, configs and tests.
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist", "node_modules"]
+}

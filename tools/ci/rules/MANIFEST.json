@@ -1,0 +1,29 @@
+{
+  "files": [
+    {
+      "path": "semgrep-security-audit.yml",
+      "source": "https://semgrep.dev/c/p/security-audit",
+      "bytes": 473625,
+      "sha256": "b109a039df712f30c6d3e25e1e8358053fd0f1c91b92d0e8d2871cd141fe602f",
+      "rule_map_sha256": "29bce88305b589394f54eea39bb88f6ad5bec138cf312a79326df726bfd24700",
+      "rules": 225
+    },
+    {
+      "path": "semgrep-secrets.yml",
+      "source": "https://semgrep.dev/c/p/secrets",
+      "bytes": 89772,
+      "sha256": "139b35ad3442bc83d1f0864db82fa4fdc7e1f1ee4b5ac872bfbeb604c82c6518",
+      "rule_map_sha256": "29e43a16ff26d29c7fb03c6d09cb480eb6ad12642149367a27203ea80eeb1790",
+      "rules": 52
+    },
+    {
+      "path": "semgrep-owasp-top-ten.yml",
+      "source": "https://semgrep.dev/c/p/owasp-top-ten",
+      "bytes": 1448110,
+      "sha256": "e0c19f8e6f6d086a4a7e8420bec7dd8e0784b143bf7e3eed060d9d3a32cedc64",
+      "rule_map_sha256": "771361de7ac0f4402c6b906b1694bd9600fcbfecb5a8d5768fe891c9b5c90835",
+      "rules": 560
+    }
+  ],
+  "limits": "Complete rule maps/fields and original raw reference bytes bound; observed registry rule ordering may differ. Private bytes preserved; no authenticated approval, use rights or complete security."
+}

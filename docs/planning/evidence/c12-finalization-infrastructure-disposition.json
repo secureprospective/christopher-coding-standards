@@ -1,0 +1,7 @@
+{
+  "failure": "First finalization scp .gitleaks.toml -> existing authorized ClaudeOS mirror: scp: Connection closed, exit255. set-e stopped before YAML copy, planned VM parsed equality/audit/Gitleaks and unstage; those planned checks did not execute. Remote partial state unknown.",
+  "ssh_probe_status": 255,
+  "ssh_probe_stderr": "ssh: connect to host localhost port 2222: Connection refused\n",
+  "restored_before_copy_hashes": "e4b59fe34a297632918763de438ccc25df1393d1af52b148a31871513cee55c0  /home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/.gitleaks.toml\n9f1adae5e78712dfb75d92e23eb9c53ccc3dce531c1a6e83e7e1bd08767b3f03  /home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/.github/workflows/security.yml\n",
+  "disposition": "Original attempts255/no tests; operator restored same ClaudeOS. First parsed-config helper1ModuleNotFoundError:yaml before audit/Gitleaks; exact failed helper/result preserved, no new packages. Correct selected existing semgrep interpreter+ruamel safe YAML explicitly, separate actual byte/parsed equality/audit/Gitleaks0. Cleanup first plan aborted distinct older DB/no deletion; later two exact duplicate inactive caches retired with original metadata and retained DB, free~4GiB. No inference why outage occurred/global recovery."
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "tool": "go",
+    "url": "https://go.dev/dl/go1.27.2.linux-amd64.tar.gz",
+    "archive_sha256": "ecbadb99091a3f46e31f5f934b068b1864eafa7995211b39eaddf76996045fe5"
+  },
+  {
+    "tool": "golangci-lint",
+    "url": "https://github.com/golangci/golangci-lint/releases/download/v2.14.0/golangci-lint-2.14.0-linux-amd64.tar.gz",
+    "archive_sha256": "ab90aeb7b066f92a33415b638a50fe5344bbb75a0d32ad30cc248d88f81032ab"
+  },
+  {
+    "tool": "gitleaks",
+    "url": "https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz",
+    "archive_sha256": "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb"
+  }
+]

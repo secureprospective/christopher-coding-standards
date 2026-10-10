@@ -1,0 +1,31 @@
+{
+  "records": [
+    {
+      "old_path": "docs/planning/evidence/c12-gitleaks-findings-redacted.json",
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/c12-gitleaks-findings-redacted.json",
+      "bytes": 30390,
+      "sha256": "4e709b3fc0503c3881f691d77deb3cefb1063c50fc0ededa81d5ebb547a41b07"
+    },
+    {
+      "old_path": "docs/planning/evidence/c12-secret-false-positive-disposition.json",
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/c12-secret-false-positive-disposition.json",
+      "bytes": 2928,
+      "sha256": "c1436320485b66ec2233963c4a178f8345382a391e0cff00001598030a5e421d"
+    },
+    {
+      "old_path": "docs/planning/evidence/c12-gitleaks-pinned-readme.md",
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/c12-gitleaks-pinned-readme.md",
+      "bytes": 29998,
+      "sha256": "022fd4d9fb53a8e7eb6b6e49875052e571f784bafab387deb484e28f8a1ea38b"
+    },
+    {
+      "old_path": "docs/planning/evidence/c12-gitleaks-pinned-default-config.toml",
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/c12-gitleaks-pinned-default-config.toml",
+      "bytes": 97731,
+      "sha256": "e163e53b9e7e8a8511e77271e2b323ed057759542a6d988258afe3a1fa329caf"
+    }
+  ],
+  "failure": "Native8.30.1 current-directory scan returned1/79findings on imported untracked scanner documentation/default patterns and raw redacted reports/commit-ID disposition data. Exact originals preserved privately, not rewritten or green.",
+  "scope": "Public source needs references/identity facts, not copied scanner documentation/regex examples/raw finding dumps. Existing actual history+root-directory scan remains mandatory; no new path/regex blanket suppression.",
+  "limits": "Private evidence separation is not universal secret detection, containment or authenticated approval."
+}

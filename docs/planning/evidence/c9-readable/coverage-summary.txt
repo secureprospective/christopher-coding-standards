@@ -1,0 +1,8 @@
+example.com/consumer/internal/playerid/example.go:28:	New			100.0%
+example.com/consumer/internal/playerid/example.go:51:	String			100.0%
+example.com/consumer/internal/playerid/example.go:54:	IsZero			100.0%
+example.com/consumer/internal/playerid/example.go:57:	MarshalJSON		100.0%
+example.com/consumer/internal/playerid/example.go:66:	UnmarshalJSON		100.0%
+example.com/consumer/internal/schema/example.go:29:	DecodePlayerRecord	100.0%
+example.com/consumer/internal/schema/example.go:51:	Validate		94.4%
+total:							(statements)		98.2%

@@ -1,0 +1,88 @@
+{
+  "source_base": "91988a378075dbcc298ed3b479c320e3f70c18c5",
+  "source_copy_manifest": "a11355642995ed563fb34648fc23fa2aff6d7f8fd10c795cd0c0c69e4d8e4374",
+  "copied_exact_units": [
+    {
+      "source": "docs/quality-contract.md",
+      "destination": "docs/quality-contract.md",
+      "source_sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f",
+      "consumer_sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f"
+    },
+    {
+      "source": "docs/architecture-review.md",
+      "destination": "docs/architecture-review.md",
+      "source_sha256": "9fd74d10b1b1c6929624e8a72552c711e06d3dac65ec1083b717fcc72d88f7bc",
+      "consumer_sha256": "9fd74d10b1b1c6929624e8a72552c711e06d3dac65ec1083b717fcc72d88f7bc"
+    },
+    {
+      "source": "LICENSE",
+      "destination": "docs/standards-source-LICENSE",
+      "source_sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+      "consumer_sha256": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04"
+    },
+    {
+      "source": "templates/typescript/biome.json",
+      "destination": "biome.json",
+      "source_sha256": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc",
+      "consumer_sha256": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc"
+    },
+    {
+      "source": "templates/typescript/tsconfig.json",
+      "destination": "tsconfig.json",
+      "source_sha256": "bbeaf612d2b1db2bfd8e404d93e3a564699b9681a8312e7f87997ea25dfe9128",
+      "consumer_sha256": "bbeaf612d2b1db2bfd8e404d93e3a564699b9681a8312e7f87997ea25dfe9128"
+    },
+    {
+      "source": "templates/typescript/vitest.config.ts",
+      "destination": "vitest.config.ts",
+      "source_sha256": "8ddd3f10a71b0b2232a7a7f3e5319c35beee35d3b844b7c1d133f806a4c5c2e4",
+      "consumer_sha256": "8ddd3f10a71b0b2232a7a7f3e5319c35beee35d3b844b7c1d133f806a4c5c2e4"
+    },
+    {
+      "source": "templates/typescript/stryker.config.mjs",
+      "destination": "stryker.config.mjs",
+      "source_sha256": "6c432048ce0115c4c9bb666fc834213b9505cbda8389fdf663fa89296148ec67",
+      "consumer_sha256": "6c432048ce0115c4c9bb666fc834213b9505cbda8389fdf663fa89296148ec67"
+    },
+    {
+      "source": "templates/typescript/.pre-commit-config.yaml",
+      "destination": ".pre-commit-config.yaml",
+      "source_sha256": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a",
+      "consumer_sha256": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a"
+    },
+    {
+      "source": "templates/typescript/scripts/check-package-manager.mjs",
+      "destination": "scripts/check-package-manager.mjs",
+      "source_sha256": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7",
+      "consumer_sha256": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7"
+    },
+    {
+      "source": "templates/typescript/schemas/example.ts",
+      "destination": "src/schemas/example.ts",
+      "source_sha256": "7cff5ed10214767f7751e874da60be46ca8c276b99352c09c4a0abee9c44c267",
+      "consumer_sha256": "7cff5ed10214767f7751e874da60be46ca8c276b99352c09c4a0abee9c44c267"
+    },
+    {
+      "source": "templates/typescript/schemas/example.test.ts",
+      "destination": "src/schemas/example.test.ts",
+      "source_sha256": "69a5fac758f9eaa0a04fd5dcefff53729b25602376bf29251f2d6016db75b88f",
+      "consumer_sha256": "69a5fac758f9eaa0a04fd5dcefff53729b25602376bf29251f2d6016db75b88f"
+    }
+  ],
+  "customized_shared": [
+    "AGENTS.md",
+    "SYSTEM_MAP.md",
+    "Makefile",
+    "package.json",
+    "README.md"
+  ],
+  "unknown_before_adoption": true,
+  "original_owner_files_preserved": {
+    ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+    "AGENTS.md": "f13ffdacecabc247336632db7876a58425a5859895b24e8f390fe7b98fb4ae29",
+    "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+    "Makefile": "07aa6b6fd372d1b7a4e3775ff632ede90c78df4dd66c82b51e08f1a0e3ac3b0e",
+    "package.json": "1310d74d3bdca7ad6aee3ab311d45aa0d4fca0d036d454147e0d27a3530c77eb"
+  },
+  "limits": "Observed current authorized synthetic adoption bytes, not authenticated approval or retroactive adoption history/canonical receipt."
+}

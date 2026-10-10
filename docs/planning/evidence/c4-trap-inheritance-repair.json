@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/home/claude/coding-standards-verification/bee-c4-2026-10-08/bats-core/bin/bats",
+    "--tap",
+    "--print-output-on-failure",
+    "project/tests/example.bats"
+  ],
+  "exit": 0,
+  "stdout": "1..17\nok 1 require_arg rejects empty without continuing\nok 2 require_arg rejects missing value\nok 3 require_arg preserves nonempty strings\nok 4 positive integer rejects zero and all-zero strings\nok 5 positive integer rejects negatives and malformed strings\nok 6 positive integer rejects empty and missing value\nok 7 positive integer preserves positives and leading zeros\nok 8 positive integer does not overflow on large decimal strings\nok 9 example rejects missing input with no success output\nok 10 example rejects zero negative and malformed input before work\nok 11 example preserves exact positive and leading-zero output\nok 12 shell metacharacters remain data and cannot execute\nok 13 ERR reports top-level failing file line and original status\nok 14 ERR inherits into ordinary function calls\nok 15 pipefail reports pipeline line and original failure\nok 16 handled command condition does not trigger ERR\nok 17 function used as a condition has Bash conditional suppression\n",
+  "stderr": "",
+  "library_sha256": "9864d946a46cfbbe5cab83d999e6030fa1345d5dc11d83b30aa2e8f4d5ac2945",
+  "tests_sha256": "a8deb8b994c8ca77b7115c9733e067b647832a8e1ab11131a975fa433f8dc0cc",
+  "meaning": "Only errtrace option and scoped explanatory comments changed since one known-function-context failure."
+}

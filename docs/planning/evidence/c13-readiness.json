@@ -1,0 +1,26 @@
+{
+  "status": "READY for C13fresh independent review, not accepted/published",
+  "packet_sha256": "12542585d6ddbdeef29866b5ef32b0e81e48644476e0d8ffdb2fc93b3ef87d00",
+  "inputs": 52,
+  "helpers": 6,
+  "external_review_inputs": 123,
+  "protected_including_metadata": 608,
+  "tracked_diff_sha256": "8df26376ca93bfa6dfe769e140d326fbc9defc51f92682a52381709ecda75275",
+  "state_sha256": "07d3fc53575b5b226cfb6b85c1650465192a6b3a11555dff93160659782c9f59",
+  "consumer_source_archive_sha256": "9061094beda1b3db89b64ce96d3114921fd95040fb4712e6fa1c92c0e1448b40",
+  "readability_manifest": "/home/chris/scratch/coding-standards-c13-post-freeze-readable/manifest.json",
+  "readability_manifest_sha256": "3dcaf8c019ac90be8addcbdfcf93cdd4cc063f26f47c5f5506982a90a4262401",
+  "post_freeze_records": [
+    {
+      "path": "/home/chris/scratch/coding-standards-c13-post-freeze-gitleaks.json",
+      "sha256": "f744162c0e1705052e5df7676772fb9b319e7059d5de02b0bb571adb0b36f04c",
+      "status": 0
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c13-post-freeze-semgrep.json",
+      "sha256": "f28966230984a6d746dc9c4c7b6cd08bf0df41583c574382c3a60fe22f34cfd2",
+      "status": 0
+    }
+  ],
+  "limits": "Source/copy/execution/approval distinct. Initial absent-scanner helperfailed/nulltool status kept; first successful post checks before precise wording clarification retained as separate same-policy observations. No legal/hosted/liveconsumer/tracker/app/publication/push/mainmerge/deploy."
+}

@@ -1,0 +1,32 @@
+{
+  "base": "8fd8e82d30c19f842d0d8a8f3dde162c2596269f",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "purpose": "C3 provisional test-copy identity, not acceptance or complete kit",
+  "sources": [
+    {
+      "path": "tools/verify_fixture.py",
+      "bytes": 3407,
+      "sha256": "9ace736188be420cfac5fece2b6c1cfb740f4d11fc863dd3c18993c608e5bb11"
+    },
+    {
+      "path": "tools/tests/test_verify_fixture.py",
+      "bytes": 7257,
+      "sha256": "95bcb399773cf0e12a314f72fe5b9ff242eee4b28c196c04453a5c503acdc05f"
+    },
+    {
+      "path": "tools/README.md",
+      "bytes": 4007,
+      "sha256": "297543a4e1819eff601016b3f771e00634ea36722ebeab1e4406d8be4baf62c4"
+    },
+    {
+      "path": "scratch/fixtures/bash/clean.sh",
+      "bytes": 347,
+      "sha256": "6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a"
+    },
+    {
+      "path": "scratch/fixtures/bash/violating.sh",
+      "bytes": 634,
+      "sha256": "cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "workspace": "/home/claude/coding-standards-verification/bee-c5-2026-10-08",
+  "files": [
+    {
+      "source": "templates/typescript/.pre-commit-config.yaml",
+      "destination": ".pre-commit-config.yaml",
+      "bytes": 769,
+      "sha256": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a"
+    },
+    {
+      "source": "templates/typescript/Makefile",
+      "destination": "Makefile",
+      "bytes": 630,
+      "sha256": "93e641976acb9f8e60b14d6984f3c875ea8ac9a47874d6392fd4b65bf4ca5fcf"
+    },
+    {
+      "source": "templates/typescript/README.md",
+      "destination": "README.md",
+      "bytes": 7575,
+      "sha256": "253b5cf517762912e6e7079163a0975cffc22a3c13bd6e48d8f0b29b87bbb343"
+    },
+    {
+      "source": "templates/typescript/biome.json",
+      "destination": "biome.json",
+      "bytes": 852,
+      "sha256": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc"
+    },
+    {
+      "source": "templates/typescript/package.json.snippet",
+      "destination": "package.json",
+      "bytes": 983,
+      "sha256": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156"
+    },
+    {
+      "source": "templates/typescript/schemas/example.test.ts",
+      "destination": "src/schemas/example.test.ts",
+      "bytes": 2020,
+      "sha256": "69a5fac758f9eaa0a04fd5dcefff53729b25602376bf29251f2d6016db75b88f"
+    },
+    {
+      "source": "templates/typescript/schemas/example.ts",
+      "destination": "src/schemas/example.ts",
+      "bytes": 1174,
+      "sha256": "7cff5ed10214767f7751e874da60be46ca8c276b99352c09c4a0abee9c44c267"
+    },
+    {
+      "source": "templates/typescript/scripts/check-package-manager.mjs",
+      "destination": "scripts/check-package-manager.mjs",
+      "bytes": 786,
+      "sha256": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7"
+    },
+    {
+      "source": "templates/typescript/stryker.config.mjs",
+      "destination": "stryker.config.mjs",
+      "bytes": 1479,
+      "sha256": "6c432048ce0115c4c9bb666fc834213b9505cbda8389fdf663fa89296148ec67"
+    },
+    {
+      "source": "templates/typescript/tsconfig.json",
+      "destination": "tsconfig.json",
+      "bytes": 1684,
+      "sha256": "bbeaf612d2b1db2bfd8e404d93e3a564699b9681a8312e7f87997ea25dfe9128"
+    },
+    {
+      "source": "templates/typescript/vitest.config.ts",
+      "destination": "vitest.config.ts",
+      "bytes": 942,
+      "sha256": "8ddd3f10a71b0b2232a7a7f3e5319c35beee35d3b844b7c1d133f806a4c5c2e4"
+    }
+  ]
+}

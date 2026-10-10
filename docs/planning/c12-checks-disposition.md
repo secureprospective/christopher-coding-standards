@@ -1,0 +1,36 @@
+# C12 checks and evidence disposition — NOT acceptance
+
+C0–C11 remain accepted; C12 source/checks/review/acceptance are distinct. No hosted run, push, merge, deployment, enrollment or legal approval is recorded.
+
+## Actual current-source command campaign
+
+Authorized `ssh claudeos`, user/uid `claude`/1000 only. Eight readiness sequences used new owned prefixes and one matching public-source manifest (502files); actual installer/selected version commands/reference commands returned0 and every declared source hash remained unchanged. Python also ran the accepted14fixture-checker unit tests; Semgrep ran7own normalization tests. Actual PNPM store paths matched owned prefixes. Installer success is a whole-command/check-assertion observation, not invented separately serialized statuses for its child installs/downloads.
+
+- TS lint: frozen accepted lock, Biome/typecheck, named TS2322/status2 control and restoration. Shared verifier0/1 contract unchanged; one explicit typed-status2 assessment is separate.
+- TS tests:15schema cases/100%selected coverage, exact assertion rejection/restoration.
+- Python: Ruff/format/strict source+tests typing,35schema cases/100%selected namespace branch coverage and named lint/type controls/restoration.
+- Bash: actual shipped Make/17Bats/SC2086/format controls/restoration/native scanner wiring.
+- Go: shipped lint/format/vet/build/race/selected coverage, optional analyzer tests and named errcheck/interface controls/restoration/native scanner wiring.
+- Secrets: native history and current-directory scans plus own harmless custom-rule bad/safe controls. Not complete default-policy secret detection.
+- SAST: complete selected private rule maps, root scan and actual eval-detected bad/int-safe controls.725available/398run rules,208targets at the readiness source; default ignores/explicit evidence/negative-fixture exclusions remain limits, not universal OWASP coverage. Exact raw outputs are private; public wrapper preserves invocation/status/hash facts, not fictional inner receipts.
+- SCA: actual package-bearing Go4/Python52/Semgrep-tool66/pnpm253graphs (375total), explicit dev dependencies, no reported selected HIGH/CRITICAL findings on observed current DB; no `ignore-unfixed`. Not all overlays/platforms/advisories/dependencies.
+
+A final audit found checkout's default shallow history would not reproduce the intended history prerequisite. Only the secrets job now requests `fetch-depth: 0`; current native main rejects a shallow checkout with its named diagnostic before scanning. An actual owned depth1clone rejected. The original readiness runs remain exact historical records; final affected security trio returned0 with557declared source hashes unchanged; the final source/YAML audit checked8jobs/32links/4actualCLIhelp0, including the later history prerequisite. Hosted checkout/ref reachability remains unexecuted/unknown; native history scope is the owned non-shallow clone's reachable refs, not all server history.
+
+## Retained failures, not rewritten receipts
+
+Earlier literal `python` missing executable, TS checker expecting1instead of actual2, Python maintainer checker accidentally linted inside consumer, initial production-only Node SCA scope, Go nonexistent target assumption,39documented initial historical scanner findings, vendor self-matches, SQLite-shaped unexpected-green SAST control and transport/three-hour reviewer timeout remain failures/limited observations. See original archives/private identities and latest recovery state; later matching results do not green them.
+
+Real private rule download initially failed the raw OWASP SHA after560identical complete rule objects were reordered. Full named object-map equality was demonstrated; the purpose-specific map identity binds every field/notice/nested list, rejects duplicate IDs/extra top configuration, and never rewrites raw bytes. Changed definitions still fail; no rule bytes are distributed. A character-level comparison timed out300seconds; unique own orphan process was checked/stopped, then bounded parsed comparisons were new observations. No GUI/service/global/other-agent changes.
+
+The newly copied current tree exposed79scanner findings in four imported scanner-example/raw-report/disposition records. Exact untracked originals were preserved privately, with public separation/identity facts; no broad source/archive/README exemptions were added. A later root/history/custom-control scan passed. Three fixed-argv audit annotations moved by formatting missed their actual list-expression anchors; that failing formatted scan is private and a separate narrow-anchor recheck passed. Paths/argv stay literal/fixed/no shell; suppressions are not universal safety or automatic approval.
+
+Own setup/matcher controls matched10actual observations: unexpected-green/wrong-marker/missing-tool/missing-input reject-as-proof, missing selected lock/frozen config mismatch, shipped npm guard, wrong/missing/public private-rule binding, bad native archive checksum. First helper incorrectly expected `ERR_PNPM_NO_LOCKFILE`; actual selected override graph reported `ERR_PNPM_LOCKFILE_CONFIG_MISMATCH`1. Second helper expected a version literal absent from the real manager message; actual guard1was not a matched observation. Both exact helper/results survive; repaired named controls are separate. Two additional private-prefix/symlink controls rejected; no licensed notice/rule was modified for probes.
+
+## Publication, execution and authority limits
+
+Semgrep Rules License v1.0's observed no-distribution restriction caused exact vendor bodies/full license page/raw self-match reports to leave the untracked publication candidate. Runtime fetched bodies remain outside checkout with full identity checks and notices intact. The installer rejects an inside-checkout prefix before writing; the loader rejects escaping symlinks. These are not a race-proof sandbox, authentication, licensing clearance or rights grant to downstream users.
+
+Actions/tools are immutable-ref/checksum/hash-lock configured; hosted Ubuntu24.04/actions/node/python setup and live required-check policy were not executed or changed. Existing required job display names/IDs are preserved. Workers/Astro/Bun use accepted C6/C7/C8evidence/protected source, not invented new hosted requirements. Earlier shared pip/Go/bootstrap/pnpm caches and failed cleanup remain disclosed; new owned prefixes do not make the VM pristine.
+
+Pass1 independent review returned needs_change: missing Trivy intended rejection and unchecked Semgrep control work-copy destination. Exact original report/candidate retained; parent agrees. Repaired source rejects direct/symlink inside work paths before creation and adds passive HIGH/CVE pnpm dev-lock reject1/fixed4.18.0clean0 on the root scan's unchanged DB, with current585input security/audit/unit observations. The proposed4.17.21 fixed control actually failed for a later HIGH advisory and remains a failure; no vulnerable package installed/executed or consumer upgrade. See [pass1 disposition](c12-pass1-disposition.md). Refreeze/native re-review/parent closure remain required. Reviewer timeout/no verdict or needs_change is not acceptance or authority to begin C13.

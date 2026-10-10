@@ -1,0 +1,56 @@
+[
+  {
+    "path": "docs/planning/evidence/c6-readable/package-lock.json",
+    "sha256": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+    "derived_from": "docs/planning/evidence/c6-repaired-final.json",
+    "field": "package-lock.json"
+  },
+  {
+    "path": "docs/planning/evidence/c6-readable/worker-configuration.d.ts",
+    "sha256": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+    "derived_from": "docs/planning/evidence/c6-repaired-final.json",
+    "field": "worker-configuration.d.ts"
+  },
+  {
+    "path": "docs/planning/evidence/c6-readable/package.json",
+    "sha256": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+    "derived_from": "docs/planning/evidence/c6-repaired-final.json",
+    "field": "package.json"
+  },
+  {
+    "path": "docs/planning/evidence/c6-readable/src/index.ts",
+    "sha256": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6",
+    "derived_from": "docs/planning/evidence/c6-repaired-final.json",
+    "field": "src/index.ts"
+  },
+  {
+    "path": "docs/planning/evidence/c6-readable/src/index.test.ts",
+    "sha256": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048",
+    "derived_from": "docs/planning/evidence/c6-repaired-final.json",
+    "field": "src/index.test.ts"
+  },
+  {
+    "path": "docs/planning/evidence/c6-readable/template-wrangler.jsonc",
+    "sha256": "ff697f916f4bfdd7051a6be715fdbd0750e96adba17f7b3c0191d49bba7d77a6",
+    "derived_from": "docs/planning/evidence/c6-repaired-final.json",
+    "field": "template-wrangler.jsonc"
+  },
+  {
+    "path": "docs/planning/evidence/c6-readable/wrangler.jsonc",
+    "sha256": "d3acaf28ba316d042c5ebab2363654c458cb3876b70f2a035e76a2a1962e5a22",
+    "derived_from": "docs/planning/evidence/c6-repaired-final.json",
+    "field": "wrangler.jsonc"
+  },
+  {
+    "path": "docs/planning/evidence/c6-readable/configuration.mdx",
+    "sha256": "f9279170cab2ca80bea45605d09a4c444db41e007eed9f825e2b29a7c8083a97",
+    "derived_from": "docs/planning/evidence/c6-metadata.json",
+    "github_blob_sha1": "4d170655bdd601d8fe7f22b93031304a871ede57"
+  },
+  {
+    "path": "docs/planning/evidence/c6-readable/write-your-first-test.mdx",
+    "sha256": "c32bf06f5a038c31234147c3178db7e6bfd9cfa7e6f64460465e6abd42ad7e6e",
+    "derived_from": "docs/planning/evidence/c6-metadata.json",
+    "github_blob_sha1": "202069dfc4979e359380ab59e6c75ae6d13bca60"
+  }
+]

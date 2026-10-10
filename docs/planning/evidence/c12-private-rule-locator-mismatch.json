@@ -1,0 +1,46 @@
+[
+  {
+    "url": "https://semgrep.dev/c/p/owasp-top-ten",
+    "agent": "Python-urllib/3.13",
+    "headers": {
+      "Content-Type": "text/yaml; charset=utf-8",
+      "Content-Length": "1448110",
+      "Connection": "close",
+      "Date": "Fri, 09 Oct 2026 19:07:28 GMT",
+      "x-robots-tag": "noindex",
+      "Server": "gunicorn",
+      "ETag": "W/\"5a24d55de53e96ac9551f51aff9d7a237ad349b6\"",
+      "X-Cache": "Hit from cloudfront",
+      "Via": "1.1 df20548013e0e0332dfcda59cfca8e48.cloudfront.net (CloudFront)",
+      "X-Amz-Cf-Pop": "IAH50-P4",
+      "X-Amz-Cf-Id": "7PuIdFxRDVoylDj4agVT62_nZbtwefFFWEl9typVkn3LhR_TV9sAhw==",
+      "Age": "2819"
+    },
+    "sha256": "8a9d6daa61c2af81bfad770e32815d8655cf6cea0487cb6f369a9abf3c161e50",
+    "expected": "e0c19f8e6f6d086a4a7e8420bec7dd8e0784b143bf7e3eed060d9d3a32cedc64",
+    "bytes": 1448110,
+    "private_path": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/results/owasp-probe-Python-urllib.yml"
+  },
+  {
+    "url": "https://semgrep.dev/c/p/owasp-top-ten",
+    "agent": "Bee-C12-standards",
+    "headers": {
+      "Content-Type": "text/yaml; charset=utf-8",
+      "Content-Length": "1448110",
+      "Connection": "close",
+      "Date": "Fri, 09 Oct 2026 19:07:28 GMT",
+      "x-robots-tag": "noindex",
+      "Server": "gunicorn",
+      "ETag": "W/\"5a24d55de53e96ac9551f51aff9d7a237ad349b6\"",
+      "X-Cache": "Hit from cloudfront",
+      "Via": "1.1 b808de4f6a1a0f21dd147ffd3d0cdcb2.cloudfront.net (CloudFront)",
+      "X-Amz-Cf-Pop": "IAH50-P4",
+      "X-Amz-Cf-Id": "xWtBov-HL3T9aVqdGTABmEGDC8YdovqB-Y11NshHWS9Cy4Eqa1glSQ==",
+      "Age": "2820"
+    },
+    "sha256": "8a9d6daa61c2af81bfad770e32815d8655cf6cea0487cb6f369a9abf3c161e50",
+    "expected": "e0c19f8e6f6d086a4a7e8420bec7dd8e0784b143bf7e3eed060d9d3a32cedc64",
+    "bytes": 1448110,
+    "private_path": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/results/owasp-probe-Bee-C12-standards.yml"
+  }
+]

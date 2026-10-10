@@ -1,0 +1,14 @@
+{
+  "verification_type": "Read-only original hosted-string compatibility reconciliation + separately recorded actual nativeTS execution; NOT hosted rerun/independent receipt",
+  "original_hosted_log_sha256": "4393afcb0699896c8795f76236f8256d5786b34357d8fbf4b6b9c08dece2f665",
+  "original_native_sha256": "144eb9c96f60e09e8b7a58f945645baad166529facfcb9f2bf1df54ea9e1d1b2",
+  "actual_native_campaign_status": 0,
+  "native_FORCED_COLOR_and_CI": true,
+  "native_color_limitation": "Actual native stdout colored, assertion stderr plain despiteFORCE_COLOR=1; doNOTclaim native reproduced hosted stderr rendering. Original actual hosted stderr supplies exact ANSI/header evidence. Hosted rerun stillrequired.",
+  "original_hosted_stderr_ANSI": true,
+  "new_literal_detail_in_original_hosted_stderr": true,
+  "old_literal_header_absent_in_original_hosted_stderr": true,
+  "failure_preserved": "Post-native campaign helper1 expected rawESC in outerJSON instead of decoding; later metadata assertion expected nativecoloredstderr incorrectly. Original actualcampaign0unchanged; metadata assumptionsfailed, notscanner/test failures.",
+  "no_C3_contract_change": true,
+  "current_source_marker": "expected 1 to be 2"
+}

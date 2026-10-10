@@ -1,0 +1,5 @@
+# C7 — Astro
+
+Only templates/astro, C7 evidence and progress-only HANDOFF. Preserve accepted core/TypeScript reference and consumer custom rules. Explicit ESM/pnpm/local-guard composition; current selected Astro/check/Prettier/plugin graph; Astro-aware checks including generated types/tests; non-React default plus deliberately tested optional React. Read-only project-local hook and thin configurable Make wrappers. Remove stale Biome/hosted/bootstrap/phase/mutation claims, not owner policies.
+
+Actual checks only on authorized ClaudeOS: install/frozen lock/audit, base lint/tests, Astro formatting/typechecks/build/rendered output, React/non-React, specific type/format/assertion failures, actual hook and restoration. Verify official metadata/installed preset/resolved graph and source-copy hashes. Freeze complete owned candidate/helpers/protected inputs, fresh read-only review, parent disposition/local checkpoint. No deployed/browser/E2E/visual/hosted-enforcement claim or consumer/system/global/fleet/push/merge changes.

@@ -1,0 +1,86 @@
+[
+  {
+    "path": "docs/planning/evidence/c8-readable/package.json",
+    "sha256": "e7a7aa4bdeae3d612405c0eefd48eee24f1f8d7bdee1390093c6299550df7678",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "package.json"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/bun.lock",
+    "sha256": "850af9928d83960e58c201076b70659644b3ee56c4995c0f5466c31a883a2cdf",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "bun.lock"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/tsconfig.json",
+    "sha256": "eaa46627c0b123fde534224b8bca9f75017a4471a504c5da78ddb3ae0ad5ddcb",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "tsconfig.json"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/.pre-commit-config.yaml",
+    "sha256": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": ".pre-commit-config.yaml"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/.dependency-cruiser.cjs",
+    "sha256": "8e47738c2bcb7c996dd0d69cce296270963f170b031b91d0093293fc95f7d340",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": ".dependency-cruiser.cjs"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/Makefile",
+    "sha256": "654d60278f5b5f08eddd9d516ebd626d8cd67a07269707afc268092b02a00845",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "Makefile"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/server/src/schemas/example.ts",
+    "sha256": "7cff5ed10214767f7751e874da60be46ca8c276b99352c09c4a0abee9c44c267",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "server/src/schemas/example.ts"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/server/src/schemas/example.test.ts",
+    "sha256": "e3ddbacd042d74081e8f88a9cb59ea460030b54619ac2585c8dae53cb6f789ca",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "server/src/schemas/example.test.ts"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/server/src/ecs/world.ts",
+    "sha256": "018ec1dda5180e9d6795c3a62fefbee3ead49e6a4b5722184e0b40ed7ad959f7",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "server/src/ecs/world.ts"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/server/src/ecs/world.test.ts",
+    "sha256": "a026e6781fb01152ecb58a053e779be689dccb2be575484b800fbf303375853b",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "server/src/ecs/world.test.ts"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/server/src/systems/movement-system.ts",
+    "sha256": "2974d80e3525ac3c0e555fcde0daf7034ca633b8aa33ce659e2455b3c112552e",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "server/src/systems/movement-system.ts"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/scripts/check-component-purity.ts",
+    "sha256": "fc822c2513e15a6f828a389afdb5364bf6e6ec3a21a587cd383167a5910efc44",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "scripts/check-component-purity.ts"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/scripts/check-file-length.ts",
+    "sha256": "3b2eabcd308ca460c65c6cb8d13be829ddd3aa0c60a0da925bf7b291bad37895",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "scripts/check-file-length.ts"
+  },
+  {
+    "path": "docs/planning/evidence/c8-readable/scripts/checkers.test.ts",
+    "sha256": "f5c49f2a509e7f5ffbcc234d05be101cee11eee1035c0431e3d5b06ca3c0c549",
+    "derived_from": "docs/planning/evidence/c8-final.json",
+    "field": "scripts/checkers.test.ts"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "path": "templates/bun-ecs/.dependency-cruiser.cjs",
+    "sha256": "8e47738c2bcb7c996dd0d69cce296270963f170b031b91d0093293fc95f7d340",
+    "runtime_field": ".dependency-cruiser.cjs"
+  },
+  {
+    "path": "templates/bun-ecs/.pre-commit-config.yaml",
+    "sha256": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a",
+    "runtime_field": ".pre-commit-config.yaml"
+  },
+  {
+    "path": "templates/bun-ecs/Makefile.snippet",
+    "sha256": "654d60278f5b5f08eddd9d516ebd626d8cd67a07269707afc268092b02a00845",
+    "runtime_field": "Makefile"
+  },
+  {
+    "path": "templates/bun-ecs/README.md",
+    "sha256": "f5e04a2cf5056d5a7c31e93ce25d8988e8a5787889b8746dc37cf65eac5b958f",
+    "runtime_field": "README.md"
+  },
+  {
+    "path": "templates/bun-ecs/biome.json",
+    "sha256": "ec43dc505abe8846a314ecc87a5bf4338838d057eb287ce473ee88f5ad91bcdb",
+    "runtime_field": "biome.json"
+  },
+  {
+    "path": "templates/bun-ecs/examples/scripts/checkers.test.ts",
+    "sha256": "f5c49f2a509e7f5ffbcc234d05be101cee11eee1035c0431e3d5b06ca3c0c549",
+    "runtime_field": "scripts/checkers.test.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/components/combat-target-component.ts",
+    "sha256": "3330bf802e3f7cfc4495f49db0157cb3f90c71af6f7c7d92a2b4c2e3d8b314eb",
+    "runtime_field": "server/src/components/combat-target-component.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/components/health-component.ts",
+    "sha256": "c9981222a05b1fd6be17a1f8513e0b66983a9b6da393f5c3266916896de73000",
+    "runtime_field": "server/src/components/health-component.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/components/position-component.ts",
+    "sha256": "9dbe96a3a4662658598809c7a96d151634a0c79b538d53f1834821b725d1f483",
+    "runtime_field": "server/src/components/position-component.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/components/stats-component.ts",
+    "sha256": "c6c8c863ea4638fa1de6911b66ca74d7a388d0e3575ca53769b3876c2321450d",
+    "runtime_field": "server/src/components/stats-component.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/db/schema.ts",
+    "sha256": "2e87333a5afdc1f908a2398141706f00195b1d1ef7f41bad072990750ae40b2f",
+    "runtime_field": "server/src/db/schema.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/ecs/system.ts",
+    "sha256": "3683f926ccd2a5832ebe92c368f33e16e56ed5d5fbdd201c0ebcb46ad93667ff",
+    "runtime_field": "server/src/ecs/system.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/ecs/world.test.ts",
+    "sha256": "a026e6781fb01152ecb58a053e779be689dccb2be575484b800fbf303375853b",
+    "runtime_field": "server/src/ecs/world.test.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/ecs/world.ts",
+    "sha256": "018ec1dda5180e9d6795c3a62fefbee3ead49e6a4b5722184e0b40ed7ad959f7",
+    "runtime_field": "server/src/ecs/world.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/game-loop.ts",
+    "sha256": "33c64706d441dff840b4a07817cec89e043871e32eebeb5637080458929af649",
+    "runtime_field": "server/src/game-loop.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/network/protocol-out.ts",
+    "sha256": "900909818bc329827f0970e7e90711d1a0d3d7af49419ae6a5f1fae3a731ff07",
+    "runtime_field": "server/src/network/protocol-out.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/shared/protocol.ts",
+    "sha256": "a6c217182af3ea6b1e3b7bba025f27074bf2f36aecbd8a2d685ed00cddcfb5c7",
+    "runtime_field": "server/src/shared/protocol.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/shared/types.ts",
+    "sha256": "cbfee930697cddadc1600091a7abbf9a89a6bc777385fca7546a38df3da5d483",
+    "runtime_field": "server/src/shared/types.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/systems/movement-system.ts",
+    "sha256": "2974d80e3525ac3c0e555fcde0daf7034ca633b8aa33ce659e2455b3c112552e",
+    "runtime_field": "server/src/systems/movement-system.ts"
+  },
+  {
+    "path": "templates/bun-ecs/examples/server/src/systems/network-send-system.ts",
+    "sha256": "34d4acf4a996d4fda94723b67b3f46fc15e30ee66d996c6f6828d98398bfce3a",
+    "runtime_field": "server/src/systems/network-send-system.ts"
+  },
+  {
+    "path": "templates/bun-ecs/package.json.snippet",
+    "sha256": "f9d77a25ce0c295bca67cfd17cbde31a2d22ca5c866bee00163080f8fe4c1ef8",
+    "runtime_field": "initial overlay package.json.snippet"
+  },
+  {
+    "path": "templates/bun-ecs/scripts/check-component-purity.ts",
+    "sha256": "fc822c2513e15a6f828a389afdb5364bf6e6ec3a21a587cd383167a5910efc44",
+    "runtime_field": "scripts/check-component-purity.ts"
+  },
+  {
+    "path": "templates/bun-ecs/scripts/check-file-length.ts",
+    "sha256": "3b2eabcd308ca460c65c6cb8d13be829ddd3aa0c60a0da925bf7b291bad37895",
+    "runtime_field": "scripts/check-file-length.ts"
+  },
+  {
+    "path": "templates/bun-ecs/tsconfig.json",
+    "sha256": "eaa46627c0b123fde534224b8bca9f75017a4471a504c5da78ddb3ae0ad5ddcb",
+    "runtime_field": "tsconfig.json"
+  }
+]

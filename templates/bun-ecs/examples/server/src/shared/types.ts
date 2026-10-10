@@ -2,10 +2,8 @@ export type EntityId = string;
 
 export type ComponentType = "position" | "health" | "stats" | "controllable" | "combat-target";
 
-// RULE 2 (ECS_RULES.md): every Component is plain data with a `type`
-// discriminator and JSON-serializable fields only — no Set/Map/class
-// instances, no methods. Required so World.exportSnapshot() can produce a
-// plain JSON tree with no special-casing per component.
+// The example components use plain fields. This structural base type does not
+// guarantee arbitrary values are JSON-serializable or free of methods/Set/Map.
 export interface Component {
   type: ComponentType;
 }

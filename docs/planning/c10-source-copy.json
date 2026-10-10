@@ -1,0 +1,41 @@
+{
+  "record": "docs/planning/evidence/c10-final-candidate.json",
+  "files": [
+    {
+      "path": "templates/python/.pre-commit-config.yaml",
+      "vm_relative": ".pre-commit-config.yaml",
+      "sha256": "e890a2ee9a5d2da4331996e10ae250c1a912e83bef4ea0a346083d8963a80ba9"
+    },
+    {
+      "path": "templates/python/Makefile.snippet",
+      "vm_relative": "Makefile",
+      "sha256": "78e5839cb32eb5da33df2af904740fb5f7a628c92939cce6da8f7ba64ba72fdb"
+    },
+    {
+      "path": "templates/python/README.md",
+      "vm_relative": "README.md",
+      "sha256": "df3072c109f717f7b5654975c2d2594e8521cd65b2e51411a860751dedb6dcf3"
+    },
+    {
+      "path": "templates/python/pyproject.toml.snippet",
+      "vm_relative": "pyproject.toml",
+      "sha256": "0fad143a60ec62b699c88819d88c098df900aeee13c1efd4c99b8c1b45eddb03"
+    },
+    {
+      "path": "templates/python/requirements-reference.lock",
+      "vm_relative": "requirements-reference.lock",
+      "sha256": "4f58edc41a48cbf88eab9ba1b393e9edc700b3bec3310fb89b15f78e6ea730ed"
+    },
+    {
+      "path": "templates/python/schema/example.py",
+      "vm_relative": "src/schema/example.py",
+      "sha256": "202a0885503fdccf2556438dbc3b209aa697f7355eb531d293031dd979fe970c"
+    },
+    {
+      "path": "templates/python/tests/test_example.py",
+      "vm_relative": "tests/test_example.py",
+      "sha256": "db47acf79037ef741a374c4f681f7f2138d95837910d436b5072fe686c45e08c"
+    }
+  ],
+  "limits": "README physically copied after final checks; no claim it was executed. All final product/config bytes match actual checked copies."
+}

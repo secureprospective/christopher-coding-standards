@@ -1,3 +1,6 @@
+> **Historical guidance — not current instructions or present-day capability/authority evidence.**
+> Original body retained for provenance; use the [quality contract](quality-contract.md), [task index](INDEX.md) and [superseding rationale](adr/0002-quality-first-acceptance.md). C1 core/routing cleared content review; this is not a complete-kit release, consumer rollout or fleet role reassignment. Do not load this history by default.
+
 # The Agent Codex — LITE
 
 **For small local models** (Ornith, Gemma, qwen on Beelink; Hermes' local fallback) whose

@@ -2,24 +2,21 @@
 export default {
   // Use Vitest as the test runner.
   testRunner: "vitest",
+  // Explicit modules also work with pnpm's isolated dependency layout.
+  plugins: ["@stryker-mutator/vitest-runner", "@stryker-mutator/typescript-checker"],
 
   // Point at your vitest config if not at project root.
   // vitest: { configFile: "vitest.config.ts" },
 
   // Files to mutate. Excludes test files, schemas, and generated code.
-  mutate: [
-    "src/**/*.ts",
-    "!src/**/*.{test,spec}.ts",
-    "!src/**/*.d.ts",
-    "!src/schemas/**",
-  ],
+  mutate: ["src/**/*.ts", "!src/**/*.{test,spec}.ts", "!src/**/*.d.ts", "!src/schemas/**"],
 
   // TypeScript support.
   checkers: ["typescript"],
   tsconfigFile: "tsconfig.json",
 
-  // Incremental mode: only re-test mutants in files changed since last run.
-  // Dramatically faster for PR cycles. Full scan runs on the weekly cron.
+  // Reuse compatible prior results; invalidation follows Stryker's cache rules.
+  // Use the full command for independent baselines and after relevant changes.
   incremental: true,
   incrementalFile: ".stryker-tmp/incremental.json",
 
@@ -35,9 +32,8 @@ export default {
   reporters: ["html", "progress"],
   htmlReporter: { fileName: "reports/mutation/report.html" },
 
-  // Concurrency: 1 because StrykerJS manages its own parallel workers.
-  // The vitest runner requires threads: true (default). Do not set to false.
-  concurrency: 4,
+  // Conservative reference budget; tune deliberately for the project/host.
+  concurrency: 1,
 
   // Timeout per mutant in milliseconds.
   timeoutMS: 30000,

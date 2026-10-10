@@ -1,0 +1,46 @@
+# Merge tool tables with consumer pyproject; do not replace project/dependency rules.
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["mutants"]  # declared mutmut-generated output, not production
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "S", "C4", "PIE", "SIM", "RET"]
+
+[tool.ruff.lint.per-file-ignores]
+# Deliberate pytest assertions/fixture values, not a production assert/security waiver.
+"tests/**" = ["S101", "S105", "S106"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+plugins = ["pydantic.mypy"]
+mypy_path = "$MYPY_CONFIG_FILE_DIR/src"
+explicit_package_bases = true
+
+[tool.pydantic-mypy]
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers --strict-config"
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+
+# Optional mutation report: adapt source selection to relevant consumer logic.
+# Tool results are observations, not an automatic score/pass/approval.
+[tool.mutmut]
+source_paths = ["src/"]
+pytest_add_cli_args_test_selection = ["tests/"]

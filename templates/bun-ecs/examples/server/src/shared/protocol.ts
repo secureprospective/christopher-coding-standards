@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-// RULE 8 (ECS_RULES.md): the client is a liar. Every inbound WebSocket
-// message is Zod-validated before it becomes a TickInput — never trust
-// position/health/cooldowns reported by the client.
+// Shape boundary only; default Zod objects strip unknown fields here.
+// Validation does not grant entity ownership/action permission or enforce
+// movement range/rate. Callers must validate before effects and own those rules.
 
 export const MoveSchema = z.object({
   type: z.literal("MOVE"),

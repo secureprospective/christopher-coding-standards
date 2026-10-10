@@ -1,0 +1,605 @@
+{
+  "purpose": "Read-only C0 source baseline; fingerprints identify bytes, not approval or effective enforcement.",
+  "observations": {
+    "head": "69e0658dcb5ff45806eb048dcaf7207df684d9f5",
+    "branch": "rebuild/quality-core-2026-10-08",
+    "root_files_present": {
+      "Makefile": false,
+      "package.json": false,
+      ".pre-commit-config.yaml": false,
+      "biome.json": false,
+      "vitest.config.ts": false
+    },
+    "root_astro_config_files": [],
+    "default_pre_commit_hook_present": false,
+    "core_hooksPath": null,
+    "runtime_or_security_checks_executed_in_c0": false
+  },
+  "workflow_action_references": [
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 41,
+      "uses": "actions/checkout@v4",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 45,
+      "uses": "gitleaks/gitleaks-action@v2",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 53,
+      "uses": "actions/checkout@v4",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 55,
+      "uses": "semgrep/semgrep-action@v1",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 66,
+      "uses": "actions/checkout@v4",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 68,
+      "uses": "aquasecurity/trivy-action@ed142fd0673e97e23eac54620cfb913e5ce36c25",
+      "full_commit_sha": true
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 79,
+      "uses": "github/codeql-action/upload-sarif@v3",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 91,
+      "uses": "actions/checkout@v4",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 97,
+      "uses": "actions/setup-node@v4",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 114,
+      "uses": "actions/checkout@v4",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 120,
+      "uses": "actions/setup-node@v4",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 138,
+      "uses": "actions/checkout@v4",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "line": 149,
+      "uses": "actions/setup-node@v4",
+      "full_commit_sha": false
+    },
+    {
+      "path": ".github/workflows/verify-templates-bash.yml",
+      "line": 31,
+      "uses": "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+      "full_commit_sha": true
+    },
+    {
+      "path": ".github/workflows/verify-templates-go.yml",
+      "line": 28,
+      "uses": "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+      "full_commit_sha": true
+    },
+    {
+      "path": ".github/workflows/verify-templates-go.yml",
+      "line": 31,
+      "uses": "actions/setup-go@0c52d547c9bc32b1aa3301fd7a9cb496313a4491",
+      "full_commit_sha": true
+    },
+    {
+      "path": ".github/workflows/verify-templates.yml",
+      "line": 36,
+      "uses": "actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+      "full_commit_sha": true
+    },
+    {
+      "path": ".github/workflows/verify-templates.yml",
+      "line": 39,
+      "uses": "actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065",
+      "full_commit_sha": true
+    }
+  ],
+  "sources": [
+    {
+      "path": ".claude/settings.json",
+      "bytes": 2016,
+      "sha256": "6b227f42d90f57cbc1e8b27379c97533782b084ccd2257337482ccbb776e8940"
+    },
+    {
+      "path": ".github/workflows/security.yml",
+      "bytes": 5523,
+      "sha256": "59be029fd7b703b97afce7f922024f750f956915295680f8623c6dda03f2150b"
+    },
+    {
+      "path": ".github/workflows/verify-templates-bash.yml",
+      "bytes": 5142,
+      "sha256": "569e20d05c45c1281f7ebda763d8d6a61c12d681f7a9557d89f92e2f21d36c65"
+    },
+    {
+      "path": ".github/workflows/verify-templates-go.yml",
+      "bytes": 5623,
+      "sha256": "ada10a215cfebd8557c6d9e63ec0933f19ecd162940237881376a98a9dd85391"
+    },
+    {
+      "path": ".github/workflows/verify-templates.yml",
+      "bytes": 5273,
+      "sha256": "159c302f323e7b26fcbfd808f1ff6caea3f429316584eb38de15054da19badfd"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 590,
+      "sha256": "f4c5f7da767d28db8cc51b3f0626c67f280e929163c1a8e46e2a742859501ea1"
+    },
+    {
+      "path": ".gitleaks.toml",
+      "bytes": 1385,
+      "sha256": "93adb614fb64a9983500ad83bc9aa37047609b34be2440c88537dfeee45f3c1f"
+    },
+    {
+      "path": "AGENTS.md",
+      "bytes": 5174,
+      "sha256": "9c62172b85faf5bb4e0eb2d3afc3fb2b531b9688ffdd64af6dba580374317f37"
+    },
+    {
+      "path": "README.md",
+      "bytes": 16137,
+      "sha256": "b846d5451317cf25d3bec48c711d510ffaf7ae3d2cb486583d790cbd5d32ae22"
+    },
+    {
+      "path": "SYSTEM_MAP.md",
+      "bytes": 2745,
+      "sha256": "1bf21f3356f643fcf26734df352317279ca9e6c6982dbf6db5a3a941d496df89"
+    },
+    {
+      "path": "docs/INDEX.md",
+      "bytes": 3481,
+      "sha256": "f4513698eb43ac3620402145306d9ea39096c3a730a9af65c6a5f74260cdc40d"
+    },
+    {
+      "path": "docs/adr/0001-why-this-standard-exists.md",
+      "bytes": 7199,
+      "sha256": "649ea7b63cc74b98f160ebc0f7d8ea0550ab60f8ac0701d18dac1ec4cebafba9"
+    },
+    {
+      "path": "docs/agent-codex-lite.md",
+      "bytes": 5898,
+      "sha256": "20530191721c014abad1ef1272590166ebe77e8ac2e46c294ddf41c0c1bba472"
+    },
+    {
+      "path": "docs/agent-codex.md",
+      "bytes": 29278,
+      "sha256": "5017935d395c9e9c2380202bd7300a64d7be0a6f667015c5273e8b83662d0c56"
+    },
+    {
+      "path": "docs/branch-protection.md",
+      "bytes": 3627,
+      "sha256": "53862599033e890cf661117e3b35c35b68ad24ccaea84d7b64657a4e557f4a6f"
+    },
+    {
+      "path": "docs/multi-agent-roles.md",
+      "bytes": 15071,
+      "sha256": "e2c165a3645bf38dfce155875648aac10e532b19c51e08036b947d054efcc4f4"
+    },
+    {
+      "path": "scratch/fixtures/bash/clean.sh",
+      "bytes": 347,
+      "sha256": "6b2574f1c148605e6b74b14462389765b857996308721c4c89e6cbf7b474cd0a"
+    },
+    {
+      "path": "scratch/fixtures/bash/violating.sh",
+      "bytes": 634,
+      "sha256": "cad068c63244f89e49cba6570d7a5fd19741d0e9b07ba00f5228411823ae402b"
+    },
+    {
+      "path": "scratch/fixtures/clean.py",
+      "bytes": 871,
+      "sha256": "38034a1d0ee4c178b4ee421ac409c8f98a27e0e99962720ba1ae09665d760d45"
+    },
+    {
+      "path": "scratch/fixtures/go/clean.go",
+      "bytes": 781,
+      "sha256": "05775f5b3511b813738d873cca2ebf0bf95e3227ae31062b6b2250c726968731"
+    },
+    {
+      "path": "scratch/fixtures/go/violating.go",
+      "bytes": 707,
+      "sha256": "d819036d1f3064e2ac2a352aab22c8de2c64070ba1fba99bd9d3b5e2d2b43528"
+    },
+    {
+      "path": "scratch/fixtures/violating.py",
+      "bytes": 728,
+      "sha256": "9ed8f6e84af3f7090bbf1f7b6b3b7775c0b2a65972d6ab2bd56d6266e66a0a21"
+    },
+    {
+      "path": "skills/adopt-coding-standards/SKILL.md",
+      "bytes": 2416,
+      "sha256": "1d165f45aeb8861e1da8b93d5099e24968084328f5fe1e60bf8c63bd3e58f5cc"
+    },
+    {
+      "path": "skills/github-pr/SKILL.md",
+      "bytes": 1410,
+      "sha256": "3aaaa0200cf86db0d5d5ac10a38dd5d298272e18ac83a6e740d1e6c7a4487e97"
+    },
+    {
+      "path": "skills/github-pr/scripts/gh.py",
+      "bytes": 4579,
+      "sha256": "a6acc0fc8b1d4b89107534e4efcea675f2aed4f8e13bb78ca99d7bfc1acdabcb"
+    },
+    {
+      "path": "templates/ADR-template.md",
+      "bytes": 832,
+      "sha256": "b7142c42c37aafe13b6112b9e83f3943cdbbe26245a6db4d61073adcafeeb16a"
+    },
+    {
+      "path": "templates/astro/.pre-commit-config.yaml.snippet",
+      "bytes": 1079,
+      "sha256": "08af3d8bd484fa8649ab986e4c67677c33f960ef7baa14a8288565b36ae6bbb7"
+    },
+    {
+      "path": "templates/astro/.prettierrc.json",
+      "bytes": 319,
+      "sha256": "11dd1f482635de42e243161d727a652d953f17ebd0095ce86d939f0162542b39"
+    },
+    {
+      "path": "templates/astro/Makefile.snippet",
+      "bytes": 323,
+      "sha256": "53bae9262bb0997206d05011a8cd60694d7c409f16b59f8a13c8725d0382b0fd"
+    },
+    {
+      "path": "templates/astro/README.md",
+      "bytes": 8044,
+      "sha256": "2b59dd04a188af04e35e0871197e02db260ce0d2c5a65b805a38e8a7736a75de"
+    },
+    {
+      "path": "templates/astro/package.json.snippet",
+      "bytes": 617,
+      "sha256": "748f82fa559468906b6f14581dca6a699de9c31035054bc95047e3d81eedb7e2"
+    },
+    {
+      "path": "templates/astro/tsconfig.json",
+      "bytes": 923,
+      "sha256": "cffbda4befc0dd59fa03599dd7322a797bd1425b4aad913676178c3f252f6998"
+    },
+    {
+      "path": "templates/bash/.pre-commit-config.yaml",
+      "bytes": 2073,
+      "sha256": "9753bfa8f95e97e215f1bdd16a95a5221249d938de52bbc86ad004eaa0c1ee0d"
+    },
+    {
+      "path": "templates/bash/.shellcheckrc",
+      "bytes": 1622,
+      "sha256": "685fe95fe1e705e1e4da2dbaebd5c8965e6bd9064d0a556dc8bb9f2aa1cf79b9"
+    },
+    {
+      "path": "templates/bash/Makefile.snippet",
+      "bytes": 676,
+      "sha256": "52d45ca7795a5238659425531074167b92f87023d88ffc876cd48f5bce2c4f94"
+    },
+    {
+      "path": "templates/bash/README.md",
+      "bytes": 7140,
+      "sha256": "9c8939c21003d2367988c6e3532d22ac3153b53a2ea05cfeeb74b9b721445189"
+    },
+    {
+      "path": "templates/bash/lib/strict-mode.sh",
+      "bytes": 1779,
+      "sha256": "9d400b070d0b62060998b8a1c4badaf9f77026ce5e39e8fd8069653f5522ecb7"
+    },
+    {
+      "path": "templates/bash/scripts/example.sh",
+      "bytes": 511,
+      "sha256": "0efa52e12a84ec2b79b588a79763aad369ce01c8617754d7f1364705bd3b495c"
+    },
+    {
+      "path": "templates/bash/tests/example.bats",
+      "bytes": 1880,
+      "sha256": "b57443833b6e792468069869b9583cb4567325741dd98bed62036c2f89f36e11"
+    },
+    {
+      "path": "templates/bun-ecs/.dependency-cruiser.cjs",
+      "bytes": 2626,
+      "sha256": "9ab0af7fc8a5991606f8edb336aeb6f3a512f995866115f13f9be49c3898a79e"
+    },
+    {
+      "path": "templates/bun-ecs/.pre-commit-config.yaml",
+      "bytes": 2058,
+      "sha256": "98fcd32cd1238d968ee4dbc433d7501b9a14cedde3b72ae5a87cc98cec7d3394"
+    },
+    {
+      "path": "templates/bun-ecs/Makefile.snippet",
+      "bytes": 794,
+      "sha256": "fc8a188df4c6b42b2a7ea4a233b0022510ddfe4d21142cd3f148874aab4f1df7"
+    },
+    {
+      "path": "templates/bun-ecs/README.md",
+      "bytes": 8939,
+      "sha256": "cbf116566b8e34a2adbffb6203b9c6ff82c43652fb66d4b8ad4fd7bf4a567190"
+    },
+    {
+      "path": "templates/bun-ecs/biome.json",
+      "bytes": 1045,
+      "sha256": "ec43dc505abe8846a314ecc87a5bf4338838d057eb287ce473ee88f5ad91bcdb"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/components/combat-target-component.ts",
+      "bytes": 159,
+      "sha256": "3330bf802e3f7cfc4495f49db0157cb3f90c71af6f7c7d92a2b4c2e3d8b314eb"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/components/health-component.ts",
+      "bytes": 158,
+      "sha256": "c9981222a05b1fd6be17a1f8513e0b66983a9b6da393f5c3266916896de73000"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/components/position-component.ts",
+      "bytes": 154,
+      "sha256": "9dbe96a3a4662658598809c7a96d151634a0c79b538d53f1834821b725d1f483"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/components/stats-component.ts",
+      "bytes": 187,
+      "sha256": "c6c8c863ea4638fa1de6911b66ca74d7a388d0e3575ca53769b3876c2321450d"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/db/schema.ts",
+      "bytes": 74,
+      "sha256": "2e87333a5afdc1f908a2398141706f00195b1d1ef7f41bad072990750ae40b2f"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/ecs/system.ts",
+      "bytes": 446,
+      "sha256": "3683f926ccd2a5832ebe92c368f33e16e56ed5d5fbdd201c0ebcb46ad93667ff"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/ecs/world.ts",
+      "bytes": 1971,
+      "sha256": "9c8ada21056b9ce7f07e5f02a6d15059898e0742ed57c38095a57b87e57a37f0"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/game-loop.ts",
+      "bytes": 550,
+      "sha256": "33c64706d441dff840b4a07817cec89e043871e32eebeb5637080458929af649"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/network/protocol-out.ts",
+      "bytes": 104,
+      "sha256": "900909818bc329827f0970e7e90711d1a0d3d7af49419ae6a5f1fae3a731ff07"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/shared/protocol.ts",
+      "bytes": 654,
+      "sha256": "48bacd85112d2f290e95e04646964b26cebfe4466e37bc480312bcc79c487d5b"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/shared/types.ts",
+      "bytes": 750,
+      "sha256": "edb952436f2b400f49480eb506c8ca3a8157348001b403fa9194dbc166cafa28"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/systems/movement-system.ts",
+      "bytes": 1153,
+      "sha256": "f7821d4684093d10d827a0f82e555ea6603b67064001fb37d909f5ee8abfa155"
+    },
+    {
+      "path": "templates/bun-ecs/examples/server/src/systems/network-send-system.ts",
+      "bytes": 1154,
+      "sha256": "cb3adb7e43e58dd8b555a6b6031cc91e1529127e3420e7e9932c14ca08cf4acd"
+    },
+    {
+      "path": "templates/bun-ecs/package.json.snippet",
+      "bytes": 749,
+      "sha256": "456543958088ca2264a84e7db61b5227f676a7126e6f60604a1f35bd77640af0"
+    },
+    {
+      "path": "templates/bun-ecs/scripts/check-component-purity.ts",
+      "bytes": 2396,
+      "sha256": "437907828c31f824d5536f444925f25841126e02c2ee7d5c2dad08513c7ded7d"
+    },
+    {
+      "path": "templates/bun-ecs/scripts/check-file-length.ts",
+      "bytes": 992,
+      "sha256": "a4a41db91c016c177420e07dbae30e443cd2b8ed395262415912b19f92007206"
+    },
+    {
+      "path": "templates/bun-ecs/tsconfig.json",
+      "bytes": 868,
+      "sha256": "5ee3c61a77255a805cf1d627d6c9342076b77cf75c8be8952292f21b6f704352"
+    },
+    {
+      "path": "templates/cloudflare-workers/README.md",
+      "bytes": 6901,
+      "sha256": "a6da73654a4c3ab66eadfe230f6c01ba1dfa0761812e49dd6fdb351a290f6b41"
+    },
+    {
+      "path": "templates/cloudflare-workers/package.json.snippet",
+      "bytes": 1187,
+      "sha256": "6f285eb14c8383627c15ceba1370037f8c38faecaec1746292117c77a56023a8"
+    },
+    {
+      "path": "templates/cloudflare-workers/tsconfig.json",
+      "bytes": 2189,
+      "sha256": "1558957a46113f4035dc1ddd50bafb4b43dbb4ac414ed1fb19db2df81e3aba95"
+    },
+    {
+      "path": "templates/cloudflare-workers/vitest.config.ts",
+      "bytes": 1290,
+      "sha256": "9cc7fa916891f3dd6265810ec5c8d2965427f65ebbb9b1aafca199461f9b8ade"
+    },
+    {
+      "path": "templates/cloudflare-workers/wrangler.jsonc",
+      "bytes": 3755,
+      "sha256": "5a9ca6c3768c4743fe691536f7552c7542d6125d67d6c48c3cb42ac3b20208c8"
+    },
+    {
+      "path": "templates/go/.golangci.yml",
+      "bytes": 10903,
+      "sha256": "ddc8caf684202f3d80324113e9977d0abe7c644dced4d56e4f7b7cbc0d71749e"
+    },
+    {
+      "path": "templates/go/.pre-commit-config.yaml",
+      "bytes": 1575,
+      "sha256": "7e0f80cc7eb7fcf000dc0133c1201ea1e858acca41ad27bf086ec09e974b7c7b"
+    },
+    {
+      "path": "templates/go/Makefile.snippet",
+      "bytes": 3321,
+      "sha256": "bb3fdccc8a663bc8880125304c5a63b1080f9c054428fc760f63231a3e57b892"
+    },
+    {
+      "path": "templates/go/README.md",
+      "bytes": 14897,
+      "sha256": "27f510ea71e8a9a4289f8efc1c7528c1a70c8ce9fa0223bf554a5e4d353ae667"
+    },
+    {
+      "path": "templates/go/bloat.sh",
+      "bytes": 2432,
+      "sha256": "68081497fc7bc4173ccf7896dc45790797d7b0668c21647505bbc506e7efefcf"
+    },
+    {
+      "path": "templates/go/playerid/example.go",
+      "bytes": 4217,
+      "sha256": "10e186144cde3793cce4729e42296f0778b88e28759e5790da9c999109d9b6e7"
+    },
+    {
+      "path": "templates/go/schema/example.go",
+      "bytes": 3900,
+      "sha256": "31a60bc46de36c0acc6a7bceae3501596872045c6870a4ebc9015b7f017d9c64"
+    },
+    {
+      "path": "templates/go/tools/ifaceguard/.gitignore",
+      "bytes": 92,
+      "sha256": "cb7db1c5cf5658f17d5e3716b7f2d092777c93bc524c6bb391cd105778ea90f7"
+    },
+    {
+      "path": "templates/go/tools/ifaceguard/README.md",
+      "bytes": 2352,
+      "sha256": "812b14f3d1a4e7a895b90c3fdb1e6d7f4aa26ba3e484be093a6f6be55d861110"
+    },
+    {
+      "path": "templates/go/tools/ifaceguard/cmd/ifaceguard/main.go",
+      "bytes": 518,
+      "sha256": "fd245a7a0fae337e7e9e552c1738f2074bbb79990d065efc167c3914ff077cc3"
+    },
+    {
+      "path": "templates/go/tools/ifaceguard/go.mod",
+      "bytes": 765,
+      "sha256": "5f04c52b5343b8e4406c66ebaf12640051691b031575f01016e6296d9275c1a7"
+    },
+    {
+      "path": "templates/go/tools/ifaceguard/go.sum",
+      "bytes": 632,
+      "sha256": "9a901e50cdbf554874b8c79acb6ca4341c16aa148110b5e703ff7ec23414991c"
+    },
+    {
+      "path": "templates/go/tools/ifaceguard/ifaceguard.go",
+      "bytes": 4864,
+      "sha256": "27f21eda8e79067a967bc1e597f2ce088b0897f8c8331481143de70f767811b6"
+    },
+    {
+      "path": "templates/go/tools/ifaceguard/ifaceguard_test.go",
+      "bytes": 221,
+      "sha256": "ed5811e9c95074ce7620245ae7c6a75554e5ac544988277bdedcb2694ed31cf2"
+    },
+    {
+      "path": "templates/go/tools/ifaceguard/testdata/src/a/a.go",
+      "bytes": 1776,
+      "sha256": "16f76eec7f66e0d8a71e5ad98d8612c057e09e42dc953c5cee467979b90a64ba"
+    },
+    {
+      "path": "templates/python/.pre-commit-config.yaml",
+      "bytes": 1635,
+      "sha256": "07a3b275ded3ff63c6afaba287a3eb3f35c28f19fc98f723eb3f626a17a62bdf"
+    },
+    {
+      "path": "templates/python/Makefile.snippet",
+      "bytes": 1231,
+      "sha256": "e75ff3a7900a9c9ee757b9e1c2722649bbe75972b1003f15c991377f192cf6b7"
+    },
+    {
+      "path": "templates/python/README.md",
+      "bytes": 6750,
+      "sha256": "4b4a951f45552b424053faebbb7b86d3f84d22e4e408592aa7a8aa9a7997a7f9"
+    },
+    {
+      "path": "templates/python/pyproject.toml.snippet",
+      "bytes": 2811,
+      "sha256": "182d673a8b58649de00b9cc888deaa37e921e2f02b21e73fe49c1ccebb668303"
+    },
+    {
+      "path": "templates/python/schema/example.py",
+      "bytes": 3837,
+      "sha256": "98615551ea554f98f0b37b25d1edf7901fac92f954be09b5e9b8202c8417832f"
+    },
+    {
+      "path": "templates/typescript/.pre-commit-config.yaml",
+      "bytes": 869,
+      "sha256": "394cf0dac6cb9fb4451710155d8e4ccf64e89a32ffcb19993e755d300d00142a"
+    },
+    {
+      "path": "templates/typescript/Makefile",
+      "bytes": 630,
+      "sha256": "e5f4010f51875427b2c8dc92b51105150345237c85e11f4c366530a02e8cbdef"
+    },
+    {
+      "path": "templates/typescript/README.md",
+      "bytes": 7050,
+      "sha256": "3b5925adf8a635ff4995cffb8e86bcf81d87407ff63d87301157474c73c1f0fe"
+    },
+    {
+      "path": "templates/typescript/biome.json",
+      "bytes": 852,
+      "sha256": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc"
+    },
+    {
+      "path": "templates/typescript/package.json.snippet",
+      "bytes": 995,
+      "sha256": "ae9cdaa9a0cc348f7d80ec02ee6d154ae95f41f7b1074c1258222865796a1b62"
+    },
+    {
+      "path": "templates/typescript/schemas/example.ts",
+      "bytes": 2266,
+      "sha256": "e5a9f790a2445f44a7fa59b07d33a3d7dcaf977c25448af0a2fc0853b4a822c9"
+    },
+    {
+      "path": "templates/typescript/stryker.config.mjs",
+      "bytes": 1407,
+      "sha256": "e29c59ee167c24a2aeea350cb021ac0961d91d3584ef13e2cdb646e6a4128b0e"
+    },
+    {
+      "path": "templates/typescript/tsconfig.json",
+      "bytes": 1729,
+      "sha256": "fb687206be9ebfd582b11b749b4463c547523be57409ab9ca31437acdc5d7a58"
+    },
+    {
+      "path": "templates/typescript/vitest.config.ts",
+      "bytes": 826,
+      "sha256": "42a5159ac8001d11c3cdfcdd0ec0687746a5f48a922f020fe7215d8eaf06114c"
+    }
+  ]
+}

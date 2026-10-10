@@ -1,0 +1,454 @@
+[
+  {
+    "url": "https://registry.npmjs.org/@cloudflare%2fvitest-plugin/1.4.0",
+    "record": {
+      "bugs": {
+        "url": "https://github.com/cloudflare/workers-sdk/issues"
+      },
+      "dist": {
+        "shasum": "c0b1740ff205a7077c808d2f01ba324725be66ff",
+        "tarball": "https://registry.npmjs.org/@cloudflare/vitest-plugin/-/vitest-plugin-1.4.0.tgz",
+        "fileCount": 21,
+        "integrity": "sha512-SgIhyhpVH+2MVSJxidG8gosqrpzF25IwKevQhPykwulTgAFe4s0Nkj71pNzqCkwV2+A4NKkHJP2ReyyRsoIxsg==",
+        "signatures": [
+          {
+            "sig": "MEUCIQCpi7LSWQCa80SfnpBKf4AlfwUelTz0JqiFFEDkOvsUMgIgDdy/rQED7wjxMwRiDLyO5ZPBztSfa65a7Em3eVrgc2g=",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEQCIDrpBVCHsYIJZmm5fAk0x7L3FRNT4jlMumzG34l/dyYZAiBv9QeNfWbC1xElby8bwDTMDXTN8ZLG2ruSbsYar/KvzA==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@cloudflare%2fvitest-plugin@1.4.0",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 8482174
+      },
+      "main": "dist/pool/index.mjs",
+      "name": "@cloudflare/vitest-plugin",
+      "type": "module",
+      "_from": "file:cloudflare-vitest-plugin-1.4.0.tgz",
+      "types": "dist/pool/index.d.mts",
+      "volta": {
+        "extends": "../../package.json"
+      },
+      "exports": {
+        ".": {
+          "types": "./dist/pool/index.d.mts",
+          "import": "./dist/pool/index.mjs"
+        },
+        "./types": {
+          "types": "./types/cloudflare-test.d.ts"
+        }
+      },
+      "license": "MIT",
+      "scripts": {
+        "dev": "tsdown --watch",
+        "test": "vitest run",
+        "build": "tsdown",
+        "test:ci": "vitest run",
+        "capnp:rtti": "capnp-es scripts/rtti/rtti.capnp -ojs",
+        "check:type": "tsc && tsc -p src/worker/tsconfig.json && tsc -p types/tsconfig.json"
+      },
+      "_npmUser": {
+        "name": "GitHub Actions",
+        "email": "npm-oidc-no-reply@github.com",
+        "trustedPublisher": {
+          "id": "github",
+          "oidcConfigId": "f7c0b341-51c5-4036-800c-97453f49d8b7"
+        }
+      },
+      "homepage": "https://github.com/cloudflare/workers-sdk/tree/main/packages/vitest-plugin#readme",
+      "keywords": [
+        "cloudflare",
+        "environment",
+        "integration",
+        "jest",
+        "miniflare",
+        "pool",
+        "test",
+        "unit",
+        "vitest",
+        "worker",
+        "workers"
+      ],
+      "_resolved": "/private/var/folders/fq/bhsbs5bd52791c8x2z6s3dh40000gn/T/b5be39d68294386163773ffd57fe0354/cloudflare-vitest-plugin-1.4.0.tgz",
+      "_integrity": "sha512-SgIhyhpVH+2MVSJxidG8gosqrpzF25IwKevQhPykwulTgAFe4s0Nkj71pNzqCkwV2+A4NKkHJP2ReyyRsoIxsg==",
+      "repository": {
+        "url": "git+https://github.com/cloudflare/workers-sdk.git",
+        "type": "git",
+        "directory": "packages/vitest-plugin"
+      },
+      "_npmVersion": "11.16.0",
+      "description": "Workers Vitest integration for writing Vitest unit and integration tests that run inside the Workers runtime",
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "cf-ci-write",
+          "email": "npm-readonly@cloudflare.com"
+        },
+        {
+          "name": "dash_service_account",
+          "email": "service-account@cloudflare-ui.com"
+        },
+        {
+          "name": "wrangler-publisher",
+          "email": "workers-devprod@cloudflare.com"
+        },
+        {
+          "name": "cf-npm-publish",
+          "email": "ui-platform-production@cloudflare.com"
+        }
+      ],
+      "workers-sdk": {
+        "prerelease": true
+      },
+      "_nodeVersion": "24.18.0",
+      "dependencies": {
+        "zod": "4.6.5",
+        "esbuild": "0.28.2",
+        "wrangler": "4.149.0",
+        "miniflare": "5.20261006.1-alpha",
+        "cjs-module-lexer": "1.2.3"
+      },
+      "_hasShrinkwrap": false,
+      "devDependencies": {
+        "birpc": "0.2.14",
+        "semver": "^7.7.1",
+        "tsdown": "0.16.3",
+        "undici": "7.29.1",
+        "vitest": "5.0.3",
+        "devalue": "^5.6.3",
+        "capnp-es": "0.0.16",
+        "get-port": "^7.1.0",
+        "tree-kill": "1.2.2",
+        "ts-dedent": "^2.2.0",
+        "@vitest/ui": "5.0.3",
+        "typescript": "5.8.3",
+        "@types/node": "22.15.17",
+        "@types/semver": "^7.5.1",
+        "es-module-lexer": "2.3.1",
+        "@cloudflare/config": "0.24.1",
+        "@cloudflare/runtime-types": "0.1.9",
+        "@cloudflare/workers-types": "^5.20261006.1",
+        "@cloudflare/workers-utils": "0.47.1",
+        "@cloudflare/remote-bindings": "0.0.45",
+        "@cloudflare/workers-tsconfig": "0.0.0",
+        "@cloudflare/workflows-shared": "0.15.1",
+        "@cloudflare/mock-npm-registry": "0.0.0"
+      },
+      "peerDependencies": {
+        "vitest": "^4.1.0 || ^5.0.0"
+      },
+      "_npmOperationalInternal": {
+        "tmp": "tmp/vitest-plugin_1.4.0_1791484033326_0.6208912624289649",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "_id": "@cloudflare/vitest-plugin@1.4.0",
+      "version": "1.4.0"
+    }
+  },
+  {
+    "url": "https://registry.npmjs.org/wrangler/4.149.0",
+    "record": {
+      "bin": {
+        "wrangler": "bin/wrangler.js",
+        "wrangler2": "bin/wrangler.js",
+        "cf-wrangler": "bin/cf-wrangler.js"
+      },
+      "bugs": {
+        "url": "https://github.com/cloudflare/workers-sdk/issues"
+      },
+      "dist": {
+        "shasum": "2fdfd812faee929bc1a0045ae7830f174fcf7603",
+        "tarball": "https://registry.npmjs.org/wrangler/-/wrangler-4.149.0.tgz",
+        "fileCount": 30,
+        "integrity": "sha512-OzK7xmB5r5iLKb3cIT3783g13fe6T7xyeKu9LEdUyl+DKAM2KP/jkjnE0OUhyw+mB/XJM9ycjgF3MWm8PR9amg==",
+        "signatures": [
+          {
+            "sig": "MEQCICPC6RbGCvC0gwVUEPh++G/LlonR76/5NcUNYRDIwWCjAiA3ztocqKgWNtafkxQTbmsxUCBTr1khz/aJRFVjL+Ww1Q==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEQCIGanwQ6QVGRRv5ZrSHnPZ05cFcdvMzYM2irf7aM1FU03AiBYUsRmxn8lmNseqyAbe8FpK2ildgUFSr6cyQN/V8b0Uw==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/wrangler@4.149.0",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 15706941
+      },
+      "main": "wrangler-dist/cli.js",
+      "name": "wrangler",
+      "_from": "file:wrangler-4.149.0.tgz",
+      "types": "wrangler-dist/cli.d.ts",
+      "volta": {
+        "extends": "../../package.json"
+      },
+      "author": {
+        "name": "wrangler@cloudflare.com"
+      },
+      "engines": {
+        "node": ">=22.0.0"
+      },
+      "exports": {
+        ".": {
+          "types": "./wrangler-dist/cli.d.ts",
+          "default": "./wrangler-dist/cli.js"
+        },
+        "./package.json": "./package.json",
+        "./experimental-config": {
+          "types": "./wrangler-dist/experimental-config.d.mts",
+          "import": "./wrangler-dist/experimental-config.mjs"
+        }
+      },
+      "license": "MIT OR Apache-2.0",
+      "scripts": {
+        "dev": "pnpm run clean && concurrently -c black,blue --kill-others-on-fail false \"pnpm tsup --watch src --watch ../containers-shared/src --watch ../cli\" \"pnpm run check:type --watch --preserveWatchOutput\"",
+        "test": "dotenv -- pnpm run assert-git-version && cross-env NODE_OPTIONS=\"$(node scripts/node-options-for-tests.js)\" dotenv -- vitest",
+        "build": "pnpm run clean && pnpm tsup && pnpm tsdown && pnpm run generate-json-schema",
+        "clean": "node -r esbuild-register ../../tools/clean/clean.ts wrangler-dist miniflare-dist emitted-types",
+        "start": "pnpm run build && cross-env NODE_OPTIONS=--enable-source-maps ./bin/wrangler.js",
+        "test:ci": "cross-env NODE_OPTIONS=\"$(node scripts/node-options-for-tests.js)\" pnpm run test run",
+        "test:e2e": "dotenv -- vitest run -c ./e2e/vitest.config.mts",
+        "check:type": "tsc -p ./tsconfig.json && tsc -p ./templates/tsconfig.json",
+        "test:debug": "pnpm run test --silent=false --verbose=true",
+        "test:watch": "pnpm run test --testTimeout=50000 --watch",
+        "type:tests": "tsc -p ./src/__tests__/tsconfig.json && tsc -p ./e2e/tsconfig.json",
+        "assert-git-version": "node -r esbuild-register scripts/assert-git-version.ts",
+        "generate-json-schema": "node -r esbuild-register scripts/generate-json-schema.ts"
+      },
+      "_npmUser": {
+        "name": "GitHub Actions",
+        "email": "npm-oidc-no-reply@github.com",
+        "trustedPublisher": {
+          "id": "github",
+          "oidcConfigId": "b67a5a7a-aca9-4883-acae-f3a974ef3b4e"
+        }
+      },
+      "homepage": "https://github.com/cloudflare/workers-sdk#readme",
+      "keywords": [
+        "assembly",
+        "cli",
+        "cloudflare",
+        "cloudflare workers",
+        "compute",
+        "edge",
+        "emscripten",
+        "graphql",
+        "http",
+        "router",
+        "rust",
+        "serverless",
+        "serverless application",
+        "serverless module",
+        "typescript",
+        "wasm",
+        "web",
+        "webassembly",
+        "workers",
+        "wrangler"
+      ],
+      "_resolved": "/private/var/folders/fq/bhsbs5bd52791c8x2z6s3dh40000gn/T/d7ddbeb351f3c14bd89218a624a0e085/wrangler-4.149.0.tgz",
+      "_integrity": "sha512-OzK7xmB5r5iLKb3cIT3783g13fe6T7xyeKu9LEdUyl+DKAM2KP/jkjnE0OUhyw+mB/XJM9ycjgF3MWm8PR9amg==",
+      "repository": {
+        "url": "git+https://github.com/cloudflare/workers-sdk.git",
+        "type": "git",
+        "directory": "packages/wrangler"
+      },
+      "_npmVersion": "11.16.0",
+      "description": "Command-line interface for all things Cloudflare Workers",
+      "directories": {},
+      "maintainers": [
+        {
+          "name": "wrangler-publisher",
+          "email": "workers-devprod@cloudflare.com"
+        }
+      ],
+      "workers-sdk": {
+        "prerelease": true
+      },
+      "_nodeVersion": "24.18.0",
+      "dependencies": {
+        "unenv": "2.0.0-rc.24",
+        "esbuild": "0.28.2",
+        "workerd": "1.20261006.1",
+        "miniflare": "5.20261006.1-alpha",
+        "blake3-wasm": "2.1.5",
+        "path-to-regexp": "6.3.0",
+        "@cloudflare/unenv-preset": "2.16.2",
+        "@cloudflare/kv-asset-handler": "0.5.0"
+      },
+      "_hasShrinkwrap": false,
+      "devDependencies": {
+        "qr": "^0.6.0",
+        "ws": "8.21.0",
+        "msw": "2.14.6",
+        "zod": "4.6.5",
+        "mime": "^3.0.0",
+        "open": "11.0.0",
+        "tsup": "8.3.0",
+        "yaml": "^2.8.1",
+        "chalk": "5.3.0",
+        "yargs": "^17.7.2",
+        "dotenv": "16.3.1",
+        "recast": "0.23.11",
+        "tsdown": "0.16.3",
+        "undici": "7.29.1",
+        "vitest": "4.1.0",
+        "capnweb": "0.12.0",
+        "ci-info": "4.4.0",
+        "esprima": "4.0.1",
+        "p-queue": "^9.0.0",
+        "prompts": "^2.4.2",
+        "resolve": "^1.22.8",
+        "semiver": "^1.1.0",
+        "chokidar": "^4.0.1",
+        "cmd-shim": "^4.1.0",
+        "date-fns": "^4.1.0",
+        "empathic": "^2.0.0",
+        "get-port": "^7.0.0",
+        "md5-file": "5.0.0",
+        "tinyexec": "^1.2.4",
+        "@types/ws": "^8.5.7",
+        "itty-time": "^1.0.6",
+        "minimatch": "^5.1.0",
+        "smol-toml": "1.9.0",
+        "tree-kill": "1.2.2",
+        "ts-dedent": "^2.2.0",
+        "@vitest/ui": "4.1.0",
+        "cli-table3": "^0.6.3",
+        "cloudflare": "^5.2.0",
+        "node-forge": "^1.3.2",
+        "timeago.js": "4.0.2",
+        "typescript": "5.8.3",
+        "@types/mime": "^3.0.4",
+        "@types/node": "22.15.17",
+        "am-i-vibing": "^0.5.0",
+        "mock-socket": "^9.3.1",
+        "shell-quote": "^1.9.0",
+        "signal-exit": "4.1.0",
+        "xxhash-wasm": "^1.0.1",
+        "@bomb.sh/tab": "^0.0.12",
+        "@sentry/node": "^7.86.0",
+        "@types/yargs": "^17.0.22",
+        "concurrently": "^8.2.2",
+        "jsonc-parser": "3.2.0",
+        "pretty-bytes": "^6.0.0",
+        "rosie-skills": "^0.8.1",
+        "@sentry/types": "^7.86.0",
+        "@sentry/utils": "^7.86.0",
+        "dotenv-expand": "^12.0.2",
+        "patch-console": "^1.0.0",
+        "@types/esprima": "^4.0.3",
+        "@types/prompts": "^2.0.14",
+        "@types/resolve": "^1.20.6",
+        "command-exists": "1.2.9",
+        "glob-to-regexp": "^0.4.1",
+        "supports-color": "^9.2.2",
+        "@types/minimatch": "^5.1.2",
+        "@cloudflare/types": "6.18.4",
+        "@types/node-forge": "^1.3.11",
+        "@webcontainer/env": "^1.1.0",
+        "devtools-protocol": "^0.0.1182435",
+        "https-proxy-agent": "7.0.2",
+        "@aws-sdk/client-s3": "^3.721.0",
+        "@cloudflare/config": "0.24.1",
+        "@types/shell-quote": "^1.7.2",
+        "@netlify/build-info": "10.5.1",
+        "javascript-time-ago": "^2.5.4",
+        "@types/command-exists": "^1.2.0",
+        "@types/glob-to-regexp": "^0.4.1",
+        "@types/supports-color": "^8.1.1",
+        "vitest-websocket-mock": "^0.4.0",
+        "@cloudflare/autoconfig": "0.7.7",
+        "@cloudflare/pages-shared": "^0.13.195",
+        "@cloudflare/workers-auth": "0.13.1",
+        "ts-json-schema-generator": "^1.5.0",
+        "@cloudflare/runtime-types": "0.1.9",
+        "@cloudflare/workers-types": "^5.20261006.1",
+        "@cloudflare/workers-utils": "0.47.1",
+        "@cloudflare/deploy-helpers": "0.20.1",
+        "@cloudflare/workers-shared": "0.20.1",
+        "@types/javascript-time-ago": "^2.0.3",
+        "@cloudflare/pages-functions": "0.1.1",
+        "@cloudflare/remote-bindings": "0.0.45",
+        "@cloudflare/workers-tsconfig": "0.0.0",
+        "@cloudflare/workflows-shared": "0.15.1",
+        "@aws-sdk/s3-request-presigner": "^3.721.0",
+        "@cloudflare/containers-shared": "0.21.5",
+        "@cspotcode/source-map-support": "0.8.1",
+        "@cloudflare/build-output-utils": "0.9.0",
+        "@cloudflare/cli-shared-helpers": "0.2.5",
+        "@cloudflare/shared-ast-primitives": "1.1.0"
+      },
+      "peerDependencies": {
+        "@cloudflare/workers-types": "^5.20261006.1"
+      },
+      "optionalDependencies": {
+        "fsevents": "2.3.3"
+      },
+      "peerDependenciesMeta": {
+        "@cloudflare/workers-types": {
+          "optional": true
+        }
+      },
+      "_npmOperationalInternal": {
+        "tmp": "tmp/wrangler_4.149.0_1791483848793_0.5766648375008734",
+        "host": "s3://npm-registry-packages-npm-production"
+      },
+      "_id": "wrangler@4.149.0",
+      "version": "4.149.0"
+    }
+  },
+  {
+    "url": "https://api.github.com/repos/cloudflare/cloudflare-docs/contents/src/content/docs/workers/testing/vitest-integration/configuration.mdx?ref=production",
+    "record": {
+      "name": "configuration.mdx",
+      "path": "src/content/docs/workers/testing/vitest-integration/configuration.mdx",
+      "sha": "4d170655bdd601d8fe7f22b93031304a871ede57",
+      "size": 9173,
+      "url": "https://api.github.com/repos/cloudflare/cloudflare-docs/contents/src/content/docs/workers/testing/vitest-integration/configuration.mdx?ref=production",
+      "html_url": "https://github.com/cloudflare/cloudflare-docs/blob/production/src/content/docs/workers/testing/vitest-integration/configuration.mdx",
+      "git_url": "https://api.github.com/repos/cloudflare/cloudflare-docs/git/blobs/4d170655bdd601d8fe7f22b93031304a871ede57",
+      "download_url": "https://raw.githubusercontent.com/cloudflare/cloudflare-docs/production/src/content/docs/workers/testing/vitest-integration/configuration.mdx",
+      "type": "file",
+      "content": "LS0tCnRpdGxlOiBDb25maWd1cmF0aW9uCnBjeF9jb250ZW50X3R5cGU6IHJl\nZmVyZW5jZQpzaWRlYmFyOgogIG9yZGVyOiA0CmhlYWQ6IFtdCmRlc2NyaXB0\naW9uOiBWaXRlc3QgY29uZmlndXJhdGlvbiBzcGVjaWZpYyB0byB0aGUgV29y\na2VycyBpbnRlZ3JhdGlvbi4KcHJvZHVjdHM6CiAgLSB3b3JrZXJzCi0tLQoK\naW1wb3J0IHsgRGV0YWlscyB9IGZyb20gIn4vY29tcG9uZW50cyI7CgpUaGUg\nV29ya2VycyBWaXRlc3QgaW50ZWdyYXRpb24gcHJvdmlkZXMgYWRkaXRpb25h\nbCBjb25maWd1cmF0aW9uIG9uIHRvcCBvZiBWaXRlc3QncyB1c3VhbCBvcHRp\nb25zIHVzaW5nIHRoZSBgY2xvdWRmbGFyZVRlc3QoKWAgVml0ZSBwbHVnaW4u\nCgpBbiBleGFtcGxlIGNvbmZpZ3VyYXRpb24gd291bGQgYmU6CgpgYGB0cwpp\nbXBvcnQgeyBjbG91ZGZsYXJlVGVzdCB9IGZyb20gIkBjbG91ZGZsYXJlL3Zp\ndGVzdC1wbHVnaW4iOwppbXBvcnQgeyBkZWZpbmVDb25maWcgfSBmcm9tICJ2\naXRlc3QvY29uZmlnIjsKCmV4cG9ydCBkZWZhdWx0IGRlZmluZUNvbmZpZyh7\nCglwbHVnaW5zOiBbCgkJY2xvdWRmbGFyZVRlc3QoewoJCQl3cmFuZ2xlcjog\newoJCQkJY29uZmlnUGF0aDogIi4vd3JhbmdsZXIuanNvbmMiLAoJCQl9LAoJ\nCX0pLAoJXSwKfSk7CmBgYAoKOjo6Y2F1dGlvbgoKQ3VzdG9tIFZpdGVzdCBg\nZW52aXJvbm1lbnRgcyBvciBgcnVubmVyYHMgYXJlIG5vdCBzdXBwb3J0ZWQg\nd2hlbiB1c2luZyB0aGUgV29ya2VycyBWaXRlc3QgaW50ZWdyYXRpb24uCgo6\nOjoKCiMjIEFQSXMKClRoZSBmb2xsb3dpbmcgQVBJcyBhcmUgZXhwb3J0ZWQg\nZnJvbSB0aGUgYEBjbG91ZGZsYXJlL3ZpdGVzdC1wbHVnaW5gIHBhY2thZ2Uu\nCgojIyMgYGNsb3VkZmxhcmVUZXN0KG9wdGlvbnMpYAoKQSBWaXRlIHBsdWdp\nbiB0aGF0IGNvbmZpZ3VyZXMgVml0ZXN0IHRvIHVzZSB0aGUgV29ya2VycyBp\nbnRlZ3JhdGlvbiB3aXRoIHRoZSBjb3JyZWN0IG1vZHVsZSByZXNvbHV0aW9u\nIHNldHRpbmdzLCBhbmQgcHJvdmlkZXMgdHlwZSBjaGVja2luZyBmb3IgW0Ns\nb3VkZmxhcmVUZXN0T3B0aW9uc10oI2Nsb3VkZmxhcmV0ZXN0b3B0aW9ucyku\nIEFkZCB0aGlzIHRvIHRoZSBgcGx1Z2luc2AgYXJyYXkgaW4geW91ciBWaXRl\nc3QgY29uZmlnIGFsb25nc2lkZSBbYGRlZmluZUNvbmZpZygpYF0oaHR0cHM6\nLy92aXRlc3QuZGV2L2NvbmZpZy9maWxlLmh0bWwpIGZyb20gVml0ZXN0LgoK\nSXQgYWxzbyBhY2NlcHRzIGFuIG9wdGlvbmFsbHktYGFzeW5jYCBmdW5jdGlv\nbiByZXR1cm5pbmcgYG9wdGlvbnNgLgoKYGBgdHMKaW1wb3J0IHsgY2xvdWRm\nbGFyZVRlc3QgfSBmcm9tICJAY2xvdWRmbGFyZS92aXRlc3QtcGx1Z2luIjsK\naW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAidml0ZXN0L2NvbmZpZyI7\nCgpleHBvcnQgZGVmYXVsdCBkZWZpbmVDb25maWcoewoJcGx1Z2luczogWwoJ\nCWNsb3VkZmxhcmVUZXN0KHsKCQkJLy8gUmVmZXIgdG8gQ2xvdWRmbGFyZVRl\nc3RPcHRpb25zLi4uCgkJfSksCgldLAp9KTsKYGBgCgojIyMgYGJ1aWxkUGFn\nZXNBU1NFVFNCaW5kaW5nKGFzc2V0c1BhdGgpYAoKRXhwb3J0ZWQgZnJvbSBg\nQGNsb3VkZmxhcmUvdml0ZXN0LXBsdWdpbi9jb25maWdgLiBDcmVhdGVzIGEg\nUGFnZXMgQVNTRVRTIGJpbmRpbmcgdGhhdCBzZXJ2ZXMgZmlsZXMgaW5zaWRl\nIHRoZSBgYXNzZXRzUGF0aGAuIFRoaXMgaXMgcmVxdWlyZWQgaWYgeW91IHVz\nZSBgY3JlYXRlUGFnZXNFdmVudENvbnRleHQoKWAgdG8gdGVzdCB5b3VyICoq\nUGFnZXMgRnVuY3Rpb25zKiouIFJlZmVyIHRvIHRoZSBbUGFnZXMgcmVjaXBl\nXSgvd29ya2Vycy90ZXN0aW5nL3ZpdGVzdC1pbnRlZ3JhdGlvbi9yZWNpcGVz\nKSBmb3IgYSBmdWxsIGV4YW1wbGUuCgpgYGB0cwppbXBvcnQgcGF0aCBmcm9t\nICJub2RlOnBhdGgiOwppbXBvcnQgeyBidWlsZFBhZ2VzQVNTRVRTQmluZGlu\nZywgY2xvdWRmbGFyZVRlc3QgfSBmcm9tICJAY2xvdWRmbGFyZS92aXRlc3Qt\ncGx1Z2luIjsKaW1wb3J0IHsgZGVmaW5lQ29uZmlnIH0gZnJvbSAidml0ZXN0\nL2NvbmZpZyI7CgpleHBvcnQgZGVmYXVsdCBkZWZpbmVDb25maWcoewoJcGx1\nZ2luczogWwoJCWNsb3VkZmxhcmVUZXN0KGFzeW5jICgpID0+IHsKCQkJY29u\nc3QgYXNzZXRzUGF0aCA9IHBhdGguam9pbihfX2Rpcm5hbWUsICJwdWJsaWMi\nKTsKCgkJCXJldHVybiB7CgkJCQltaW5pZmxhcmU6IHsKCQkJCQlzZXJ2aWNl\nQmluZGluZ3M6IHsKCQkJCQkJQVNTRVRTOiBhd2FpdCBidWlsZFBhZ2VzQVNT\nRVRTQmluZGluZyhhc3NldHNQYXRoKSwKCQkJCQl9LAoJCQkJfSwKCQkJfTsK\nCQl9KSwKCV0sCn0pOwpgYGAKCiMjIyBgcmVhZEQxTWlncmF0aW9ucyhtaWdy\nYXRpb25zUGF0aClgCgpFeHBvcnRlZCBmcm9tIGBAY2xvdWRmbGFyZS92aXRl\nc3QtcGx1Z2luL2NvbmZpZ2AuIFJlYWRzIGFsbCBbRDEgbWlncmF0aW9uc10o\nL2QxL3JlZmVyZW5jZS9taWdyYXRpb25zLykgc3RvcmVkIGF0IGBtaWdyYXRp\nb25zUGF0aGAgYW5kIHJldHVybnMgdGhlbSBvcmRlcmVkIGJ5IG1pZ3JhdGlv\nbiBudW1iZXIuIEVhY2ggbWlncmF0aW9uIHdpbGwgaGF2ZSBpdHMgY29udGVu\ndHMgc3BsaXQgaW50byBhbiBhcnJheSBvZiBpbmRpdmlkdWFsIFNRTCBxdWVy\naWVzLiBDYWxsIHRoZSBbYGFwcGx5RDFNaWdyYXRpb25zKClgXSgvd29ya2Vy\ncy90ZXN0aW5nL3ZpdGVzdC1pbnRlZ3JhdGlvbi90ZXN0LWFwaXMvI2QxKSBm\ndW5jdGlvbiBpbnNpZGUgYSB0ZXN0IG9yIFtzZXR1cCBmaWxlXShodHRwczov\nL3ZpdGVzdC5kZXYvY29uZmlnLyNzZXR1cGZpbGVzKSB0byBhcHBseSBtaWdy\nYXRpb25zLiBSZWZlciB0byB0aGUgW0QxIHJlY2lwZV0oaHR0cHM6Ly9naXRo\ndWIuY29tL2Nsb3VkZmxhcmUvd29ya2Vycy1zZGsvdHJlZS9tYWluL2ZpeHR1\ncmVzL3ZpdGVzdC1wbHVnaW4tZXhhbXBsZXMvZDEpIGZvciBhbiBleGFtcGxl\nIHByb2plY3QgdXNpbmcgbWlncmF0aW9ucy4KCmBgYHRzCmltcG9ydCBwYXRo\nIGZyb20gIm5vZGU6cGF0aCI7CmltcG9ydCB7IGNsb3VkZmxhcmVUZXN0LCBy\nZWFkRDFNaWdyYXRpb25zIH0gZnJvbSAiQGNsb3VkZmxhcmUvdml0ZXN0LXBs\ndWdpbiI7CmltcG9ydCB7IGRlZmluZUNvbmZpZyB9IGZyb20gInZpdGVzdC9j\nb25maWciOwoKZXhwb3J0IGRlZmF1bHQgZGVmaW5lQ29uZmlnKHsKCXBsdWdp\nbnM6IFsKCQljbG91ZGZsYXJlVGVzdChhc3luYyAoKSA9PiB7CgkJCWNvbnN0\nIG1pZ3JhdGlvbnNQYXRoID0gcGF0aC5qb2luKF9fZGlybmFtZSwgIm1pZ3Jh\ndGlvbnMiKTsKCQkJY29uc3QgbWlncmF0aW9ucyA9IGF3YWl0IHJlYWREMU1p\nZ3JhdGlvbnMobWlncmF0aW9uc1BhdGgpOwoKCQkJcmV0dXJuIHsKCQkJCW1p\nbmlmbGFyZTogewoJCQkJCS8vIEFkZCBhIHRlc3Qtb25seSBiaW5kaW5nIGZv\nciBtaWdyYXRpb25zLCBzbyB3ZSBjYW4gYXBwbHkgdGhlbSBpbiBhIHNldHVw\nIGZpbGUKCQkJCQliaW5kaW5nczogeyBURVNUX01JR1JBVElPTlM6IG1pZ3Jh\ndGlvbnMgfSwKCQkJCX0sCgkJCX07CgkJfSksCgldLAoJdGVzdDogewoJCXNl\ndHVwRmlsZXM6IFsiLi90ZXN0L2FwcGx5LW1pZ3JhdGlvbnMudHMiXSwKCX0s\nCn0pOwpgYGAKCiMjIGBDbG91ZGZsYXJlVGVzdE9wdGlvbnNgCgpPcHRpb25z\nIHBhc3NlZCBkaXJlY3RseSB0byBgY2xvdWRmbGFyZVRlc3QoKWAuCgotIGBt\nYWluYDogc3RyaW5nIG9wdGlvbmFsCiAgLSBFbnRyeSBwb2ludCB0byBXb3Jr\nZXIgcnVuIGluIHRoZSBzYW1lIGlzb2xhdGUvY29udGV4dCBhcyB0ZXN0cy4g\nVGhpcyBvcHRpb24gaXMgcmVxdWlyZWQgdG8gdXNlIER1cmFibGUgT2JqZWN0\ncyB3aXRob3V0IGFuIGV4cGxpY2l0IGBzY3JpcHROYW1lYCBpZiBjbGFzc2Vz\nIGFyZSBkZWZpbmVkIGluIHRoZSBzYW1lIFdvcmtlci4gVGhpcyBmaWxlIGdv\nZXMgdGhyb3VnaCBWaXRlIHRyYW5zZm9ybXMgYW5kIGNhbiBiZSBUeXBlU2Ny\naXB0LiBOb3RlIHRoYXQgYGltcG9ydCBtb2R1bGUgZnJvbSAiPHBhdGgtdG8t\nbWFpbj4iYCBpbnNpZGUgdGVzdHMgZ2l2ZXMgZXhhY3RseSB0aGUgc2FtZSBg\nbW9kdWxlYCBpbnN0YW5jZSBhcyBpcyB1c2VkIGludGVybmFsbHkgZm9yIGBl\neHBvcnRzYCBhbmQgRHVyYWJsZSBPYmplY3QgYmluZGluZ3MuIElmIGB3cmFu\nZ2xlci5jb25maWdQYXRoYCBpcyBkZWZpbmVkIGFuZCB0aGlzIG9wdGlvbiBp\ncyBub3QsIGl0IHdpbGwgYmUgcmVhZCBmcm9tIHRoZSBgbWFpbmAgZmllbGQg\naW4gdGhhdCBjb25maWd1cmF0aW9uIGZpbGUuCgotIGBtaW5pZmxhcmVgOiBg\nU291cmNlbGVzc1dvcmtlck9wdGlvbnMgJiB7IHdvcmtlcnM/OiBXb3JrZXJP\ncHRpb25zXFtdOyB9YCBvcHRpb25hbAogIC0gVXNlIHRoaXMgdG8gcHJvdmlk\nZSBjb25maWd1cmF0aW9uIGluZm9ybWF0aW9uIHRoYXQgaXMgdHlwaWNhbGx5\nIHN0b3JlZCB3aXRoaW4gdGhlIFtXcmFuZ2xlciBjb25maWd1cmF0aW9uIGZp\nbGVdKC93b3JrZXJzL3dyYW5nbGVyL2NvbmZpZ3VyYXRpb24vKSwgc3VjaCBh\ncyBbYmluZGluZ3NdKC93b3JrZXJzL3J1bnRpbWUtYXBpcy9iaW5kaW5ncy8p\nLCBbY29tcGF0aWJpbGl0eSBkYXRlc10oL3dvcmtlcnMvY29uZmlndXJhdGlv\nbi9jb21wYXRpYmlsaXR5LWRhdGVzLyksIGFuZCBbY29tcGF0aWJpbGl0eSBm\nbGFnc10oL3dvcmtlcnMvY29uZmlndXJhdGlvbi9jb21wYXRpYmlsaXR5LWZs\nYWdzLykuIFRoZSBgV29ya2VyT3B0aW9uc2AgaW50ZXJmYWNlIGlzIGRlZmlu\nZWQgW2hlcmVdKGh0dHBzOi8vZ2l0aHViLmNvbS9jbG91ZGZsYXJlL3dvcmtl\ncnMtc2RrL3RyZWUvbWFpbi9wYWNrYWdlcy9taW5pZmxhcmUjaW50ZXJmYWNl\nLXdvcmtlcm9wdGlvbnMpLiBVc2UgdGhlIGBtYWluYCBvcHRpb24gYWJvdmUg\ndG8gY29uZmlndXJlIHRoZSBlbnRyeSBwb2ludCwgaW5zdGVhZCBvZiB0aGUg\nTWluaWZsYXJlIGBzY3JpcHRgLCBgc2NyaXB0UGF0aGAsIG9yIGBtb2R1bGVz\nYCBvcHRpb25zLgogICAgLSBJZiBubyBgY29tcGF0aWJpbGl0eV9kYXRlYCBp\ncyBwcm92aWRlZCwgdGhlbiB0aGUgdGVzdCB3aWxsIHVzZSB0aGUgbGF0ZXN0\nIGxvY2FsbHkgYXZhaWxhYmxlIGRhdGUuCgogIC0gSWYgeW91ciBwcm9qZWN0\nIG1ha2VzIHVzZSBvZiBtdWx0aXBsZSBXb3JrZXJzLCB5b3UgY2FuIGNvbmZp\nZ3VyZSBhdXhpbGlhcnkgV29ya2VycyB0aGF0IHJ1biBpbiB0aGUgc2FtZSBg\nd29ya2VyZGAgcHJvY2VzcyBhcyB5b3VyIHRlc3RzIGFuZCBjYW4gYmUgYm91\nbmQgdG8uIEF1eGlsaWFyeSBXb3JrZXJzIGFyZSBjb25maWd1cmVkIHVzaW5n\nIHRoZSBgd29ya2Vyc2AgYXJyYXksIGNvbnRhaW5pbmcgcmVndWxhciBNaW5p\nZmxhcmUgW2BXb3JrZXJPcHRpb25zYF0oaHR0cHM6Ly9naXRodWIuY29tL2Ns\nb3VkZmxhcmUvd29ya2Vycy1zZGsvdHJlZS9tYWluL3BhY2thZ2VzL21pbmlm\nbGFyZSNpbnRlcmZhY2Utd29ya2Vyb3B0aW9ucykgb2JqZWN0cy4gTm90ZSB0\naGF0IHVubGlrZSB0aGUgYG1haW5gIFdvcmtlciwgYXV4aWxpYXJ5IFdvcmtl\ncnM6CiAgICAtIENhbm5vdCBoYXZlIFR5cGVTY3JpcHQgZW50cnlwb2ludHMu\nIFlvdSBtdXN0IGNvbXBpbGUgYXV4aWxpYXJ5IFdvcmtlcnMgdG8gSmF2YVNj\ncmlwdCBmaXJzdC4gWW91IGNhbiB1c2UgdGhlIFtgd3JhbmdsZXIgZGVwbG95\nIC0tZHJ5LXJ1biAtLW91dGRpciBkaXN0YF0oL3dvcmtlcnMvd3JhbmdsZXIv\nY29tbWFuZHMvZ2VuZXJhbC8jZGVwbG95KSBjb21tYW5kIGZvciB0aGlzLgog\nICAgLSBVc2UgcmVndWxhciBXb3JrZXJzIG1vZHVsZSByZXNvbHV0aW9uIHNl\nbWFudGljcy4gUmVmZXIgdG8gdGhlIFtJc29sYXRpb24gYW5kIGNvbmN1cnJl\nbmN5XSgvd29ya2Vycy90ZXN0aW5nL3ZpdGVzdC1pbnRlZ3JhdGlvbi9pc29s\nYXRpb24tYW5kLWNvbmN1cnJlbmN5LyNtb2R1bGVzKSBwYWdlIGZvciBtb3Jl\nIGluZm9ybWF0aW9uLgogICAgLSBDYW5ub3QgYWNjZXNzIHRoZSBbYGNsb3Vk\nZmxhcmU6dGVzdGBdKC93b3JrZXJzL3Rlc3Rpbmcvdml0ZXN0LWludGVncmF0\naW9uL3Rlc3QtYXBpcy8pIG1vZHVsZS4KICAgIC0gRG8gbm90IHJlcXVpcmUg\nc3BlY2lmaWMgY29tcGF0aWJpbGl0eSBkYXRlcyBvciBmbGFncy4KICAgIC0g\nQ2FuIGJlIHdyaXR0ZW4gd2l0aCB0aGUgW1NlcnZpY2UgV29ya2VyIHN5bnRh\neF0oL3dvcmtlcnMvcmVmZXJlbmNlL21pZ3JhdGUtdG8tbW9kdWxlLXdvcmtl\ncnMvI3NlcnZpY2Utd29ya2VyLXN5bnRheCkuCiAgICAtIEFyZSBub3QgYWZm\nZWN0ZWQgYnkgZ2xvYmFsIG1vY2tzIGRlZmluZWQgaW4geW91ciB0ZXN0cy4K\nCi0gYHdyYW5nbGVyYDogYHsgY29uZmlnUGF0aD86IHN0cmluZzsgZW52aXJv\nbm1lbnQ/OiBzdHJpbmc7IH1gIG9wdGlvbmFsCiAgLSBQYXRoIHRvIFtXcmFu\nZ2xlciBjb25maWd1cmF0aW9uIGZpbGVdKC93b3JrZXJzL3dyYW5nbGVyL2Nv\nbmZpZ3VyYXRpb24vKSB0byBsb2FkIGBtYWluYCwgW2NvbXBhdGliaWxpdHkg\nc2V0dGluZ3NdKC93b3JrZXJzL2NvbmZpZ3VyYXRpb24vY29tcGF0aWJpbGl0\neS1kYXRlcy8pIGFuZCBbYmluZGluZ3NdKC93b3JrZXJzL3J1bnRpbWUtYXBp\ncy9iaW5kaW5ncy8pIGZyb20uIFRoZXNlIG9wdGlvbnMgd2lsbCBiZSBtZXJn\nZWQgd2l0aCB0aGUgYG1pbmlmbGFyZWAgb3B0aW9uIGFib3ZlLCB3aXRoIGBt\naW5pZmxhcmVgIHZhbHVlcyB0YWtpbmcgcHJlY2VkZW5jZS4gRm9yIGV4YW1w\nbGUsIGlmIHlvdXIgV3JhbmdsZXIgY29uZmlndXJhdGlvbiBkZWZpbmVkIGEg\nW3NlcnZpY2UgYmluZGluZ10oL3dvcmtlcnMvcnVudGltZS1hcGlzL2JpbmRp\nbmdzL3NlcnZpY2UtYmluZGluZ3MvKSBuYW1lZCBgU0VSVklDRWAgdG8gYSBX\nb3JrZXIgbmFtZWQgYHNlcnZpY2VgLCBidXQgeW91IGluY2x1ZGVkIGBzZXJ2\naWNlQmluZGluZ3M6IHsgU0VSVklDRShyZXF1ZXN0KSB7IHJldHVybiBuZXcg\nUmVzcG9uc2UoImJvZHkiKTsgfSB9YCBpbiB0aGUgYG1pbmlmbGFyZWAgb3B0\naW9uLCBhbGwgcmVxdWVzdHMgdG8gYFNFUlZJQ0VgIGluIHRlc3RzIHdvdWxk\nIHJldHVybiBgYm9keWAuIE5vdGUgYGNvbmZpZ1BhdGhgIGFjY2VwdHMgYm90\naCBgLnRvbWxgIGFuZCBgLmpzb25gIGZpbGVzLgoKICAtIFRoZSBlbnZpcm9u\nbWVudCBvcHRpb24gY2FuIGJlIHVzZWQgdG8gc3BlY2lmeSB0aGUgW1dyYW5n\nbGVyIGVudmlyb25tZW50XSgvd29ya2Vycy93cmFuZ2xlci9lbnZpcm9ubWVu\ndHMvKSB0byBwaWNrIHVwIGJpbmRpbmdzIGFuZCB2YXJpYWJsZXMgZnJvbS4K\nCiMjIER5bmFtaWMgY29uZmlndXJhdGlvbiB3aXRoIGBpbmplY3RgCgpZb3Ug\nY2FuIHBhc3MgYW4gYGFzeW5jYCBmdW5jdGlvbiB0byBgY2xvdWRmbGFyZVRl\nc3QoKWAgdGhhdCByZWNlaXZlcyBhbiBgaW5qZWN0YCBmdW5jdGlvbi4gVGhp\ncyBhbGxvd3MgeW91IHRvIGRlZmluZSBgbWluaWZsYXJlYCBjb25maWd1cmF0\naW9uIGJhc2VkIG9uIGluamVjdGVkIHZhbHVlcyBmcm9tIFtgZ2xvYmFsU2V0\ndXBgXShodHRwczovL3ZpdGVzdC5kZXYvY29uZmlnLyNnbG9iYWxzZXR1cCkg\nc2NyaXB0cy4gVXNlIHRoaXMgaWYgeW91IGhhdmUgYSB2YWx1ZSBpbiB5b3Vy\nIGNvbmZpZ3VyYXRpb24gdGhhdCBpcyBkeW5hbWljYWxseSBnZW5lcmF0ZWQg\nYW5kIG9ubHkga25vd24gYXQgcnVudGltZSBvZiB5b3VyIHRlc3RzLiBGb3Ig\nZXhhbXBsZSwgYSBnbG9iYWwgc2V0dXAgc2NyaXB0IG1pZ2h0IHN0YXJ0IGFu\nIHVwc3RyZWFtIHNlcnZlciBvbiBhIHJhbmRvbSBwb3J0LiBUaGlzIHBvcnQg\nY291bGQgYmUgYHByb3ZpZGUoKWBkIGFuZCB0aGVuIGBpbmplY3QoKWBlZCBp\nbiB0aGUgY29uZmlndXJhdGlvbiBmb3IgYW4gZXh0ZXJuYWwgc2VydmljZSBi\naW5kaW5nIG9yIFtIeXBlcmRyaXZlXSgvaHlwZXJkcml2ZS8pLiBSZWZlciB0\nbyB0aGUgW0h5cGVyZHJpdmUgcmVjaXBlXShodHRwczovL2dpdGh1Yi5jb20v\nY2xvdWRmbGFyZS93b3JrZXJzLXNkay90cmVlL21haW4vZml4dHVyZXMvdml0\nZXN0LXBsdWdpbi1leGFtcGxlcy9oeXBlcmRyaXZlKSBmb3IgYW4gZXhhbXBs\nZSBwcm9qZWN0IHVzaW5nIHRoaXMgcHJvdmlkZS9pbmplY3QgYXBwcm9hY2gu\nCgo8RGV0YWlscyBoZWFkZXI9IklsbHVzdHJhdGl2ZSBleGFtcGxlIj4KCmBg\nYHRzCi8vIGVudi5kLnRzCmRlY2xhcmUgbW9kdWxlICJ2aXRlc3QiIHsKCWlu\ndGVyZmFjZSBQcm92aWRlZENvbnRleHQgewoJCXBvcnQ6IG51bWJlcjsKCX0K\nfQoKLy8gZ2xvYmFsLXNldHVwLnRzCmltcG9ydCB0eXBlIHsgR2xvYmFsU2V0\ndXBDb250ZXh0IH0gZnJvbSAidml0ZXN0L25vZGUiOwpleHBvcnQgZGVmYXVs\ndCBmdW5jdGlvbiAoeyBwcm92aWRlIH06IEdsb2JhbFNldHVwQ29udGV4dCkg\newoJLy8gUnVucyBpbnNpZGUgTm9kZS5qcywgY291bGQgc3RhcnQgc2VydmVy\nIGhlcmUuLi4KCXByb3ZpZGUoInBvcnQiLCAxMzM3KTsKCXJldHVybiAoKSA9\nPiB7CgkJLyogLi4udGhlbiB0ZWFyZG93biBoZXJlICovCgl9Owp9CgovLyB2\naXRlc3QuY29uZmlnLnRzCmltcG9ydCB7IGNsb3VkZmxhcmVUZXN0IH0gZnJv\nbSAiQGNsb3VkZmxhcmUvdml0ZXN0LXBsdWdpbiI7CmltcG9ydCB7IGRlZmlu\nZUNvbmZpZyB9IGZyb20gInZpdGVzdC9jb25maWciOwoKZXhwb3J0IGRlZmF1\nbHQgZGVmaW5lQ29uZmlnKHsKCXBsdWdpbnM6IFsKCQljbG91ZGZsYXJlVGVz\ndCgoeyBpbmplY3QgfSkgPT4gKHsKCQkJbWluaWZsYXJlOiB7CgkJCQloeXBl\ncmRyaXZlczogewoJCQkJCURBVEFCQVNFOiBgcG9zdGdyZXM6Ly91c2VyOnBh\nc3NAZXhhbXBsZS5jb206JHtpbmplY3QoInBvcnQiKX0vZGJgLAoJCQkJfSwK\nCQkJfSwKCQl9KSksCgldLAoJdGVzdDogewoJCWdsb2JhbFNldHVwOiBbIi4v\nZ2xvYmFsLXNldHVwLnRzIl0sCgl9LAp9KTsKYGBgCgo8L0RldGFpbHM+Cgoj\nIyBgU291cmNlbGVzc1dvcmtlck9wdGlvbnNgCgpTb3VyY2VsZXNzIGBXb3Jr\nZXJPcHRpb25zYCB0eXBlIHdpdGhvdXQgYHNjcmlwdGAsIGBzY3JpcHRQYXRo\nYCwgb3IgYG1vZHVsZXNgIHByb3BlcnRpZXMuIFJlZmVyIHRvIHRoZSBNaW5p\nZmxhcmUgW2BXb3JrZXJPcHRpb25zYF0oaHR0cHM6Ly9naXRodWIuY29tL2Ns\nb3VkZmxhcmUvd29ya2Vycy1zZGsvdHJlZS9tYWluL3BhY2thZ2VzL21pbmlm\nbGFyZSNpbnRlcmZhY2Utd29ya2Vyb3B0aW9ucykgdHlwZSBmb3IgbW9yZSBk\nZXRhaWxzLgoKYGBgdHMKdHlwZSBTb3VyY2VsZXNzV29ya2VyT3B0aW9ucyA9\nIE9taXQ8CglXb3JrZXJPcHRpb25zLAoJInNjcmlwdCIgfCAic2NyaXB0UGF0\naCIgfCAibW9kdWxlcyIgfCAibW9kdWxlc1Jvb3QiCj47CmBgYAo=\n",
+      "encoding": "base64",
+      "_links": {
+        "self": "https://api.github.com/repos/cloudflare/cloudflare-docs/contents/src/content/docs/workers/testing/vitest-integration/configuration.mdx?ref=production",
+        "git": "https://api.github.com/repos/cloudflare/cloudflare-docs/git/blobs/4d170655bdd601d8fe7f22b93031304a871ede57",
+        "html": "https://github.com/cloudflare/cloudflare-docs/blob/production/src/content/docs/workers/testing/vitest-integration/configuration.mdx"
+      }
+    }
+  },
+  {
+    "url": "https://api.github.com/repos/cloudflare/cloudflare-docs/contents/src/content/docs/workers/testing/vitest-integration/write-your-first-test.mdx?ref=production",
+    "record": {
+      "name": "write-your-first-test.mdx",
+      "path": "src/content/docs/workers/testing/vitest-integration/write-your-first-test.mdx",
+      "sha": "202069dfc4979e359380ab59e6c75ae6d13bca60",
+      "size": 7146,
+      "url": "https://api.github.com/repos/cloudflare/cloudflare-docs/contents/src/content/docs/workers/testing/vitest-integration/write-your-first-test.mdx?ref=production",
+      "html_url": "https://github.com/cloudflare/cloudflare-docs/blob/production/src/content/docs/workers/testing/vitest-integration/write-your-first-test.mdx",
+      "git_url": "https://api.github.com/repos/cloudflare/cloudflare-docs/git/blobs/202069dfc4979e359380ab59e6c75ae6d13bca60",
+      "download_url": "https://raw.githubusercontent.com/cloudflare/cloudflare-docs/production/src/content/docs/workers/testing/vitest-integration/write-your-first-test.mdx",
+      "type": "file",
+      "content": "LS0tCnRpdGxlOiBXcml0ZSB5b3VyIGZpcnN0IHRlc3QKcGN4X2NvbnRlbnRf\ndHlwZTogY29uY2VwdApzaWRlYmFyOgogIG9yZGVyOiAxCmhlYWQ6IFtdCmRl\nc2NyaXB0aW9uOiBXcml0ZSB0ZXN0cyBhZ2FpbnN0IFdvcmtlcnMgdXNpbmcg\nVml0ZXN0CnByb2R1Y3RzOgogIC0gd29ya2VycwotLS0KCmltcG9ydCB7CglU\nYWJJdGVtLAoJVGFicywKCVR5cGVTY3JpcHRFeGFtcGxlLAoJUGFja2FnZU1h\nbmFnZXJzLAoJRGV0YWlscywKfSBmcm9tICJ+L2NvbXBvbmVudHMiOwoKVGhp\ncyBndWlkZSBleHBsYWlucyBob3cgdG8gZ2V0IHN0YXJ0ZWQgd2l0aCB0aGUg\nYEBjbG91ZGZsYXJlL3ZpdGVzdC1wbHVnaW5gIHBhY2thZ2UuIEZvciBtb3Jl\nIGNvbXBsZXggZXhhbXBsZXMgb2YgdGVzdGluZyB3aXRoIGBAY2xvdWRmbGFy\nZS92aXRlc3QtcGx1Z2luYCwgcmVmZXIgdG8gW1JlY2lwZXNdKC93b3JrZXJz\nL3Rlc3Rpbmcvdml0ZXN0LWludGVncmF0aW9uL3JlY2lwZXMvKS4KCiMjIFBy\nZXJlcXVpc2l0ZXMKCkZpcnN0LCBtYWtlIHN1cmUgdGhhdDoKCi0gWW91ciBb\nY29tcGF0aWJpbGl0eSBkYXRlXSgvd29ya2Vycy9jb25maWd1cmF0aW9uL2Nv\nbXBhdGliaWxpdHktZGF0ZXMvKSBpcyBzZXQgdG8gYDIwMjItMTAtMzFgIG9y\nIGxhdGVyLgotIFlvdXIgV29ya2VyIHVzaW5nIHRoZSBFUyBtb2R1bGVzIGZv\ncm1hdCAoaWYgbm90LCByZWZlciB0byB0aGUgW21pZ3JhdGUgdG8gdGhlIEVT\nIG1vZHVsZXMgZm9ybWF0XSgvd29ya2Vycy9yZWZlcmVuY2UvbWlncmF0ZS10\nby1tb2R1bGUtd29ya2Vycy8pIGd1aWRlKS4KLSBWaXRlc3QgYW5kIGBAY2xv\ndWRmbGFyZS92aXRlc3QtcGx1Z2luYCBhcmUgaW5zdGFsbGVkIGluIHlvdXIg\ncHJvamVjdCBhcyBkZXYgZGVwZW5kZW5jaWVzCgogIDxQYWNrYWdlTWFuYWdl\ncnMKCXBrZz0idml0ZXN0QF40LjEuMCBAY2xvdWRmbGFyZS92aXRlc3QtcGx1\nZ2luIgogIAlkZXY9InRydWUiCiAgLz4KCiAgOjo6bm90ZQoKICBUaGUgYEBj\nbG91ZGZsYXJlL3ZpdGVzdC1wbHVnaW5gIHBhY2thZ2UgcmVxdWlyZXMgVml0\nZXN0IDQuMSBvciBsYXRlci4KCiAgOjo6CgojIyBEZWZpbmUgVml0ZXN0IGNv\nbmZpZ3VyYXRpb24KCkluIHlvdXIgYHZpdGVzdC5jb25maWcudHNgIGZpbGUs\nIHVzZSB0aGUgYGNsb3VkZmxhcmVUZXN0KClgIHBsdWdpbiB0byBjb25maWd1\ncmUgdGhlIFdvcmtlcnMgVml0ZXN0IGludGVncmF0aW9uLgoKWW91IGNhbiB1\nc2UgeW91ciBXb3JrZXIgY29uZmlndXJhdGlvbiBmcm9tIHlvdXIgW1dyYW5n\nbGVyIGNvbmZpZyBmaWxlXSgvd29ya2Vycy93cmFuZ2xlci9jb25maWd1cmF0\naW9uLykgYnkgc3BlY2lmeWluZyBpdCB3aXRoIGB3cmFuZ2xlci5jb25maWdQ\nYXRoYC4KCmBgYHRzIHRpdGxlID0gdml0ZXN0LmNvbmZpZy50cwppbXBvcnQg\neyBjbG91ZGZsYXJlVGVzdCB9IGZyb20gIkBjbG91ZGZsYXJlL3ZpdGVzdC1w\nbHVnaW4iOwppbXBvcnQgeyBkZWZpbmVDb25maWcgfSBmcm9tICJ2aXRlc3Qv\nY29uZmlnIjsKCmV4cG9ydCBkZWZhdWx0IGRlZmluZUNvbmZpZyh7CglwbHVn\naW5zOiBbCgkJY2xvdWRmbGFyZVRlc3QoewoJCQl3cmFuZ2xlcjogeyBjb25m\naWdQYXRoOiAiLi93cmFuZ2xlci5qc29uYyIgfSwKCQl9KSwKCV0sCn0pOwpg\nYGAKCllvdSBjYW4gYWxzbyBvdmVycmlkZSBvciBkZWZpbmUgYWRkaXRpb25h\nbCBjb25maWd1cmF0aW9uIHVzaW5nIHRoZSBgbWluaWZsYXJlYCBrZXkuIFRo\naXMgdGFrZXMgcHJlY2VkZW5jZSBvdmVyIHZhbHVlcyBzZXQgaW4gdmlhIHlv\ndXIgV3JhbmdsZXIgY29uZmlnLgoKRm9yIGV4YW1wbGUsIHRoaXMgY29uZmln\ndXJhdGlvbiB3b3VsZCBhZGQgYSBLViBuYW1lc3BhY2UgYFRFU1RfTkFNRVNQ\nQUNFYCB0aGF0IHdhcyBvbmx5IGFjY2Vzc2VkIGFuZCBtb2RpZmllZCBpbiB0\nZXN0cy4KCiAgICAgICAgYGBganMgbnVsbCB7Ni04fQogICAgICAgIGV4cG9y\ndCBkZWZhdWx0IGRlZmluZUNvbmZpZyh7CiAgICAgICAgCXBsdWdpbnM6IFsK\nICAgICAgICAJCWNsb3VkZmxhcmVUZXN0KHsKICAgICAgICAJCQl3cmFuZ2xl\ncjogeyBjb25maWdQYXRoOiAiLi93cmFuZ2xlci5qc29uYyIgfSwKICAgICAg\nICAJCQltaW5pZmxhcmU6IHsKICAgICAgICAJCQkJa3ZOYW1lc3BhY2VzOiBb\nIlRFU1RfTkFNRVNQQUNFIl0sCiAgICAgICAgCQkJfSwKICAgICAgICAJCX0p\nLAogICAgICAgIAldLAogICAgICAgIH0pOwogICAgICAgIGBgYAoKICAgIEZv\nciBhIGZ1bGwgbGlzdCBvZiBhdmFpbGFibGUgTWluaWZsYXJlIG9wdGlvbnMs\nIHJlZmVyIHRvIHRoZSBbTWluaWZsYXJlIGBXb3JrZXJzT3B0aW9uc2AgQVBJ\nIGRvY3VtZW50YXRpb25dKGh0dHBzOi8vZ2l0aHViLmNvbS9jbG91ZGZsYXJl\nL3dvcmtlcnMtc2RrL3RyZWUvbWFpbi9wYWNrYWdlcy9taW5pZmxhcmUjaW50\nZXJmYWNlLXdvcmtlcm9wdGlvbnMpLgoKRm9yIGEgZnVsbCBsaXN0IG9mIGF2\nYWlsYWJsZSBjb25maWd1cmF0aW9uIG9wdGlvbnMsIHJlZmVyIHRvIFtDb25m\naWd1cmF0aW9uXSgvd29ya2Vycy90ZXN0aW5nL3ZpdGVzdC1pbnRlZ3JhdGlv\nbi9jb25maWd1cmF0aW9uLykuCgojIyBEZWZpbmUgdHlwZXMKCklmIHlvdSBh\ncmUgbm90IHVzaW5nIFR5cGVzY3JpcHQsIHlvdSBjYW4gc2tpcCB0aGlzIHNl\nY3Rpb24uCgpGaXJzdCBtYWtlIHN1cmUgeW91IGhhdmUgcnVuIFtgd3Jhbmds\nZXIgdHlwZXNgXSgvd29ya2Vycy93cmFuZ2xlci9jb21tYW5kcy8pLCB3aGlj\naCBnZW5lcmF0ZXMgW3R5cGVzIGZvciB0aGUgQ2xvdWRmbGFyZSBXb3JrZXJz\nIHJ1bnRpbWVdKC93b3JrZXJzL2xhbmd1YWdlcy90eXBlc2NyaXB0LykgYW5k\nIGFuIGBFbnZgIHR5cGUgYmFzZWQgb24geW91ciBXb3JrZXIncyBiaW5kaW5n\ncy4KClRoZW4gYWRkIGEgYHRzY29uZmlnLmpzb25gIGluIHlvdXIgdGVzdHMg\nZm9sZGVyIGFuZCBhZGQgYCJAY2xvdWRmbGFyZS92aXRlc3QtcGx1Z2luImAg\ndG8geW91ciB0eXBlcyBhcnJheSB0byBkZWZpbmUgdHlwZXMgZm9yIGBjbG91\nZGZsYXJlOnRlc3RgLgpZb3Ugc2hvdWxkIGFsc28gYWRkIHRoZSBvdXRwdXQg\nb2YgYHdyYW5nbGVyIHR5cGVzYCB0byB0aGUgYGluY2x1ZGVgIGFycmF5IHNv\nIHRoYXQgdGhlIHR5cGVzIGZvciB0aGUgQ2xvdWRmbGFyZSBXb3JrZXJzIHJ1\nbnRpbWUgYXJlIGF2YWlsYWJsZS4KCjxEZXRhaWxzIGhlYWRlcj0iRXhhbXBs\nZSB0ZXN0L3RzY29uZmlnLmpzb24iPgoJYGBganNvbmMgdGl0bGU9InRlc3Qv\ndHNjb25maWcuanNvbiIKCXsKCQkiZXh0ZW5kcyI6ICIuLi90c2NvbmZpZy5q\nc29uIiwKCQkiY29tcGlsZXJPcHRpb25zIjogewoJCQkibW9kdWxlUmVzb2x1\ndGlvbiI6ICJidW5kbGVyIiwKCQkJInR5cGVzIjogWwoJCQkJIkBjbG91ZGZs\nYXJlL3ZpdGVzdC1wbHVnaW4vdHlwZXMiLCAvLyBwcm92aWRlcyBgY2xvdWRm\nbGFyZTp0ZXN0YCBhbmQgYGNsb3VkZmxhcmU6d29ya2Vyc2AgdHlwZXMKCQkJ\nXSwKCQl9LAoJCSJpbmNsdWRlIjogWwoJCQkiLi8qKi8qLnRzIiwKCQkJIi4u\nL3NyYy93b3JrZXItY29uZmlndXJhdGlvbi5kLnRzIiwgLy8gb3V0cHV0IG9m\nIGB3cmFuZ2xlciB0eXBlc2AKCQldLAoJfQoJYGBgCjwvRGV0YWlscz4KCgoj\nIyBXcml0aW5nIHRlc3RzCgpXZSB3aWxsIHVzZSB0aGlzIHNpbXBsZSBXb3Jr\nZXIgYXMgYW4gZXhhbXBsZS4gSXQgcmV0dXJucyBhIDQwNCByZXNwb25zZSBm\nb3IgdGhlIGAvNDA0YCBwYXRoIGFuZCBgIkhlbGxvIFdvcmxkISJgIGZvciBh\nbGwgb3RoZXIgcGF0aHMuCgo8VHlwZVNjcmlwdEV4YW1wbGUgZmlsZW5hbWU9\nInNyYy9pbmRleC50cyI+CmBgYHRzCmV4cG9ydCBkZWZhdWx0IHsKCWFzeW5j\nIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KTogUHJvbWlzZTxSZXNwb25zZT4g\newoJCWNvbnN0IHsgcGF0aG5hbWUgfSA9IG5ldyBVUkwocmVxdWVzdC51cmwp\nOwoJCWlmIChwYXRobmFtZSA9PT0gIi80MDQiKSB7CgkJCXJldHVybiBuZXcg\nUmVzcG9uc2UoIk5vdCBmb3VuZCIsIHsgc3RhdHVzOiA0MDQgfSk7CgkJfQoJ\nCXJldHVybiBuZXcgUmVzcG9uc2UoIkhlbGxvIFdvcmxkISIpOwoJfSwKfSBz\nYXRpc2ZpZXMgRXhwb3J0ZWRIYW5kbGVyPEVudj47CmBgYAoKPC9UeXBlU2Ny\naXB0RXhhbXBsZT4KCiMjIyBVbml0IHRlc3RzCgpCeSBpbXBvcnRpbmcgdGhl\nIFdvcmtlciB3ZSBjYW4gd3JpdGUgYSB1bml0IHRlc3QgZm9yIGl0cyBgZmV0\nY2hgIGhhbmRsZXIuCgo8VHlwZVNjcmlwdEV4YW1wbGUgZmlsZW5hbWU9InRl\nc3QvdW5pdC5zcGVjLnRzIj4KCWBgYHRzCglpbXBvcnQgeyBlbnYgfSBmcm9t\nICJjbG91ZGZsYXJlOndvcmtlcnMiOwoJaW1wb3J0IHsKCQljcmVhdGVFeGVj\ndXRpb25Db250ZXh0LAoJCXdhaXRPbkV4ZWN1dGlvbkNvbnRleHQsCgl9IGZy\nb20gImNsb3VkZmxhcmU6dGVzdCI7CglpbXBvcnQgeyBkZXNjcmliZSwgaXQs\nIGV4cGVjdCB9IGZyb20gInZpdGVzdCI7CgkvLyBJbXBvcnQgeW91ciB3b3Jr\nZXIgc28geW91IGNhbiB1bml0IHRlc3QgaXQKCWltcG9ydCB3b3JrZXIgZnJv\nbSAiLi4vc3JjIjsKCiAgICAvLyBGb3Igbm93LCB5b3UnbGwgbmVlZCB0byBk\nbyBzb21ldGhpbmcgbGlrZSB0aGlzIHRvIGdldCBhIGNvcnJlY3RseS10eXBl\nZAogICAgLy8gYFJlcXVlc3RgIHRvIHBhc3MgdG8gYHdvcmtlci5mZXRjaCgp\nYC4KICAgIGNvbnN0IEluY29taW5nUmVxdWVzdCA9IFJlcXVlc3Q8dW5rbm93\nbiwgSW5jb21pbmdSZXF1ZXN0Q2ZQcm9wZXJ0aWVzPjsKCiAgICBkZXNjcmli\nZSgiSGVsbG8gV29ybGQgd29ya2VyIiwgKCkgPT4gewogICAgCWl0KCJyZXNw\nb25kcyB3aXRoIG5vdCBmb3VuZCBhbmQgcHJvcGVyIHN0YXR1cyBmb3IgLzQw\nNCIsIGFzeW5jICgpID0+IHsKICAgIAkJY29uc3QgcmVxdWVzdCA9IG5ldyBJ\nbmNvbWluZ1JlcXVlc3QoImh0dHA6Ly9leGFtcGxlLmNvbS80MDQiKTsKICAg\nIAkJLy8gQ3JlYXRlIGFuIGVtcHR5IGNvbnRleHQgdG8gcGFzcyB0byBgd29y\na2VyLmZldGNoKClgCiAgICAJCWNvbnN0IGN0eCA9IGNyZWF0ZUV4ZWN1dGlv\nbkNvbnRleHQoKTsKICAgIAkJY29uc3QgcmVzcG9uc2UgPSBhd2FpdCB3b3Jr\nZXIuZmV0Y2gocmVxdWVzdCwgZW52LCBjdHgpOwogICAgCQkvLyBXYWl0IGZv\nciBhbGwgYFByb21pc2VgcyBwYXNzZWQgdG8gYGN0eC53YWl0VW50aWwoKWAg\ndG8gc2V0dGxlIGJlZm9yZSBydW5uaW5nIHRlc3QgYXNzZXJ0aW9ucwogICAg\nCQlhd2FpdCB3YWl0T25FeGVjdXRpb25Db250ZXh0KGN0eCk7CiAgICAJCWV4\ncGVjdChyZXNwb25zZS5zdGF0dXMpLnRvQmUoNDA0KTsKICAgIAkJZXhwZWN0\nKGF3YWl0IHJlc3BvbnNlLnRleHQoKSkudG9CZSgiTm90IGZvdW5kIik7CiAg\nICAJfSk7CiAgICB9KTsKCiAgICBgYGAKCjwvVHlwZVNjcmlwdEV4YW1wbGU+\nCgojIyMgSW50ZWdyYXRpb24gdGVzdHMKCllvdSBjYW4gdXNlIHRoZSBgZXhw\nb3J0c2Agb2JqZWN0IHByb3ZpZGVkIGJ5IGBjbG91ZGZsYXJlOndvcmtlcnNg\nIHRvIHdyaXRlIGFuIGludGVncmF0aW9uIHRlc3QuIGBleHBvcnRzLmRlZmF1\nbHQuZmV0Y2goKWAgY2FsbHMgdGhlIGRlZmF1bHQgZXhwb3J0IGhhbmRsZXIg\nZGVmaW5lZCBpbiB0aGUgbWFpbiBXb3JrZXIuCgo8VHlwZVNjcmlwdEV4YW1w\nbGUgZmlsZW5hbWU9InRlc3QvaW50ZWdyYXRpb24uc3BlYy50cyI+CglgYGB0\ncwoJaW1wb3J0IHsgZXhwb3J0cyB9IGZyb20gImNsb3VkZmxhcmU6d29ya2Vy\ncyI7CglpbXBvcnQgeyBkZXNjcmliZSwgaXQsIGV4cGVjdCB9IGZyb20gInZp\ndGVzdCI7CgogICAgZGVzY3JpYmUoIkhlbGxvIFdvcmxkIHdvcmtlciIsICgp\nID0+IHsKICAgIAlpdCgicmVzcG9uZHMgd2l0aCBub3QgZm91bmQgYW5kIHBy\nb3BlciBzdGF0dXMgZm9yIC80MDQiLCBhc3luYyAoKSA9PiB7CiAgICAJCWNv\nbnN0IHJlc3BvbnNlID0gYXdhaXQgZXhwb3J0cy5kZWZhdWx0LmZldGNoKCJo\ndHRwOi8vZXhhbXBsZS5jb20vNDA0Iik7CiAgICAJCWV4cGVjdChyZXNwb25z\nZS5zdGF0dXMpLnRvQmUoNDA0KTsKICAgIAkJZXhwZWN0KGF3YWl0IHJlc3Bv\nbnNlLnRleHQoKSkudG9CZSgiTm90IGZvdW5kIik7CiAgICAJfSk7CiAgICB9\nKTsKCiAgICBgYGAKCjwvVHlwZVNjcmlwdEV4YW1wbGU+CgpXaGVuIHVzaW5n\nIGBleHBvcnRzLmRlZmF1bHQuZmV0Y2goKWAgZm9yIGludGVncmF0aW9uIHRl\nc3RzLCB5b3VyIFdvcmtlciBjb2RlIHJ1bnMgaW4gdGhlIHNhbWUgY29udGV4\ndCBhcyB0aGUgdGVzdCBydW5uZXIuIFRoaXMgbWVhbnMgeW91IGNhbiB1c2Ug\nZ2xvYmFsIG1vY2tzIHRvIGNvbnRyb2wgeW91ciBXb3JrZXIsIGJ1dCBhbHNv\nIG1lYW5zIHlvdXIgV29ya2VyIHVzZXMgdGhlIHN1YnRseSBkaWZmZXJlbnQg\nbW9kdWxlIHJlc29sdXRpb24gYmVoYXZpb3IgcHJvdmlkZWQgYnkgVml0ZS4K\nVXN1YWxseSB0aGlzIGlzIG5vdCBhIHByb2JsZW0sIGJ1dCB0byBydW4geW91\nciBXb3JrZXIgaW4gYSBmcmVzaCBlbnZpcm9ubWVudCB0aGF0IGlzIGFzIGNs\nb3NlIHRvIHByb2R1Y3Rpb24gYXMgcG9zc2libGUsIHlvdSBjYW4gdXNlIGFu\nIGF1eGlsaWFyeSBXb3JrZXIuIFJlZmVyIHRvIFt0aGlzIGV4YW1wbGVdKGh0\ndHBzOi8vZ2l0aHViLmNvbS9jbG91ZGZsYXJlL3dvcmtlcnMtc2RrL2Jsb2Iv\nbWFpbi9maXh0dXJlcy92aXRlc3QtcGx1Z2luLWV4YW1wbGVzL2Jhc2ljcy1p\nbnRlZ3JhdGlvbi1hdXhpbGlhcnkvdml0ZXN0LmNvbmZpZy50cykgZm9yIGhv\ndyB0byBzZXQgdXAgaW50ZWdyYXRpb24gdGVzdHMgdXNpbmcgYXV4aWxpYXJ5\nIFdvcmtlcnMuIEhvd2V2ZXIsIHVzaW5nIGF1eGlsaWFyeSBXb3JrZXJzIGNv\nbWVzIHdpdGggW2xpbWl0YXRpb25zXSgvd29ya2Vycy90ZXN0aW5nL3ZpdGVz\ndC1pbnRlZ3JhdGlvbi9jb25maWd1cmF0aW9uLyN3b3JrZXJzcG9vbG9wdGlv\nbnMpIHRoYXQgeW91IHNob3VsZCBiZSBhd2FyZSBvZi4KCiMjIFJlbGF0ZWQg\ncmVzb3VyY2VzCgotIEZvciBtb3JlIGNvbXBsZXggZXhhbXBsZXMgb2YgdGVz\ndGluZyB3aXRoIGBAY2xvdWRmbGFyZS92aXRlc3QtcGx1Z2luYCwgcmVmZXIg\ndG8gW1JlY2lwZXNdKC93b3JrZXJzL3Rlc3Rpbmcvdml0ZXN0LWludGVncmF0\naW9uL3JlY2lwZXMvKS4KLSBbQ29uZmlndXJhdGlvbiBBUEkgcmVmZXJlbmNl\nXSgvd29ya2Vycy90ZXN0aW5nL3ZpdGVzdC1pbnRlZ3JhdGlvbi9jb25maWd1\ncmF0aW9uLykKLSBbVGVzdCBBUElzIHJlZmVyZW5jZV0oL3dvcmtlcnMvdGVz\ndGluZy92aXRlc3QtaW50ZWdyYXRpb24vdGVzdC1hcGlzLykK\n",
+      "encoding": "base64",
+      "_links": {
+        "self": "https://api.github.com/repos/cloudflare/cloudflare-docs/contents/src/content/docs/workers/testing/vitest-integration/write-your-first-test.mdx?ref=production",
+        "git": "https://api.github.com/repos/cloudflare/cloudflare-docs/git/blobs/202069dfc4979e359380ab59e6c75ae6d13bca60",
+        "html": "https://github.com/cloudflare/cloudflare-docs/blob/production/src/content/docs/workers/testing/vitest-integration/write-your-first-test.mdx"
+      }
+    }
+  }
+]

@@ -1,0 +1,55 @@
+{
+  "records": [
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/c12-semgrep-initial.json",
+      "bytes": 151900,
+      "sha256": "fb1604fc8b8bcd7a93af4fed190b248e5afa8fc0639e78fc709950064df39550"
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/c12-semgrep-rules-license.html",
+      "bytes": 73114,
+      "sha256": "38675eca3406f1d09f763938bab0f222f6f6e7e70416d796dbcca27cca1d614a"
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/manifest.json",
+      "bytes": 1396,
+      "sha256": "192f1b01e31ed518a7aa6ca4bd05e62d042d3b529c2bbdbde121638c413a06e5"
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/semgrep-eval-control.json",
+      "bytes": 130963,
+      "sha256": "d8607673bba3df3b6d36e13e958cbf2cbeb6bb2d57f11ab6b8a8e57c985f6497"
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/semgrep-fake-literal.json",
+      "bytes": 127347,
+      "sha256": "7dcd1f185abb08106b18b79f77370e6c365b4d666ca2a200205a341cbf6715b9"
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/semgrep-owasp-top-ten.yml",
+      "bytes": 1448110,
+      "sha256": "e0c19f8e6f6d086a4a7e8420bec7dd8e0784b143bf7e3eed060d9d3a32cedc64"
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/semgrep-policy-data.json",
+      "bytes": 125603,
+      "sha256": "00b10ad64bbc3efc1b03b4cdf35887df3c313b97701ec8c168eba336416328fc"
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/semgrep-secrets.yml",
+      "bytes": 89772,
+      "sha256": "139b35ad3442bc83d1f0864db82fa4fdc7e1f1ee4b5ac872bfbeb604c82c6518"
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/semgrep-security-audit.yml",
+      "bytes": 473625,
+      "sha256": "b109a039df712f30c6d3e25e1e8358053fd0f1c91b92d0e8d2871cd141fe602f"
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/semgrep-trusted-annotations.json",
+      "bytes": 127737,
+      "sha256": "1b672a5ff9ac4e60af89646a886b9b28fb902fbb1a90963caf49c2a6827a34bd"
+    }
+  ],
+  "limits": "Readable exact private source/output bound for review, not distributable vendor policy. Original9/5/1 findings and failed/unexpected-green controls remain failed, not rewritten. No approval or execution proven merely by hashes."
+}

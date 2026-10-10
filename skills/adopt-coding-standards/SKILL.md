@@ -1,46 +1,38 @@
 ---
 name: adopt-coding-standards
-description: Adopt christopher-coding-standards into a new or existing repo — copies AGENTS.md, SYSTEM_MAP.md template, security configs, branch protection guide, and language overlays from the canonical source repo, then customizes per-project sections.
+description: Propose or perform explicitly authorized, customization-preserving adoption of selected Christopher Coding Standards units into a project; distinguish kit-maintenance files from consumer templates and verify actual checks.
 ---
 
 # Adopt Christopher Coding Standards
 
-Source of truth: `/mnt/storage/claudebox/projects/christopher-coding-standards/`
-(see `docs/INDEX.md` there for what each file is for).
+Default to an adoption/update **proposal**. Do not enroll consumers, overwrite files, install global skills or alter hosted controls merely because this skill was read. Execute only the target/scope authorized by its owner.
 
-## Step 0 — one-time install (per machine)
+## Establish source, target and existing contracts
 
-This skill lives in the standards repo so it stays versioned with everything
-else it references. To make it invocable from *other* project sessions, copy
-or symlink it into the global skills directory:
+- Use the actual owner-selected standards clone/revision; no canonical machine path is assumed. Confirm source identity/revision and known acceptance status. A remote URL, version stamp or editable receipt alone is not approval or trust.
+- Identify the actual target repo, ownership, branch/status and existing instructions/config/checks. Preserve other agents' work, local rules, package-manager/lockfile contracts and source history. Do not move repos/worktrees or read/write credential files.
+- Read source `docs/INDEX.md`, `docs/quality-contract.md` and only selected overlay READMEs. Check acceptance per unit: content-reviewed core on the rebuild branch does not make unverified overlays or the complete kit a ready release. Missing compatibility/enforcement proof stays unverified; do not claim full adoption from successful copying.
 
-```bash
-ln -s /mnt/storage/claudebox/projects/christopher-coding-standards/skills/adopt-coding-standards \
-      ~/.claude/skills/adopt-coding-standards
-```
+## Select exact artifacts, then propose the merge
 
-If this symlink doesn't exist yet when the skill is invoked, create it first
-(after confirming with the human owner), then continue.
+| Consumer destination | Source unit | Handling |
+|---|---|---|
+| `AGENTS.md` | `templates/AGENTS.md` | Merge with existing guidance; fill real project identity, actual verification commands, source baseline and local constraints. Never copy maintainer root AGENTS. |
+| `SYSTEM_MAP.md` | `templates/SYSTEM_MAP.md` | Describe actual components/utilities/state/trust boundaries; mark unknowns. Never copy the kit root map or invented example services. |
+| `docs/quality-contract.md` | `docs/quality-contract.md` | Preserve the shared requirements; reconcile real local specializations explicitly. Required consumer links must resolve. |
+| Optional `docs/architecture-review.md` | `docs/architecture-review.md` | Propose for material design/data-flow/debloat work when useful. Requires the shared contract in the same docs directory; not a mandatory bootstrap unit or automatic refactor grant. |
+| Selected language/runtime config/examples | Relevant `templates/<stack>/` | Merge according to its README, not a blanket directory overwrite. TS-dependent overlays preserve a compatible base/package-manager contract. All seven overlays exist; presence is not verified fitness. |
 
-## Steps — apply to the current repo (the one this skill was invoked in)
+Retain or propose deliberate changes to the project's existing enforcement and publication controls. `.claude/settings.json`, `.gitleaks.toml`, security workflows and branch-protection settings are **not automatic copy steps**: assess runtime permissions, exclusions, identities, actual check coverage and installation compatibility first. Do not transplant known skipped checks or claim a symlink/deny file establishes containment. Do not initialize Spec Kit unless chosen by the owner/project.
 
-1. **AGENTS.md** — copy from source root. Edit the per-project section: project
-   name, languages, public exposure, stack-specific commands. Do not copy the
-   rest verbatim without reading it — confirm each rule actually applies here.
-2. **`.claude/settings.json`** — copy from source `.claude/`.
-3. **SYSTEM_MAP.md** — copy the template from source root. Fill in this repo's
-   directory invariants and existing utilities — no placeholders left behind.
-4. **`.gitleaks.toml`** — copy from source root, unmodified.
-5. **`.github/workflows/security.yml`** — copy from source `.github/workflows/`.
-   Confirm the trivy-action SHA pin matches the source's current pin.
-6. **Branch protection** — follow `docs/branch-protection.md` from source
-   (read it; don't copy it into this repo).
-7. **Language overlay** — TypeScript: copy `templates/typescript/` from source,
-   follow its README. Other languages: not yet available (Phase 2) — flag to
-   the human owner instead of improvising.
-8. **Multi-agent** — if more than one AI agent works this codebase, copy
-   `docs/multi-agent-roles.md` and `docs/cross-pollination-log.md` (reset to
-   just its format section) from source `docs/`.
+Historical Codex/model-role guides and research/session archives are not required consumer payloads. If review/delegation guidance is needed, adapt `docs/review-roles.md` under the project's actual owner/permissions; it creates no launch or publication grant. An approved runtime may need a vendor-specific instruction entrypoint; verify its real loading behavior before adding it, rather than assuming filename parity/symlinks work.
 
-Report what was copied/customized and what was skipped (with why). Do not
-commit without the human owner's confirmation.
+## Verify and report
+
+1. Show exact new/changed units and preservation/compatibility decisions. Material changes to task scope, behavior, risk or authority need clarification, not silent policy replacement.
+2. Within authorized scope, apply the bounded merge without overwriting unrelated content. Respect applicable MPL notices when redistributing; do not replace the target's license.
+3. Verify document routing/profile facts and applicable real lint/type/behavior/security checks in the designated suitable environment. New/changed gates need clean/intended-failure cases with the expected diagnostics. Unsupported commands, missing tools and skipped steps are not passes.
+4. Report source bindings/customizations separately from configured controls, actual execution evidence and approval. Use [manual adoption status](../../docs/adoption-status.md) for conservative unknown/customized/mixed reporting and update proposals. Tracking implementation is deferred pending owner/source/catalog decisions; no checker/enrollment or new required receipt format exists. Do not invent authenticated receipts or adoption history.
+5. Commit/push/merge/install/deploy only under existing authority; no hook bypass, force-push or known-broken operational commit.
+
+Keep the report short: selected source/units; what changed/preserved; candidate-bound checks/review; specific unverified limits. A read-only proposal requires no automatic installation or destructive action.

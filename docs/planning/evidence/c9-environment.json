@@ -1,0 +1,10 @@
+{
+  "host": "claudeos",
+  "uid": 1000,
+  "go": "go version go1.27.2 linux/amd64",
+  "golangci": "golangci-lint has version 2.14.0 built with go1.27.0 from 114493f9 on 2026-09-24T11:07:15Z",
+  "go_archive_sha256": "ecbadb99091a3f46e31f5f934b068b1864eafa7995211b39eaddf76996045fe5",
+  "linter_archive_sha256": "sha256:ab90aeb7b066f92a33415b638a50fe5344bbb75a0d32ad30cc248d88f81032ab",
+  "linter_binary_sha256": "9f44104281628a17a0dc5aea2429ef51e256d405fd1af38342939578b2e2c83d",
+  "scope": "Official publisher hashes checked; not independent signature/approval or sandbox. Owned binaries/config/cache only. Go auto-toolchain disabled, no sudo/global/system/GUI/computer-use changes."
+}

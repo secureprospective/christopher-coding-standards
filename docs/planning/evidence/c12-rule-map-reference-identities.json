@@ -1,0 +1,32 @@
+[
+  {
+    "argv": [
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/semgrep-env/bin/python",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/rules_identity.py",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/results/semgrep-security-audit.yml"
+    ],
+    "status": 0,
+    "stdout": "{\"raw_sha256\": \"b109a039df712f30c6d3e25e1e8358053fd0f1c91b92d0e8d2871cd141fe602f\", \"rule_map_sha256\": \"29bce88305b589394f54eea39bb88f6ad5bec138cf312a79326df726bfd24700\", \"rules\": 225, \"bytes\": 473625}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/semgrep-env/bin/python",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/rules_identity.py",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/results/semgrep-secrets.yml"
+    ],
+    "status": 0,
+    "stdout": "{\"raw_sha256\": \"139b35ad3442bc83d1f0864db82fa4fdc7e1f1ee4b5ac872bfbeb604c82c6518\", \"rule_map_sha256\": \"29e43a16ff26d29c7fb03c6d09cb480eb6ad12642149367a27203ea80eeb1790\", \"rules\": 52, \"bytes\": 89772}\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/semgrep-env/bin/python",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces/tools/ci/rules_identity.py",
+      "/home/claude/coding-standards-verification/bee-c12-2026-10-09/results/semgrep-owasp-top-ten.yml"
+    ],
+    "status": 0,
+    "stdout": "{\"raw_sha256\": \"e0c19f8e6f6d086a4a7e8420bec7dd8e0784b143bf7e3eed060d9d3a32cedc64\", \"rule_map_sha256\": \"771361de7ac0f4402c6b906b1694bd9600fcbfecb5a8d5768fe891c9b5c90835\", \"rules\": 560, \"bytes\": 1448110}\n",
+    "stderr": ""
+  }
+]

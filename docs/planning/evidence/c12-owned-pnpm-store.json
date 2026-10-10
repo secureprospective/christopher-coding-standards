@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "pnpm",
+    "store",
+    "path"
+  ],
+  "status": 0,
+  "stdout": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-trivy-tool-graph/cache/pnpm/v10\n",
+  "stderr": "",
+  "expected_prefix": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-trivy-tool-graph/cache/pnpm",
+  "matched": true
+}

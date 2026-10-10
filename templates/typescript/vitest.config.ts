@@ -9,9 +9,11 @@ export default defineConfig({
     // Show verbose output per test file.
     reporters: ["verbose"],
 
-    // Coverage via v8 — fastest option, no instrumentation overhead.
+    // Include intended production files even when no test imports them.
     coverage: {
       provider: "v8",
+      include: ["src/**/*.ts", "src/**/*.tsx"],
+      exclude: ["src/**/*.{test,spec}.{ts,tsx}", "src/**/*.d.ts"],
       reporter: ["text", "lcov", "html"],
       reportsDirectory: "./coverage",
       // Fail CI if coverage drops below these thresholds.

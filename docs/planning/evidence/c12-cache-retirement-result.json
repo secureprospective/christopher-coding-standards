@@ -1,0 +1,46 @@
+{
+  "retired_duplicate_only": [
+    {
+      "path": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/checks-trivy-tool-graph with spaces/cache",
+      "files": [
+        {
+          "relative": "db/metadata.json",
+          "bytes": 153,
+          "sha256": "f07313fd1ccd5211dcf9911251f28433baaa15e7b65699e5c25ae8775579c14b"
+        },
+        {
+          "relative": "db/trivy.db",
+          "bytes": 1459486720,
+          "sha256": "6ee0acc06e0bb95ffec7e4d4c3faceb59ff9583a3af5bb1a061edcef24111824"
+        }
+      ],
+      "retained_identical_db": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/checks-pass2-post-freeze-trivy with spaces/cache/db/trivy.db",
+      "preserved_metadata": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/results/retired-checks-trivy-tool-graph_with_spaces-metadata.json"
+    },
+    {
+      "path": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/checks-final-publication-trivy with spaces/cache",
+      "files": [
+        {
+          "relative": "db/metadata.json",
+          "bytes": 152,
+          "sha256": "ab3fcbbb57e6005283e56dae62889f8a75205a9f2c44202d6ef0bdcf52a81ba5"
+        },
+        {
+          "relative": "db/trivy.db",
+          "bytes": 1459486720,
+          "sha256": "6ee0acc06e0bb95ffec7e4d4c3faceb59ff9583a3af5bb1a061edcef24111824"
+        }
+      ],
+      "retained_identical_db": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/checks-pass2-post-freeze-trivy with spaces/cache/db/trivy.db",
+      "preserved_metadata": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/results/retired-checks-final-publication-trivy_with_spaces-metadata.json"
+    }
+  ],
+  "retained_db_sha256": "6ee0acc06e0bb95ffec7e4d4c3faceb59ff9583a3af5bb1a061edcef24111824",
+  "matching_open_fds": [],
+  "matching_processes": [],
+  "matching_unit_exec_or_workdir_paths": [],
+  "free_bytes_before": 1359175680,
+  "limits": "No git/worktree/source/report/lock/install/browser/system/shared/other-agent path removed; own inactive exact duplicate advisory DBs with original metadata preserved. First larger cleanup assertion failed on different older DB; no deletion then. Not pristine or authenticated approval.",
+  "free_bytes_after": 4278177792,
+  "removed_paths_absent": true
+}

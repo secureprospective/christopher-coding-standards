@@ -1,0 +1,57 @@
+[
+  {
+    "name": "final_make_lint",
+    "command": [
+      "make",
+      "-f",
+      "Makefile.snippet",
+      "lint"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout": "find . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shellcheck --\nfind . -type d \\( -name node_modules -o -name .git \\) -prune -o -type f -name '*.sh' -print0 | xargs -0 -r shfmt -d -i 2 -ci -sr --\n",
+    "stderr": ""
+  },
+  {
+    "name": "final_make_test",
+    "command": [
+      "make",
+      "-f",
+      "Makefile.snippet",
+      "test"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/project",
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout": "bats --print-output-on-failure tests/\n1..17\nok 1 require_arg rejects empty without continuing\nok 2 require_arg rejects missing value\nok 3 require_arg preserves nonempty strings\nok 4 positive integer rejects zero and all-zero strings\nok 5 positive integer rejects negatives and malformed strings\nok 6 positive integer rejects empty and missing value\nok 7 positive integer preserves positives and leading zeros\nok 8 positive integer does not overflow on large decimal strings\nok 9 example rejects missing input with no success output\nok 10 example rejects zero negative and malformed input before work\nok 11 example preserves exact positive and leading-zero output\nok 12 shell metacharacters remain data and cannot execute\nok 13 ERR reports top-level failing file line and original status\nok 14 ERR inherits into ordinary function calls\nok 15 pipefail reports pipeline line and original failure\nok 16 handled command condition does not trigger ERR\nok 17 function used as a condition has Bash conditional suppression\n",
+    "stderr": ""
+  },
+  {
+    "name": "stage_final_clean_config",
+    "command": [
+      "git",
+      "add",
+      ".pre-commit-config.yaml",
+      "README.md"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes/hooks",
+    "exit": 0,
+    "expected_exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "name": "final_system_hooks_clean",
+    "command": [
+      "pre-commit",
+      "run",
+      "--all-files"
+    ],
+    "cwd": "/home/claude/coding-standards-verification/bee-c4-2026-10-08/probes/hooks",
+    "exit": 1,
+    "expected_exit": 0,
+    "stdout": "shellcheck...............................................................Passed\nshfmt....................................................................Passed\nDetect hardcoded secrets.................................................Failed\n- hook id: gitleaks-system\n- exit code: 1\n\nError: accepts at most 1 arg(s), received 4\nUsage:\n  gitleaks git [flags] [repo]\n\nFlags:\n  -h, --help              help for git\n      --log-opts string   git log options\n      --platform string   the target platform used to generate links (github, gitlab)\n      --pre-commit        scan using git diff\n      --staged            scan staged commits (good for pre-commit)\n\nGlobal Flags:\n  -b, --baseline-path string          path to baseline with issues that can be ignored\n  -c, --config string                 config file path\n                                      order of precedence:\n                                      1. --config/-c\n                                      2. env var GITLEAKS_CONFIG\n                                      3. env var GITLEAKS_CONFIG_TOML with the file content\n                                      4. (target path)/.gitleaks.toml\n                                      If none of the four options are used, then gitleaks will use the default config\n      --diagnostics string            enable diagnostics (http OR comma-separated list: cpu,mem,trace). cpu=CPU prof, mem=memory prof, trace=exec tracing, http=serve via net/http/pprof\n      --diagnostics-dir string        directory to store diagnostics output files when not using http mode (defaults to current directory)\n      --enable-rule strings           only enable specific rules by id\n      --exit-code int                 exit code when leaks have been encountered (default 1)\n  -i, --gitleaks-ignore-path string   path to .gitleaksignore file or folder containing one (default \".\")\n      --ignore-gitleaks-allow         ignore gitleaks:allow comments\n  -l, --log-level string              log level (trace, debug, info, warn, error, fatal) (default \"info\")\n      --max-archive-depth int         allow scanning into nested archives up to this depth (default \"0\", no archive traversal is done)\n      --max-decode-depth int          allow recursive decoding up to this depth (default 5)\n      --max-target-megabytes int      files larger than this will be skipped\n      --no-banner                     suppress banner\n      --no-color                      turn off color for verbose output\n      --redact uint[=100]             redact secrets from logs and stdout. To redact only parts of the secret just apply a percent value from 0..100. For example --redact=20 (default 100%)\n  -f, --report-format string          output format (json, csv, junit, sarif, template)\n  -r, --report-path string            report file (use \"-\" for stdout)\n      --report-template string        template file used to generate the report (implies --report-format=template)\n      --timeout int                   set a timeout for gitleaks commands in seconds (default \"0\", no timeout is set)\n  -v, --verbose                       show verbose output from scan\n\n9:53PM FTL accepts at most 1 arg(s), received 4\nError: accepts at most 1 arg(s), received 3\nUsage:\n  gitleaks git [flags] [repo]\n\nFlags:\n  -h, --help              help for git\n      --log-opts string   git log options\n      --platform string   the target platform used to generate links (github, gitlab)\n      --pre-commit        scan using git diff\n      --staged            scan staged commits (good for pre-commit)\n\nGlobal Flags:\n  -b, --baseline-path string          path to baseline with issues that can be ignored\n  -c, --config string                 config file path\n                                      order of precedence:\n                                      1. --config/-c\n                                      2. env var GITLEAKS_CONFIG\n                                      3. env var GITLEAKS_CONFIG_TOML with the file content\n                                      4. (target path)/.gitleaks.toml\n                                      If none of the four options are used, then gitleaks will use the default config\n      --diagnostics string            enable diagnostics (http OR comma-separated list: cpu,mem,trace). cpu=CPU prof, mem=memory prof, trace=exec tracing, http=serve via net/http/pprof\n      --diagnostics-dir string        directory to store diagnostics output files when not using http mode (defaults to current directory)\n      --enable-rule strings           only enable specific rules by id\n      --exit-code int                 exit code when leaks have been encountered (default 1)\n  -i, --gitleaks-ignore-path string   path to .gitleaksignore file or folder containing one (default \".\")\n      --ignore-gitleaks-allow         ignore gitleaks:allow comments\n  -l, --log-level string              log level (trace, debug, info, warn, error, fatal) (default \"info\")\n      --max-archive-depth int         allow scanning into nested archives up to this depth (default \"0\", no archive traversal is done)\n      --max-decode-depth int          allow recursive decoding up to this depth (default 5)\n      --max-target-megabytes int      files larger than this will be skipped\n      --no-banner                     suppress banner\n      --no-color                      turn off color for verbose output\n      --redact uint[=100]             redact secrets from logs and stdout. To redact only parts of the secret just apply a percent value from 0..100. For example --redact=20 (default 100%)\n  -f, --report-format string          output format (json, csv, junit, sarif, template)\n  -r, --report-path string            report file (use \"-\" for stdout)\n      --report-template string        template file used to generate the report (implies --report-format=template)\n      --timeout int                   set a timeout for gitleaks commands in seconds (default \"0\", no timeout is set)\n  -v, --verbose                       show verbose output from scan\n\n9:53PM FTL accepts at most 1 arg(s), received 3\n\n",
+    "stderr": ""
+  }
+]

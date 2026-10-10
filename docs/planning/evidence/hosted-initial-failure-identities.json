@@ -1,0 +1,49 @@
+{
+  "private_originals": [
+    {
+      "path": "/home/chris/scratch/coding-standards-publication-2026-10-10/hosted-first-failure/go-initial-command-state.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-publication-2026-10-10/hosted-first-failure/go-partial-archive-execution.txt",
+      "sha256": "818964eba9792546b34ec7c43bf7a9f2fc04431c92b29275cf146974c0e688fc"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-publication-2026-10-10/hosted-first-failure/go-repair-partial-status.txt",
+      "sha256": "4c7895d2a3de2000a8a5e4046bb2cf877007a73340be0fda9ee3e706fa54dbaf"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-publication-2026-10-10/hosted-first-failure/go-repair-partial.patch",
+      "sha256": "85f89a2dbff27bf7942588bdf3d92abeac5d9241b34f4edf9f64709581a7ccc6"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-publication-2026-10-10/hosted-first-failure/go-repair-readiness.txt",
+      "sha256": "e94ced9ce85499baa824588efc6bd409e9f193c9530581d1e9f33082b6fca666"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-publication-2026-10-10/hosted-first-failure/go-repair-transport-failure.txt",
+      "sha256": "8892d850c68caa925325129944cfffc5cc010c14a75d48f303ce692f1cfddd48"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-publication-2026-10-10/hosted-first-failure/go.log",
+      "sha256": "7a8ef95552bf088ad1017648e4981d03bbc42a33492afbd342e7b339596754e5"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-publication-2026-10-10/hosted-first-failure/pr-state.json",
+      "sha256": "2f67b83d1d64f2219a40d0794ef4350948a50112149722a70616f3b91b71300c"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-publication-2026-10-10/hosted-first-failure/semgrep.log",
+      "sha256": "033053754f6ac90b215482735e0c2f6c297adb83d0922a59e3b3af690995a3ec"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-publication-2026-10-10/hosted-first-failure/ts-test.log",
+      "sha256": "4393afcb0699896c8795f76236f8256d5786b34357d8fbf4b6b9c08dece2f665"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-publication-2026-10-10/hosted-first-failure/working.patch",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "limits": "Immutable original3hosted fail logs and partialtransport/EOF metadata failures; no raw vendor prose published, no new child status invention."
+}

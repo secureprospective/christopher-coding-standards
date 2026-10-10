@@ -1,0 +1,652 @@
+{
+  "version": "1",
+  "pip_version": "25.1.1",
+  "install": [
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/45/e2/bbb7129c9e7999a6b8ee9cca3b66486c25c423ab5a75f34071798b74ce94/pre_commit-4.6.2-py2.py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=e2dde9a75d3bce11bd3831c26d134df00a2803c1d818be6a0383c3dcda25dc4e",
+          "hashes": {
+            "sha256": "e2dde9a75d3bce11bd3831c26d134df00a2803c1d818be6a0383c3dcda25dc4e"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": true,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "pre_commit",
+        "version": "4.6.2",
+        "summary": "A framework for managing and maintaining multi-language pre-commit hooks.",
+        "description": "[![build status](https://github.com/pre-commit/pre-commit/actions/workflows/main.yml/badge.svg)](https://github.com/pre-commit/pre-commit/actions/workflows/main.yml)\n[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pre-commit/pre-commit/main.svg)](https://results.pre-commit.ci/latest/github/pre-commit/pre-commit/main)\n\n## pre-commit\n\nA framework for managing and maintaining multi-language pre-commit hooks.\n\nFor more information see: https://pre-commit.com/\n",
+        "description_content_type": "text/markdown",
+        "home_page": "https://github.com/pre-commit/pre-commit",
+        "author": "Anthony Sottile",
+        "author_email": "asottile@umich.edu",
+        "license": "MIT",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy"
+        ],
+        "requires_dist": [
+          "cfgv>=2.0.0",
+          "identify>=1.0.0",
+          "nodeenv>=0.11.1",
+          "pyyaml>=5.1",
+          "virtualenv>=20.10.0"
+        ],
+        "requires_python": ">=3.10"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/db/3c/33bac158f8ab7f89b2e59426d5fe2e4f63f7ed25df84c036890172b412b5/cfgv-3.5.0-py2.py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=a8dc6b26ad22ff227d2634a65cb388215ce6cc96bbcc5cfde7641ae87e8dacc0",
+          "hashes": {
+            "sha256": "a8dc6b26ad22ff227d2634a65cb388215ce6cc96bbcc5cfde7641ae87e8dacc0"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.1",
+        "name": "cfgv",
+        "version": "3.5.0",
+        "summary": "Validate configuration and produce human readable error messages.",
+        "description": "[![build status](https://github.com/asottile/cfgv/actions/workflows/main.yml/badge.svg)](https://github.com/asottile/cfgv/actions/workflows/main.yml)\n[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/asottile/cfgv/main.svg)](https://results.pre-commit.ci/latest/github/asottile/cfgv/main)\n\ncfgv\n====\n\nValidate configuration and produce human readable error messages.\n\n## Installation\n\n```bash\npip install cfgv\n```\n\n## Sample error messages\n\nThese are easier to see by example.  Here's an example where I typo'd `true`\nin a [pre-commit](https://pre-commit.com) configuration.\n\n```\npre_commit.clientlib.InvalidConfigError:\n==> File /home/asottile/workspace/pre-commit/.pre-commit-config.yaml\n==> At Config()\n==> At key: repos\n==> At Repository(repo='https://github.com/pre-commit/pre-commit-hooks')\n==> At key: hooks\n==> At Hook(id='flake8')\n==> At key: always_run\n=====> Expected bool got str\n```\n\n## API\n\n### `cfgv.validate(value, schema)`\n\nPerform validation on the schema:\n- raises `ValidationError` on failure\n- returns the value on success (for convenience)\n\n### `cfgv.apply_defaults(value, schema)`\n\nReturns a new value which sets all missing optional values to their defaults.\n\n### `cfgv.remove_defaults(value, schema)`\n\nReturns a new value which removes all optional values that are set to their\ndefaults.\n\n### `cfgv.load_from_filename(filename, schema, load_strategy, exc_tp=ValidationError)`\n\nLoad a file given the `load_strategy`.  Reraise any errors as `exc_tp`.  All\ndefaults will be populated in the resulting value.\n\nMost useful when used with `functools.partial` as follows:\n\n```python\nload_my_cfg = functools.partial(\n    cfgv.load_from_filename,\n    schema=MY_SCHEMA,\n    load_strategy=json.loads,\n    exc_tp=MyError,\n)\n```\n\n## Making a schema\n\nA schema validates a container -- `cfgv` provides `Map` and `Array` for\nmost normal cases.\n\n### writing your own schema container\n\nIf the built-in containers below don't quite satisfy your usecase, you can\nalways write your own.  Containers use the following interface:\n\n```python\nclass Container(object):\n    def check(self, v):\n        \"\"\"check the passed in value (do not modify `v`)\"\"\"\n\n    def apply_defaults(self, v):\n        \"\"\"return a new value with defaults applied (do not modify `v`)\"\"\"\n\n    def remove_defaults(self, v):\n        \"\"\"return a new value with defaults removed (do not modify `v`)\"\"\"\n```\n\n### `Map(object_name, id_key, *items)`\n\nThe most basic building block for creating a schema is a `Map`\n\n- `object_name`: will be displayed in error messages\n- `id_key`: will be used to identify the object in error messages.  Set to\n  `None` if there is no identifying key for the object.\n- `items`: validator objects such as `Required` or `Optional`\n\nConsider the following schema:\n\n```python\nMap(\n    'Repo', 'url',\n    Required('url', check_any),\n)\n```\n\nIn an error message, the map may be displayed as:\n\n- `Repo(url='https://github.com/pre-commit/pre-commit')`\n- `Repo(url=MISSING)` (if the key is not present)\n\n### `Array(of, allow_empty=True)`\n\nUsed to nest maps inside of arrays.  For arrays of scalars, see `check_array`.\n\n- `of`: A `Map` / `Array` or other sub-schema.\n- `allow_empty`: when `False`, `Array` will ensure at least one element.\n\nWhen validated, this will check that each element adheres to the sub-schema.\n\n### `KeyValueMap(object_name, key_check_fn, value_schema)`\n\nUsed to make a schema representing a homogenous mapping where the keys are\nof a specific type and the values match a schema\n\n- `object_name`: will be displayed in error messages\n- `key_check_fn`: a [check function](#check-functions) for the key\n- `value_schema`: a `Map` / `Array` or other sub-schema.\n\n## Validator objects\n\nValidator objects are used to validate key-value-pairs of a `Map`.\n\n### writing your own validator\n\nIf the built-in validators below don't quite satisfy your usecase, you can\nalways write your own.  Validators use the following interface:\n\n```python\nclass Validator(object):\n    def check(self, dct):\n        \"\"\"check that your specific key has the appropriate value in `dct`\"\"\"\n\n    def apply_default(self, dct):\n        \"\"\"modify `dct` and set the default value if it is missing\"\"\"\n\n    def remove_default(self, dct):\n        \"\"\"modify `dct` and remove the default value if it is present\"\"\"\n```\n\nIt may make sense to _borrow_ functions from the built in validators.  They\nadditionally use the following interface(s):\n\n- `self.key`: the key to check\n- `self.check_fn`: the [check function](#check-functions)\n- `self.default`: a default value to set.\n\n### `Required(key, check_fn)`\n\nEnsure that a key is present in a `Map` and adheres to the\n[check function](#check-functions).\n\n### `RequiredRecurse(key, schema)`\n\nSimilar to `Required`, but uses a [schema](#making-a-schema).\n\n### `Optional(key, check_fn, default)`\n\nIf a key is present, check that it adheres to the\n[check function](#check-functions).\n\n- `apply_defaults` will set the `default` if it is not present.\n- `remove_defaults` will remove the value if it is equal to `default`.\n\n### `OptionalRecurse(key, schema, default)`\n\nSimilar to `Optional` but uses a [schema](#making-a-schema).\n\n- `apply_defaults` will set the `default` if it is not present and then\n  validate it with the schema.\n- `remove_defaults` will remove defaults using the schema, and then remove the\n  value it if it is equal to `default`.\n\n### `OptionalNoDefault(key, check_fn)`\n\nLike `Optional`, but does not `apply_defaults` or `remove_defaults`.\n\n### `Conditional(key, check_fn, condition_key, condition_value, ensure_absent=False)`\n\n- If `condition_key` is equal to the `condition_value`, the specific `key`\nwill be checked using the [check function](#check-functions).\n- If `ensure_absent` is `True` and the condition check fails, the `key` will\nbe checked for absense.\n\nNote that the `condition_value` is checked for equality, so any object\nimplementing `__eq__` may be used.  A few are provided out of the box\nfor this purpose, see [equality helpers](#equality-helpers).\n\n### `ConditionalOptional(key, check_fn, default, condition_key, condition_value, ensure_absent=False)`\n\nSimilar to ``Conditional`` and ``Optional``.\n\n### `ConditionalRecurse(key, schema, condition_key, condition_value, ensure_absent=True)`\n\nSimilar to `Conditional`, but uses a [schema](#making-a-schema).\n\n### `NoAdditionalKeys(keys)`\n\nUse in a mapping to ensure that only the `keys` specified are present.\n\n## Equality helpers\n\nEquality helpers at the very least implement `__eq__` for their behaviour.\n\nThey may also implement `def describe_opposite(self):` for use in the\n`ensure_absent=True` error message (otherwise, the `__repr__` will be used).\n\n### `Not(val)`\n\nReturns `True` if the value is not equal to `val`.\n\n### `In(*values)`\n\nReturns `True` if the value is contained in `values`.\n\n### `NotIn(*values)`\n\nReturns `True` if the value is not contained in `values`.\n\n## Check functions\n\nA number of check functions are provided out of the box.\n\nA check function takes a single parameter, the `value`, and either raises a\n`ValidationError` or returns nothing.\n\n### `check_any(_)`\n\nA noop check function.\n\n### `check_type(tp, typename=None)`\n\nReturns a check function to check for a specific type.  Setting `typename`\nwill replace the type's name in the error message.\n\nFor example:\n\n```python\nRequired('key', check_type(int))\n# 'Expected bytes' in both python2 and python3.\nRequired('key', check_type(bytes, typename='bytes'))\n```\n\nSeveral type checking functions are provided out of the box:\n\n- `check_bool`\n- `check_bytes`\n- `check_int`\n- `check_string`\n- `check_text`\n\n### `check_one_of(possible)`\n\nReturns a function that checks that the value is contained in `possible`.\n\nFor example:\n\n```python\nRequired('language', check_one_of(('javascript', 'python', 'ruby')))\n```\n\n### `check_regex(v)`\n\nEnsures that `v` is a valid python regular expression.\n\n### `check_array(inner_check)`\n\nReturns a function that checks that a value is a sequence and that each\nvalue in that sequence adheres to the `inner_check`.\n\nFor example:\n\n```python\nRequired('args', check_array(check_string))\n```\n\n### `check_and(*fns)`\n\nReturns a function that performs multiple checks on a value.\n\nFor example:\n\n```python\nRequired('language', check_and(check_string, my_check_language))\n```\n",
+        "description_content_type": "text/markdown",
+        "home_page": "https://github.com/asottile/cfgv",
+        "author": "Anthony Sottile",
+        "author_email": "asottile@umich.edu",
+        "license": "MIT",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy"
+        ],
+        "requires_python": ">=3.10"
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/fa/70/fffc9613501877c0a10a1ef73a165e6ded3e53f6e7502227fef56d973933/identify-2.6.20-py2.py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=6a16b69b93187244e0548cbfd25b3e4a6f9a7a2ad784625c3bec2b8d27b81aaa",
+          "hashes": {
+            "sha256": "6a16b69b93187244e0548cbfd25b3e4a6f9a7a2ad784625c3bec2b8d27b81aaa"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "identify",
+        "version": "2.6.20",
+        "dynamic": [
+          "license-file"
+        ],
+        "summary": "File identification library for Python",
+        "description": "[![build status](https://github.com/pre-commit/identify/actions/workflows/main.yml/badge.svg)](https://github.com/pre-commit/identify/actions/workflows/main.yml)\n[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/pre-commit/identify/main.svg)](https://results.pre-commit.ci/latest/github/pre-commit/identify/main)\n\nidentify\n========\n\nFile identification library for Python.\n\nGiven a file (or some information about a file), return a set of standardized\ntags identifying what the file is.\n\n## Installation\n\n```bash\npip install identify\n```\n\n## Usage\n### With a file on disk\n\nIf you have an actual file on disk, you can get the most information possible\n(a superset of all other methods):\n\n```python\n>>> from identify import identify\n>>> identify.tags_from_path('/path/to/file.py')\n{'file', 'text', 'python', 'non-executable'}\n>>> identify.tags_from_path('/path/to/file-with-shebang')\n{'file', 'text', 'shell', 'bash', 'executable'}\n>>> identify.tags_from_path('/bin/bash')\n{'file', 'binary', 'executable'}\n>>> identify.tags_from_path('/path/to/directory')\n{'directory'}\n>>> identify.tags_from_path('/path/to/symlink')\n{'symlink'}\n```\n\nWhen using a file on disk, the checks performed are:\n\n* File type (file, symlink, directory, socket)\n* Mode (is it executable?)\n* File name (mostly based on extension)\n* If executable, the shebang is read and the interpreter interpreted\n\n\n### If you only have the filename\n\n```python\n>>> identify.tags_from_filename('file.py')\n{'text', 'python'}\n```\n\n\n### If you only have the interpreter\n\n```python\n>>> identify.tags_from_interpreter('python3.5')\n{'python', 'python3'}\n>>> identify.tags_from_interpreter('bash')\n{'shell', 'bash'}\n>>> identify.tags_from_interpreter('some-unrecognized-thing')\nset()\n```\n\n### As a cli\n\n```\n$ identify-cli --help\nusage: identify-cli [-h] [--filename-only] path\n\npositional arguments:\n  path\n\noptional arguments:\n  -h, --help       show this help message and exit\n  --filename-only\n```\n\n```console\n$ identify-cli setup.py; echo $?\n[\"file\", \"non-executable\", \"python\", \"text\"]\n0\n$ identify-cli setup.py --filename-only; echo $?\n[\"python\", \"text\"]\n0\n$ identify-cli wat.wat; echo $?\nwat.wat does not exist.\n1\n$ identify-cli wat.wat --filename-only; echo $?\n1\n```\n\n### Identifying LICENSE files\n\n`identify` also has an api for determining what type of license is contained\nin a file.  This routine is roughly based on the approaches used by\n[licensee] (the ruby gem that github uses to figure out the license for a\nrepo).\n\nThe approach that `identify` uses is as follows:\n\n1. Strip the copyright line\n2. Normalize all whitespace\n3. Return any exact matches\n4. Return the closest by edit distance (where edit distance < 5%)\n\nTo use the api, install via `pip install identify[license]`\n\n```pycon\n>>> from identify import identify\n>>> identify.license_id('LICENSE')\n'MIT'\n```\n\nThe return value of the `license_id` function is an [SPDX] id.  Currently\nlicenses are sourced from [choosealicense.com].\n\n[licensee]: https://github.com/benbalter/licensee\n[SPDX]: https://spdx.org/licenses/\n[choosealicense.com]: https://github.com/github/choosealicense.com\n\n## How it works\n\nA call to `tags_from_path` does this:\n\n1. What is the type: file, symlink, directory? If it's not file, stop here.\n2. Is it executable? Add the appropriate tag.\n3. Do we recognize the file extension? If so, add the appropriate tags, stop\n   here. These tags would include binary/text.\n4. Peek at the first X bytes of the file. Use these to determine whether it is\n   binary or text, add the appropriate tag.\n5. If identified as text above, try to read and interpret the shebang, and add\n   appropriate tags.\n\nBy design, this means we don't need to partially read files where we recognize\nthe file extension.\n",
+        "description_content_type": "text/markdown",
+        "home_page": "https://github.com/pre-commit/identify",
+        "author": "Chris Kuehl",
+        "author_email": "ckuehl@ocf.berkeley.edu",
+        "license": "MIT",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy"
+        ],
+        "requires_dist": [
+          "ukkonen; extra == \"license\""
+        ],
+        "requires_python": ">=3.10",
+        "provides_extra": [
+          "license"
+        ]
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/54/c8/12811c9b48fde162bb72b6f2e78fada9a247a09d7bb5be2050a5d099c77b/nodeenv-1.11.0-py2.py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=edaa16e6c14d7cf395d75d4bbd5a26390f4dc06501a33b4e76282b02cc688a25",
+          "hashes": {
+            "sha256": "edaa16e6c14d7cf395d75d4bbd5a26390f4dc06501a33b4e76282b02cc688a25"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "nodeenv",
+        "version": "1.11.0",
+        "dynamic": [
+          "author",
+          "author-email",
+          "classifier",
+          "description",
+          "home-page",
+          "license",
+          "license-file",
+          "platform",
+          "provides-extra",
+          "requires-python",
+          "summary"
+        ],
+        "platform": [
+          "any"
+        ],
+        "summary": "Node.js virtual environment builder",
+        "description": "Node.js virtual environment\n===========================\n\n``nodeenv`` (node.js virtual environment) is a tool to create\nisolated node.js environments.\n\nIt creates an environment that has its own installation directories,\nthat doesn't share libraries with other node.js virtual environments.\n\nAlso the new environment can be integrated with the environment which was built\nby virtualenv_ (python).\n\nIf you use nodeenv feel free to add your project on wiki: `Who-Uses-Nodeenv`_.\n\n.. _Who-Uses-Nodeenv: https://github.com/ekalinin/nodeenv/wiki/Who-Uses-Nodeenv\n\n.. image:: https://github.com/ekalinin/nodeenv/actions/workflows/main.yml/badge.svg?branch=master\n    :target: https://github.com/ekalinin/nodeenv/actions/workflows/main.yml\n    :alt: CI\n\n.. contents:: :local:\n\n\nInstall\n-------\n\nGlobal installation\n^^^^^^^^^^^^^^^^^^^\n\nYou can install nodeenv globally with `easy_install`_::\n\n    $ sudo easy_install nodeenv\n\nor with `pip`_::\n\n    $ sudo pip install nodeenv\n\nor on Debian using `dpkg`_::\n\n    $ ln -s debian-upstream debian\n    $ dpkg-buildpackage -uc -us -b\n    $ sudo dpkg -i $(ls -1rt ../nodeenv_*.deb | tail -n1)\n\n.. _dpkg: https://www.debian.org/doc/manuals/debian-faq/ch-pkgtools.en.html\n\nLocal installation\n^^^^^^^^^^^^^^^^^^\n\nIf you're using virtualenv_ then you can install nodeenv via\npip_/easy_install_ inside any virtual environment built with virtualenv::\n\n    $ virtualenv env\n    $ . env/bin/activate\n    (env) $ pip install nodeenv\n    (env) $ nodeenv --version\n    0.6.5\n\nIf you want to work with the latest version of the nodeenv you can\ninstall it from the github `repository`_::\n\n    $ git clone https://github.com/ekalinin/nodeenv.git\n    $ ./nodeenv/nodeenv.py --help\n\nor with `pip`_::\n\n    $ pip install -e git+https://github.com/ekalinin/nodeenv.git#egg=nodeenv\n\n.. _repository: https://github.com/ekalinin/nodeenv\n.. _pip: http://pypi.python.org/pypi/pip\n.. _easy_install: http://pypi.python.org/pypi/setuptools\n\n\nDependency\n----------\n\nFor nodeenv\n^^^^^^^^^^^\n\n* python (2.6+, 3.5+, or pypy)\n* make\n* tail\n\nFor node.js\n^^^^^^^^^^^\n\n* libssl-dev\n\nUsage\n-----\n\nBasic\n^^^^^\n\nCreate new environment::\n\n    $ nodeenv env\n\nActivate new environment::\n\n    $ . env/bin/activate\n\nOn Windows the environment is created in ``env\\Scripts`` instead, with a\nscript per shell: ``activate.bat`` for cmd, ``Activate.ps1`` for\nPowerShell and ``activate`` for posix shells such as git-bash::\n\n    $ . env/Scripts/activate\n\nCheck versions of main packages::\n\n    (env) $ node -v\n    v0.10.26\n\n    (env) $ npm -v\n    1.4.3\n\nDeactivate environment::\n\n    (env) $ deactivate_node\n\nAdvanced\n^^^^^^^^\n\nGet available node.js versions::\n\n    $ nodeenv --list\n    0.0.1   0.0.2   0.0.3   0.0.4   0.0.5   0.0.6   0.1.0\n    0.1.2   0.1.3   0.1.4   0.1.5   0.1.6   0.1.7   0.1.8\n    0.1.10  0.1.11  0.1.12  0.1.13  0.1.14  0.1.15  0.1.16\n    0.1.18  0.1.19  0.1.20  0.1.21  0.1.22  0.1.23  0.1.24\n    0.1.26  0.1.27  0.1.28  0.1.29  0.1.30  0.1.31  0.1.32\n    0.1.90  0.1.91  0.1.92  0.1.93  0.1.94  0.1.95  0.1.96\n    0.1.98  0.1.99  0.1.100 0.1.101 0.1.102 0.1.103 0.1.104\n    0.2.1   0.2.2   0.2.3   0.2.4   0.2.5   0.2.6   0.3.0\n    0.3.2   0.3.3   0.3.4   0.3.5   0.3.6   0.3.7   0.3.8\n    0.4.1   0.4.2   0.4.3   0.4.4   0.4.5   0.4.6\n\nInstall node.js \"0.4.3\" without ssl support with 4 parallel commands\nfor compilation and npm.js \"0.3.17\"::\n\n    $ nodeenv --without-ssl --node=0.4.3 --npm=0.3.17 --with-npm --jobs=4 env-4.3\n\nInstall node.js from the source::\n\n    $ nodeenv --node=0.10.25 --source env-0.10.25\n\nInstall node.js from a mirror::\n\n    $ nodeenv --node=10.19.0 --mirror=https://npm.taobao.org/mirrors/node\n\nA local directory works as a mirror too, if it repeats the layout of\nnodejs.org: packages in ``v<version>/`` and, to resolve ``latest``, ``lts``\nor a version range, an ``index.json`` next to them::\n\n    $ nodeenv --node=22.14.0 --mirror=file:///srv/node-mirror env-22\n\nInstall the highest node.js release matching a version range::\n\n    $ nodeenv --node=22 env-22\n    $ nodeenv --node=4.x env-4\n    $ nodeenv --node=\"^4.3.1\" env-4.3\n    $ nodeenv --node=\">=20 <22\" env-20\n\nRanges use `npm semver syntax`_ and also work in a ``.node-version`` file.\n\n.. _npm semver syntax: https://docs.npmjs.com/cli/v10/using-npm/semver\n\nIt's much faster to install from the prebuilt package than Install & compile\nnode.js from source::\n\n    $ time nodeenv --node=0.10.25 --prebuilt env-0.10.25-prebuilt\n     + Install node.js (0.10.25) ... done.\n\n    real    0m6.928s\n    user    0m0.408s\n    sys     0m1.144s\n\n    $ time nodeenv --node=0.10.25 --source env-0.10.25-src\n     + Install node.js (0.10.25) ... done.\n\n    real    4m12.602s\n    user    6m34.112s\n    sys     0m30.524s\n\nCreate a new environment with the system-wide node.js::\n\n    $ nodeenv --node=system\n\nUse the system-wide node.js if it is available, otherwise install the latest\nLTS release::\n\n    $ nodeenv --prefer-system --node=lts env\n\nSaving the versions of all installed packages to a file::\n\n    $ . env-4.3/bin/activate\n    (env-4.3)$ npm install -g express\n    (env-4.3)$ npm install -g jade\n    (env-4.3)$ freeze ../prod-requirements.txt\n\nIf you want to list locally installed packages use ``-l`` option::\n\n    (env-4.3)$ freeze -l ../prod-requirements.txt\n\n``npm`` and ``corepack`` are installed by node.js itself and are left out of\nthe list: pinning them would downgrade the copies the next node.js brings.\n\n``freeze`` saves the packages, not the runtime. To pin the node.js version as\nwell, write it next to the requirements file - nodeenv reads\n``.node-version`` from the directory it is run in::\n\n    (env-4.3)$ node --version > ../.node-version\n\nCreate an environment from a requirements file::\n\n    $ nodeenv --requirements=../prod-requirements.txt --jobs=4 env-copy\n\n``--requirements`` may be given more than once, and the packages of every file\nare installed globally::\n\n    $ nodeenv --requirements=../prod-requirements.txt \\\n              --requirements=../dev-requirements.txt env-copy\n\nTo install packages locally, into ``node_modules`` of the current directory,\nuse ``--local-requirements``. It accepts the output of ``freeze -l`` and may\nalso be given more than once::\n\n    $ nodeenv --requirements=../global-requirements.txt \\\n              --local-requirements=../local-requirements.txt env-copy\n\nGlobal packages are installed first, then the local ones.\n\nRequirements files are plain text files that contain a list of packages\nto be installed. These text files allow you to create repeatable installations.\nRequirements file example::\n\n    $ cat ../prod-requirements.txt\n    connect@1.3.0\n    express@2.2.2\n    jade@0.10.4\n    mime@1.2.1\n    qs@0.0.7\n\nIf you already have the python virtualenv tool, and want to use nodeenv and\nvirtualenv in conjunction, then you should create (or activate) the python\nvirtual environment::\n\n    # in case of using virtualenv_wrapper\n    $ mkvirtualenv my_env\n\n    # in case of using virtualenv\n    $ . my_env/bin/activate\n\nand add a node virtual environment to this existing new_venv::\n\n    $ nodeenv -p\n\nIf you need to set the path to make used to build node::\n\n\t$ nodeenv -m /usr/local/bin/gmake ENV\n\nThat's all. Now, all your node.js modules will be installed into your virtual\nenvironment::\n\n    $ workon my_env\n    $ npm install -g coffee-script\n    $ command -v coffee\n    /home/monty/virtualenvs/my_env/bin/coffee\n\nCreating a virtual environment with a custom prompt:\n\n    $ nodeenv --node=12.18.2 --prompt=\"(myenv)\" nodeenv\n\nIf environment's directory already exists then you can use ``--force`` option::\n\n    $ nodeenv --requirements=requirements.txt --jobs=4 --force env\n\nIf you already have an environment and want to update packages from requirements\nfile you can use ``--update`` option::\n\n    $ . env-4.3/bin/activate\n    (env-4.3)$ nodeenv --requirements=requirements.txt --update env-4.3\n\nIf you want to call node from environment without activation then you should\nuse `shim` script::\n\n    $ ./env-4.3/bin/shim --version\n    v0.4.3\n\nCommand Line Options\n--------------------\n\nBasic options\n^^^^^^^^^^^^^\n\n``-n NODE_VER, --node=NODE_VER``\n    The node.js version to use, e.g., ``--node=22.11.0``. Also accepts an\n    npm-style semver range, which is resolved to the highest matching\n    release: ``--node=22``, ``--node=4.x``, ``--node=\"^4.3.1\"``,\n    ``--node=\"~4.3\"``, ``--node=\">=20 <22\"``, ``--node=\"8 || 10\"``.\n    The default is the last stable version (``latest``). Use ``lts`` for the\n    latest LTS release. Use ``system`` to use system-wide node.\n\n``--prefer-system``\n    Use the system-wide node.js if ``nodejs`` or ``node`` is found in\n    ``PATH``, otherwise install the version given by ``--node``. A found\n    system node is used as is, its version is not checked against\n    ``--node``. Set ``prefer_system = True`` in ``~/.nodeenvrc`` to make\n    this the default. Ignored on Windows, where system-wide node.js is not\n    supported.\n\n``-l, --list``\n    Lists available node.js versions.\n\n``-p [VENV_DIR], --python-virtualenv [VENV_DIR]``\n    Use the given python virtualenv, or the current one if no directory\n    is given. Passing a directory is required when nodeenv lives in its\n    own virtualenv (``pipx``, ``pipsi``, ``uv tool``) and the activated\n    virtualenv doesn't export ``VIRTUAL_ENV``. Running it again with the\n    same node version does not reinstall node; pass ``--force`` to\n    reinstall.\n\n``-r FILENAME, --requirements=FILENAME``\n    Install all the packages listed in the given requirements file globally.\n    May be given more than once.\n\n``--local-requirements=FILENAME``\n    Install all the packages listed in the given requirements file locally,\n    into ``node_modules`` of the current directory. May be given more than\n    once.\n\n``--prompt=PROMPT``\n    Provides an alternative prompt prefix for this environment.\n\n``--force``\n    Force installation in a pre-existing directory, and reinstall node even\n    when the requested version is already installed.\n\n``--update``\n    Install npm packages from file without reinstalling node.\n\nInstallation options\n^^^^^^^^^^^^^^^^^^^^\n\n``--prebuilt``\n    Install node.js from prebuilt package (default).\n\n``--source``\n    Install node.js from the source (Unix only).\n\n``--mirror=URL``\n    Set mirror server of nodejs.org to download from. A ``file://`` URL\n    points nodeenv at a local directory instead of a server.\n\n``-c, --clean-src``\n    Remove \"src\" directory after installation. This is the default.\n\n``--no-clean-src``\n    Keep \"src\" directory after installation. With ``--source`` it holds the\n    downloaded source tree, so a repeated ``--force`` build reuses it.\n\nNPM options\n^^^^^^^^^^^\n\n``--npm=NPM_VER``\n    The npm version to use, e.g., ``--npm=10.0.0``.\n    The default is the last available version (``latest``).\n\n``--with-npm``\n    Install npm into the new virtual environment. Required for node.js < 0.6.3.\n    By default, the npm included with node.js is used.\n\n``--no-npm-clean``\n    Skip the npm 0.x cleanup. Cleanup is enabled by default.\n\n``--isolate-npm``\n    Keep npm's ``cache`` (``.npm``), ``userconfig`` (``.npmrc``) and\n    ``init-module`` (``.npm-init.js``) inside the environment instead of\n    ``$HOME``. Useful when ``$HOME`` is missing or read-only, or when the\n    environment must not touch the user's npm files. Settings from\n    ``~/.npmrc`` such as a private registry or auth tokens are then not seen\n    inside the environment. Set ``isolate_npm = True`` in ``~/.nodeenvrc`` to\n    make this the default. Ignored on Windows.\n\nCompilation options (Unix only)\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\n``-j JOBS, --jobs=JOBS``\n    Sets number of parallel commands at node.js compilation. The default is 2 jobs.\n\n``--load-average=LOAD``\n    Sets maximum load average for executing parallel commands at node.js compilation.\n\n``-m MAKE_PATH, --make=MAKE_PATH``\n    Path to make command.\n\n``--without-ssl``\n    Build node.js without SSL support.\n\n``--debug``\n    Build debug variant of the node.js.\n\n``--profile``\n    Enable profiling for node.js.\n\nOther options\n^^^^^^^^^^^^^\n\n``-v, --verbose``\n    Verbose mode.\n\n``-q, --quiet``\n    Quiet mode.\n\n``-C CONFIG_FILE, --config-file=CONFIG_FILE``\n    Load a different config file than ``~/.nodeenvrc``.\n    Pass an empty string for no config (use built-in defaults).\n\n``--ignore_ssl_certs``\n    Ignore SSL certificates for package downloads. **UNSAFE - use at your own risk**.\n\n``--with-certifi``\n    Use the `certifi <https://pypi.org/project/certifi/>`_ certificate bundle for\n    package downloads instead of the system certificate store. Useful when the\n    system store is missing or outdated. If certifi is not installed, a warning is\n    printed and the system store is used. Ignored when ``--ignore_ssl_certs`` is\n    given. The same result can be achieved without this option by pointing\n    ``SSL_CERT_FILE`` at the bundle::\n\n        $ SSL_CERT_FILE=$(python -c 'import certifi; print(certifi.where())') nodeenv env\n\n``--version``\n    Show program version and exit.\n\nConfiguration\n-------------\nYou can use the INI-style file ``~/.nodeenvrc`` to set default values for many options,\nthe keys in that file are the long command-line option names.\n\nThese are the available options and their defaults::\n\n    [nodeenv]\n    node = 'latest'\n    npm = 'latest'\n    with_npm = False\n    jobs = '2'\n    without_ssl = False\n    debug = False\n    profile = False\n    make = 'make'\n    prebuilt = True\n    ignore_ssl_certs = False\n    with_certifi = False\n    mirror = None\n    prefer_system = False\n    isolate_npm = False\n    clean_src = True\n\nAlternatives\n------------\n\nThere are several alternatives that create isolated environments:\n\n* `nave <https://github.com/isaacs/nave>`_ - Virtual Environments for Node.\n  Nave stores all environments in one directory ``~/.nave``. Can create\n  per node version environments using `nave use envname versionname`.\n  Can not pass additional arguments into configure (for example --without-ssl)\n  Can't run on windows because it relies on a POSIX shell.\n\n* `nvm <https://github.com/creationix/nvm/blob/master/nvm.sh>`_ - Node Version\n  Manager. It is necessarily to do `nvm sync` for caching available node.js\n  version.\n  Can not pass additional arguments into configure (for example --without-ssl)\n\n* virtualenv_ - Virtual Python Environment builder. For python only.\n\n.. _`virtualenv`: https://github.com/pypa/virtualenv\n\nLICENSE\n=======\n\nBSD / `LICENSE <https://github.com/ekalinin/nodeenv/blob/master/LICENSE>`_\n\n\nNodeenv changelog\n=================\n\nVersion 1.11.0\n--------------\n- Fixed zsh `source bin/activate` aborting on the direct-call guard `#398 <https://github.com/ekalinin/nodeenv/issues/398>`_\n- Added check for how `activate` is called\n  `#384 <https://github.com/ekalinin/nodeenv/pull/384>`_\n- Addressed the ``tarfile.extractall`` deprecation on Python >= 3.12 by\n  setting ``filter='data'``, which also prevents writing files via \"..\" or\n  absolute paths `#380 <https://github.com/ekalinin/nodeenv/pull/380>`_\n- Added support for Solaris/illumos\n  `#360 <https://github.com/ekalinin/nodeenv/issues/360>`_\n- Added `predeactivate` hooks for Windows\n- Added error handling and tests for the node installation\n  `#336 <https://github.com/ekalinin/nodeenv/issues/336>`_\n- Removed the leftover debug `print` that leaked a dict to stdout on every\n  version detection `#390 <https://github.com/ekalinin/nodeenv/issues/390>`_\n- Added `--with-certifi` to download packages with the certifi certificate\n  bundle `#388 <https://github.com/ekalinin/nodeenv/pull/388>`_\n- `--node` accepts npm-style semver ranges\n  `#393 <https://github.com/ekalinin/nodeenv/pull/393>`_\n- Added `--prefer-system` to use system-wide node.js when available and\n  install one otherwise `#153 <https://github.com/ekalinin/nodeenv/issues/153>`_\n- Added `--isolate-npm` to keep npm cache, userconfig and init-module inside\n  the environment `#154 <https://github.com/ekalinin/nodeenv/issues/154>`_\n- Added tests that run the activation scripts in sh, dash, bash, zsh and fish.\n- `-p` no longer reinstalls node when the requested version is already in the\n  virtualenv `#159 <https://github.com/ekalinin/nodeenv/issues/159>`_\n- Repeated `-p` runs no longer duplicate the `predeactivate` hook\n  `#159 <https://github.com/ekalinin/nodeenv/issues/159>`_\n- `-p` accepts an optional virtualenv directory and prefers the activated\n  `VIRTUAL_ENV` over the virtualenv nodeenv itself is installed in\n  `#156 <https://github.com/ekalinin/nodeenv/issues/156>`_\n- `-r/--requirements` may now be given more than once, and the new\n  `--local-requirements` installs the packages of a file locally, into\n  \"node_modules\" of the current directory, which is what `freeze -l` writes.\n  Under npm < 1.0.0, which has no `-g`, a local file is still installed the\n  old way `#206 <https://github.com/ekalinin/nodeenv/issues/206>`_\n- The \"src\" directory is now removed after installation by default, which\n  halves the size of an environment. Added `--no-clean-src` to keep it: with\n  `--source` that is what lets a repeated `--force` build reuse the\n  downloaded source tree\n  `#205 <https://github.com/ekalinin/nodeenv/issues/205>`_\n- Documented that `--mirror` takes a `file://` URL, so a local directory can\n  serve as the download source\n  `#193 <https://github.com/ekalinin/nodeenv/issues/193>`_\n- The posix `activate` is now written on Windows too, into \"Scripts\", so\n  git-bash and the other posix shells there can activate an environment\n  `#226 <https://github.com/ekalinin/nodeenv/issues/226>`_\n- A download that reaches nothing at all, which a broken `http_proxy` or\n  `https_proxy` usually causes, now reports the url and the proxy settings\n  instead of a traceback\n  `#229 <https://github.com/ekalinin/nodeenv/issues/229>`_\n- On Windows `-p` extends \"activate.bat\", \"deactivate.bat\" and\n  \"Activate.ps1\" of the python virtualenv instead of overwriting them, so\n  `VIRTUAL_ENV` and the virtualenv's own deactivation survive\n  `#243 <https://github.com/ekalinin/nodeenv/issues/243>`_\n- A missing node.js archive now reports the urls that were tried and points\n  at `--list` and `--source` instead of a traceback\n  `#250 <https://github.com/ekalinin/nodeenv/issues/250>`_\n- `freeze` now reads `npm ls --parseable` instead of the drawn tree: scoped\n  packages keep their scope, a package whose name contains \"npm\" is no longer\n  dropped, and `npm` and `corepack`, which come with node.js itself, are left\n  out of the list. The fish version, which printed nothing at all under\n  npm >= 1, now writes the same file as the posix one\n  `#287 <https://github.com/ekalinin/nodeenv/issues/287>`_\n- musl is now detected whatever the vendor field of the host triplet says,\n  so Alpine's own python3 (``x86_64-alpine-linux-musl``) gets the musl build\n  of node.js instead of the glibc one\n  `#290 <https://github.com/ekalinin/nodeenv/issues/290>`_\n- On Windows \"nodejs.exe\" is linked with ``os.symlink``, falling back to a\n  hard link, instead of ``mklink``, which broke on paths with forward slashes\n  or spaces and needs elevation or Developer Mode. If both fail, only a\n  warning is logged `#303 <https://github.com/ekalinin/nodeenv/issues/303>`_\n\nVersion 1.10.0\n--------------\n- Added support for Python 3.13 `#367 <https://github.com/ekalinin/nodeenv/pull/367>`_\n- Added support for UV virtual environments\n  `#386 <https://github.com/ekalinin/nodeenv/pull/386>`_\n- Used `sh` instead of `bash` `#389 <https://github.com/ekalinin/nodeenv/pull/389>`_\n- Replaced the remaining `which(1)` calls with `shutil.which()`\n  `#355 <https://github.com/ekalinin/nodeenv/pull/355>`_\n- Supported a leading `v` in `.node-version`\n  `#359 <https://github.com/ekalinin/nodeenv/pull/359>`_\n- Checked the host platform when finding the `node` version\n  `#363 <https://github.com/ekalinin/nodeenv/pull/363>`_\n- Fixed `archmap` lookup to be lowercase\n  `#382 <https://github.com/ekalinin/nodeenv/pull/382>`_\n\nVersion 1.9.1\n-------------\n- Fixed version discovery `#358 <https://github.com/ekalinin/nodeenv/pull/358>`_\n  `#356 <https://github.com/ekalinin/nodeenv/issues/356>`_\n\nVersion 1.9.0\n-------------\n- Switched to `packaging` for version comparison\n  `#338 <https://github.com/ekalinin/nodeenv/pull/338>`_ and then dropped the\n  dependency in favor of a simple version-parsing function\n  `#352 <https://github.com/ekalinin/nodeenv/pull/352>`_\n- Fixed GitHub Actions `#347 <https://github.com/ekalinin/nodeenv/pull/347>`_\n- Added Python 3.11 and 3.12 test coverage\n  `#348 <https://github.com/ekalinin/nodeenv/pull/348>`_\n- Added support for shells with \"set -u\"\n  `#345 <https://github.com/ekalinin/nodeenv/pull/345>`_\n- Replaced `pipes.quote` with `shlex.quote` on Python 3.3+\n  `#342 <https://github.com/ekalinin/nodeenv/pull/342>`_\n- Removed usage of the non-portable `which`\n  `#346 <https://github.com/ekalinin/nodeenv/pull/346>`_\n\nVersion 1.8.0\n-------------\n- Fixed the function name in `fish_prompt`\n  `#312 <https://github.com/ekalinin/nodeenv/pull/312>`_\n- Added support for riscv64 `#313 <https://github.com/ekalinin/nodeenv/pull/313>`_\n- Upgraded GitHub Actions `#317 <https://github.com/ekalinin/nodeenv/pull/317>`_\n- Made the `mock` dependency optional\n  `#320 <https://github.com/ekalinin/nodeenv/pull/320>`_\n- GitHub Actions: `fail-fast: false`\n  `#327 <https://github.com/ekalinin/nodeenv/pull/327>`_\n- Made multiple attempts to download the node.js archive (IncompleteRead error)\n  `#329 <https://github.com/ekalinin/nodeenv/pull/329>`_\n- Logged the URL on download failures\n  `#330 <https://github.com/ekalinin/nodeenv/pull/330>`_\n\nVersion 1.7.0\n-------------\n- Dropped python3.4, python3.5 and python3.6\n- Supported python releases before 3.7 in tests\n  `#272 <https://github.com/ekalinin/nodeenv/pull/272>`_\n- Required setuptools in setup.py\n  `#289 <https://github.com/ekalinin/nodeenv/pull/289>`_\n- Used the version specified in `.node-version` if it exists\n  `#288 <https://github.com/ekalinin/nodeenv/pull/288>`_\n- Fixed the problem when used with fish and virtualenv\n  `#294 <https://github.com/ekalinin/nodeenv/pull/294>`_\n- Replaced optparse with argparse\n  `#295 <https://github.com/ekalinin/nodeenv/pull/295>`_\n- Set the SSL protocol when ssl certs are ignored\n  `#296 <https://github.com/ekalinin/nodeenv/issues/296>`_\n- Fixed tests, tested Python 3.10 and moved tests to GitHub Actions\n  `#298 <https://github.com/ekalinin/nodeenv/pull/298>`_\n- Patched node installation for M1\n  `#299 <https://github.com/ekalinin/nodeenv/pull/299>`_\n- Added ability to configure the mirror through the settings file\n  `#307 <https://github.com/ekalinin/nodeenv/pull/307>`_\n- Added `--with-npm` to README `#308 <https://github.com/ekalinin/nodeenv/pull/308>`_\n\nVersion 1.6.0\n-------------\n- Tested for `nodejs` or `node` in tests\n  `#270 <https://github.com/ekalinin/nodeenv/pull/270>`_\n- Removed the main node.js mirror in tests if musl\n  `#271 <https://github.com/ekalinin/nodeenv/pull/271>`_\n- Fixed the nodeenv prompt when using Fish\n  `#273 <https://github.com/ekalinin/nodeenv/pull/273>`_\n- Used `node` instead of `nodejs` `#275 <https://github.com/ekalinin/nodeenv/pull/275>`_\n- Fixed typo, remaning -> remaining\n  `#276 <https://github.com/ekalinin/nodeenv/pull/276>`_\n- Resolved the venv dir for Fish\n  `#277 <https://github.com/ekalinin/nodeenv/pull/277>`_\n- Added support for installing the latest LTS release\n  `#281 <https://github.com/ekalinin/nodeenv/pull/281>`_\n- Created a broad mapping for M1\n  `#282 <https://github.com/ekalinin/nodeenv/pull/282>`_\n\nVersion 1.5.0\n-------------\n- Improved quoting of variables in the node shim for `-n system`\n  `#259 <https://github.com/ekalinin/nodeenv/pull/259>`_\n- Added `--ignore_ssl_certs` to ignore SSL certs for MITM/firewalls\n  `#256 <https://github.com/ekalinin/nodeenv/pull/256>`_\n- Added support for MSYS2 `#263 <https://github.com/ekalinin/nodeenv/pull/263>`_\n- Added missing arch's (ppc64le, armv8l, s390x)\n  `#268 <https://github.com/ekalinin/nodeenv/pull/268>`_\n\nVersion 1.4.0\n-------------\n- Switched to `/download/release/index.json` to discover versions\n- Dropped io.js support\n- Worked around IncompleteRead when downloading src\n  `#258 <https://github.com/ekalinin/nodeenv/pull/258>`_\n- Fixed erasing of NODE_VIRTUAL_ENV while `deactivate_node` in fish\n  `#255 <https://github.com/ekalinin/nodeenv/pull/255>`_\n- Accepted a URL as well as a domain name for the `--mirror` argument\n  `#252 <https://github.com/ekalinin/nodeenv/pull/252>`_\n- Downloaded musl-compatible node from unofficial-builds\n  `#247 <https://github.com/ekalinin/nodeenv/pull/247>`_\n\nVersion 1.3.5\n-------------\n- Fixed error 183 (\"already exists\") on Windows when installing prebuilt node\n  `#249 <https://github.com/ekalinin/nodeenv/issues/249>`_\n\nVersion 1.3.4\n-------------\n- Used the prebuilt windows zip which contains npm\n  `#230 <https://github.com/ekalinin/nodeenv/pull/230>`_\n- Fixed url in the CHANGES file\n  `#231 <https://github.com/ekalinin/nodeenv/pull/231>`_\n- Fixed escape sequences `#232 <https://github.com/ekalinin/nodeenv/pull/232>`_\n- Fixed `npm_url` in `install_npm_win`\n  `#233 <https://github.com/ekalinin/nodeenv/pull/233>`_\n- Changed the URL for downloading npm in Cygwin\n  `#234 <https://github.com/ekalinin/nodeenv/pull/234>`_\n- Fixed nodeenv in case python4 is ever a thing\n  `#241 <https://github.com/ekalinin/nodeenv/pull/241>`_\n- Produced py2.py3 wheels, nodeenv is a pure python package\n  `#242 <https://github.com/ekalinin/nodeenv/pull/242>`_\n- Printed a blank line when `install_node` fails\n  `#236 <https://github.com/ekalinin/nodeenv/pull/236>`_\n- Added an option to set your own mirror\n  `#208 <https://github.com/ekalinin/nodeenv/pull/208>`_\n- Fixed CI (flake8 errors) `#245 <https://github.com/ekalinin/nodeenv/pull/245>`_\n- Fixed call to `logger.info(...)`\n  `#246 <https://github.com/ekalinin/nodeenv/pull/246>`_\n\nVersion 1.3.3\n-------------\n- Installed a certain npm version via `npm install`\n  `#225 <https://github.com/ekalinin/nodeenv/issues/225>`_\n\nVersion 1.3.2\n-------------\n- Updated node/node -> node/cli `#222 <https://github.com/ekalinin/nodeenv/pull/222>`_\n- Fixed arch detection on FreeBSD, which returns amd64\n  `#216 <https://github.com/ekalinin/nodeenv/pull/216>`_\n- Added a space before the normal $PS1\n  `#213 <https://github.com/ekalinin/nodeenv/pull/213>`_\n- Dropped py33 support\n\nVersion 1.3.1\n-------------\n- Windows related fix `#207 <https://github.com/ekalinin/nodeenv/pull/207>`_\n- Fixed url for arm64 `#210 <https://github.com/ekalinin/nodeenv/pull/210>`_\n- Fixed fish support `#212 <https://github.com/ekalinin/nodeenv/pull/212>`_\n\n\nVersion 1.3.0\n-------------\n- Fixed symlink creation `#189 <https://github.com/ekalinin/nodeenv/issues/189>`_\n- Python3.6 support `#200 <https://github.com/ekalinin/nodeenv/pull/200>`_\n- Added `activate` for fish `#201 <https://github.com/ekalinin/nodeenv/pull/201>`_\n- Fixed cp866 `#202 <https://github.com/ekalinin/nodeenv/pull/202>`_\n- Added Conda support `#203 <https://github.com/ekalinin/nodeenv/pull/203>`_\n\n\nVersion 1.2.0\n-------------\n- Support for Cygwin `#194 <https://github.com/ekalinin/nodeenv/pull/194>`_ `#195\n  <https://github.com/ekalinin/nodeenv/pull/195>`_\n- tox.ini as default configuration file `#197\n  <https://github.com/ekalinin/nodeenv/pull/197>`_\n\nVersion 1.1.4\n-------------\n- Fixed directory copy `#188 <https://github.com/ekalinin/nodeenv/issues/188>`_\n\nVersion 1.1.3\n-------------\n- Fixed spaces in paths `#187 <https://github.com/ekalinin/nodeenv/issues/187>`_\n\nVersion 1.1.2\n-------------\n- Fixed MANIFEST.in `#184 <https://github.com/ekalinin/nodeenv/issues/184>`_\n\nVersion 1.1.1\n-------------\n- Improve Windows support. See `#181\n  <https://github.com/ekalinin/nodeenv/pull/181>`_\n- Fix bug when downgrading using `--force`. See `#183\n  <https://github.com/ekalinin/nodeenv/pull/183>`_\n- Environment creation fails with non-ASCII chars in path. See `#49\n  <https://github.com/ekalinin/nodeenv/issues/49>`_\n\nVersion 1.1.0\n-------------\n- Windows support\n\nVersion 1.0.0\n-------------\n- `--prebuilt` is default. See `# 161`_\n- Added `--source` option\n- Added support for the `ARM`. See `# 171`_\n- Fixed issue with `$PATH`. See `# 86`_\n\n.. _# 171: https://github.com/ekalinin/nodeenv/issues/171\n.. _# 161: https://github.com/ekalinin/nodeenv/issues/161\n.. _# 86: https://github.com/ekalinin/nodeenv/issues/86\n\nVersion 0.13.6\n--------------\n- Use https for nodejs.org. See `# 129`_\n\n.. _# 129: https://github.com/ekalinin/nodeenv/issues/129\n\nVersion 0.13.5\n--------------\n- Improved user-agent identification\n\nVersion 0.13.4\n--------------\n- Custom ``user-agent``. See `# 125`_, `# 127`_\n\n.. _# 125: https://github.com/ekalinin/nodeenv/issues/125\n.. _# 127: https://github.com/ekalinin/nodeenv/issues/127\n\n\nVersion 0.13.3\n--------------\n- Fixed env creation with non-ASCII chars in path. See `# 49`_\n- Fixed logging with unicode chars. See `# 96`_\n- Skip new lines at the end of requirements.txt. See `# 122`_ \n- Fixed UnicodeDecodeError at build on non UTF-8 environment. See `# 124`_\n\n.. _# 49: https://github.com/ekalinin/nodeenv/issues/49\n.. _# 96: https://github.com/ekalinin/nodeenv/issues/96\n.. _# 122: https://github.com/ekalinin/nodeenv/issues/122\n.. _# 124: https://github.com/ekalinin/nodeenv/pull/124\n\nVersion 0.13.2\n--------------\n- Fixed ``freeze`` command. See `# 121`_\n\n.. _# 121: https://github.com/ekalinin/nodeenv/issues/121\n\nVersion 0.13.1\n--------------\n- Fixed bug: ``nodeenv --list is raising TypeError``. See `# 117`_, `# 118`_\n\n.. _# 117: https://github.com/ekalinin/nodeenv/issues/117\n.. _# 118: https://github.com/ekalinin/nodeenv/pull/118\n\nVersion 0.13.0\n--------------\n- Removed deps from ``sort``, ``egrep``, ``curl``, ``tar``.\n  See `# 114`_, `# 116`_.\n\n.. _# 114: https://github.com/ekalinin/nodeenv/pull/114\n.. _# 116: https://github.com/ekalinin/nodeenv/pull/116\n\nVersion 0.12.3\n--------------\n- Fixed check for installed curl/tar/etc for py3.\n\nVersion 0.12.2\n--------------\n- Added check for installed curl/egrep/sort/tar. See `# 110`_, `# 61`_\n\n.. _# 110: https://github.com/ekalinin/nodeenv/issues/110\n.. _# 61: https://github.com/ekalinin/nodeenv/issues/61\n\nVersion 0.12.1\n--------------\n- Removed dep for lxml in favor of stdlib HTMLParser. See `# 109`_\n- Added integration with travis-ci. See `# 109`_\n- Added some tests. See `# 109`_\n\n.. _# 109: https://github.com/ekalinin/nodeenv/pull/109\n\nVersion 0.12.0\n--------------\n- Added support for io.js (new option ``--iojs``)\n- Fixed ``get_last_stable_node_version`` for python3\n\nVersion 0.11.1\n--------------\n- Disallow prefix overridden by .npmrc. See `# 98`_, `# 100`_, `# 103`_\n\n.. _# 98: https://github.com/ekalinin/nodeenv/issue/98\n.. _# 100: https://github.com/ekalinin/nodeenv/pull/100\n.. _# 103: https://github.com/ekalinin/nodeenv/pull/103\n\nVersion 0.11.0\n--------------\n- Improved dpkg rules. See `# 90`_\n- Added --config-file option. See `# 91`_\n- Read \"./setup.cfg\" in addition to \"~/.nodeenvrc\" by default. See `# 91`_\n- Python3 compatibility. See `# 92`_, `# 93`_\n\n.. _# 90: https://github.com/ekalinin/nodeenv/pull/90\n.. _# 91: https://github.com/ekalinin/nodeenv/pull/91\n.. _# 92: https://github.com/ekalinin/nodeenv/pull/92\n.. _# 93: https://github.com/ekalinin/nodeenv/pull/93\n\nVersion 0.10.0\n--------------\n- Added support for config file. See `# 85`_\n- Using of virtualenv detected via python not env variable. See `# 87`_\n- Fixed ``freeze`` for zsh. See `# 88`_\n- Added ``nodejs`` symlink creation. See `# 84`_\n\n.. _# 85: https://github.com/ekalinin/nodeenv/pull/85\n.. _# 87: https://github.com/ekalinin/nodeenv/pull/87\n.. _# 88: https://github.com/ekalinin/nodeenv/pull/88\n\nVersion 0.9.6\n-------------\n- Removed ``os.symlink`` added in `# 76`_. See `# 84`_\n\n.. _# 84: https://github.com/ekalinin/nodeenv/issues/84\n\nVersion 0.9.5\n-------------\n- Fixed a few spelling typos in README. See `# 74`_\n- Fixed example of using --update option in README. See `# 74`_\n- Improved args passing into shim script. See `# 75`_\n- Try to find ``nodejs`` if used system-wide node as well. See `# 76`_\n- Added ``assert`` if used system-wide node and it wasnt found. See `# 76`_\n- Added ``-l`` option into ``freeze`` command. See `# 71`_\n\n.. _# 71: https://github.com/ekalinin/nodeenv/issues/71\n.. _# 74: https://github.com/ekalinin/nodeenv/issues/74\n.. _# 75: https://github.com/ekalinin/nodeenv/pull/75\n.. _# 76: https://github.com/ekalinin/nodeenv/pull/76\n\nVersion 0.9.4\n-------------\n- Fixed support for python2.6. See `# 70`_\n\n.. _# 70: https://github.com/ekalinin/nodeenv/issues/70\n\nVersion 0.9.3\n-------------\n- Fixed npm when using prebuilt binaries on Mac OS X. See `# 68`_\n- Fixed using ``system`` node under python3.4. See `# 43`_\n- If used ``system`` node script ``bin/node`` always overwritten\n\n.. _# 68: https://github.com/ekalinin/nodeenv/issues/68\n.. _# 43: https://github.com/ekalinin/nodeenv/issues/43\n\nVersion 0.9.2\n-------------\n- Fixed infinite loop when system-wide node used. See `# 67`_\n\n.. _# 67: https://github.com/ekalinin/nodeenv/issues/67\n\nVersion 0.9.1\n-------------\n- Fixed 'shim' script if used system-wide node\n- Fixed shebang in the 'shim'\n- Added shim with name 'node' in case of using system-wide node\n\nVersion 0.9.0\n-------------\n- Added `shim` script. See `# 59`_\n\n.. _# 59: https://github.com/ekalinin/nodeenv/issues/59\n\nVersion 0.8.2\n-------------\n- Fixed prebuilt installation:\n    - cp more choosy. See `# 64`_\n    - exclude top-level files in prebuilt tar. See `# 63`_\n\n.. _# 63: https://github.com/ekalinin/nodeenv/issues/63\n.. _# 64: https://github.com/ekalinin/nodeenv/issues/64\n\nVersion 0.8.1\n-------------\n- Fixed system's node usage. See `# 62`_\n\n.. _# 62: https://github.com/ekalinin/nodeenv/pull/62\n\nVersion 0.8.0\n-------------\n- Added support for prebuilt packages. See `# 56`_\n- Added support for python3. See `# 42`_\n\n.. _# 56: https://github.com/ekalinin/nodeenv/issues/56\n.. _# 42: https://github.com/ekalinin/nodeenv/issues/42\n\nVersion 0.7.3\n-------------\n- Fixed npm.js redirect. See `# 52`_\n- Added ``--update`` option. See `# 25`_\n\n.. _# 52: https://github.com/ekalinin/nodeenv/pull/52\n.. _# 25: https://github.com/ekalinin/nodeenv/issues/25\n\nVersion 0.7.2\n-------------\n- Bug fixing in ``freeze``. See `# 47`_\n\n.. _# 47: https://github.com/ekalinin/nodeenv/issues/47\n\nVersion 0.7.1\n-------------\n- Added ``--make`` option\n\nVersion 0.7.0\n-------------\n- added ``--force``. See `# 37`_\n- python3 support (first steps). See `# 38`_, `# 39`_\n- escaping all directories used by subprocesses. See `# 40`_\n- added an option to use system-wide node. See `# 41`_\n\n.. _# 37: https://github.com/ekalinin/nodeenv/pull/37\n.. _# 38: https://github.com/ekalinin/nodeenv/issues/38\n.. _# 39: https://github.com/ekalinin/nodeenv/issues/39\n.. _# 40: https://github.com/ekalinin/nodeenv/pull/40\n.. _# 41: https://github.com/ekalinin/nodeenv/pull/41\n\n\nVersion 0.6.6\n-------------\n- Fixed incomplete package names using freeze. See `# 35`_\n- Fixed packages installation type in README. See `# 33`_\n\n.. _# 33: https://github.com/ekalinin/nodeenv/issues/33\n.. _# 35: https://github.com/ekalinin/nodeenv/pull/35\n\n\nVersion 0.6.5\n-------------\n- Node's source not loaded if it already exists in FS.\n\n\nVersion 0.6.4\n-------------\n- Added python3 compatibility. See `# 32`_\n\n.. _# 32: https://github.com/ekalinin/nodeenv/pull/32\n\n\nVersion 0.6.3\n-------------\n- Fixed ``nodeenv -p``. See `issue # 31`_\n\n.. _issue # 31: https://github.com/ekalinin/nodeenv/issues/31\n\n\nVersion 0.6.2\n-------------\n- Skipped stand-alone npm installation by default. See `pull # 30`_\n- ``--without-npm`` has been changed to ``--with-npm``. See `pull # 30`_\n- Fixed options for running Make instances in parallel. See `pull # 30`_\n\n.. _pull # 30: https://github.com/ekalinin/nodeenv/pull/30\n\n\nVersion 0.6.1\n-------------\n- Used pkg_resources.parse_version to compare versions. See `pull # 29`_\n- Fixed doubling prompt inside a virtualenv. See `issues # 26`_\n\n.. _pull # 29: https://github.com/ekalinin/nodeenv/pull/29\n.. _issues # 26: https://github.com/ekalinin/nodeenv/issues/26\n\n\nVersion 0.6.0\n-------------\n- Fixed typo in deactive command. See `pull # 20`_\n- Not used \"--insecure\" to download npm. See `pull # 21`_\n- Removed \"src\" directory after installation. See `pull # 22`_\n- Added option \"--clean-src\"\n- Added integration with python's virtualenv. See `pull # 23`_\n\n.. _pull # 20: https://github.com/ekalinin/nodeenv/pull/20\n.. _pull # 21: https://github.com/ekalinin/nodeenv/pull/21\n.. _pull # 22: https://github.com/ekalinin/nodeenv/pull/22\n.. _pull # 23: https://github.com/ekalinin/nodeenv/pull/23\n\nVersion 0.5.3\n-------------\n- Bug fix. Used https, /dist/latest/. See `pull # 16`_\n\n.. _pull # 16: https://github.com/ekalinin/nodeenv/pull/16\n\nVersion 0.5.2\n-------------\n- Improved installation logic for release candidate versions. See `pull # 10`_\n\n.. _pull # 10: https://github.com/ekalinin/nodeenv/pull/10\n\nVersion 0.5.1\n-------------\n- Improved logic for the option '--without-npm'. See `issue # 14`_, `pull # 15`_\n\n.. _issue # 14: https://github.com/ekalinin/nodeenv/issues/14\n.. _pull # 15: https://github.com/ekalinin/nodeenv/pull/15\n\nVersion 0.5.0\n-------------\n- The virtual environment's path is no longer hardcoded into the\n  activation script. See `pull # 13`_\n\n.. _pull # 13: https://github.com/ekalinin/nodeenv/pull/13\n\nVersion 0.4.3\n-------------\n- Fixed metavar for ``--npm``\n- ``npm install -g`` used for npm >=1.0, not noly for `latest`\n\nVersion 0.4.2\n-------------\n- Added README.ru.rst\n\nVersion 0.4.1\n-------------\n- Fixed bug in print_node_versions. See `pull # 11`_\n- Added deps in README\n\n.. _pull # 11: https://github.com/ekalinin/nodeenv/pull/11\n\nVersion 0.4.0\n-------------\n- Compatibility with virtualenv (renamed deactivate to deactivate_node).\n  See `pull # 9`_, `issue # 6`_\n\n.. _pull # 9: https://github.com/ekalinin/nodeenv/pull/9\n.. _issue # 6: https://github.com/ekalinin/nodeenv/issues/6\n\nVersion 0.3.10\n--------------\n- Fixed bug in url detection for node.js download\n\nVersion 0.3.9\n-------------\n- Deleted notify method calls. See `pull # 7`_\n- Updated tar url for node.js > 0.5.0. See `pull # 8`_\n\n.. _pull # 7: https://github.com/ekalinin/nodeenv/pull/7\n.. _pull # 8: https://github.com/ekalinin/nodeenv/pull/8\n\nVersion 0.3.8\n-------------\n- Added `NODE_PATH` variable export (for correct module\n  search after installation via npm)\n\nVersion 0.3.7\n-------------\n- Shows command output when error occurs\n- Excluded 'npm' from `freeze` list\n- Fixed bug with 'not only letter' names in `freeze` list\n- Added global installation for npm >= 1.0 (when install\n  soft from requirement file)\n\nVersion 0.3.6\n-------------\n- Fixed ``freeze`` output command. See `request # 5`_\n- Diagnostic message fixed. See `pull # 4`_\n\n.. _request # 5 : https://github.com/ekalinin/nodeenv/issues/5\n.. _pull # 4 : https://github.com/ekalinin/nodeenv/pull/4\n\nVersion 0.3.5\n-------------\n- Added option ``--npm`` to install certain npm.js version. Request_ .\n- Fixed ``freeze`` command for npm >= 1.0.x.\n\n.. _Request: https://github.com/ekalinin/nodeenv/issues/3\n\nVersion 0.3.4\n-------------\n\n- Fixed `problem #2`_ with new npm installation script. Added\n  ``--no-npm-clean`` option. The default to the npm 0.x cleanup.\n\n.. _problem #2: https://github.com/ekalinin/nodeenv/issues/2\n\nVersion 0.3.3\n-------------\n\n- Fixed `problem #1`_ with installation from PyPI via easy_install.\n  Added ``MANIFEST.in`` file.\n\n.. _problem #1: https://github.com/ekalinin/nodeenv/issues/1\n\nVersion 0.3.2\n-------------\n\n- Internal improvements\n- Logging refactoring\n\nVersion 0.3.1\n-------------\n\n- Default environment promt is folder name\n\nVersion 0.3.0\n--------------\n\n- Renamed nve to nodeenv\n",
+        "home_page": "https://github.com/ekalinin/nodeenv",
+        "author": "Eugene Kalinin",
+        "author_email": "e.v.kalinin@gmail.com",
+        "license": "BSD",
+        "license_file": [
+          "LICENSE",
+          "AUTHORS"
+        ],
+        "classifier": [
+          "Environment :: Web Environment",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: BSD License",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 2",
+          "Programming Language :: Python :: 2.7",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.7",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy",
+          "Topic :: Software Development :: Libraries :: Python Modules"
+        ],
+        "requires_dist": [
+          "certifi; extra == \"certifi\""
+        ],
+        "requires_python": ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*",
+        "provides_extra": [
+          "certifi"
+        ]
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/74/27/e5b8f34d02d9995b80abcef563ea1f8b56d20134d8f4e5e81733b1feceb2/pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+        "archive_info": {
+          "hash": "sha256=0f29edc409a6392443abf94b9cf89ce99889a1dd5376d94316ae5145dfedd5d6",
+          "hashes": {
+            "sha256": "0f29edc409a6392443abf94b9cf89ce99889a1dd5376d94316ae5145dfedd5d6"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "PyYAML",
+        "version": "6.0.3",
+        "dynamic": [
+          "author",
+          "author-email",
+          "classifier",
+          "description",
+          "download-url",
+          "home-page",
+          "license",
+          "license-file",
+          "platform",
+          "project-url",
+          "requires-python",
+          "summary"
+        ],
+        "platform": [
+          "Any"
+        ],
+        "summary": "YAML parser and emitter for Python",
+        "description": "YAML is a data serialization format designed for human readability\nand interaction with scripting languages.  PyYAML is a YAML parser\nand emitter for Python.\n\nPyYAML features a complete YAML 1.1 parser, Unicode support, pickle\nsupport, capable extension API, and sensible error messages.  PyYAML\nsupports standard YAML tags and provides Python-specific tags that\nallow to represent an arbitrary Python object.\n\nPyYAML is applicable for a broad range of tasks from complex\nconfiguration files to object serialization and persistence.\n",
+        "home_page": "https://pyyaml.org/",
+        "download_url": "https://pypi.org/project/PyYAML/",
+        "author": "Kirill Simonov",
+        "author_email": "xi@resolvent.net",
+        "license": "MIT",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: MIT License",
+          "Operating System :: OS Independent",
+          "Programming Language :: Cython",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy",
+          "Topic :: Software Development :: Libraries :: Python Modules",
+          "Topic :: Text Processing :: Markup"
+        ],
+        "requires_python": ">=3.8",
+        "project_url": [
+          "Bug Tracker, https://github.com/yaml/pyyaml/issues",
+          "CI, https://github.com/yaml/pyyaml/actions",
+          "Documentation, https://pyyaml.org/wiki/PyYAMLDocumentation",
+          "Mailing lists, http://lists.sourceforge.net/lists/listinfo/yaml-core",
+          "Source Code, https://github.com/yaml/pyyaml"
+        ]
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/c9/1f/e5182163bcee149dda4eec823d88b0f51f2c0c531b12da896f666f0b80c1/virtualenv-21.14.6-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=eb1a20c5878569b69667f6a1af03458a8512b3afa7be771a2dafe92fdca05bb9",
+          "hashes": {
+            "sha256": "eb1a20c5878569b69667f6a1af03458a8512b3afa7be771a2dafe92fdca05bb9"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.5",
+        "name": "virtualenv",
+        "version": "21.14.6",
+        "summary": "Virtual Python Environment builder",
+        "description": "# virtualenv\n\n[![PyPI](https://img.shields.io/pypi/v/virtualenv?style=flat-square)](https://pypi.org/project/virtualenv)\n[![PyPI - Implementation](https://img.shields.io/pypi/implementation/virtualenv?style=flat-square)](https://pypi.org/project/virtualenv)\n[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/virtualenv?style=flat-square)](https://pypi.org/project/virtualenv)\n[![Documentation](https://readthedocs.org/projects/virtualenv/badge/?version=latest&style=flat-square)](https://virtualenv.pypa.io)\n[![Discord](https://img.shields.io/discord/803025117553754132)](https://discord.gg/pypa)\n[![Downloads](https://static.pepy.tech/badge/virtualenv/month)](https://pepy.tech/project/virtualenv)\n[![PyPI - License](https://img.shields.io/pypi/l/virtualenv?style=flat-square)](https://opensource.org/licenses/MIT)\n[![check](https://github.com/pypa/virtualenv/actions/workflows/check.yaml/badge.svg)](https://github.com/pypa/virtualenv/actions/workflows/check.yaml)\n[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/pypa/virtualenv/badge)](https://scorecard.dev/viewer/?uri=github.com/pypa/virtualenv)\n[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/14689/badge)](https://www.bestpractices.dev/projects/14689)\n\nA tool for creating isolated `virtual` python environments.\n\n- [Installation](https://virtualenv.pypa.io/en/latest/how-to/install.html)\n- [Documentation](https://virtualenv.pypa.io)\n- [Changelog](https://virtualenv.pypa.io/en/latest/changelog.html)\n- [Issues](https://github.com/pypa/virtualenv/issues)\n- [PyPI](https://pypi.org/project/virtualenv)\n- [Github](https://github.com/pypa/virtualenv)\n\n## Code of Conduct\n\nEveryone interacting in the virtualenv project's codebases, issue trackers, chat rooms, and mailing lists is expected to\nfollow the [PSF Code of Conduct](https://github.com/pypa/.github/blob/main/CODE_OF_CONDUCT.md).\n",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "environments",
+          "isolated",
+          "virtual"
+        ],
+        "maintainer_email": "Bernat Gabor <gaborjbernat@gmail.com>, Rahul Devikar <rahuldevikar5512@gmail.com>",
+        "license_expression": "MIT",
+        "license_file": [
+          "LICENSE",
+          "THIRD-PARTY-NOTICES.md"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: MIT License",
+          "Operating System :: MacOS :: MacOS X",
+          "Operating System :: Microsoft :: Windows",
+          "Operating System :: POSIX",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14",
+          "Programming Language :: Python :: 3.15",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy",
+          "Topic :: Software Development :: Libraries",
+          "Topic :: Software Development :: Testing",
+          "Topic :: Utilities"
+        ],
+        "requires_dist": [
+          "distlib<1,>=0.4.3",
+          "filelock<5,>=3.24.2; python_version >= '3.10'",
+          "filelock<=3.19.1,>=3.19.1; python_version < '3.10'",
+          "packaging>=26.3",
+          "platformdirs<5,>=4.4",
+          "python-discovery>=1.6.1",
+          "typing-extensions>=4.16; python_version < '3.11'"
+        ],
+        "requires_python": ">=3.9",
+        "project_url": [
+          "thanks.dev, https://thanks.dev/u/gh/gaborbernat",
+          "Changelog, https://virtualenv.pypa.io/en/latest/changelog.html",
+          "Documentation, https://virtualenv.pypa.io",
+          "Funding, https://github.com/sponsors/gaborbernat",
+          "Homepage, https://github.com/pypa/virtualenv",
+          "Source, https://github.com/pypa/virtualenv",
+          "Tidelift, https://tidelift.com/funding/github/pypi/virtualenv",
+          "Tracker, https://github.com/pypa/virtualenv/issues"
+        ]
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/02/08/9c41fb51ab5b43eb21674aff13df270e8ba6c4b29c8624e328dc7a9482af/distlib-0.4.3-py2.py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=4b0ce306c966eb73bc3a7b6abad017c556dadd92c44701562cd528ac7fde4d5b",
+          "hashes": {
+            "sha256": "4b0ce306c966eb73bc3a7b6abad017c556dadd92c44701562cd528ac7fde4d5b"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "distlib",
+        "version": "0.4.3",
+        "dynamic": [
+          "license-file"
+        ],
+        "platform": [
+          "any"
+        ],
+        "summary": "Distribution utilities",
+        "description": "|badge1| |badge2|\n\n.. |badge1| image:: https://img.shields.io/github/actions/workflow/status/pypa/distlib/package-tests.yml\n   :alt: GitHub Workflow Status (with event)\n\n.. |badge2| image:: https://img.shields.io/codecov/c/github/pypa/distlib\n   :target: https://app.codecov.io/gh/pypa/distlib\n   :alt: GitHub coverage status\n\nWhat is it?\n-----------\n\nDistlib is a library which implements low-level functions that relate to\npackaging and distribution of Python software. It is intended to be used as the\nbasis for third-party packaging tools. The documentation is available at\n\nhttps://distlib.readthedocs.io/\n\nMain features\n-------------\n\nDistlib currently offers the following features:\n\n* The package ``distlib.database``, which implements a database of installed\n  distributions, as defined by :pep:`376`, and distribution dependency graph\n  logic. Support is also provided for non-installed distributions (i.e.\n  distributions registered with metadata on an index like PyPI), including\n  the ability to scan for dependencies and building dependency graphs.\n* The package ``distlib.index``, which implements an interface to perform\n  operations on an index, such as registering a project, uploading a\n  distribution or uploading documentation. Support is included for verifying\n  SSL connections (with domain matching) and signing/verifying packages using\n  GnuPG.\n* The package ``distlib.metadata``, which implements distribution metadata as\n  defined by :pep:`643`, :pep:`566`, :pep:`345`, :pep:`314` and :pep:`241`.\n* The package ``distlib.markers``, which implements environment markers as\n  defined by :pep:`508`.\n* The package ``distlib.manifest``, which implements lists of files used\n  in packaging source distributions.\n* The package ``distlib.locators``, which allows finding distributions, whether\n  on PyPI (XML-RPC or via the \"simple\" interface), local directories or some\n  other source.\n* The package ``distlib.resources``, which allows access to data files stored\n  in Python packages, both in the file system and in .zip files.\n* The package ``distlib.scripts``, which allows installing of scripts with\n  adjustment of shebang lines and support for native Windows executable\n  launchers.\n* The package ``distlib.version``, which implements version specifiers as\n  defined by :pep:`440`, but also support for working with \"legacy\" versions and\n  semantic versions.\n* The package ``distlib.wheel``, which provides support for building and\n  installing from the Wheel format for binary distributions (see :pep:`427`).\n* The package ``distlib.util``, which contains miscellaneous functions and\n  classes which are useful in packaging, but which do not fit neatly into\n  one of the other packages in ``distlib``.* The package implements enhanced\n  globbing functionality such as the ability to use ``**`` in patterns to\n  specify recursing into subdirectories.\n\n\nPython version and platform compatibility\n-----------------------------------------\n\nDistlib is intended to be used on and is tested on Python versions 2.7 and 3.6 or later,\npypy-2.7 and pypy3 on Linux, Windows, and macOS.\n\nProject status\n--------------\n\nThe project has reached a mature status in its development: there is a comprehensive\ntest suite and it has been exercised on Windows, Ubuntu and macOS. The project is used\nby well-known projects such as `pip <https://pypi.org/pypi/pip>`_ and `caniusepython3\n<https://pypi.org/pypi/caniusepython3>`_.\n\nThis project was migrated from Mercurial to Git and from BitBucket to GitHub, and\nalthough all information of importance has been retained across the migration, some\ncommit references in issues and issue comments may have become invalid.\n\nCode of Conduct\n---------------\n\nEveryone interacting in the distlib project's codebases, issue trackers, chat\nrooms, and mailing lists is expected to follow the `PyPA Code of Conduct`_.\n\n.. _PyPA Code of Conduct: https://www.pypa.io/en/latest/code-of-conduct/\n",
+        "home_page": "https://github.com/pypa/distlib",
+        "author": "Vinay Sajip",
+        "author_email": "vinay_sajip@red-dove.com",
+        "license": "PSF-2.0",
+        "license_file": [
+          "LICENSE.txt"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Environment :: Console",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: Python Software Foundation License",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 2",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 2.7",
+          "Programming Language :: Python :: 3.6",
+          "Programming Language :: Python :: 3.7",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14",
+          "Topic :: Software Development"
+        ],
+        "project_url": [
+          "Documentation, https://distlib.readthedocs.io/",
+          "Source, https://github.com/pypa/distlib",
+          "Tracker, https://github.com/pypa/distlib/issues"
+        ]
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/da/a1/b047e1c486a2c66283633b7dbb73872ca16ca1ce6a426f70d4d037fc8e1c/filelock-4.0.12-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=5f17ee83ecee8a6f3e389c75822fb70a1c2f0506b99438a6dffa1d56793588c8",
+          "hashes": {
+            "sha256": "5f17ee83ecee8a6f3e389c75822fb70a1c2f0506b99438a6dffa1d56793588c8"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.5",
+        "name": "filelock",
+        "version": "4.0.12",
+        "summary": "A platform independent file lock.",
+        "description": "# filelock\n\n[![PyPI](https://img.shields.io/pypi/v/filelock)](https://pypi.org/project/filelock/)\n[![Supported Python versions](https://img.shields.io/pypi/pyversions/filelock.svg)](https://pypi.org/project/filelock/)\n[![Documentation status](https://readthedocs.org/projects/py-filelock/badge/?version=latest)](https://py-filelock.readthedocs.io/en/latest/?badge=latest)\n[![Downloads](https://static.pepy.tech/badge/filelock/month)](https://pepy.tech/project/filelock)\n[![check](https://github.com/tox-dev/py-filelock/actions/workflows/check.yaml/badge.svg)](https://github.com/tox-dev/py-filelock/actions/workflows/check.yaml)\n\nFor more information checkout the [official documentation](https://py-filelock.readthedocs.io/en/latest/index.html).\n",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "application",
+          "cache",
+          "directory",
+          "log",
+          "user"
+        ],
+        "maintainer_email": "Bernát Gábor <gaborjbernat@gmail.com>",
+        "license_expression": "MIT",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: MIT License",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14",
+          "Programming Language :: Python :: 3.15",
+          "Topic :: Internet",
+          "Topic :: Software Development :: Libraries",
+          "Topic :: System"
+        ],
+        "requires_python": ">=3.10",
+        "project_url": [
+          "Documentation, https://py-filelock.readthedocs.io",
+          "Homepage, https://github.com/tox-dev/py-filelock",
+          "Source, https://github.com/tox-dev/py-filelock",
+          "Tracker, https://github.com/tox-dev/py-filelock/issues"
+        ]
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/f4/ba/223e00b885e960edd5d4b4d178c88acce019bd5b83786093681b8c393492/platformdirs-4.12.4-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=78bfb9db2a8471ed7eebe3c3c932da413911042994e699b384fbb4493fa872d7",
+          "hashes": {
+            "sha256": "78bfb9db2a8471ed7eebe3c3c932da413911042994e699b384fbb4493fa872d7"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.5",
+        "name": "platformdirs",
+        "version": "4.12.4",
+        "summary": "A small Python package for determining appropriate platform-specific dirs, e.g. a `user data dir`.",
+        "description": "# platformdirs\n\n[![PyPI version](https://badge.fury.io/py/platformdirs.svg)](https://badge.fury.io/py/platformdirs)\n[![Python versions](https://img.shields.io/pypi/pyversions/platformdirs.svg)](https://pypi.python.org/pypi/platformdirs/)\n[![CI](https://github.com/tox-dev/platformdirs/actions/workflows/check.yaml/badge.svg)](https://github.com/platformdirs/platformdirs/actions)\n[![Downloads](https://static.pepy.tech/badge/platformdirs/month)](https://pepy.tech/project/platformdirs)\n\nA Python package for determining platform-specific directories (e.g. user data, config, cache, logs). Handles the\ndifferences between macOS, Windows, Linux/Unix, Android, and iOS so you don't have to.\n\n## Quick start\n\n```python\nfrom platformdirs import PlatformDirs\n\ndirs = PlatformDirs(\"MyApp\", \"MyCompany\")\ndirs.user_data_dir  # ~/.local/share/MyApp (Linux)\ndirs.user_config_dir  # ~/.config/MyApp (Linux)\ndirs.user_cache_dir  # ~/.cache/MyApp (Linux)\ndirs.user_state_dir  # ~/.local/state/MyApp (Linux)\ndirs.user_log_dir  # ~/.local/state/MyApp/log (Linux)\ndirs.user_documents_dir  # ~/Documents\ndirs.user_downloads_dir  # ~/Downloads\ndirs.user_runtime_dir  # /run/user/<uid>/MyApp (Linux)\n```\n\nFor Path objects instead of strings:\n\n```python\nfrom platformdirs import PlatformDirs\n\ndirs = PlatformDirs(\"MyApp\", \"MyCompany\")\ndirs.user_data_path  # pathlib.Path('~/.local/share/MyApp')\ndirs.user_config_path  # pathlib.Path('~/.config/MyApp')\n```\n\nConvenience functions for quick access:\n\n```python\nfrom platformdirs import user_data_dir, user_config_path\n\nuser_data_dir(\"MyApp\", \"MyCompany\")  # returns str\nuser_config_path(\"MyApp\", \"MyCompany\")  # returns pathlib.Path\n```\n\n## Directory types\n\n**Application directories** — scoped to your app name and version:\n\n- **Data**: Persistent application data (`user_data_dir`, `site_data_dir`)\n- **Config**: Configuration files and settings (`user_config_dir`, `site_config_dir`)\n- **Preference**: User preferences, distinct from config on macOS (`user_preference_dir`)\n- **Cache**: Cached data that can be regenerated (`user_cache_dir`, `site_cache_dir`)\n- **State**: Non-essential runtime state like window positions (`user_state_dir`, `site_state_dir`)\n- **Logs**: Log files (`user_log_dir`, `site_log_dir`)\n- **Runtime**: Runtime files like sockets and PIDs (`user_runtime_dir`, `site_runtime_dir`)\n\nApp dirs have both `user_*` (per-user, writable) and `site_*` (system-wide, read-only) variants where applicable.\n\n**User media directories** — standard user-facing folders, not scoped to app name:\n\n- **Documents** (`user_documents_dir`), **Downloads** (`user_downloads_dir`)\n- **Pictures** (`user_pictures_dir`), **Videos** (`user_videos_dir`), **Music** (`user_music_dir`)\n- **Desktop** (`user_desktop_dir`), **Projects** (`user_projects_dir`)\n- **Public share** (`user_publicshare_dir`), **Templates** (`user_templates_dir`)\n- **Fonts** (`user_fonts_dir`) — user-writable font installation directory\n- **Executable** (`user_bin_dir`, `site_bin_dir`), **Applications** (`user_applications_dir`, `site_applications_dir`)\n\n## Documentation\n\nFull documentation is available at [platformdirs.readthedocs.io](https://platformdirs.readthedocs.io):\n\n- **[Getting started tutorial](https://platformdirs.readthedocs.io/en/latest/tutorial.html)** -- learn core concepts\n  through real-world examples\n- **[How-to guides](https://platformdirs.readthedocs.io/en/latest/howto.html)** -- recipes for common tasks and\n  platform-specific tips\n- **[API reference](https://platformdirs.readthedocs.io/en/latest/api.html)** -- complete list of functions and classes\n- **[Platform details](https://platformdirs.readthedocs.io/en/latest/platforms.html)** -- default paths for each\n  operating system\n\nContributions are welcome! See [CONTRIBUTING.md](https://github.com/tox-dev/platformdirs/blob/main/CONTRIBUTING.md) for\ndetails.\n",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "appdirs",
+          "application",
+          "cache",
+          "directory",
+          "log",
+          "user"
+        ],
+        "maintainer_email": "Bernát Gábor <gaborjbernat@gmail.com>, Julian Berman <Julian@GrayVines.com>, Ofek Lev <oss@ofek.dev>, Ronny Pfannschmidt <opensource@ronnypfannschmidt.de>",
+        "license_expression": "MIT",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: MIT License",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14",
+          "Programming Language :: Python :: 3.15",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy",
+          "Topic :: Software Development :: Libraries :: Python Modules"
+        ],
+        "requires_python": ">=3.10",
+        "project_url": [
+          "Changelog, https://platformdirs.readthedocs.io/en/latest/changelog.html",
+          "Documentation, https://platformdirs.readthedocs.io",
+          "Homepage, https://github.com/tox-dev/platformdirs",
+          "Source, https://github.com/tox-dev/platformdirs",
+          "Tracker, https://github.com/tox-dev/platformdirs/issues"
+        ]
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/63/34/ba1c580383c9eada3711951fef0795c80b829a078d72188184bcab9dd527/packaging-26.3-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+          "hashes": {
+            "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.4",
+        "name": "packaging",
+        "version": "26.3",
+        "summary": "Core utilities for Python packages",
+        "description": "packaging\n=========\n\n.. start-intro\n\nReusable core utilities for various Python Packaging\n`interoperability specifications <https://packaging.python.org/specifications/>`_.\n\nThis library provides utilities that implement the interoperability\nspecifications which have clearly one correct behaviour (eg: :pep:`440`)\nor benefit greatly from having a single shared implementation (eg: :pep:`425`).\n\n.. end-intro\n\nThe ``packaging`` project includes the following: version handling, specifiers,\nmarkers, requirements, tags, metadata, lockfiles, utilities.\n\nDocumentation\n-------------\n\nThe `documentation`_ provides information and the API for the following:\n\n- Version Handling\n- Specifiers\n- Markers\n- Licenses\n- Requirements\n- Metadata\n- Tags\n- Lockfiles (pylock)\n- Direct URL helpers\n- Dependency groups\n- Errors\n- Utilities\n\nInstallation\n------------\n\nUse ``pip`` to install these utilities::\n\n    pip install packaging\n\nThe ``packaging`` library uses calendar-based versioning (``YY.N``).\n\nDiscussion\n----------\n\nIf you run into bugs, you can file them in our `issue tracker`_.\n\nYou can also join discussions on `GitHub Discussions`_ to ask questions or get involved.\n\n.. _`documentation`: https://packaging.pypa.io/\n.. _`issue tracker`: https://github.com/pypa/packaging/issues\n.. _`GitHub Discussions`: https://github.com/pypa/packaging/discussions\n\n\nCode of Conduct\n---------------\n\nEveryone interacting in the packaging project's codebases, issue trackers, chat\nrooms, and mailing lists is expected to follow the `PSF Code of Conduct`_.\n\n.. _PSF Code of Conduct: https://github.com/pypa/.github/blob/main/CODE_OF_CONDUCT.md\n\nContributing\n------------\n\nThe ``CONTRIBUTING.rst`` file outlines how to contribute to this project as\nwell as how to report a potential security issue. The documentation for this\nproject also covers information about `project development`_ and `security`_.\n\n.. _`project development`: https://packaging.pypa.io/en/latest/development/\n.. _`security`: https://packaging.pypa.io/en/latest/security/\n\nProject History\n---------------\n\nPlease review the ``CHANGELOG.rst`` file or the `Changelog documentation`_ for\nrecent changes and project history.\n\n.. _`Changelog documentation`: https://packaging.pypa.io/en/latest/changelog/\n\n",
+        "description_content_type": "text/x-rst",
+        "author_email": "Donald Stufft <donald@stufft.io>",
+        "license_expression": "Apache-2.0 OR BSD-2-Clause",
+        "license_file": [
+          "LICENSE",
+          "LICENSE.APACHE",
+          "LICENSE.BSD"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "Programming Language :: Python",
+          "Programming Language :: Python :: 3",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14",
+          "Programming Language :: Python :: 3.15",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Programming Language :: Python :: Implementation :: PyPy",
+          "Programming Language :: Python :: Free Threading :: 4 - Resilient",
+          "Typing :: Typed"
+        ],
+        "requires_python": ">=3.9",
+        "project_url": [
+          "Documentation, https://packaging.pypa.io/",
+          "Source, https://github.com/pypa/packaging"
+        ]
+      }
+    },
+    {
+      "download_info": {
+        "url": "https://files.pythonhosted.org/packages/16/7d/e9ffbadfbf89c93848412d04594135c4ae8c1d37d9e053b9c3ed718fabc4/python_discovery-1.6.1-py3-none-any.whl",
+        "archive_info": {
+          "hash": "sha256=d43fcdef879fe795352bd13ccf8d185ba5a9f86f36cfcd00529f596e737442b3",
+          "hashes": {
+            "sha256": "d43fcdef879fe795352bd13ccf8d185ba5a9f86f36cfcd00529f596e737442b3"
+          }
+        }
+      },
+      "is_direct": false,
+      "is_yanked": false,
+      "requested": false,
+      "metadata": {
+        "metadata_version": "2.5",
+        "name": "python-discovery",
+        "version": "1.6.1",
+        "summary": "Python interpreter discovery",
+        "description": "# [`python-discovery`](https://python-discovery.readthedocs.io/en/latest/)\n\n[![PyPI](https://img.shields.io/pypi/v/python-discovery?style=flat-square)](https://pypi.org/project/python-discovery/)\n[![Supported Python versions](https://img.shields.io/pypi/pyversions/python-discovery.svg)](https://pypi.org/project/python-discovery/)\n[![Downloads](https://static.pepy.tech/badge/python-discovery/month)](https://pepy.tech/project/python-discovery)\n[![check](https://github.com/tox-dev/python-discovery/actions/workflows/check.yaml/badge.svg)](https://github.com/tox-dev/python-discovery/actions/workflows/check.yaml)\n[![Documentation Status](https://readthedocs.org/projects/python-discovery/badge/?version=latest)](https://python-discovery.readthedocs.io/en/latest/?badge=latest)\n\n## What is python-discovery?\n\n`python-discovery` is a library for discovering Python interpreters installed on your machine. You may have multiple\nPython versions from system packages, [pyenv](https://github.com/pyenv/pyenv), [mise](https://mise.jdx.dev/),\n[asdf](https://asdf-vm.com/), [uv](https://docs.astral.sh/uv/), or the Windows registry (PEP 514). This library finds\nthe right one for you.\n\nGive it a requirement like `python3.12` or `>=3.11,<3.13`, and it searches all known locations, verifies each candidate,\nand returns detailed metadata about the match. Results are cached to disk so repeated lookups are fast.\n\nThe library runs on Python 3.8+ and discovers interpreters as old as Python 3.6; anything older is skipped with a\nwarning naming the version it found.\n\n## Usage\n\n```python\nfrom pathlib import Path\n\nfrom python_discovery import DiskCache, get_interpreter\n\ncache = DiskCache(root=Path(\"~/.cache/python-discovery\").expanduser())\nresult = get_interpreter(\"python3.12\", cache=cache)\nif result is not None:\n    print(result.executable)  # /usr/bin/python3.12\n    print(result.implementation)  # CPython\n    print(result.version_info[:3])  # (3, 12, 1)\n```\n\nThe `get_interpreter()` function accepts various specification formats:\n\n- Absolute path: `/usr/bin/python3.12`\n- Version: `3.12`\n- Implementation prefix: `cpython3.12`\n- [Version specifier](https://packaging.python.org/en/latest/specifications/version-specifiers/): `>=3.10`,\n  `>=3.11,<3.13`\n\n## Documentation\n\nFull documentation is available at [python-discovery.readthedocs.io](https://python-discovery.readthedocs.io/en/latest/)\n",
+        "description_content_type": "text/markdown",
+        "keywords": [
+          "discovery",
+          "interpreter",
+          "python"
+        ],
+        "maintainer_email": "Bernát Gábor <gaborjbernat@gmail.com>",
+        "license": "Permission is hereby granted, free of charge, to any person obtaining a\ncopy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be included\nin all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS\nOR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+        "license_file": [
+          "LICENSE"
+        ],
+        "classifier": [
+          "Development Status :: 5 - Production/Stable",
+          "Intended Audience :: Developers",
+          "License :: OSI Approved :: MIT License",
+          "Operating System :: MacOS :: MacOS X",
+          "Operating System :: Microsoft :: Windows",
+          "Operating System :: POSIX",
+          "Programming Language :: Python :: 3 :: Only",
+          "Programming Language :: Python :: 3.8",
+          "Programming Language :: Python :: 3.9",
+          "Programming Language :: Python :: 3.10",
+          "Programming Language :: Python :: 3.11",
+          "Programming Language :: Python :: 3.12",
+          "Programming Language :: Python :: 3.13",
+          "Programming Language :: Python :: 3.14",
+          "Programming Language :: Python :: 3.15",
+          "Programming Language :: Python :: Implementation :: CPython",
+          "Topic :: Software Development :: Libraries",
+          "Topic :: Utilities"
+        ],
+        "requires_dist": [
+          "filelock>=3.15.4"
+        ],
+        "requires_python": ">=3.8",
+        "project_url": [
+          "Changelog, https://github.com/tox-dev/python-discovery/releases",
+          "Documentation, https://python-discovery.readthedocs.io",
+          "Homepage, https://github.com/tox-dev/python-discovery",
+          "Source, https://github.com/tox-dev/python-discovery",
+          "Tracker, https://github.com/tox-dev/python-discovery/issues"
+        ]
+      }
+    }
+  ],
+  "environment": {
+    "implementation_name": "cpython",
+    "implementation_version": "3.13.5",
+    "os_name": "posix",
+    "platform_machine": "x86_64",
+    "platform_release": "6.12.107+deb13-amd64",
+    "platform_system": "Linux",
+    "platform_version": "#1 SMP PREEMPT_DYNAMIC Debian 6.12.107-1 (2026-08-29)",
+    "python_full_version": "3.13.5",
+    "platform_python_implementation": "CPython",
+    "python_version": "3.13",
+    "sys_platform": "linux"
+  }
+}

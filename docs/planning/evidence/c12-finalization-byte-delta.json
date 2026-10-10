@@ -1,0 +1,17 @@
+{
+  "limits": "Only two terminal blank lines removed; no other byte altered. Pass2 immutable originals retained in source tar. Original whole staged whitespace2 is not a pass.",
+  "rows": [
+    {
+      "path": ".github/workflows/security.yml",
+      "before_sha256": "9f1adae5e78712dfb75d92e23eb9c53ccc3dce531c1a6e83e7e1bd08767b3f03",
+      "after_sha256": "fead43ef468bf758a111a0b2f473ae125748052fbce603d500dc5e172af12b3f",
+      "only_one_terminal_newline_removed": true
+    },
+    {
+      "path": ".gitleaks.toml",
+      "before_sha256": "e4b59fe34a297632918763de438ccc25df1393d1af52b148a31871513cee55c0",
+      "after_sha256": "b535b161f89a126ce3299ae21d4c9e7da5810099fd832e99ce37860f9622ef98",
+      "only_one_terminal_newline_removed": true
+    }
+  ]
+}

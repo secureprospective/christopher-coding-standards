@@ -1,0 +1,25 @@
+{
+  "units": [
+    "physical_lines",
+    "code_points",
+    "UTF8_bytes"
+  ],
+  "paths": [
+    "templates/python/.pre-commit-config.yaml",
+    "templates/python/Makefile.snippet",
+    "templates/python/pyproject.toml.snippet",
+    "templates/python/schema/example.py",
+    "templates/python/requirements-reference.lock"
+  ],
+  "baseline": [
+    247,
+    9448,
+    9514
+  ],
+  "current": [
+    223,
+    10188,
+    10188
+  ],
+  "limits": "Whole affected production/config incl new complete hashed wheel graph; tests/docs/evidence separate. No replacement production helper beyond counted schema. Not tokens/performance/quality."
+}

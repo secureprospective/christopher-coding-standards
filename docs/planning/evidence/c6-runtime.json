@@ -1,0 +1,253 @@
+[
+  {
+    "label": "install",
+    "argv": [
+      "npm",
+      "install"
+    ],
+    "expected": 0,
+    "marker": null,
+    "status": 0,
+    "stdout": "\nadded 101 packages, and audited 102 packages in 24s\n\n28 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n",
+    "stderr": "npm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:\nnpm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)\nnpm warn install-scripts   workerd@1.20261006.1 (postinstall: node install.js)\nnpm warn install-scripts\nnpm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.\n",
+    "inputs": {
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "3cc452e1b3af57e41a0fabcd525b4b4eff08dc4bdf259c7309011a1cfc27d4d5",
+      "README.md": "1c17236db474bcb85427fd0c6d786a74702233f9a982db3783f90810d3a141d3",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "97699654559107c4fb39542a7a4c15788e83fbc5c4fde7c0628d5d1dc5d74776",
+      "src/index.test.ts": "b92b09bdf70c968bd32fe397d95732d48c832988dcb2639318db279a4ba10cc8"
+    }
+  },
+  {
+    "label": "ci",
+    "argv": [
+      "npm",
+      "ci"
+    ],
+    "expected": 0,
+    "marker": null,
+    "status": 0,
+    "stdout": "\nadded 101 packages, and audited 102 packages in 6s\n\n28 packages are looking for funding\n  run `npm fund` for details\n\nfound 0 vulnerabilities\n",
+    "stderr": "npm warn install-scripts 2 packages have install scripts not yet covered by allowScripts:\nnpm warn install-scripts   esbuild@0.28.2 (postinstall: node install.js)\nnpm warn install-scripts   workerd@1.20261006.1 (postinstall: node install.js)\nnpm warn install-scripts\nnpm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.\n",
+    "inputs": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "3cc452e1b3af57e41a0fabcd525b4b4eff08dc4bdf259c7309011a1cfc27d4d5",
+      "README.md": "1c17236db474bcb85427fd0c6d786a74702233f9a982db3783f90810d3a141d3",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "97699654559107c4fb39542a7a4c15788e83fbc5c4fde7c0628d5d1dc5d74776",
+      "src/index.test.ts": "b92b09bdf70c968bd32fe397d95732d48c832988dcb2639318db279a4ba10cc8"
+    }
+  },
+  {
+    "label": "audit",
+    "argv": [
+      "npm",
+      "audit",
+      "--json"
+    ],
+    "expected": 0,
+    "marker": null,
+    "status": 0,
+    "stdout": "{\n  \"auditReportVersion\": 2,\n  \"vulnerabilities\": {},\n  \"metadata\": {\n    \"vulnerabilities\": {\n      \"info\": 0,\n      \"low\": 0,\n      \"moderate\": 0,\n      \"high\": 0,\n      \"critical\": 0,\n      \"total\": 0\n    },\n    \"dependencies\": {\n      \"prod\": 2,\n      \"dev\": 187,\n      \"optional\": 94,\n      \"peer\": 0,\n      \"peerOptional\": 0,\n      \"total\": 188\n    }\n  }\n}\n",
+    "stderr": "",
+    "inputs": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "3cc452e1b3af57e41a0fabcd525b4b4eff08dc4bdf259c7309011a1cfc27d4d5",
+      "README.md": "1c17236db474bcb85427fd0c6d786a74702233f9a982db3783f90810d3a141d3",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "97699654559107c4fb39542a7a4c15788e83fbc5c4fde7c0628d5d1dc5d74776",
+      "src/index.test.ts": "b92b09bdf70c968bd32fe397d95732d48c832988dcb2639318db279a4ba10cc8"
+    }
+  },
+  {
+    "label": "types",
+    "argv": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "expected": 0,
+    "marker": null,
+    "status": 0,
+    "stdout": "\n> typecheck\n> wrangler types && tsc --noEmit\n\n\n \u26c5\ufe0f wrangler 4.149.0\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nGenerating project types...\n\ninterface __BaseEnv_Env {\n\tKV: KVNamespace;\n}\ndeclare namespace Cloudflare {\n\tinterface GlobalProps {\n\t\tmainModule: typeof import(\"./src/index\");\n\t}\n\tinterface Env extends __BaseEnv_Env {}\n}\ninterface Env extends __BaseEnv_Env {}\n\nGenerating runtime types...\n\nRuntime types generated.\n\n\n\u2728 Types written to worker-configuration.d.ts\n\n\ud83d\udcd6 Read about runtime types\nhttps://developers.cloudflare.com/workers/languages/typescript/#generate-types\n\ud83d\udce3 Remember to rerun 'wrangler types' after you change your wrangler.jsonc file.\n\n",
+    "stderr": "",
+    "inputs": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "3cc452e1b3af57e41a0fabcd525b4b4eff08dc4bdf259c7309011a1cfc27d4d5",
+      "README.md": "1c17236db474bcb85427fd0c6d786a74702233f9a982db3783f90810d3a141d3",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "97699654559107c4fb39542a7a4c15788e83fbc5c4fde7c0628d5d1dc5d74776",
+      "src/index.test.ts": "b92b09bdf70c968bd32fe397d95732d48c832988dcb2639318db279a4ba10cc8"
+    }
+  },
+  {
+    "label": "workerd-tests",
+    "argv": [
+      "npm",
+      "test"
+    ],
+    "expected": 0,
+    "marker": null,
+    "status": 0,
+    "stdout": "\n> test\n> vitest run\n\n\n RUN  v4.1.11 /home/claude/coding-standards-verification/bee-c6-2026-10-08/project\n\n \u2713 src/index.test.ts (5 tests) 22ms\n\n Test Files  1 passed (1)\n      Tests  5 passed (5)\n   Start at  23:27:52\n   Duration  1.09s (transform 23ms, setup 0ms, import 34ms, tests 22ms, environment 1ms)\n\n",
+    "stderr": "",
+    "inputs": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "3cc452e1b3af57e41a0fabcd525b4b4eff08dc4bdf259c7309011a1cfc27d4d5",
+      "README.md": "1c17236db474bcb85427fd0c6d786a74702233f9a982db3783f90810d3a141d3",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "97699654559107c4fb39542a7a4c15788e83fbc5c4fde7c0628d5d1dc5d74776",
+      "src/index.test.ts": "b92b09bdf70c968bd32fe397d95732d48c832988dcb2639318db279a4ba10cc8"
+    }
+  },
+  {
+    "label": "bundle-no-deploy",
+    "argv": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "expected": 0,
+    "marker": null,
+    "status": 0,
+    "stdout": "\n> build\n> wrangler deploy --dry-run --outdir dist\n\n\n \u26c5\ufe0f wrangler 4.149.0\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nTotal Upload: 0.74 KiB / gzip: 0.36 KiB\nYour Worker has access to the following bindings:\nBinding                                        Resource          \nenv.KV (00000000000000000000000000000000)      KV Namespace      \n\n--dry-run: exiting now.\n",
+    "stderr": "",
+    "inputs": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "3cc452e1b3af57e41a0fabcd525b4b4eff08dc4bdf259c7309011a1cfc27d4d5",
+      "README.md": "1c17236db474bcb85427fd0c6d786a74702233f9a982db3783f90810d3a141d3",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "97699654559107c4fb39542a7a4c15788e83fbc5c4fde7c0628d5d1dc5d74776",
+      "src/index.test.ts": "b92b09bdf70c968bd32fe397d95732d48c832988dcb2639318db279a4ba10cc8"
+    }
+  },
+  {
+    "label": "missing-binding",
+    "argv": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "expected": 2,
+    "marker": "NOT_A_BINDING",
+    "status": 2,
+    "stdout": "\n> typecheck\n> wrangler types && tsc --noEmit\n\n\n \u26c5\ufe0f wrangler 4.149.0\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nGenerating project types...\n\ninterface __BaseEnv_Env {\n\tKV: KVNamespace;\n}\ndeclare namespace Cloudflare {\n\tinterface GlobalProps {\n\t\tmainModule: typeof import(\"./src/index\");\n\t}\n\tinterface Env extends __BaseEnv_Env {}\n}\ninterface Env extends __BaseEnv_Env {}\n\nGenerating runtime types...\n\nRuntime types generated.\n\n\n\u2728 Types written to worker-configuration.d.ts\n\n\ud83d\udcd6 Read about runtime types\nhttps://developers.cloudflare.com/workers/languages/typescript/#generate-types\n\ud83d\udce3 Remember to rerun 'wrangler types' after you change your wrangler.jsonc file.\n\nsrc/negative.ts(1,56): error TS2339: Property 'NOT_A_BINDING' does not exist on type 'Env'.\n",
+    "stderr": "",
+    "inputs": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "3cc452e1b3af57e41a0fabcd525b4b4eff08dc4bdf259c7309011a1cfc27d4d5",
+      "README.md": "1c17236db474bcb85427fd0c6d786a74702233f9a982db3783f90810d3a141d3",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "97699654559107c4fb39542a7a4c15788e83fbc5c4fde7c0628d5d1dc5d74776",
+      "src/index.test.ts": "b92b09bdf70c968bd32fe397d95732d48c832988dcb2639318db279a4ba10cc8",
+      "src/negative.ts": "a02fd78942a2a765c94e90c4d7dde3ce6afc628556de17bb5dc2778f2a2b9164"
+    }
+  },
+  {
+    "label": "assertion",
+    "argv": [
+      "npm",
+      "test"
+    ],
+    "expected": 1,
+    "marker": "intended failure",
+    "status": 1,
+    "stdout": "\n> test\n> vitest run\n\n\n RUN  v4.1.11 /home/claude/coding-standards-verification/bee-c6-2026-10-08/project\n\n \u276f src/index.test.ts (6 tests | 1 failed) 30ms\n   \u2713 actual workerd binding and integration effect 9ms\n   \u2713 invalid shape preserves prior state 3ms\n   \u2713 malformed JSON preserves state 3ms\n   \u2713 method rejects before state changes 5ms\n   \u2713 effect failure is explicit, not success 1ms\n   \u00d7 intended failure 8ms\n\n Test Files  1 failed (1)\n      Tests  1 failed | 5 passed (6)\n   Start at  23:28:07\n   Duration  1.11s (transform 25ms, setup 0ms, import 39ms, tests 30ms, environment 1ms)\n\n",
+    "stderr": "\n\u23af\u23af\u23af\u23af\u23af\u23af\u23af Failed Tests 1 \u23af\u23af\u23af\u23af\u23af\u23af\u23af\n\n FAIL  src/index.test.ts > intended failure\nAssertionError: expected 1 to be 2 // Object.is equality\n\n\u001b[32m- Expected\u001b[39m\n\u001b[31m+ Received\u001b[39m\n\n\u001b[32m- 2\u001b[39m\n\u001b[31m+ 1\u001b[39m\n\n \u276f src/index.test.ts:30:42\n     28| });\n     29|\n     30| it(\"intended failure\", () => { expect(1).toBe(2); });\n       |                                          ^\n     31|\n\n\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af\u23af[1/1]\u23af\n\n",
+    "inputs": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "3cc452e1b3af57e41a0fabcd525b4b4eff08dc4bdf259c7309011a1cfc27d4d5",
+      "README.md": "1c17236db474bcb85427fd0c6d786a74702233f9a982db3783f90810d3a141d3",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "97699654559107c4fb39542a7a4c15788e83fbc5c4fde7c0628d5d1dc5d74776",
+      "src/index.test.ts": "6a3bd38e9a81d67ca9cf848d273c8190e27e95ea53c501c017f2c2187aa36ef8"
+    }
+  },
+  {
+    "label": "restored-types",
+    "argv": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "expected": 0,
+    "marker": null,
+    "status": 0,
+    "stdout": "\n> typecheck\n> wrangler types && tsc --noEmit\n\n\n \u26c5\ufe0f wrangler 4.149.0\n\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\nGenerating project types...\n\ninterface __BaseEnv_Env {\n\tKV: KVNamespace;\n}\ndeclare namespace Cloudflare {\n\tinterface GlobalProps {\n\t\tmainModule: typeof import(\"./src/index\");\n\t}\n\tinterface Env extends __BaseEnv_Env {}\n}\ninterface Env extends __BaseEnv_Env {}\n\nGenerating runtime types...\n\nRuntime types generated.\n\n\n\u2728 Types written to worker-configuration.d.ts\n\n\ud83d\udcd6 Read about runtime types\nhttps://developers.cloudflare.com/workers/languages/typescript/#generate-types\n\ud83d\udce3 Remember to rerun 'wrangler types' after you change your wrangler.jsonc file.\n\n",
+    "stderr": "",
+    "inputs": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "3cc452e1b3af57e41a0fabcd525b4b4eff08dc4bdf259c7309011a1cfc27d4d5",
+      "README.md": "1c17236db474bcb85427fd0c6d786a74702233f9a982db3783f90810d3a141d3",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "97699654559107c4fb39542a7a4c15788e83fbc5c4fde7c0628d5d1dc5d74776",
+      "src/index.test.ts": "b92b09bdf70c968bd32fe397d95732d48c832988dcb2639318db279a4ba10cc8"
+    }
+  },
+  {
+    "label": "restored-tests",
+    "argv": [
+      "npm",
+      "test"
+    ],
+    "expected": 0,
+    "marker": null,
+    "status": 0,
+    "stdout": "\n> test\n> vitest run\n\n\n RUN  v4.1.11 /home/claude/coding-standards-verification/bee-c6-2026-10-08/project\n\n \u2713 src/index.test.ts (5 tests) 28ms\n\n Test Files  1 passed (1)\n      Tests  5 passed (5)\n   Start at  23:28:15\n   Duration  1.09s (transform 19ms, setup 0ms, import 31ms, tests 28ms, environment 0ms)\n\n",
+    "stderr": "",
+    "inputs": {
+      "package-lock.json": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b",
+      "worker-configuration.d.ts": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37",
+      "vitest.config.ts": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780",
+      "base-package.json": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156",
+      "wrangler.jsonc": "3cc452e1b3af57e41a0fabcd525b4b4eff08dc4bdf259c7309011a1cfc27d4d5",
+      "README.md": "1c17236db474bcb85427fd0c6d786a74702233f9a982db3783f90810d3a141d3",
+      "package.json": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299",
+      "package.json.snippet": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10",
+      "tsconfig.json": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866",
+      "src/index.ts": "97699654559107c4fb39542a7a4c15788e83fbc5c4fde7c0628d5d1dc5d74776",
+      "src/index.test.ts": "b92b09bdf70c968bd32fe397d95732d48c832988dcb2639318db279a4ba10cc8"
+    }
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "host": "claudeos",
+  "uid": 1000,
+  "bun_version": "1.4.2",
+  "emulated_process_version": "v26.3.0",
+  "archive_sha256": "c678040f14fe0440eb839d37cbd0ce4c051a32da72806ac97de6a6aab6bf728f",
+  "publisher_digest": "sha256:c678040f14fe0440eb839d37cbd0ce4c051a32da72806ac97de6a6aab6bf728f",
+  "url": "https://github.com/oven-sh/bun/releases/download/bun-v1.4.2/bun-linux-x64-baseline.zip",
+  "binary_sha256": "a83d263767d839e4d2649ca8e35d07159c7afc99afdc96d731ced29e056dda0c",
+  "scope": "Official published archive digest checked, not independent signature/authenticated approval or isolation; task-owned baseline binary only, no global install/config/services/GUI."
+}

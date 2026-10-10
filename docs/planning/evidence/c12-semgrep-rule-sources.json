@@ -1,0 +1,17 @@
+[
+  {
+    "url": "https://semgrep.dev/c/p/security-audit",
+    "bytes": 473625,
+    "sha256": "b109a039df712f30c6d3e25e1e8358053fd0f1c91b92d0e8d2871cd141fe602f"
+  },
+  {
+    "url": "https://semgrep.dev/c/p/secrets",
+    "bytes": 89772,
+    "sha256": "139b35ad3442bc83d1f0864db82fa4fdc7e1f1ee4b5ac872bfbeb604c82c6518"
+  },
+  {
+    "url": "https://semgrep.dev/c/p/owasp-top-ten",
+    "bytes": 1448110,
+    "sha256": "e0c19f8e6f6d086a4a7e8420bec7dd8e0784b143bf7e3eed060d9d3a32cedc64"
+  }
+]

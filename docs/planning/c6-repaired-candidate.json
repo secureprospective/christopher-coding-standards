@@ -1,0 +1,222 @@
+{
+  "base": "c66962fc3551571dbd7707152ae3b7831460a936",
+  "files": [
+    {
+      "path": "HANDOFF.md",
+      "bytes": 3332,
+      "sha256": "e2dfb2b797b079638200e5d790fe8660753960ff986324a62039d6db55829504"
+    },
+    {
+      "path": "docs/planning/c6-baseline.json",
+      "bytes": 32750,
+      "sha256": "f4f5da44b38e266bfae2bcc251d5b184b2a6e94cffee95f0dba7e824840a3f04"
+    },
+    {
+      "path": "docs/planning/c6-candidate.json",
+      "bytes": 3645,
+      "sha256": "0a2e1bf9e74020417fdacd26a17f4264d8b206eb9d14ecb48f30e12e457fe32b"
+    },
+    {
+      "path": "docs/planning/c6-repair-disposition.md",
+      "bytes": 3060,
+      "sha256": "e272f4ad81c72404fb23c87f1581d5ca35d6db6b0b497f551c8db2af32f7b699"
+    },
+    {
+      "path": "docs/planning/c6-repaired-source-copy.json",
+      "bytes": 956,
+      "sha256": "cdabd59455118431fef198139c4e2a2db1b1c9dbff177fd3b49da9a60e16c316"
+    },
+    {
+      "path": "docs/planning/c6-scope.md",
+      "bytes": 854,
+      "sha256": "d1906718fd619ffb037799ee063774902ec0c3301b5b060f5ca5896eacea51b5"
+    },
+    {
+      "path": "docs/planning/c6-source-copy.json",
+      "bytes": 1445,
+      "sha256": "520b164ecb9caccec38010193ff7231df943e3ceddc4e06c8cc581dcc0fd35c8"
+    },
+    {
+      "path": "docs/planning/evidence/c6-binding-recipe-checks.json",
+      "bytes": 24216,
+      "sha256": "4eaa5c6aa358fc6cb91d7be7c430d6d22821de56b19fabd41eea7b122d6445f7"
+    },
+    {
+      "path": "docs/planning/evidence/c6-config-lint-initial.json",
+      "bytes": 177,
+      "sha256": "a368411f35d1c96fc5890d96b4d54814b728c5a91f15615b98c604399b85deb1"
+    },
+    {
+      "path": "docs/planning/evidence/c6-final-supplement.json",
+      "bytes": 781693,
+      "sha256": "9a231059ed31e101c72d0e5ee59e645a7565a7f96b3b9cb808099ae39a016f60"
+    },
+    {
+      "path": "docs/planning/evidence/c6-independent-review-pass1.json",
+      "bytes": 4448,
+      "sha256": "d385c26254cd45b2cfe985bdb4ad65b1abc87da77bbb916cd6ce37b46e1e14e4"
+    },
+    {
+      "path": "docs/planning/evidence/c6-independent-review-pass1.md",
+      "bytes": 4388,
+      "sha256": "2a1e574892a49a1dc024f09b3a1a13c1de2a7a336c7aeae97014906579de67f6"
+    },
+    {
+      "path": "docs/planning/evidence/c6-initial-candidate.patch",
+      "bytes": 19217,
+      "sha256": "fffe13e3eb3a662dcc78e6706baff383f0f921050252a0c072ed4fef4f3fdcf9"
+    },
+    {
+      "path": "docs/planning/evidence/c6-instructions-composition-checks.json",
+      "bytes": 25115,
+      "sha256": "22635ca87a5f4dd316a6478395afef166acfa4e5cd23009a3bb2ac4179c2276d"
+    },
+    {
+      "path": "docs/planning/evidence/c6-metadata.json",
+      "bytes": 40494,
+      "sha256": "d89c5f2bb1e785d8225dca5d9d5b68fb5e3274a8a7341333b36354e42a788343"
+    },
+    {
+      "path": "docs/planning/evidence/c6-readable/configuration.mdx",
+      "bytes": 9173,
+      "sha256": "f9279170cab2ca80bea45605d09a4c444db41e007eed9f825e2b29a7c8083a97"
+    },
+    {
+      "path": "docs/planning/evidence/c6-readable/manifest.json",
+      "bytes": 2418,
+      "sha256": "2f00fa4ca8a6adfb3e7b4a7b733747a17b013831d340a7d51796b353ffea826c"
+    },
+    {
+      "path": "docs/planning/evidence/c6-readable/package-lock.json",
+      "bytes": 103632,
+      "sha256": "85ca478454c9118fa60e63b0b6ef4ea3399af97e837cbc09591c28df02d4051b"
+    },
+    {
+      "path": "docs/planning/evidence/c6-readable/package.json",
+      "bytes": 823,
+      "sha256": "ba46f3e76268c875de1bf7450b8f02ef4a8a351cfe50010979635a71b2d4a299"
+    },
+    {
+      "path": "docs/planning/evidence/c6-readable/runtime-versions.json",
+      "bytes": 45,
+      "sha256": "e55a5d0299cf32dd7d0b94758b1ce19b7dc249c816235d24bc1123e8831de1e8"
+    },
+    {
+      "path": "docs/planning/evidence/c6-readable/src/index.test.ts",
+      "bytes": 1809,
+      "sha256": "80b78bb54f1e1aef56a3c06a1adacda47a9039008ef68e6de6c89540f2bbf048"
+    },
+    {
+      "path": "docs/planning/evidence/c6-readable/src/index.ts",
+      "bytes": 777,
+      "sha256": "cefc796ea2a41f45ee589f3bfba56d1fd18f547c4f9072347f6c15d36038e9d6"
+    },
+    {
+      "path": "docs/planning/evidence/c6-readable/template-wrangler.jsonc",
+      "bytes": 3556,
+      "sha256": "ff697f916f4bfdd7051a6be715fdbd0750e96adba17f7b3c0191d49bba7d77a6"
+    },
+    {
+      "path": "docs/planning/evidence/c6-readable/worker-configuration.d.ts",
+      "bytes": 624245,
+      "sha256": "ed96a3584dcce4e370f025445c844df35a42e89191aaf99e8897532dc0686e37"
+    },
+    {
+      "path": "docs/planning/evidence/c6-readable/wrangler.jsonc",
+      "bytes": 3540,
+      "sha256": "d3acaf28ba316d042c5ebab2363654c458cb3876b70f2a035e76a2a1962e5a22"
+    },
+    {
+      "path": "docs/planning/evidence/c6-readable/write-your-first-test.mdx",
+      "bytes": 7146,
+      "sha256": "c32bf06f5a038c31234147c3178db7e6bfd9cfa7e6f64460465e6abd42ad7e6e"
+    },
+    {
+      "path": "docs/planning/evidence/c6-repaired-final.json",
+      "bytes": 782004,
+      "sha256": "7bfed36445269fcd3ccc9d66f535c4879dccb8c0259f0530e2cf67a522aeb86f"
+    },
+    {
+      "path": "docs/planning/evidence/c6-runtime.json",
+      "bytes": 18430,
+      "sha256": "fb6d19d35fd26c69dd894f52f48434faf3f92c124933208121ecf5130c61d810"
+    },
+    {
+      "path": "docs/planning/evidence/c6-supplement-lint-initial-failure.json",
+      "bytes": 16387,
+      "sha256": "91f2e26ec793065fe7b7ef1eb50dbfa4e25168645ac2b3965f0bf4cb8e7f2006"
+    },
+    {
+      "path": "docs/planning/evidence/c6-supplement.json",
+      "bytes": 22110,
+      "sha256": "7358440e8503ff9e3fb602cf0d1ff2a7bd47f7971079c7cb8807969dd9e2760a"
+    },
+    {
+      "path": "docs/quality-contract.md",
+      "bytes": 5915,
+      "sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f"
+    },
+    {
+      "path": "templates/cloudflare-workers/README.md",
+      "bytes": 4561,
+      "sha256": "beaed045716e87f2bb9212be469a42603d6cca711e54ff034c871afbbab42826"
+    },
+    {
+      "path": "templates/cloudflare-workers/package.json.snippet",
+      "bytes": 456,
+      "sha256": "d3466ae6ac3028065ee158b2d0882756984ffa635de5104c72a28614bf5d7b10"
+    },
+    {
+      "path": "templates/cloudflare-workers/tsconfig.json",
+      "bytes": 2163,
+      "sha256": "4341d39dcfb43894539fc163e45ae9c11da91de3ef354c35084590c46808b866"
+    },
+    {
+      "path": "templates/cloudflare-workers/vitest.config.ts",
+      "bytes": 1309,
+      "sha256": "f9331dd2b8402c9659b1c377c3ad478ac70568336d01a27f859853ac517ee780"
+    },
+    {
+      "path": "templates/cloudflare-workers/wrangler.jsonc",
+      "bytes": 3556,
+      "sha256": "ff697f916f4bfdd7051a6be715fdbd0750e96adba17f7b3c0191d49bba7d77a6"
+    },
+    {
+      "path": "templates/typescript/biome.json",
+      "bytes": 852,
+      "sha256": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc"
+    },
+    {
+      "path": "templates/typescript/package.json.snippet",
+      "bytes": 983,
+      "sha256": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156"
+    }
+  ],
+  "helpers": [
+    {
+      "path": "/home/chris/scratch/coding-standards-c6-vm.py",
+      "bytes": 6931,
+      "sha256": "0db2aff26c08d12b0c181841316931902201fae0d4ad552304a792599ce15b50"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c6-supplement.py",
+      "bytes": 2091,
+      "sha256": "ae4d2e3d5d13ee6f71dcd1dcad1fff86cc1609f5b2de544db9226f746f49e712"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c6-repair.py",
+      "bytes": 2799,
+      "sha256": "25c26db8c32cb4f72d24dd6da930f8f9ce102a84ce6e3398cbdb86cd10b90792"
+    },
+    {
+      "path": "/home/chris/scratch/coding-standards-c6-composition.py",
+      "bytes": 3309,
+      "sha256": "6d818f9f688d22367e2dac3a2ed08d641a23d10afcf0e1dc3620f38efd35d7d3"
+    }
+  ],
+  "diff_sha256": "1d1f4e8fd17739d9c74a0bd666f8fa0c34629cc60defb3319af015af07e3eb15",
+  "protected_count": 207,
+  "unrelated_project_sha256": "86fc2d04c5c8f960b09c72a671dcd89d8126564d66868f91148a8d0c0f3b563c",
+  "prior_freeze": "docs/planning/c6-candidate.json",
+  "prior_diff_recovery": "docs/planning/evidence/c6-initial-candidate.patch"
+}

@@ -1,0 +1,13 @@
+{
+  "host": "claudeos",
+  "uid": 1000,
+  "python": "3.13.5",
+  "versions": {
+    "ruff": "ruff 0.16.0\n",
+    "mypy": "mypy 2.3.0 (compiled: yes)\n",
+    "pytest": "pytest 9.1.1\n",
+    "pip-audit": "pip-audit 2.10.1\n"
+  },
+  "pydantic": "2.14.0",
+  "scope": "Owned venv/cache and binary wheels only; each selected wheel SHA matches publisher PyPI metadata then offline hash-required install. Not independent signature/approval, sandbox, pristine VM or all platforms. No sudo/global/system/GUI/identity changes."
+}

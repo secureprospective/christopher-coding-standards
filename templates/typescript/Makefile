@@ -1,33 +1,35 @@
-# Makefile — thin wrapper for standard project commands.
-# Provides a consistent interface regardless of package manager (pnpm, npm, yarn).
-# All targets map directly to package.json scripts.
+# Thin package.json wrappers. Merge targets; don't replace a project's Makefile.
+# npm/Bun consumers must also compose their own manifest/guard/lock contract.
+PM ?= pnpm
 
-.PHONY: lint lint-fix format typecheck test test-watch test-coverage mutation-test mutation-test-full
+.PHONY: lint lint-fix format format-check typecheck test test-watch test-coverage mutation-test mutation-test-full
 
 lint:
-	pnpm lint
+	$(PM) run lint
 
 lint-fix:
-	pnpm lint:fix
+	$(PM) run lint:fix
 
 format:
-	pnpm format
+	$(PM) run format
+
+format-check:
+	$(PM) run format:check
 
 typecheck:
-	pnpm typecheck
+	$(PM) run typecheck
 
 test:
-	pnpm test
+	$(PM) run test
 
 test-watch:
-	pnpm test:watch
+	$(PM) run test:watch
 
 test-coverage:
-	pnpm test:coverage
+	$(PM) run test:coverage
 
 mutation-test:
-	pnpm mutation-test
+	$(PM) run mutation-test
 
-# Full mutation scan — no incremental filter. Use for the weekly cron.
 mutation-test-full:
-	pnpm mutation-test:full
+	$(PM) run mutation-test:full

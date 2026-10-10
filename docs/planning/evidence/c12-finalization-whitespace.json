@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "git",
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "status": 0,
+  "stdout": "",
+  "stderr": "",
+  "scope": "Whole staged finalization source+new exact archives, before packet regeneration. Original failure2retained separately."
+}

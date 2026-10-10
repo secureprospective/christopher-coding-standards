@@ -1,0 +1,64 @@
+{
+  "command": [
+    "/home/claude/coding-standards-verification/bee-c4-2026-10-08/bats-core/bin/bats",
+    "--tap",
+    "project/tests/example.bats"
+  ],
+  "exit": 1,
+  "stdout": "1..12\nok 1 require_arg rejects empty without continuing\nok 2 require_arg rejects missing value\nok 3 require_arg preserves nonempty strings\nnot ok 4 positive integer rejects zero and all-zero strings\n# (in test file project/tests/example.bats, line 38)\n#   `[ \"${status}\" -eq 1 ]' failed\nok 5 positive integer rejects negatives and malformed strings\nok 6 positive integer rejects empty and missing value\nok 7 positive integer preserves positives and leading zeros\nnot ok 8 positive integer does not overflow on large decimal strings\n# (in test file project/tests/example.bats, line 76)\n#   `[ \"${status}\" -eq 1 ]' failed\nok 9 example rejects missing input with no success output\nnot ok 10 example rejects zero negative and malformed input before work\n# (in test file project/tests/example.bats, line 90)\n#   `[ \"${status}\" -eq 1 ]' failed\nok 11 example preserves exact positive and leading-zero output\nok 12 shell metacharacters remain data and cannot execute\n",
+  "stderr": "",
+  "expected_failed_test_ids": [
+    4,
+    8,
+    10
+  ],
+  "source_copy": {
+    "base": "5761c151442bb213e2953ccc021f0164461a29bb",
+    "stage": "pre-positivity-repair regression probe",
+    "sources": [
+      {
+        "source": "templates/bash/.pre-commit-config.yaml",
+        "destination": "project/.pre-commit-config.yaml",
+        "bytes": 2073,
+        "sha256": "9753bfa8f95e97e215f1bdd16a95a5221249d938de52bbc86ad004eaa0c1ee0d"
+      },
+      {
+        "source": "templates/bash/.shellcheckrc",
+        "destination": "project/.shellcheckrc",
+        "bytes": 1622,
+        "sha256": "685fe95fe1e705e1e4da2dbaebd5c8965e6bd9064d0a556dc8bb9f2aa1cf79b9"
+      },
+      {
+        "source": "templates/bash/Makefile.snippet",
+        "destination": "project/Makefile.snippet",
+        "bytes": 676,
+        "sha256": "52d45ca7795a5238659425531074167b92f87023d88ffc876cd48f5bce2c4f94"
+      },
+      {
+        "source": "templates/bash/README.md",
+        "destination": "project/README.md",
+        "bytes": 7140,
+        "sha256": "9c8939c21003d2367988c6e3532d22ac3153b53a2ea05cfeeb74b9b721445189"
+      },
+      {
+        "source": "templates/bash/lib/strict-mode.sh",
+        "destination": "project/lib/strict-mode.sh",
+        "bytes": 1779,
+        "sha256": "9d400b070d0b62060998b8a1c4badaf9f77026ce5e39e8fd8069653f5522ecb7"
+      },
+      {
+        "source": "templates/bash/scripts/example.sh",
+        "destination": "project/scripts/example.sh",
+        "bytes": 511,
+        "sha256": "0efa52e12a84ec2b79b588a79763aad369ce01c8617754d7f1364705bd3b495c"
+      },
+      {
+        "source": "templates/bash/tests/example.bats",
+        "destination": "project/tests/example.bats",
+        "bytes": 3579,
+        "sha256": "fd51d15704bc9ed48141b094664ba67ee1e474e02d5f436d5c75fc7b6e268aeb"
+      }
+    ]
+  },
+  "meaning": "Only advertised positivity failures observed: ordinary zero, huge all-zero string and CLI zero; not missing tool/parser/setup errors."
+}

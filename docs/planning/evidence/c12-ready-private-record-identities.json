@@ -1,0 +1,60 @@
+{
+  "records": [
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/semgrep-annotation-placement.json",
+      "sha256": "d31cb60ddf90c4cb78e6f255803b186eda4ec74853d95856d73747165324854a",
+      "bytes": 131532
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/final-current-findings-redacted.json",
+      "sha256": "8287c61a6ae02e8070a6622b1e80ce6987f0596d2c36c3aeb7876ae1889e1a4f",
+      "bytes": 44902
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/semgrep-private-rule-map.json",
+      "sha256": "4ed9da5e841afcb7d37687a4b5e8beddd18347e1ad4cffaa08af3949803a4873",
+      "bytes": 153814
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/semgrep-privacy-guards.json",
+      "sha256": "b66c5ba659b53f08f520f21be1ff434e3370170ad349681df71a73e7538dbaed",
+      "bytes": 131012
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/ready-semgrep.json",
+      "sha256": "01d03eeeb9cc128b389fb0c6e916e6fabda9ae4807f80184cdd38baedd5ba5e8",
+      "bytes": 216196
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/final-publication-semgrep.json",
+      "sha256": "898b1128845067c81a3e5dc3b23b4dd0ca1ddd607133d04614dac0b6f05f6226",
+      "bytes": 213207
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/semgrep-private-loader.json",
+      "sha256": "25aafab7eceb346622f914b29a009e52095c799f492a9205f4c83012b719d6a0",
+      "bytes": 20114
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/final-current-findings-capture.json",
+      "sha256": "e2bcb8cd26c7e29676dc594efaa527b7b47bc752ffb5a2757fc5174d9d73e2c4",
+      "bytes": 523
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/ready-semgrep-owasp-top-ten.yml",
+      "sha256": "a59add95f4e0346fe98d334f363484e3fa343889d0624174f1e99de828eb17b4",
+      "bytes": 1448110
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/ready-semgrep-secrets.yml",
+      "sha256": "139b35ad3442bc83d1f0864db82fa4fdc7e1f1ee4b5ac872bfbeb604c82c6518",
+      "bytes": 89772
+    },
+    {
+      "private_path": "/home/chris/scratch/coding-standards-c12-private-source/ready-semgrep-security-audit.yml",
+      "sha256": "b109a039df712f30c6d3e25e1e8358053fd0f1c91b92d0e8d2871cd141fe602f",
+      "bytes": 473625
+    }
+  ],
+  "limits": "Private original statuses/failures/rule bodies remain exact; identities are not authenticated approvals or publication rights."
+}

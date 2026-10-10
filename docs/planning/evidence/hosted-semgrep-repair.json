@@ -1,0 +1,99 @@
+{
+  "records": [
+    {
+      "label": "17complete rule/output/GitHubPATH units",
+      "argv": [
+        "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-semgrep/venv/bin/python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tools/ci/tests",
+        "-v"
+      ],
+      "status": 0,
+      "stdout": "",
+      "stderr": "test_path_priority_matches_selected_environment (test_github_environment.GithubEnvironmentTests.test_path_priority_matches_selected_environment) ... ok\ntest_without_github_files_does_not_publish_environment (test_github_environment.GithubEnvironmentTests.test_without_github_files_does_not_publish_environment) ... ok\ntest_duplicate_ids_fail (test_rules_identity.RulesIdentityTests.test_duplicate_ids_fail) ... ok\ntest_missing_empty_or_extra_configuration_fails (test_rules_identity.RulesIdentityTests.test_missing_empty_or_extra_configuration_fails) ... ok\ntest_nested_list_order_is_not_normalized (test_rules_identity.RulesIdentityTests.test_nested_list_order_is_not_normalized) ... ok\ntest_non_string_id_fails (test_rules_identity.RulesIdentityTests.test_non_string_id_fails) ... ok\ntest_nonzero_or_untyped_registry_misses_fail (test_rules_identity.RulesIdentityTests.test_nonzero_or_untyped_registry_misses_fail) ... ok\ntest_notice_change_is_not_normalized (test_rules_identity.RulesIdentityTests.test_notice_change_is_not_normalized) ... ok\ntest_observed_zero_miss_wrapper_preserves_complete_rule_identity (test_rules_identity.RulesIdentityTests.test_observed_zero_miss_wrapper_preserves_complete_rule_identity) ... ok\ntest_pattern_change_is_not_normalized (test_rules_identity.RulesIdentityTests.test_pattern_change_is_not_normalized) ... ok\ntest_rule_and_dictionary_order_only (test_rules_identity.RulesIdentityTests.test_rule_and_dictionary_order_only) ... ok\ntest_default_public_output_contract_unchanged (test_security_output.SecurityOutputTests.test_default_public_output_contract_unchanged) ... ok\ntest_existing_private_record_not_overwritten (test_security_output.SecurityOutputTests.test_existing_private_record_not_overwritten) ... ok\ntest_failed_expectation_stays_failed_and_private (test_security_output.SecurityOutputTests.test_failed_expectation_stays_failed_and_private) ... ok\ntest_inside_checkout_rejected_before_command (test_security_output.SecurityOutputTests.test_inside_checkout_rejected_before_command) ... ok\ntest_private_clean_preserves_result (test_security_output.SecurityOutputTests.test_private_clean_preserves_result) ... ok\ntest_private_expected_rejection_preserves_status_one (test_security_output.SecurityOutputTests.test_private_expected_rejection_preserves_status_one) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.016s\n\nOK\n"
+    },
+    {
+      "label": "actual complete private policy identity semgrep-security-audit.yml",
+      "argv": [
+        "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-semgrep/venv/bin/python3",
+        "tools/ci/rules_identity.py",
+        "/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/private unchanged registry rules/semgrep-security-audit.yml"
+      ],
+      "status": 0,
+      "stdout": "{\"raw_sha256\": \"5509b33efc0c08e2134ccb76f2c7172065f7ba4a89f28799661029e274c306c7\", \"rule_map_sha256\": \"29bce88305b589394f54eea39bb88f6ad5bec138cf312a79326df726bfd24700\", \"rules\": 225, \"bytes\": 433040, \"registry_missed\": 0}\n",
+      "stderr": ""
+    },
+    {
+      "label": "actual complete private policy identity semgrep-secrets.yml",
+      "argv": [
+        "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-semgrep/venv/bin/python3",
+        "tools/ci/rules_identity.py",
+        "/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/private unchanged registry rules/semgrep-secrets.yml"
+      ],
+      "status": 0,
+      "stdout": "{\"raw_sha256\": \"139b35ad3442bc83d1f0864db82fa4fdc7e1f1ee4b5ac872bfbeb604c82c6518\", \"rule_map_sha256\": \"29e43a16ff26d29c7fb03c6d09cb480eb6ad12642149367a27203ea80eeb1790\", \"rules\": 52, \"bytes\": 89772, \"registry_missed\": null}\n",
+      "stderr": ""
+    },
+    {
+      "label": "actual complete private policy identity semgrep-owasp-top-ten.yml",
+      "argv": [
+        "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-semgrep/venv/bin/python3",
+        "tools/ci/rules_identity.py",
+        "/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/private unchanged registry rules/semgrep-owasp-top-ten.yml"
+      ],
+      "status": 0,
+      "stdout": "{\"raw_sha256\": \"374c9d5d564d3550bf9f5f1b4f2bfdd621805b1a2566e8a81e58e7a0c7a06137\", \"rule_map_sha256\": \"771361de7ac0f4402c6b906b1694bd9600fcbfecb5a8d5768fe891c9b5c90835\", \"rules\": 560, \"bytes\": 1448110, \"registry_missed\": null}\n",
+      "stderr": ""
+    },
+    {
+      "label": "intended nonzero registry miss rejection",
+      "argv": [
+        "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-semgrep/venv/bin/python3",
+        "tools/ci/rules_identity.py",
+        "/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/own-missing-rule-control.json"
+      ],
+      "status": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/kit with spaces/tools/ci/rules_identity.py\", line 43, in <module>\n    print(json.dumps(identity(args.path)))\n                     ~~~~~~~~^^^^^^^^^^^\n  File \"/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/kit with spaces/tools/ci/rules_identity.py\", line 17, in identity\n    raise ValueError(\"expected exactly zero registry misses\")\nValueError: expected exactly zero registry misses\n"
+    },
+    {
+      "label": "actual root0/eval1/safe0 preserving private raw output",
+      "argv": [
+        "/home/claude/coding-standards-verification/bee-c12-2026-10-09/installed-ready-semgrep/venv/bin/python3",
+        "tools/ci/check-security.py",
+        "semgrep",
+        "--work",
+        "/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/private semgrep controls with spaces"
+      ],
+      "status": 0,
+      "stdout": "{\"private_observation\": \"/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/private semgrep controls with spaces/semgrep-root-private.json\", \"sha256\": \"79a83ecde097d7fd9670e51ba96b652570b92718078d9d141e53f8d287c5a337\", \"checker_exit\": 0}\n{\"private_observation\": \"/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/private semgrep controls with spaces/semgrep-rejection-private.json\", \"sha256\": \"4f55c5ff7e274c1219d76b62d6743fc1105131c45c44608de04a5311ef53b7b6\", \"checker_exit\": 0}\n{\"private_observation\": \"/home/claude/coding-standards-verification/bee-hosted-repair-2026-10-10/semgrep final attempt with spaces/private semgrep controls with spaces/semgrep-safe-private.json\", \"sha256\": \"268894788d1712f1f3498043b3cc667e7598868187a596f9ca2ca9a8100af029\", \"checker_exit\": 0}\n{\"completed_security_mode\": \"semgrep\", \"limits\": \"Actual CLI scope and narrow controls; not hosted run, authenticated approval or complete safety.\"}\n",
+      "stderr": ""
+    }
+  ],
+  "source_inputs": [
+    {
+      "path": "tools/ci/install-tools.py",
+      "sha256": "0c0ebbf06d0b94173171a52b28e78e0965251e4957890f526b645dfdf5f061ff"
+    },
+    {
+      "path": "tools/ci/check-reference.py",
+      "sha256": "06e86bc4537bdc068d947bfce05c60b572e89dfb3d9e0feb807565a765715e6c"
+    },
+    {
+      "path": "tools/ci/rules_identity.py",
+      "sha256": "bff65b95ff2cc4f6ca71e85d9fe536a637249c507b742fdae18b7ceeb6e041ab"
+    },
+    {
+      "path": "tools/ci/tests/test_rules_identity.py",
+      "sha256": "b58df8287e26b3872594e144c4c4b611327a45cddb8b54d03db3e90e2c6b5883"
+    },
+    {
+      "path": "tools/ci/tests/test_github_environment.py",
+      "sha256": "17e0700f89d9ed1882b0b1c646530bb84ed16c3b14d280587ce64ac52eb1e1f1"
+    }
+  ],
+  "limits": "Existing verified tools/venv reused, freshly downloaded exact registry bytes/full rule maps bound; no private raw diagnostic body in this public command record."
+}

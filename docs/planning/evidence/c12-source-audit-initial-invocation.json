@@ -1,0 +1,9 @@
+{
+  "argv": [
+    "python3",
+    "/home/claude/coding-standards-verification/bee-c12-2026-10-09/source-audit.py"
+  ],
+  "status": 0,
+  "stdout": "Source/YAML audit: 8 jobs, 32 links,4actualCLIhelp0; map7/acceptedlock exact\n",
+  "stderr": ""
+}

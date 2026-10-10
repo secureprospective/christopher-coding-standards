@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "gitleaks",
+    "git",
+    "--redact=100",
+    "--no-banner",
+    "--config",
+    ".gitleaks.toml",
+    "--log-opts=--all",
+    "--report-format",
+    "json",
+    "--report-path",
+    "/home/claude/coding-standards-verification/bee-c12-2026-10-09/results/gitleaks-findings-redacted.json",
+    "."
+  ],
+  "cwd": "/home/claude/coding-standards-verification/bee-c12-2026-10-09/kit with spaces",
+  "status": 1,
+  "stdout": "",
+  "stderr": "1:00PM INF Unknown SCM platform. Use --platform to include links in findings. host=\n1:00PM INF 48 commits scanned.\n1:00PM INF scanned ~12296300 bytes (12.30 MB) in 1.36s\n1:00PM WRN leaks found: 39\n",
+  "limits": "Direct metadata capture of original positive-scan failure, not intended rejection or passing scan."
+}

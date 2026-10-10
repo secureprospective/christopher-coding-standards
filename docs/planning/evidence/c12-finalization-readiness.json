@@ -1,0 +1,13 @@
+{
+  "status": "READY for style-only finalization re-review, not checkpointed",
+  "packet_sha256": "609a65b4607489118f9819a71aa689aac9d4c23383fb49cdb449a931b5243964",
+  "files": 243,
+  "helpers": 18,
+  "private": 30,
+  "protected_including_metadata": 461,
+  "tracked_diff_sha256": "019cf94cc5d3fc753673945d2857b11574b1d94ff43f11ed6a40fffaea6baaf1",
+  "state_sha256": "ac64f5596f158728e9e1ce8ccf13770b151d28c46586ad390c5b2a4ecd50ca95",
+  "post_freeze_gitleaks_sha256": "ae4e26500f8a3c0843f2c2f7627df91750da538964568191cc51e08f49ef4440",
+  "readability_manifest": "/home/chris/scratch/coding-standards-c12-finalization-readable/manifest.json",
+  "readability_sha256": "007bbb0bf5bbd14a1f157bc98c24417afb88da63c35503775e5adb537758f257"
+}

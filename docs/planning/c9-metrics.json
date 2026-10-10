@@ -1,0 +1,30 @@
+{
+  "units": [
+    "physical_lines",
+    "code_points",
+    "UTF8_bytes"
+  ],
+  "paths": [
+    "templates/go/.golangci.yml",
+    "templates/go/.pre-commit-config.yaml",
+    "templates/go/Makefile.snippet",
+    "templates/go/bloat.sh",
+    "templates/go/playerid/example.go",
+    "templates/go/schema/example.go",
+    "templates/go/tools/ifaceguard/ifaceguard.go",
+    "templates/go/tools/ifaceguard/cmd/ifaceguard/main.go",
+    "templates/go/tools/ifaceguard/go.mod",
+    "templates/go/tools/ifaceguard/go.sum"
+  ],
+  "baseline": [
+    757,
+    32997,
+    33127
+  ],
+  "current": [
+    421,
+    14460,
+    14476
+  ],
+  "limit": "Whole affected production/config + unchanged module/sum; no replacement production helper beyond counted recipe/typed helper. Tests/docs/evidence separate, not tokens/performance/quality."
+}

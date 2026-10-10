@@ -22,7 +22,7 @@ export class NetworkSendSystem implements GameSystem {
         return { id, x: position?.x ?? 0, z: position?.z ?? 0 };
       }),
     };
-    void snapshot; // SIDE EFFECT: broadcast to connected WebSocket clients
+    void snapshot; // Placeholder only: this example performs no broadcast.
     return { events: [] };
   }
 }

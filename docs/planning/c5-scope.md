@@ -1,0 +1,18 @@
+# C5 — TypeScript reference overlay
+
+Approved chunk: base Node/ESM TypeScript dependency, installation, validation and checking contracts. Base `6aec8f3` on `rebuild/quality-core-2026-10-08`. Sole writer Bee; runtime only on Christopher-authorized isolated ClaudeOS workspace. No publication or global/system/GUI changes.
+
+## Scope and guarantees
+
+- Existing nine `templates/typescript/` artifacts plus a small local package-manager guard and behavior tests for the real schema. Preserve exported schema/parser/type names, valid parsed values and invalid-input null rejection. Remove validation-error logging; parsing neither authorizes an admin role nor proves persistence. Unknown fields remain rejected for this example, not as a universal protocol rule.
+- Keep default pnpm10.34.3; replace implicit unpinned npx guard download with a local Node guard. Commit a consumer-owned lock after deliberate initialization; subsequent installs frozen. Show real wrong-manager rejection and missing/stale-lock failures; lifecycle guard is not a security boundary or protection against ignored scripts.
+- GHSA-82fw-gwwq-j7x9 must no longer affect selected Vitest/mocker. Upgrade only required major (Vitest3→4), match coverage, test actual Stryker9 compatibility; preserve other dependency majors. Locks/integrity establish resolution, not universal safety. Move runtime Zod into dependencies.
+- Demonstrate clean lint/format/type/test/coverage and optional mutation commands on an assembled disposable reference. Intended violations must produce expected diagnostics, not arbitrary failures; each tool gets isolated probes. Typecheck includes tests, coverage includes intended production sources. No tests/no lint targets are not clean verification.
+- Project-locked local read-only Biome hook (no separate npm-resolved remote hook environment), immutable Gitleaks hook ref, native verified scanner avoids inherited unverified Go bootstrap. Test actual hooks and staged harmless custom-rule scanner wiring without committing broken fixtures or using real secrets. Scanner wiring is not default-policy completeness or whole-tree scanning.
+- Make targets explicitly select project package manager; default remains pnpm, dependent npm/Bun projects must compose their own contracts. No automatic rewriting or acceptance of dependent overlays.
+
+## Verification and boundaries
+
+Record downloaded official advisory/registry metadata and identities, workspace/tool versions, source copies, complete reference manifest/lock, actual command outputs/exit codes and declared-file hashes. Tests exercise actual exported parsers, invalid/valid inputs and caller-side no-action-on-rejection. Mutation fixture is synthetic, not a model benchmark or a consumer application. TypeScript5/Biome2/Zod4/Stryker9 majors remain; no blanket latest upgrade. Reference manifest selects Node24+ explicitly; actual execution establishes24.21.0 only. Exact selected direct versions and the consumer-specific reference lock are evidence, not a universal lock for a partial snippet.
+
+Freeze complete candidate inputs and tracked diff before fresh read-only review. Parent resolves findings, rechecks/reviews affected source, accepts locally only. Root HANDOFF is progress-only. All other tracked files protected, especially shared consumer contract, workflows/security, Bash, Workers/Astro/Bun/Go/Python. Unrelated `.project.yaml` untouched. C5 installs remain pnpm; inherited npm-ci mismatch is explicitly carried to C12, not repaired by deleting the guard. No hosted/fleet/consumer/global-skill/tracking/publication change. Dependency metadata fetched on ClaudeOS during initial reconnaissance confirms the previously recorded advisory; preserve a newly fetched exact record before installation.

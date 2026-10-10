@@ -1,0 +1,160 @@
+{
+  "base": "6aec8f384bd2a91c2114234b04dc0231332f68ff",
+  "allowed_modified": [
+    "HANDOFF.md",
+    "templates/typescript/.pre-commit-config.yaml",
+    "templates/typescript/Makefile",
+    "templates/typescript/README.md",
+    "templates/typescript/biome.json",
+    "templates/typescript/package.json.snippet",
+    "templates/typescript/schemas/example.ts",
+    "templates/typescript/stryker.config.mjs",
+    "templates/typescript/tsconfig.json",
+    "templates/typescript/vitest.config.ts"
+  ],
+  "actual_modified": [
+    "HANDOFF.md",
+    "templates/typescript/.pre-commit-config.yaml",
+    "templates/typescript/Makefile",
+    "templates/typescript/README.md",
+    "templates/typescript/package.json.snippet",
+    "templates/typescript/schemas/example.ts",
+    "templates/typescript/stryker.config.mjs",
+    "templates/typescript/tsconfig.json",
+    "templates/typescript/vitest.config.ts"
+  ],
+  "protected_count": 175,
+  "links_checked": [
+    "../../HANDOFF.md",
+    "../../tools/README.md",
+    "../cloudflare-workers/README.md",
+    "../astro/README.md",
+    "../bun-ecs/README.md"
+  ],
+  "runtime": "30 matched command expectations;16actual tests (15schema+1synthetic);100% reference coverage;5mutants score100 and weak-test score0 intended rejection",
+  "supplemental": "19matched guard/git/hook/setup operations, including ordinary clean hook commit and intended Biome/custom-scanner rejection",
+  "restored_mutation": "Actual restored strong full/incremental score100; snapshot agreement",
+  "npm_install": "Actual dependency-free guard fixture install rejected1 but created package-lock; no guard disabled, declared files unchanged",
+  "vm_artifacts": 18,
+  "source_copies": 11,
+  "measurement": [
+    {
+      "path": "templates/typescript/.pre-commit-config.yaml",
+      "base": {
+        "physical_lines": 18,
+        "unicode_code_points": 867,
+        "utf8_bytes": 869
+      },
+      "candidate": {
+        "physical_lines": 19,
+        "unicode_code_points": 769,
+        "utf8_bytes": 769
+      }
+    },
+    {
+      "path": "templates/typescript/Makefile",
+      "base": {
+        "physical_lines": 33,
+        "unicode_code_points": 626,
+        "utf8_bytes": 630
+      },
+      "candidate": {
+        "physical_lines": 35,
+        "unicode_code_points": 630,
+        "utf8_bytes": 630
+      }
+    },
+    {
+      "path": "templates/typescript/biome.json",
+      "base": {
+        "physical_lines": 54,
+        "unicode_code_points": 852,
+        "utf8_bytes": 852
+      },
+      "candidate": {
+        "physical_lines": 54,
+        "unicode_code_points": 852,
+        "utf8_bytes": 852
+      }
+    },
+    {
+      "path": "templates/typescript/package.json.snippet",
+      "base": {
+        "physical_lines": 29,
+        "unicode_code_points": 995,
+        "utf8_bytes": 995
+      },
+      "candidate": {
+        "physical_lines": 38,
+        "unicode_code_points": 983,
+        "utf8_bytes": 983
+      }
+    },
+    {
+      "path": "templates/typescript/schemas/example.ts",
+      "base": {
+        "physical_lines": 61,
+        "unicode_code_points": 2258,
+        "utf8_bytes": 2266
+      },
+      "candidate": {
+        "physical_lines": 30,
+        "unicode_code_points": 1174,
+        "utf8_bytes": 1174
+      }
+    },
+    {
+      "path": "templates/typescript/scripts/check-package-manager.mjs",
+      "base": {
+        "physical_lines": 0,
+        "unicode_code_points": 0,
+        "utf8_bytes": 0
+      },
+      "candidate": {
+        "physical_lines": 20,
+        "unicode_code_points": 786,
+        "utf8_bytes": 786
+      }
+    },
+    {
+      "path": "templates/typescript/stryker.config.mjs",
+      "base": {
+        "physical_lines": 47,
+        "unicode_code_points": 1407,
+        "utf8_bytes": 1407
+      },
+      "candidate": {
+        "physical_lines": 43,
+        "unicode_code_points": 1479,
+        "utf8_bytes": 1479
+      }
+    },
+    {
+      "path": "templates/typescript/tsconfig.json",
+      "base": {
+        "physical_lines": 54,
+        "unicode_code_points": 1729,
+        "utf8_bytes": 1729
+      },
+      "candidate": {
+        "physical_lines": 54,
+        "unicode_code_points": 1684,
+        "utf8_bytes": 1684
+      }
+    },
+    {
+      "path": "templates/typescript/vitest.config.ts",
+      "base": {
+        "physical_lines": 30,
+        "unicode_code_points": 824,
+        "utf8_bytes": 826
+      },
+      "candidate": {
+        "physical_lines": 32,
+        "unicode_code_points": 942,
+        "utf8_bytes": 942
+      }
+    }
+  ],
+  "limits": "Selected Linux/Node/tools/reference only; synthetic fixtures not applications/model benchmark; official registry/advisory observations/SRI/lock not universal safety or authenticated receipts; other overlays/CI remain separately gated."
+}

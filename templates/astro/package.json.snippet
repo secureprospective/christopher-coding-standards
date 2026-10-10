@@ -1,16 +1,20 @@
 {
-  "//pnpm-guardrail": "Fleet standard: this project is pinned to pnpm via corepack + only-allow. See the base TypeScript overlay README for the enforced rules (packageManager pin, only-allow pnpm, --frozen-lockfile). Do not remove these lines.",
-  "packageManager": "pnpm@10.34.3",
+  "type": "module",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
     "format:astro": "prettier --write \"**/*.astro\"",
     "lint:astro": "prettier --check \"**/*.astro\"",
+    "typecheck": "astro check",
     "typecheck:astro": "astro check"
   },
-
+  "dependencies": {
+    "astro": "7.3.8"
+  },
   "devDependencies": {
-    "@astrojs/check": "^0.9.0",
-    "prettier": "^3.4.0",
-    "prettier-plugin-astro": "^0.14.1"
+    "@astrojs/check": "0.9.10",
+    "prettier": "3.9.9",
+    "prettier-plugin-astro": "1.1.0"
   }
 }

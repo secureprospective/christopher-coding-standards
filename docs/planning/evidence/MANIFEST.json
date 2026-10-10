@@ -1,0 +1,53 @@
+{
+  "purpose": "Preserved planning evidence; originals untouched; proposals are not adopted policy.",
+  "artifacts": [
+    {
+      "source": "/home/chris/scratch/coding-standards-recon.md",
+      "snapshot": "docs/planning/evidence/repo-recon.md",
+      "bytes": 23857,
+      "sha256": "90863273c2347fe5f6cc81df522960bd8b8b12e032e2dd2ad91641d73517edc4"
+    },
+    {
+      "source": "/home/chris/scratch/coding-standards-overlay-audit.md",
+      "snapshot": "docs/planning/evidence/overlay-audit.md",
+      "bytes": 33427,
+      "sha256": "2df9448b408b8d5373d23776e864fb8cdafd5d33303edd1b667f6d8909d803f1"
+    },
+    {
+      "source": "/home/chris/scratch/coding-standards-update-mechanism-investigation.md",
+      "snapshot": "docs/planning/evidence/tracking-investigation.md",
+      "bytes": 11648,
+      "sha256": "cd30b13579af30b857cf47c5664b342a7ff36db20ad06b97c2d36f3df22eb700"
+    },
+    {
+      "source": "/home/chris/scratch/coding-standards-rebuild-research-pass.md",
+      "snapshot": "docs/planning/evidence/independent-research-audit.md",
+      "bytes": 53725,
+      "sha256": "9a14604d973418c16f1eab6bdbd23451be1ec0f8df8d0bc794d3c2ecd018619c"
+    },
+    {
+      "source": "/home/chris/scratch/ordinary-task-authority-advisor-findings-2026-10-08.md",
+      "snapshot": "docs/planning/evidence/relayed-authority-advisor.md",
+      "bytes": 14964,
+      "sha256": "54ecd4d10f1310f61700491ff32a1c4795fab8b3f475beb62afc05eb91efd07b"
+    },
+    {
+      "source": "/home/chris/fleet/docs/ai-coding-excellence-dossier-2026-10-08.md",
+      "snapshot": "docs/planning/evidence/operator-supplied-dossier.md",
+      "bytes": 39639,
+      "sha256": "43a35ad7a0ab99ec12f9e30a1ceb9d90cfbd53b0a4be07899998a273c5cffe82"
+    },
+    {
+      "source": "/home/chris/scratch/coding-standards-github-audit-2026-10-08.json",
+      "snapshot": "docs/planning/evidence/github-settings-and-ci-evidence.json",
+      "bytes": 77561,
+      "sha256": "26e7c54a0e9d2896336e1847bdc637f75cda807d4116db3126788ff2aea9fbf3"
+    },
+    {
+      "source": "/home/chris/scratch/coding-standards-github-readonly-audit.py",
+      "snapshot": "docs/planning/evidence/github-audit-collector.py",
+      "bytes": 3611,
+      "sha256": "8394f90d074ba962ca4585ddd86522313039f109a3e26dcdcb7ff7f2ecdc8d2c"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "verification_type": "Read-only reconciliation of existing captured original strings and current summaries; NOT runtime rerun/independent original receipt",
+  "original_evidence_sha256": "5b55ff1490b064588db6f26741c9278ca754c7d47e157979922328c924d85242",
+  "clean_original_rows": [
+    {
+      "original_record_index": 17,
+      "label": "clean test",
+      "actual_original_status": 0,
+      "actual_original_summary": "Tests  15 passed (15)",
+      "stdout_sha256": "4c579e72a791b4551b38cb7270e75560182b3c26fa9c00d687c38bdf43825a5a",
+      "correct_clean_test_count": 15
+    },
+    {
+      "original_record_index": 18,
+      "label": "clean test-coverage",
+      "actual_original_status": 0,
+      "actual_original_summary": "Tests  15 passed (15)",
+      "stdout_sha256": "128c1a56b5627613dc9071c3f03af1197906dd4dc216f19d42435a13c399a740",
+      "correct_clean_test_count": 15
+    },
+    {
+      "original_record_index": 24,
+      "label": "restored tests",
+      "actual_original_status": 0,
+      "actual_original_summary": "Tests  15 passed (15)",
+      "stdout_sha256": "81b320dc18cffd6063d041ad2b70d71317086972f294ce48b2e0f04d7b875185",
+      "correct_clean_test_count": 15
+    },
+    {
+      "original_record_index": 26,
+      "label": "restored coverage",
+      "actual_original_status": 0,
+      "actual_original_summary": "Tests  15 passed (15)",
+      "stdout_sha256": "4d446fc250a96183b32833c9911598325d92811bf22a4b532419988bd2b23815",
+      "correct_clean_test_count": 15
+    }
+  ],
+  "intentional_bad_assertion": {
+    "original_record_index": 23,
+    "actual_original_status": 1,
+    "actual_original_summary": "Tests  1 failed | 15 passed (16)",
+    "meaning": "One deliberately failing additional assertion, not 16clean tests"
+  },
+  "source_case_structure": "12invalid parameterized cases + role test + optional/name-limit test + caller/state test =15",
+  "historical_inaccurate_helper_footer_retained": true,
+  "current_summaries_corrected": true,
+  "no_runtime_consumer_or_operational_source_change": true,
+  "original_raw_unchanged": true
+}

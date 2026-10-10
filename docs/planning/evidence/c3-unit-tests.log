@@ -1,0 +1,19 @@
+test_clean_exit_and_input_identity (test_verify_fixture.VerifyFixtureTests.test_clean_exit_and_input_identity) ... ok
+test_clean_nonzero_is_failure (test_verify_fixture.VerifyFixtureTests.test_clean_nonzero_is_failure) ... ok
+test_closed_stdin (test_verify_fixture.VerifyFixtureTests.test_closed_stdin) ... ok
+test_deleted_input_is_setup_failure (test_verify_fixture.VerifyFixtureTests.test_deleted_input_is_setup_failure) ... ok
+test_intended_rejection (test_verify_fixture.VerifyFixtureTests.test_intended_rejection) ... ok
+test_invalid_timeout_and_diagnostic_options_are_usage_errors (test_verify_fixture.VerifyFixtureTests.test_invalid_timeout_and_diagnostic_options_are_usage_errors) ... ok
+test_missing_directory_absolute_and_parent_inputs_rejected (test_verify_fixture.VerifyFixtureTests.test_missing_directory_absolute_and_parent_inputs_rejected) ... ok
+test_missing_executable_is_setup_failure_not_rejection (test_verify_fixture.VerifyFixtureTests.test_missing_executable_is_setup_failure_not_rejection) ... ok
+test_mutation_invalidates_either_expected_result (test_verify_fixture.VerifyFixtureTests.test_mutation_invalidates_either_expected_result) ... ok
+test_non_utf8_output_is_replaced_not_silently_dropped (test_verify_fixture.VerifyFixtureTests.test_non_utf8_output_is_replaced_not_silently_dropped) ... ok
+test_rejection_diagnostic_can_be_on_stderr (test_verify_fixture.VerifyFixtureTests.test_rejection_diagnostic_can_be_on_stderr) ... ok
+test_symlink_escape_rejected (test_verify_fixture.VerifyFixtureTests.test_symlink_escape_rejected) ... ok
+test_timeout_preserves_partial_output_and_cannot_pass (test_verify_fixture.VerifyFixtureTests.test_timeout_preserves_partial_output_and_cannot_pass) ... ok
+test_wrong_exit_or_missing_diagnostic_is_not_rejection (test_verify_fixture.VerifyFixtureTests.test_wrong_exit_or_missing_diagnostic_is_not_rejection) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 1.549s
+
+OK

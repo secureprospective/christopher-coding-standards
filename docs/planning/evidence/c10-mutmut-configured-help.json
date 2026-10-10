@@ -1,0 +1,9 @@
+{
+  "argv": [
+    "mutmut",
+    "--help"
+  ],
+  "status": 0,
+  "stdout": "Usage: mutmut [OPTIONS] COMMAND [ARGS]...\n\nOptions:\n  --version  Show the version and exit.\n  --help     Show this message and exit.\n\nCommands:\n  apply\n  badge\n  browse\n  export-cicd-stats\n  print-time-estimates\n  results\n  run\n  show\n  tests-for-mutant\n",
+  "stderr": "/home/claude/coding-standards-verification/bee-c10-2026-10-09/venv/lib/python3.13/site-packages/mutmut/configuration.py:152: UserWarning: The config tests_dir is deprecated. Please add the path to pytest_add_cli_args_test_selection instead\n  warnings.warn(\n"
+}

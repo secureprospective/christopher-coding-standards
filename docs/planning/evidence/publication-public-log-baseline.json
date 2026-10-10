@@ -1,0 +1,9 @@
+{
+  "observation": "Prior actual captured semgrep stdout published by original observe includes selected rejection finding diagnostic; prospective public Actions log boundary was not previously verified",
+  "private_original_path": "/home/chris/scratch/coding-standards-c13-post-freeze-semgrep.json",
+  "private_original_sha256": "f28966230984a6d746dc9c4c7b6cd08bf0df41583c574382c3a60fe22f34cfd2",
+  "original_outer_status": 0,
+  "canonical_finding_in_original_public_stream": true,
+  "raw_prose_kept_private": true,
+  "failure": "Initial new metadata-proof helper KeyError(status), helper1 after actual unit13/unit14/security0. Later source-only helper field repair uses exit_code. Original record untouched."
+}
