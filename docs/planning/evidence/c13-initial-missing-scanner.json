@@ -1,0 +1,300 @@
+{
+  "base": "91988a378075dbcc298ed3b479c320e3f70c18c5",
+  "records": [
+    {
+      "label": "synthetic git init",
+      "argv": [
+        "git",
+        "init",
+        "--initial-branch=main"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c13-2026-10-09/consumer with spaces",
+      "expected": 0,
+      "diagnostic": null,
+      "status": 0,
+      "stdout": "Initialized empty Git repository in /home/claude/coding-standards-verification/bee-c13-2026-10-09/consumer with spaces/.git/\n",
+      "stderr": "",
+      "inputs_before": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        "AGENTS.md": "f13ffdacecabc247336632db7876a58425a5859895b24e8f390fe7b98fb4ae29",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "07aa6b6fd372d1b7a4e3775ff632ede90c78df4dd66c82b51e08f1a0e3ac3b0e",
+        "package.json": "1310d74d3bdca7ad6aee3ab311d45aa0d4fca0d036d454147e0d27a3530c77eb"
+      },
+      "inputs_after": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        "AGENTS.md": "f13ffdacecabc247336632db7876a58425a5859895b24e8f390fe7b98fb4ae29",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "07aa6b6fd372d1b7a4e3775ff632ede90c78df4dd66c82b51e08f1a0e3ac3b0e",
+        "package.json": "1310d74d3bdca7ad6aee3ab311d45aa0d4fca0d036d454147e0d27a3530c77eb"
+      },
+      "read_only_input_requirement": true,
+      "matched": true
+    },
+    {
+      "label": "synthetic local author",
+      "argv": [
+        "git",
+        "config",
+        "user.name",
+        "Bee C13 synthetic"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c13-2026-10-09/consumer with spaces",
+      "expected": 0,
+      "diagnostic": null,
+      "status": 0,
+      "stdout": "",
+      "stderr": "",
+      "inputs_before": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        "AGENTS.md": "f13ffdacecabc247336632db7876a58425a5859895b24e8f390fe7b98fb4ae29",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "07aa6b6fd372d1b7a4e3775ff632ede90c78df4dd66c82b51e08f1a0e3ac3b0e",
+        "package.json": "1310d74d3bdca7ad6aee3ab311d45aa0d4fca0d036d454147e0d27a3530c77eb"
+      },
+      "inputs_after": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        "AGENTS.md": "f13ffdacecabc247336632db7876a58425a5859895b24e8f390fe7b98fb4ae29",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "07aa6b6fd372d1b7a4e3775ff632ede90c78df4dd66c82b51e08f1a0e3ac3b0e",
+        "package.json": "1310d74d3bdca7ad6aee3ab311d45aa0d4fca0d036d454147e0d27a3530c77eb"
+      },
+      "read_only_input_requirement": true,
+      "matched": true
+    },
+    {
+      "label": "synthetic local email",
+      "argv": [
+        "git",
+        "config",
+        "user.email",
+        "bee-c13@example.invalid"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c13-2026-10-09/consumer with spaces",
+      "expected": 0,
+      "diagnostic": null,
+      "status": 0,
+      "stdout": "",
+      "stderr": "",
+      "inputs_before": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        "AGENTS.md": "f13ffdacecabc247336632db7876a58425a5859895b24e8f390fe7b98fb4ae29",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "07aa6b6fd372d1b7a4e3775ff632ede90c78df4dd66c82b51e08f1a0e3ac3b0e",
+        "package.json": "1310d74d3bdca7ad6aee3ab311d45aa0d4fca0d036d454147e0d27a3530c77eb"
+      },
+      "inputs_after": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        "AGENTS.md": "f13ffdacecabc247336632db7876a58425a5859895b24e8f390fe7b98fb4ae29",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "07aa6b6fd372d1b7a4e3775ff632ede90c78df4dd66c82b51e08f1a0e3ac3b0e",
+        "package.json": "1310d74d3bdca7ad6aee3ab311d45aa0d4fca0d036d454147e0d27a3530c77eb"
+      },
+      "read_only_input_requirement": true,
+      "matched": true
+    },
+    {
+      "label": "original local stage",
+      "argv": [
+        "git",
+        "add",
+        "--all"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c13-2026-10-09/consumer with spaces",
+      "expected": 0,
+      "diagnostic": null,
+      "status": 0,
+      "stdout": "",
+      "stderr": "",
+      "inputs_before": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        "AGENTS.md": "f13ffdacecabc247336632db7876a58425a5859895b24e8f390fe7b98fb4ae29",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "07aa6b6fd372d1b7a4e3775ff632ede90c78df4dd66c82b51e08f1a0e3ac3b0e",
+        "package.json": "1310d74d3bdca7ad6aee3ab311d45aa0d4fca0d036d454147e0d27a3530c77eb"
+      },
+      "inputs_after": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        "AGENTS.md": "f13ffdacecabc247336632db7876a58425a5859895b24e8f390fe7b98fb4ae29",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "07aa6b6fd372d1b7a4e3775ff632ede90c78df4dd66c82b51e08f1a0e3ac3b0e",
+        "package.json": "1310d74d3bdca7ad6aee3ab311d45aa0d4fca0d036d454147e0d27a3530c77eb"
+      },
+      "read_only_input_requirement": true,
+      "matched": true
+    },
+    {
+      "label": "original local commit before hook installation",
+      "argv": [
+        "git",
+        "commit",
+        "-m",
+        "Synthetic consumer-owned baseline"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c13-2026-10-09/consumer with spaces",
+      "expected": 0,
+      "diagnostic": null,
+      "status": 0,
+      "stdout": "[main (root-commit) 440639d] Synthetic consumer-owned baseline\n 5 files changed, 17 insertions(+)\n create mode 100644 .gitignore\n create mode 100644 AGENTS.md\n create mode 100644 LICENSE\n create mode 100644 Makefile\n create mode 100644 package.json\n",
+      "stderr": "",
+      "inputs_before": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        "AGENTS.md": "f13ffdacecabc247336632db7876a58425a5859895b24e8f390fe7b98fb4ae29",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "07aa6b6fd372d1b7a4e3775ff632ede90c78df4dd66c82b51e08f1a0e3ac3b0e",
+        "package.json": "1310d74d3bdca7ad6aee3ab311d45aa0d4fca0d036d454147e0d27a3530c77eb"
+      },
+      "inputs_after": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        "AGENTS.md": "f13ffdacecabc247336632db7876a58425a5859895b24e8f390fe7b98fb4ae29",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "07aa6b6fd372d1b7a4e3775ff632ede90c78df4dd66c82b51e08f1a0e3ac3b0e",
+        "package.json": "1310d74d3bdca7ad6aee3ab311d45aa0d4fca0d036d454147e0d27a3530c77eb"
+      },
+      "read_only_input_requirement": true,
+      "matched": true
+    },
+    {
+      "label": "Node version",
+      "argv": [
+        "node",
+        "--version"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c13-2026-10-09/consumer with spaces",
+      "expected": 0,
+      "diagnostic": null,
+      "status": 0,
+      "stdout": "v24.21.0\n",
+      "stderr": "",
+      "inputs_before": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        ".pre-commit-config.yaml": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a",
+        "AGENTS.md": "0225d9eac5da1389f05e44acbdd36656b243be86fd812b29b534646baffd10d3",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "f1b2dd5963b6a87e8fc6dc835a0b5da3567a70362adc174216c4bfa3a9ad3123",
+        "README.md": "74706f923aa0cfcd64d36aa7e59bc1cc94902425e8b562328c414d5a6fba5517",
+        "SYSTEM_MAP.md": "2a781ba7d979e16e2ae750e8b4b5d0b647899eea5a4e9c8416d2bfb512f6047a",
+        "biome.json": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc",
+        "docs/architecture-review.md": "9fd74d10b1b1c6929624e8a72552c711e06d3dac65ec1083b717fcc72d88f7bc",
+        "docs/quality-contract.md": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f",
+        "docs/standards-source-LICENSE": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+        "package.json": "f706640fac07d4f3941ab4863f576c7d9f7d92994f9767780556b148db021a99",
+        "scripts/check-package-manager.mjs": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7",
+        "src/schemas/example.test.ts": "69a5fac758f9eaa0a04fd5dcefff53729b25602376bf29251f2d6016db75b88f",
+        "src/schemas/example.ts": "7cff5ed10214767f7751e874da60be46ca8c276b99352c09c4a0abee9c44c267",
+        "stryker.config.mjs": "6c432048ce0115c4c9bb666fc834213b9505cbda8389fdf663fa89296148ec67",
+        "tsconfig.json": "bbeaf612d2b1db2bfd8e404d93e3a564699b9681a8312e7f87997ea25dfe9128",
+        "vitest.config.ts": "8ddd3f10a71b0b2232a7a7f3e5319c35beee35d3b844b7c1d133f806a4c5c2e4"
+      },
+      "inputs_after": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        ".pre-commit-config.yaml": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a",
+        "AGENTS.md": "0225d9eac5da1389f05e44acbdd36656b243be86fd812b29b534646baffd10d3",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "f1b2dd5963b6a87e8fc6dc835a0b5da3567a70362adc174216c4bfa3a9ad3123",
+        "README.md": "74706f923aa0cfcd64d36aa7e59bc1cc94902425e8b562328c414d5a6fba5517",
+        "SYSTEM_MAP.md": "2a781ba7d979e16e2ae750e8b4b5d0b647899eea5a4e9c8416d2bfb512f6047a",
+        "biome.json": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc",
+        "docs/architecture-review.md": "9fd74d10b1b1c6929624e8a72552c711e06d3dac65ec1083b717fcc72d88f7bc",
+        "docs/quality-contract.md": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f",
+        "docs/standards-source-LICENSE": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+        "package.json": "f706640fac07d4f3941ab4863f576c7d9f7d92994f9767780556b148db021a99",
+        "scripts/check-package-manager.mjs": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7",
+        "src/schemas/example.test.ts": "69a5fac758f9eaa0a04fd5dcefff53729b25602376bf29251f2d6016db75b88f",
+        "src/schemas/example.ts": "7cff5ed10214767f7751e874da60be46ca8c276b99352c09c4a0abee9c44c267",
+        "stryker.config.mjs": "6c432048ce0115c4c9bb666fc834213b9505cbda8389fdf663fa89296148ec67",
+        "tsconfig.json": "bbeaf612d2b1db2bfd8e404d93e3a564699b9681a8312e7f87997ea25dfe9128",
+        "vitest.config.ts": "8ddd3f10a71b0b2232a7a7f3e5319c35beee35d3b844b7c1d133f806a4c5c2e4"
+      },
+      "read_only_input_requirement": true,
+      "matched": true
+    },
+    {
+      "label": "pnpm version",
+      "argv": [
+        "pnpm",
+        "--version"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c13-2026-10-09/consumer with spaces",
+      "expected": 0,
+      "diagnostic": null,
+      "status": 0,
+      "stdout": "10.34.3\n",
+      "stderr": "",
+      "inputs_before": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        ".pre-commit-config.yaml": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a",
+        "AGENTS.md": "0225d9eac5da1389f05e44acbdd36656b243be86fd812b29b534646baffd10d3",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "f1b2dd5963b6a87e8fc6dc835a0b5da3567a70362adc174216c4bfa3a9ad3123",
+        "README.md": "74706f923aa0cfcd64d36aa7e59bc1cc94902425e8b562328c414d5a6fba5517",
+        "SYSTEM_MAP.md": "2a781ba7d979e16e2ae750e8b4b5d0b647899eea5a4e9c8416d2bfb512f6047a",
+        "biome.json": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc",
+        "docs/architecture-review.md": "9fd74d10b1b1c6929624e8a72552c711e06d3dac65ec1083b717fcc72d88f7bc",
+        "docs/quality-contract.md": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f",
+        "docs/standards-source-LICENSE": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+        "package.json": "f706640fac07d4f3941ab4863f576c7d9f7d92994f9767780556b148db021a99",
+        "scripts/check-package-manager.mjs": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7",
+        "src/schemas/example.test.ts": "69a5fac758f9eaa0a04fd5dcefff53729b25602376bf29251f2d6016db75b88f",
+        "src/schemas/example.ts": "7cff5ed10214767f7751e874da60be46ca8c276b99352c09c4a0abee9c44c267",
+        "stryker.config.mjs": "6c432048ce0115c4c9bb666fc834213b9505cbda8389fdf663fa89296148ec67",
+        "tsconfig.json": "bbeaf612d2b1db2bfd8e404d93e3a564699b9681a8312e7f87997ea25dfe9128",
+        "vitest.config.ts": "8ddd3f10a71b0b2232a7a7f3e5319c35beee35d3b844b7c1d133f806a4c5c2e4"
+      },
+      "inputs_after": {
+        ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+        ".pre-commit-config.yaml": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a",
+        "AGENTS.md": "0225d9eac5da1389f05e44acbdd36656b243be86fd812b29b534646baffd10d3",
+        "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+        "Makefile": "f1b2dd5963b6a87e8fc6dc835a0b5da3567a70362adc174216c4bfa3a9ad3123",
+        "README.md": "74706f923aa0cfcd64d36aa7e59bc1cc94902425e8b562328c414d5a6fba5517",
+        "SYSTEM_MAP.md": "2a781ba7d979e16e2ae750e8b4b5d0b647899eea5a4e9c8416d2bfb512f6047a",
+        "biome.json": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc",
+        "docs/architecture-review.md": "9fd74d10b1b1c6929624e8a72552c711e06d3dac65ec1083b717fcc72d88f7bc",
+        "docs/quality-contract.md": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f",
+        "docs/standards-source-LICENSE": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+        "package.json": "f706640fac07d4f3941ab4863f576c7d9f7d92994f9767780556b148db021a99",
+        "scripts/check-package-manager.mjs": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7",
+        "src/schemas/example.test.ts": "69a5fac758f9eaa0a04fd5dcefff53729b25602376bf29251f2d6016db75b88f",
+        "src/schemas/example.ts": "7cff5ed10214767f7751e874da60be46ca8c276b99352c09c4a0abee9c44c267",
+        "stryker.config.mjs": "6c432048ce0115c4c9bb666fc834213b9505cbda8389fdf663fa89296148ec67",
+        "tsconfig.json": "bbeaf612d2b1db2bfd8e404d93e3a564699b9681a8312e7f87997ea25dfe9128",
+        "vitest.config.ts": "8ddd3f10a71b0b2232a7a7f3e5319c35beee35d3b844b7c1d133f806a4c5c2e4"
+      },
+      "read_only_input_requirement": true,
+      "matched": true
+    },
+    {
+      "label": "Gitleaks version",
+      "argv": [
+        "gitleaks",
+        "version"
+      ],
+      "cwd": "/home/claude/coding-standards-verification/bee-c13-2026-10-09/consumer with spaces",
+      "error": "FileNotFoundError(2, 'No such file or directory')",
+      "status": null,
+      "matched": false
+    }
+  ],
+  "current_consumer": {
+    ".gitignore": "b59b162874714cd251b79537ec8dd785b0a8d8cf9e97f2bbdb7098090fd28040",
+    ".pre-commit-config.yaml": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a",
+    "AGENTS.md": "0225d9eac5da1389f05e44acbdd36656b243be86fd812b29b534646baffd10d3",
+    "LICENSE": "3536ccef764b47f8355ada9a865c7b77658ae4a2581c7c6575961c39e2069a08",
+    "Makefile": "f1b2dd5963b6a87e8fc6dc835a0b5da3567a70362adc174216c4bfa3a9ad3123",
+    "README.md": "74706f923aa0cfcd64d36aa7e59bc1cc94902425e8b562328c414d5a6fba5517",
+    "SYSTEM_MAP.md": "2a781ba7d979e16e2ae750e8b4b5d0b647899eea5a4e9c8416d2bfb512f6047a",
+    "biome.json": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc",
+    "docs/architecture-review.md": "9fd74d10b1b1c6929624e8a72552c711e06d3dac65ec1083b717fcc72d88f7bc",
+    "docs/quality-contract.md": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f",
+    "docs/standards-source-LICENSE": "3f3d9e0024b1921b067d6f7f88deb4a60cbe7a78e76c64e3f1d7fc3b779b9d04",
+    "package.json": "f706640fac07d4f3941ab4863f576c7d9f7d92994f9767780556b148db021a99",
+    "scripts/check-package-manager.mjs": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7",
+    "src/schemas/example.test.ts": "69a5fac758f9eaa0a04fd5dcefff53729b25602376bf29251f2d6016db75b88f",
+    "src/schemas/example.ts": "7cff5ed10214767f7751e874da60be46ca8c276b99352c09c4a0abee9c44c267",
+    "stryker.config.mjs": "6c432048ce0115c4c9bb666fc834213b9505cbda8389fdf663fa89296148ec67",
+    "tsconfig.json": "bbeaf612d2b1db2bfd8e404d93e3a564699b9681a8312e7f87997ea25dfe9128",
+    "vitest.config.ts": "8ddd3f10a71b0b2232a7a7f3e5319c35beee35d3b844b7c1d133f806a4c5c2e4"
+  },
+  "limits": "Fresh owned synthetic consumer/input/lock; existing verified local Node/pnpm/native scanner/pre-commit/cache reused, no pristine toolchain/hosted/server/browser/authorization/tracker/realconsumer/publication guarantee. Read-only means declared input files, not global effects/sandbox."
+}

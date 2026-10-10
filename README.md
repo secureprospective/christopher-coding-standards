@@ -8,7 +8,7 @@ A portable, copy-and-customize kit for correct, elegant, human-readable and main
 
 - Maintaining this kit: [AGENTS.md](AGENTS.md) → [task index](docs/INDEX.md) and [actual kit map](SYSTEM_MAP.md).
 - Writing/reviewing code: [six-dimensional quality contract](docs/quality-contract.md) plus relevant project/stack context.
-- Adopting elsewhere: [adoption proposal skill](skills/adopt-coding-standards/SKILL.md). Use consumer templates, not this kit's maintainer identity/map. Preserve customizations; do not copy every file or blindly enable workflows.
+- Adopting elsewhere: [adoption proposal skill](skills/adopt-coding-standards/SKILL.md) and [bounded consumer cold start](docs/consumer-cold-start.md). Use consumer templates, not this kit's maintainer identity/map. Preserve customizations; do not copy every file or blindly enable workflows.
 
 ## What applies
 
@@ -48,7 +48,7 @@ Global skill installation, hosted protection, publication and live consumer enro
 
 The rebuild clears units independently; see [current handoff](HANDOFF.md) and its candidate-bound acceptance records for accepted units and remaining gates. A reviewed core or one overlay does not establish compatibility/enforcement for the rest. No complete-kit release, automatic updater, tracker registry or publisher is claimed.
 
-Existing required TS contexts historically succeeded while substantive steps skipped; Python/Go/Bash fixture successes do not prove every advertised gate or complete project behavior. Known inherited fixture and npm/pnpm mismatches are assigned to later gates. See [C0 baseline](docs/planning/c0-gate-baseline.md) and [current handoff](HANDOFF.md), not old phase badges, for evidence and limits.
+Historical required TS contexts succeeded while substantive steps skipped; those observations remain limited, not repaired retroactively. [C12](docs/planning/c12-acceptance-result.md) now verifies substantive selected native reference/security commands and the pnpm composition, not hosted execution or live required-check policy. Python/Go/Bash fixture successes still do not prove every advertised gate or complete project behavior. See [actual CI scope](docs/ci-checks.md), [C0 baseline](docs/planning/c0-gate-baseline.md) and [current handoff](HANDOFF.md), not old phase badges, for evidence and limits.
 
 The historical Codex/model-specific guides retain earlier receipts behind explicit historical notices; they are not routine bootstrap or current policies. [ADR-0002](docs/adr/0002-quality-first-acceptance.md) records what the approved migration supersedes; ADR-0001 is unchanged history.
 

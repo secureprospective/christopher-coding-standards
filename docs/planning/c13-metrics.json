@@ -1,0 +1,82 @@
+{
+  "scope": "Maintained instruction/routing/documentary payload only. No operational template/tool/workflow/lock/source code changed; no debloat/runtime reduction claim. Session helpers/runtime evidence/synthetic proof source separate.",
+  "rows": [
+    {
+      "path": "README.md",
+      "before": {
+        "physical_lines": 57,
+        "codepoints": 4959,
+        "utf8_bytes": 4965
+      },
+      "after": {
+        "physical_lines": 57,
+        "codepoints": 5234,
+        "utf8_bytes": 5240
+      }
+    },
+    {
+      "path": "SYSTEM_MAP.md",
+      "before": {
+        "physical_lines": 29,
+        "codepoints": 3331,
+        "utf8_bytes": 3331
+      },
+      "after": {
+        "physical_lines": 31,
+        "codepoints": 4097,
+        "utf8_bytes": 4097
+      }
+    },
+    {
+      "path": "docs/INDEX.md",
+      "before": {
+        "physical_lines": 24,
+        "codepoints": 3698,
+        "utf8_bytes": 3700
+      },
+      "after": {
+        "physical_lines": 24,
+        "codepoints": 3744,
+        "utf8_bytes": 3746
+      }
+    },
+    {
+      "path": "templates/typescript/README.md",
+      "before": {
+        "physical_lines": 55,
+        "codepoints": 7573,
+        "utf8_bytes": 7575
+      },
+      "after": {
+        "physical_lines": 55,
+        "codepoints": 7989,
+        "utf8_bytes": 7991
+      }
+    },
+    {
+      "path": "docs/consumer-cold-start.md",
+      "before": {
+        "physical_lines": 0,
+        "codepoints": 0,
+        "utf8_bytes": 0
+      },
+      "after": {
+        "physical_lines": 26,
+        "codepoints": 5173,
+        "utf8_bytes": 5173
+      }
+    }
+  ],
+  "totals": {
+    "before": {
+      "physical_lines": 165,
+      "codepoints": 19561,
+      "utf8_bytes": 19571
+    },
+    "after": {
+      "physical_lines": 193,
+      "codepoints": 26237,
+      "utf8_bytes": 26247
+    }
+  }
+}

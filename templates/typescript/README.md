@@ -16,7 +16,7 @@ Copy and merge into a suitable project; this is not a complete application or an
    A lock captures the consumer's actual graph, not every future composition. Recheck advisories/compatibility when changing dependencies. The scoped `typed-rest-client>qs` override selects6.16.0 because Stryker's resolved caller2.3.1 pins vulnerable6.15.1 (GHSA-q8mj-m7cp-5q26, GHSA-x5fp-wj9c-mxmx, GHSA-4mjr-xmp4-gh2g); retain/review it with the lock until upstream resolution is patched. Do not suppress the audit or apply a blanket transitive override. Vitest and coverage versions must match; GHSA-82fw-gwwq-j7x9 affected the former Vitest3 line and is fixed at stable4.1.11. This reference does not expose a dev-server API; do not expose test/dev servers casually.
 5. Install pre-commit in the approved tool environment; provision and verify native Gitleaks8.30.1 and install the project dependencies first. Run `pre-commit install`, then check the actual hooks. Biome uses **the project's locked local binary** read-only, avoiding a second unpinned npm hook environment. Gitleaks uses an immutable upstream hook commit and the native scanner (no automatic Go SDK bootstrap); its binary version/integrity is still the owner's responsibility.
 
-The kit's inherited `security.yml` still uses npm-ci: it is incompatible with this pnpm contract until C12 repairs it. Installing this overlay does not make that workflow live or accepted. Do not remove the guard or claim skipped jobs passed.
+The kit's [selected CI reference commands](../../docs/ci-checks.md) now preserve this pnpm contract, as recorded in [C12 acceptance](../../docs/planning/c12-acceptance-result.md). That is kit-maintenance evidence, not a consumer workflow to copy automatically or proof of hosted enforcement. Installing this overlay does not approve or activate workflows; preserve the manager guard and never claim skipped jobs passed.
 
 ## Behavior and evidence
 
@@ -47,9 +47,9 @@ Use when risk or an assertion gap warrants it, not as a mandatory ritual. Custom
 
 ## Composition
 
-- [Workers](../cloudflare-workers/README.md) replaces platform/type/test configs and currently chooses npm; C6 must demonstrate its actual pool/plugin/Vitest contract. Keep its own manager/lock contract rather than copying the pnpm lifecycle guard.
-- [Astro](../astro/README.md) adds Astro/template formatting and generated types; C7 must clear the merged contract. Its inherited preinstall snippet must not overwrite this local guard with an unpinned npx download.
-- [Bun/ECS](../bun-ecs/README.md) chooses Bun; C8 owns runtime, commands and dependency compatibility.
+- [Workers](../cloudflare-workers/README.md) replaces platform/type/test configs and chooses its own npm graph. Keep that manager/lock contract rather than copying the pnpm lifecycle guard; its separately accepted native scope is recorded in [C6](../../docs/planning/c6-acceptance-result.md).
+- [Astro](../astro/README.md) adds Astro/template formatting and generated types; preserve the local guard rather than introducing an unpinned npx download. Its separately accepted non-React/optional-React scope is recorded in [C7](../../docs/planning/c7-acceptance-result.md).
+- [Bun/ECS](../bun-ecs/README.md) chooses Bun, with its own runtime/commands/dependency composition and bounded [C8 evidence](../../docs/planning/c8-acceptance-result.md). None of these records accepts an arbitrary consumer combination.
 - Make defaults to pnpm; `make PM=npm test` or `make PM=bun test` is only appropriate after the project's manifest/guard/lock contract has been composed accordingly. The wrapper alone does not change it.
 
 Use framework-specific ESM resolution deliberately. `moduleResolution: bundler` is not proof Node can execute emitted imports; a deployed Node library may require a paired NodeNext module/resolution configuration and an actual build/runtime check. No dependent overlay, Windows/other platform, hosted enforcement or live consumer is accepted by this reference alone.

@@ -1,0 +1,12 @@
+{
+  "status": "READY corrected C13reporting re-review, not accepted",
+  "packet_sha256": "6702ba1427fbbc9cd67a0afac5181f8a21643f9532a81ef2828cb24733ba5673",
+  "files": 54,
+  "helpers": 6,
+  "external_inputs": 123,
+  "protected_including_project": 608,
+  "tracked_diff_sha256": "8f5d89d71d4789c28d173114bf685dd76df4aa67c691f87021896234fb666a77",
+  "state_sha256": "e3d8b08febf13cfff368d7e9519a12356dc3658fc549d1454a788b522388efea",
+  "test_count_reconciliation_sha256": "32fc0e57585ffc974f37d10ab5d0a88237d66fda579b70ff9c52bd0d3cf1464f",
+  "limits": "Counts verified from existing original captured clean/restored15outputs/bad16total; no runtime rerun or new independent receipts. Prior source/copy/consumer/postfreeze campaigns remain original identities, no claim54inputs were rerun. All operational source/consumer/external123unchanged; current doc reporting-only correction. Full staged whitespace0and parent freshness actual. Historical helper footer16retained/corrected explicitly."
+}

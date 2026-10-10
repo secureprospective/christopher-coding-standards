@@ -5,7 +5,7 @@ For writing/reviewing a change, read [quality-contract.md](quality-contract.md) 
 | Task | Relevant additional context |
 |---|---|
 | Find existing kit components / change ownership | [Actual kit map](../SYSTEM_MAP.md). |
-| Propose consumer adoption/update | [Adoption skill](../skills/adopt-coding-standards/SKILL.md); selected overlay README; preserve local instructions/config. No live enrollment implied. |
+| Propose consumer adoption/update | [Adoption skill](../skills/adopt-coding-standards/SKILL.md); [bounded cold start](consumer-cold-start.md); selected overlay README; preserve local instructions/config. No live enrollment implied. |
 | Report adoption bindings/customizations/update needs | [Manual status](adoption-status.md); [C11 decision](planning/c11-tracking-decision.md). Unselected checker/catalog implementation deferred, unknowns not compliance/approval; no new receipt service or enrollment. |
 | Maintain a language overlay | Only its `templates/<stack>/` files/README and affected callers/fixture/workflow. TS-dependent overlays also use the base TS merge contract. |
 | TypeScript / Astro / Workers / Bun-ECS | [TS](../templates/typescript/README.md), [Astro](../templates/astro/README.md), [Workers](../templates/cloudflare-workers/README.md), [Bun/ECS](../templates/bun-ecs/README.md), as relevant. |

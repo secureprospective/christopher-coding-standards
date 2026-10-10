@@ -1,0 +1,32 @@
+{
+  "argv": [
+    "pnpm",
+    "config",
+    "get",
+    "registry"
+  ],
+  "status": 0,
+  "stdout": "https://registry.npmjs.org/\n",
+  "stderr": "npm warn Unknown env config \"store-dir\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\n",
+  "declared_manager": "pnpm@10.34.3",
+  "declared_dependencies": {
+    "zod": "4.6.5"
+  },
+  "declared_dev_dependencies": {
+    "@biomejs/biome": "2.4.15",
+    "@stryker-mutator/core": "9.6.1",
+    "@stryker-mutator/typescript-checker": "9.6.1",
+    "@stryker-mutator/vitest-runner": "9.6.1",
+    "@types/node": "24.10.1",
+    "@vitest/coverage-v8": "4.1.11",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  },
+  "lock_packages": 253,
+  "lock_before": "f79ec86b5e2483dc0ebd1be6b9dfe3ff904adf867f7f19fecae0bf898728154a",
+  "lock_after": "f79ec86b5e2483dc0ebd1be6b9dfe3ff904adf867f7f19fecae0bf898728154a",
+  "matches_accepted_c5_c12_reference_lock": true,
+  "resolution_identity_policy": "Every actual lock package has sha512 integrity, no alternate tarball/git resolution; selected registry actual default. Metadata/SRI/cache are not authenticated approval/full package code audit. Actual first generated lock, not copied reference lock.",
+  "build_scripts": "pnpm default install decisions retained; no approve-builds/ignore-scripts flag or unsafe bootstrap approval. See original first-install exact stdout; test/type/lint demonstrated selected composition.",
+  "limits": "Read-only actual registry/config + graph inspection, not universal source/legal/security/authentication proof."
+}

@@ -1,0 +1,279 @@
+{
+  "base": "91988a378075dbcc298ed3b479c320e3f70c18c5",
+  "branch": "rebuild/quality-core-2026-10-08",
+  "staged_empty": true,
+  "status_porcelain": " M HANDOFF.md\n M README.md\n M SYSTEM_MAP.md\n M docs/INDEX.md\n M templates/typescript/README.md\n?? .project.yaml\n?? docs/consumer-cold-start.md\n?? docs/planning/c13-baseline.json\n?? docs/planning/c13-candidate.json\n?? docs/planning/c13-checks-disposition.md\n?? docs/planning/c13-metrics.json\n?? docs/planning/c13-scope.md\n?? docs/planning/evidence/c13-adopted-source-bindings.json\n?? docs/planning/evidence/c13-clean-inputs.json\n?? docs/planning/evidence/c13-consumer-checks.json\n?? docs/planning/evidence/c13-consumer-completion.json\n?? docs/planning/evidence/c13-dependency-inspection.json\n?? docs/planning/evidence/c13-final-source-copy.json\n?? docs/planning/evidence/c13-independent-review-pass1.json\n?? docs/planning/evidence/c13-initial-missing-scanner.json\n?? docs/planning/evidence/c13-manual-update-preservation.json\n?? docs/planning/evidence/c13-manual-update-proposal.json\n?? docs/planning/evidence/c13-original-consumer.json\n?? docs/planning/evidence/c13-source-audit-initial.json\n?? docs/planning/evidence/c13-source-audit.json\n?? docs/planning/evidence/c13-source-copy.json\n?? docs/planning/evidence/c13-test-count-reconciliation.json\n?? docs/planning/evidence/c13-whitespace.json\n?? docs/planning/rebuild-morning-report-2026-10-09.md\n",
+  "tracked_diff_sha256": "8f5d89d71d4789c28d173114bf685dd76df4aa67c691f87021896234fb666a77",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 3116,
+      "sha256": "259dd5e1395952c5742e50098e51aeb30c723f403d862f2692b68889a071fe91"
+    },
+    {
+      "path": "HANDOFF.md",
+      "bytes": 6450,
+      "sha256": "b21c20661cc47d83c3b094e4a32ee12c99e2e18b50e4b2de9bdc962e555d7ac3"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5240,
+      "sha256": "f202569644c7f74a0bc04c65cd2a4af738c89388c5b2c9a9c802c6e94c55ccb1"
+    },
+    {
+      "path": "SYSTEM_MAP.md",
+      "bytes": 4097,
+      "sha256": "1d231dc3fb6155df078a1f2c7b905a5d49b84f208a475dc0602ac7211a5e9746"
+    },
+    {
+      "path": "docs/INDEX.md",
+      "bytes": 3746,
+      "sha256": "964b555310821c9037b45df7b86165c362537135deca581bda1d986c59b8e901"
+    },
+    {
+      "path": "docs/adoption-status.md",
+      "bytes": 4554,
+      "sha256": "a442795c92bb58eab97f72f182a52b6ecef3722aeffb036d07e8089f6dec081d"
+    },
+    {
+      "path": "docs/architecture-review.md",
+      "bytes": 7994,
+      "sha256": "9fd74d10b1b1c6929624e8a72552c711e06d3dac65ec1083b717fcc72d88f7bc"
+    },
+    {
+      "path": "docs/ci-checks.md",
+      "bytes": 9854,
+      "sha256": "20e2d260d2333c53a64828d92a44c8e1a460e1ed13164f1eed853c4cdab81882"
+    },
+    {
+      "path": "docs/consumer-cold-start.md",
+      "bytes": 5173,
+      "sha256": "5077d54fa57462a9edacb4ce9be6655c2a14feef35e30551bfbf2ed3e08ad7d8"
+    },
+    {
+      "path": "docs/planning/c12-acceptance-result.md",
+      "bytes": 7715,
+      "sha256": "5d5f303a4c5319b554ba45b03262b0f9c5f72059a83168bd98f2cf003f130733"
+    },
+    {
+      "path": "docs/planning/c13-baseline.json",
+      "bytes": 98734,
+      "sha256": "5d4af08f9f262c2389ff0a8f5041248e1a16578d00ec04a7e795e481055cc4e8"
+    },
+    {
+      "path": "docs/planning/c13-checks-disposition.md",
+      "bytes": 6741,
+      "sha256": "35fe8303d92eb28ac5bd5c16df986e37b9e7cac019beeb6988a6bdc82632d22f"
+    },
+    {
+      "path": "docs/planning/c13-metrics.json",
+      "bytes": 1833,
+      "sha256": "a07ae2e4b201d0ca1ee167b6d0384a4834debbebe552f9ac6b1575941ddd4a3d"
+    },
+    {
+      "path": "docs/planning/c13-scope.md",
+      "bytes": 3873,
+      "sha256": "526da0ab7e4156db97f06052d0c2ae1ee16723bb8e7985a2fabec294ca82c796"
+    },
+    {
+      "path": "docs/planning/evidence/c13-adopted-source-bindings.json",
+      "bytes": 4231,
+      "sha256": "5db18d37dcc664f6f4464277539ba9b632c61569a18fa5875c5e92ab8f1f5d33"
+    },
+    {
+      "path": "docs/planning/evidence/c13-clean-inputs.json",
+      "bytes": 1733,
+      "sha256": "5f33407fb7aa25ac327609cdaac68157a92ef85b9f4ca21818ca58373956166e"
+    },
+    {
+      "path": "docs/planning/evidence/c13-consumer-checks.json",
+      "bytes": 160122,
+      "sha256": "5b55ff1490b064588db6f26741c9278ca754c7d47e157979922328c924d85242"
+    },
+    {
+      "path": "docs/planning/evidence/c13-consumer-completion.json",
+      "bytes": 2970,
+      "sha256": "a585f259f13faac30babff7e9b71e1e09fc68b6c3969c0e1ea6931bba0be1367"
+    },
+    {
+      "path": "docs/planning/evidence/c13-dependency-inspection.json",
+      "bytes": 1591,
+      "sha256": "753e6fc00a4e76817f42fc91486a5fb34c5961ef1b4b72030a4112b534e985a4"
+    },
+    {
+      "path": "docs/planning/evidence/c13-final-source-copy.json",
+      "bytes": 99069,
+      "sha256": "e8cdb65248384642aa99388a6ba85737b77d809ee090f50ba780bc9c334e4be5"
+    },
+    {
+      "path": "docs/planning/evidence/c13-independent-review-pass1.json",
+      "bytes": 3440,
+      "sha256": "a242061ab8dc1ac744e50d1432fc992ac8d66a995d98944520d1ead4817518cf"
+    },
+    {
+      "path": "docs/planning/evidence/c13-initial-missing-scanner.json",
+      "bytes": 17604,
+      "sha256": "896af2ac3da475ad219191d1d492f1341512e320650492f0731f8fdccb54c48f"
+    },
+    {
+      "path": "docs/planning/evidence/c13-manual-update-preservation.json",
+      "bytes": 3873,
+      "sha256": "9e117019abbc11c864c437b86477fd17d30b426c5f8e0a073e28731c9ea420bd"
+    },
+    {
+      "path": "docs/planning/evidence/c13-manual-update-proposal.json",
+      "bytes": 3519,
+      "sha256": "7e0b65db2caa3090af434acad4d582574f4d2a31b4939156a35e83b2cb58d7d3"
+    },
+    {
+      "path": "docs/planning/evidence/c13-original-consumer.json",
+      "bytes": 541,
+      "sha256": "92c67648bc4f749f264edeeaf3c53133bdbce6253a6f24b066b010d26e65c6d0"
+    },
+    {
+      "path": "docs/planning/evidence/c13-source-audit-initial.json",
+      "bytes": 90459,
+      "sha256": "3b0420c34bef872db7e6f9805a3721fff7f86c756a48e8a4127fe187c4281a2b"
+    },
+    {
+      "path": "docs/planning/evidence/c13-source-audit.json",
+      "bytes": 90620,
+      "sha256": "91cb120759b613aa22f86ff53cf0c2c2e8bea7827ebe758fd1580b0cb054ebfb"
+    },
+    {
+      "path": "docs/planning/evidence/c13-source-copy.json",
+      "bytes": 99019,
+      "sha256": "a11355642995ed563fb34648fc23fa2aff6d7f8fd10c795cd0c0c69e4d8e4374"
+    },
+    {
+      "path": "docs/planning/evidence/c13-test-count-reconciliation.json",
+      "bytes": 2068,
+      "sha256": "32fc0e57585ffc974f37d10ab5d0a88237d66fda579b70ff9c52bd0d3cf1464f"
+    },
+    {
+      "path": "docs/planning/evidence/c13-whitespace.json",
+      "bytes": 249,
+      "sha256": "a4687523cd6b428de5ad1831853c4b52859e343265a74856e8c6c40b30ca15ab"
+    },
+    {
+      "path": "docs/planning/rebuild-chunk-plan-2026-10-08.md",
+      "bytes": 14971,
+      "sha256": "1ceb843a55b57d0fa3a8c6c4f5a7294525c94e01c09bb501fcd8f6dfa8022edf"
+    },
+    {
+      "path": "docs/planning/rebuild-morning-report-2026-10-09.md",
+      "bytes": 6554,
+      "sha256": "f65ccd02dd03c64d6d2e5af9b99e2379e47fb0b394aa51b8337ed0dd58c05196"
+    },
+    {
+      "path": "docs/quality-contract.md",
+      "bytes": 5915,
+      "sha256": "cc570ccd9d64bbd311c2c3bdeebff7a272c30f60793276065e47db2db8d0942f"
+    },
+    {
+      "path": "docs/review-roles.md",
+      "bytes": 2230,
+      "sha256": "129803c502e6511b032cdaaa980ad488fefb5f3b1474d75d30149eb6fcae98e5"
+    },
+    {
+      "path": "skills/adopt-coding-standards/SKILL.md",
+      "bytes": 5051,
+      "sha256": "6fb495e279f5be762c035463afbe08d7b6e9c011b511eed9391c29d62e7a0664"
+    },
+    {
+      "path": "templates/AGENTS.md",
+      "bytes": 2674,
+      "sha256": "c8bbb045bc89e8bf0dc90467b673e00fcc34846e793586434b06e9ca3c878fe7"
+    },
+    {
+      "path": "templates/SYSTEM_MAP.md",
+      "bytes": 1747,
+      "sha256": "54ad30fdc50804e044b6a741c21aa041883672e558c397097d69f1273111c5b4"
+    },
+    {
+      "path": "templates/astro/README.md",
+      "bytes": 4359,
+      "sha256": "bcef7373688cce03bf448acded6fb58ebb3be461f9f2624c7998bd37cd50061a"
+    },
+    {
+      "path": "templates/bash/README.md",
+      "bytes": 6639,
+      "sha256": "218f8d51daf9c934155ced6cb18756c82fb8e0e1794fc9a278330b8f4ed346b4"
+    },
+    {
+      "path": "templates/bun-ecs/README.md",
+      "bytes": 5235,
+      "sha256": "f5e04a2cf5056d5a7c31e93ce25d8988e8a5787889b8746dc37cf65eac5b958f"
+    },
+    {
+      "path": "templates/cloudflare-workers/README.md",
+      "bytes": 4561,
+      "sha256": "beaed045716e87f2bb9212be469a42603d6cca711e54ff034c871afbbab42826"
+    },
+    {
+      "path": "templates/go/README.md",
+      "bytes": 5940,
+      "sha256": "f649aa1d3156b034cf0ba5ee7c0b476e6c12337342144b717bd3111b7aeb7538"
+    },
+    {
+      "path": "templates/python/README.md",
+      "bytes": 6869,
+      "sha256": "df3072c109f717f7b5654975c2d2594e8521cd65b2e51411a860751dedb6dcf3"
+    },
+    {
+      "path": "templates/typescript/.pre-commit-config.yaml",
+      "bytes": 769,
+      "sha256": "d820aad1fef6f0670b41624aa48a6b378cba73aea8c9272035d59928fd4e6e7a"
+    },
+    {
+      "path": "templates/typescript/Makefile",
+      "bytes": 630,
+      "sha256": "93e641976acb9f8e60b14d6984f3c875ea8ac9a47874d6392fd4b65bf4ca5fcf"
+    },
+    {
+      "path": "templates/typescript/README.md",
+      "bytes": 7991,
+      "sha256": "dd9475dd15847e48b2be2128ed9bd807c05dd19f8642cb0ac7780ef958142a6d"
+    },
+    {
+      "path": "templates/typescript/biome.json",
+      "bytes": 852,
+      "sha256": "00a274c029334a872f8df054bb218a9a01bd120462f6285e6d9fc302d0deddcc"
+    },
+    {
+      "path": "templates/typescript/package.json.snippet",
+      "bytes": 983,
+      "sha256": "9dc63e166bd937221dd40f9bdfe0060cda916ec77d4dd53ac2b1bab196453156"
+    },
+    {
+      "path": "templates/typescript/schemas/example.test.ts",
+      "bytes": 2020,
+      "sha256": "69a5fac758f9eaa0a04fd5dcefff53729b25602376bf29251f2d6016db75b88f"
+    },
+    {
+      "path": "templates/typescript/schemas/example.ts",
+      "bytes": 1174,
+      "sha256": "7cff5ed10214767f7751e874da60be46ca8c276b99352c09c4a0abee9c44c267"
+    },
+    {
+      "path": "templates/typescript/scripts/check-package-manager.mjs",
+      "bytes": 786,
+      "sha256": "ff4477a5a8e369a342f24848c5ec89587998f2d0da45538856f4ce6c763c97e7"
+    },
+    {
+      "path": "templates/typescript/stryker.config.mjs",
+      "bytes": 1479,
+      "sha256": "6c432048ce0115c4c9bb666fc834213b9505cbda8389fdf663fa89296148ec67"
+    },
+    {
+      "path": "templates/typescript/tsconfig.json",
+      "bytes": 1684,
+      "sha256": "bbeaf612d2b1db2bfd8e404d93e3a564699b9681a8312e7f87997ea25dfe9128"
+    },
+    {
+      "path": "templates/typescript/vitest.config.ts",
+      "bytes": 942,
+      "sha256": "8ddd3f10a71b0b2232a7a7f3e5319c35beee35d3b844b7c1d133f806a4c5c2e4"
+    }
+  ]
+}

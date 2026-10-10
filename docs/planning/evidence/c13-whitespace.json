@@ -1,0 +1,12 @@
+{
+  "argv": [
+    "git",
+    "diff",
+    "--cached",
+    "--check"
+  ],
+  "status": 0,
+  "stdout": "",
+  "stderr": "",
+  "limits": "Full exact current doc/evidence authored stage; source consumer/helper outside publication tree separately bound."
+}
