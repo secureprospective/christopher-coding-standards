@@ -12,7 +12,11 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 
 
-def observe(cwd, argv, inputs, diagnostic=None):
+def observe(cwd, argv, inputs, diagnostic=None, *, private_record=None):
+    if private_record is not None:
+        private_record = private_record.resolve()
+        if private_record.is_relative_to(ROOT):
+            raise ValueError("private security diagnostics must remain outside the checkout")
     command = [
         sys.executable,
         str(ROOT / "tools/verify_fixture.py"),
@@ -26,8 +30,26 @@ def observe(cwd, argv, inputs, diagnostic=None):
     if diagnostic:
         command += ["--diagnostic", diagnostic]
     result = subprocess.run(command + ["--", *argv], cwd=cwd, capture_output=True, text=True)
-    print(result.stdout, end="", flush=True)
-    print(result.stderr, end="", file=sys.stderr, flush=True)
+    if private_record is None:
+        print(result.stdout, end="", flush=True)
+        print(result.stderr, end="", file=sys.stderr, flush=True)
+    else:
+        captured = json.dumps(
+            {"checker_exit": result.returncode, "stdout": result.stdout, "stderr": result.stderr},
+            indent=2,
+        ) + "\n"
+        with private_record.open("x") as stream:
+            stream.write(captured)
+        print(
+            json.dumps(
+                {
+                    "private_observation": str(private_record),
+                    "sha256": hashlib.sha256(private_record.read_bytes()).hexdigest(),
+                    "checker_exit": result.returncode,
+                }
+            ),
+            flush=True,
+        )
     if result.returncode != 0:
         raise RuntimeError(
             f"security expectation failed: {argv!r}; checker exit {result.returncode}"
@@ -148,7 +170,12 @@ def main():
         ]
         # Licensed policy bytes remain in the private tool prefix, outside this
         # checkout; source targets require no vendor-file exemption.
-        observe(ROOT, command + exclusions + ["."], tracked)
+        observe(
+            ROOT,
+            command + exclusions + ["."],
+            tracked,
+            private_record=work / "semgrep-root-private.json",
+        )
         (work / "probe.py").write_text("def calculate(payload: str):\n    return eval(payload)\n")
         inputs = ["probe.py"]
         # Bind exact policy bytes within the control workspace too.
@@ -171,9 +198,15 @@ def main():
             control + ["probe.py"],
             inputs,
             "python.lang.security.audit.eval-detected.eval-detected",
+            private_record=work / "semgrep-rejection-private.json",
         )
         (work / "probe.py").write_text("def calculate(payload: str):\n    return int(payload)\n")
-        observe(work, control + ["probe.py"], inputs)
+        observe(
+            work,
+            control + ["probe.py"],
+            inputs,
+            private_record=work / "semgrep-safe-private.json",
+        )
     else:
         references = work / "references"
         # Fixed trusted kit executable/argv; resolved absolute output path is a

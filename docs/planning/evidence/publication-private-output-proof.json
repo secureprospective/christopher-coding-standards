@@ -1,0 +1,56 @@
+{
+  "status": "verified",
+  "controls": [
+    {
+      "control": "root",
+      "actual_tool_status": 0,
+      "actual_checker_status": 0,
+      "matched": true,
+      "private_path": "/home/claude/coding-standards-verification/bee-publication-2026-10-10/attempt2/semgrep private work with spaces/semgrep-root-private.json",
+      "sha256": "3ce83bad83b06d9318eeaf6c5d997801881812c60290d990ae3a790544d13720",
+      "public_raw_stream_absence_verified": true
+    },
+    {
+      "control": "rejection",
+      "actual_tool_status": 1,
+      "actual_checker_status": 0,
+      "matched": true,
+      "private_path": "/home/claude/coding-standards-verification/bee-publication-2026-10-10/attempt2/semgrep private work with spaces/semgrep-rejection-private.json",
+      "sha256": "fd94fb917170f7c1e894949f2ffdff5ea8b7ebd0826c23e625efb005a76120cf",
+      "public_raw_stream_absence_verified": true
+    },
+    {
+      "control": "safe",
+      "actual_tool_status": 0,
+      "actual_checker_status": 0,
+      "matched": true,
+      "private_path": "/home/claude/coding-standards-verification/bee-publication-2026-10-10/attempt2/semgrep private work with spaces/semgrep-safe-private.json",
+      "sha256": "6cf639f3c4cffee8bb12872a2a1fcc1edff54ca2432ee93099c0ceef539949c0",
+      "public_raw_stream_absence_verified": true
+    }
+  ],
+  "public_summary": [
+    {
+      "private_observation": "/home/claude/coding-standards-verification/bee-publication-2026-10-10/attempt2/semgrep private work with spaces/semgrep-root-private.json",
+      "sha256": "3ce83bad83b06d9318eeaf6c5d997801881812c60290d990ae3a790544d13720",
+      "checker_exit": 0
+    },
+    {
+      "private_observation": "/home/claude/coding-standards-verification/bee-publication-2026-10-10/attempt2/semgrep private work with spaces/semgrep-rejection-private.json",
+      "sha256": "fd94fb917170f7c1e894949f2ffdff5ea8b7ebd0826c23e625efb005a76120cf",
+      "checker_exit": 0
+    },
+    {
+      "private_observation": "/home/claude/coding-standards-verification/bee-publication-2026-10-10/attempt2/semgrep private work with spaces/semgrep-safe-private.json",
+      "sha256": "6cf639f3c4cffee8bb12872a2a1fcc1edff54ca2432ee93099c0ceef539949c0",
+      "checker_exit": 0
+    },
+    {
+      "completed_security_mode": "semgrep",
+      "limits": "Actual CLI scope and narrow controls; not hosted run, authenticated approval or complete safety."
+    }
+  ],
+  "all_source_inputs_unchanged": true,
+  "actual_unit_counts": "13(7identity+6output) and14shared verifier; named unit failures preserved if any",
+  "scope": "Actual bounded root/eval/safe semantics preserved and exact captured diagnostics private with path/hash/checker status public. No race-proof filesystem/process isolation/legal rights guarantee."
+}
